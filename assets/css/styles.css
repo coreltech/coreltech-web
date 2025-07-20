@@ -1,0 +1,771 @@
+/* ========================
+   = Reset básico
+   ======================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* ========================
+   = Variables de estilo
+   ======================== */
+:root {
+  --color-primary: #003366; /* Azul oscuro */
+  --color-secondary: #0066cc; /* Azul claro */
+  --color-white: #fff;
+  --color-light: #f9f9f9;
+  --color-gray: #ddd;
+  --font-main: 'Poppins', sans-serif;
+  --font-title: 1.8rem;
+  --font-subtitle: 1.2rem;
+  --font-text: 1rem;
+  --font-small: 0.9rem;
+}
+
+/* ========================
+   = Estilos generales
+   ======================== */
+body {
+  font-family: var(--font-main);
+  color: #333;
+  background-color: var(--color-light);
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ========================
+   = Botones
+   ======================== */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.btn-primary:hover {
+  background-color: #004080;
+}
+
+.btn-secondary {
+  background-color: var(--color-gray);
+  color: #333;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.btn-secondary:hover {
+  background-color: #ccc;
+}
+
+/* ========================
+   = Imágenes uniformes
+   ======================== */
+.service-img,
+.portfolio-img,
+.about-img {
+  width: 100%;
+  max-width: 300px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 1rem auto;
+  display: block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================
+   = Hero Principal
+   ======================== */
+.hero {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 5rem 0;
+  text-align: center;
+}
+
+.hero-content {
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* ========================
+   = Sección de Servicios Detallados
+   ======================== */
+.services-details {
+  padding: 4rem 0;
+  background-color: var(--color-white);
+}
+
+.service {
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.service h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+}
+
+.service-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  background-color: #f0f8ff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.service-img {
+  width: 300px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-text {
+  flex: 1;
+}
+
+.service-text p {
+  margin-bottom: 1rem;
+}
+
+.service-text ul {
+  margin-bottom: 1rem;
+  padding-left: 1.2rem;
+}
+
+.service-text ul li {
+  margin-bottom: 0.5rem;
+  list-style: disc;
+}
+
+/* ========================
+   = Servicios (en Inicio)
+   ======================== */
+.services {
+  padding: 4rem 0;
+  background-color: var(--color-white);
+}
+
+.services h2 {
+  text-align: center;
+  font-size: var(--font-title);
+  margin-bottom: 2rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.card {
+  background-color: var(--color-white);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  max-width: 300px;
+  width: 100%;
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+/* ========================
+   = Sobre Nosotros
+   ======================== */
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.about-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-left h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--color-white);
+}
+
+.about-img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-img {
+    max-width: 100%;
+  }
+
+  .about-left h2 {
+    color: var(--color-primary);
+  }
+
+  .service-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .whatsapp-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .whatsapp-button img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ========================
+   = Portafolio
+   ======================== */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.portfolio-item {
+  background-color: var(--color-white);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.portfolio-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+/* ========================
+   = Blog Preview
+   ======================== */
+.blog-preview {
+  padding: 4rem 0;
+  background-color: #f9f9f9;
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.post {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.post img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.post h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.post p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+/* ========================
+   = Contacto
+   ======================== */
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: var(--color-white);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #004080;
+}
+
+/* ========================
+   = Navegación (Navbar)
+   ======================== */
+.navbar {
+  background-color: #f0f8ff;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo img {
+  vertical-align: middle;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.nav-links li a {
+  color: var(--color-primary);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #004080;
+}
+
+/* ========================
+   = Footer
+   ======================== */
+.footer {
+  padding: 4rem 0;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-logo img {
+  vertical-align: middle;
+}
+
+.footer-logo p {
+  margin-top: 0.5rem;
+  font-size: var(--font-small);
+}
+
+.footer-contact p {
+  margin-bottom: 0.5rem;
+}
+
+.footer-contact a {
+  color: var(--color-white);
+}
+
+.footer-social h4 {
+  margin-bottom: 1rem;
+}
+
+.footer-social ul {
+  list-style: none;
+}
+
+.footer-social ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-social ul li a {
+  color: var(--color-white);
+  transition: color 0.3s ease;
+}
+
+.footer-social ul li a:hover {
+  color: #ff6600;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: var(--font-small);
+  color: #bbb;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+}
+
+/* ========================
+   = WhatsApp Button
+   ======================== */
+.whatsapp-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-button:hover {
+  background-color: #128C7E;
+  transform: scale(1.1);
+}
+
+.whatsapp-button img {
+  width: 30px;
+  height: 30px;
+}
+
+/* ========================
+   = Sobre Nosotros
+   ======================== */
+
+.about-section {
+  padding: 4rem 0;
+  background-color: var(--color-white);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.about-left h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+}
+
+.about-left p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.about-left h3 {
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.about-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================
+   = Nuestros Valores
+   ======================== */
+
+.values-section {
+  padding: 4rem 0;
+  background-color: var(--color-light);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.value-card {
+  background-color: var(--color-white);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+}
+
+.value-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  display: block;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.value-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+}
+
+.value-card p {
+  font-size: var(--font-text);
+  color: #666;
+}
+
+/* ========================
+   = Filosofía de Trabajo
+   ======================== */
+
+.philosophy-section {
+  padding: 4rem 0;
+  background-color: var(--color-white);
+}
+
+.philosophy-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+}
+
+.philosophy-section p {
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+/* ========================
+   = Responsive - Sobre Nosotros
+   ======================== */
+
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-img {
+    max-width: 100%;
+  }
+
+  .about-left {
+    margin-bottom: 2rem;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .value-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* ========================
+   = Portafolio
+   ======================== */
+
+.portfolio-section {
+  padding: 4rem 0;
+  background-color: var(--color-white);
+}
+
+.portfolio-section h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 3rem;
+  color: var(--color-primary);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.portfolio-item {
+  background-color: var(--color-white);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-img {
+  transform: scale(1.05);
+}
+
+.portfolio-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+}
+
+.portfolio-item p {
+  font-size: var(--font-text);
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.portfolio-item .btn-secondary {
+  margin-top: 0.5rem;
+}
+
+/* ========================
+   = Responsive - Portafolio
+   ======================== */
+
+@media (max-width: 768px) {
+  .portfolio-section {
+    padding: 2rem 0;
+  }
+
+  .portfolio-img {
+    height: 160px;
+  }
+
+  .portfolio-item h3 {
+    font-size: 1.2rem;
+  }
+
+  .portfolio-item p {
+    font-size: 0.9rem;
+  }
+}
