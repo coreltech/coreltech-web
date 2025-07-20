@@ -1,0 +1,12 @@
+# robots.txt
+# Para: Todos los motores de búsqueda
+
+User-agent: *
+Allow: /
+
+# Preferencias de Google
+User-agent: Googlebot
+Allow: /
+
+# Dirección del sitemap (si lo tienes)
+Sitemap: https://coreltech.vercel.app/sitemap.xml 

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Contáctanos para más información sobre nuestros servicios de tecnología, soporte técnico y asesoría IT.">
+  <title>Contacto - Coreltech IT Solutions</title>
+
+  <!-- Google Fonts - Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- AOS Animaciones -->
+  <link href=" https://unpkg.com/aos @2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Estilos principales -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/img/favicon.webp" type="image/webp">
+</head>
+<body>
+
+  <!-- 🧭 Menú de Navegación -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150">
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="sobre.html">Sobre Nosotros</a></li>
+          <li><a href="portafolio.html">Portafolio</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 📞 Título Principal -->
+  <section class="hero" data-aos="fade-up">
+    <div class="container hero-content">
+      <h1>Contáctanos</h1>
+      <p>¿Tienes dudas o necesitas ayuda con tus equipos? ¡Escríbenos y te responderemos a la brevedad!</p>
+    </div>
+  </section>
+
+  <!-- 📨 Formulario de Contacto -->
+  <section class="contact-section" data-aos="fade-up">
+    <div class="container">
+      <h2>Envíanos un Mensaje</h2>
+      <form id="contact-form" class="contact-form">
+        <div class="form-group">
+          <label for="name">Nombre:</label>
+          <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Teléfono (opcional):</label>
+          <input type="tel" id="phone" name="phone" placeholder="+58 414 582 8186">
+        </div>
+        <div class="form-group">
+          <label for="message">Mensaje:</label>
+          <textarea id="message" name="message" rows="5" placeholder="Cuéntanos cómo podemos ayudarte..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Enviar Mensaje</button>
+      </form>
+
+      <!-- Mensaje de éxito/error -->
+      <div id="form-message" class="form-message"></div>
+    </div>
+  </section>
+
+  <!-- 📍 Datos de Contacto -->
+  <section class="contact-info" data-aos="fade-up">
+    <div class="container">
+      <h2>También Puedes Contactarnos Por</h2>
+      <div class="contact-details">
+        <div class="contact-item">
+          <h3>Email</h3>
+          <p><a href="mailto:coreltech.soluciones@gmail.com">coreltech.soluciones@gmail.com</a></p>
+        </div>
+        <div class="contact-item">
+          <h3>Teléfono</h3>
+          <p>+58 414 582 8186</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📞 Botón Flotante de WhatsApp -->
+  <a href="https://wa.me/584145828186 " target="_blank" class="whatsapp-button" aria-label="Contáctanos por WhatsApp">
+    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp">
+  </a>
+
+  <!-- 📌 Footer con Redes Sociales -->
+  <footer class="footer" data-aos="fade-up">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="assets/img/logo.webp" alt="Logo Coreltech" width="130">
+          <p>Soluciones IT profesionales, rápidas y confiables.</p>
+        </div>
+        <div class="footer-contact">
+          <p><strong>Email:</strong> <a href="mailto:coreltech.soluciones@gmail.com">coreltech.soluciones@gmail.com</a></p>
+          <p><strong>Teléfono:</strong> +58 414 582 8186</p>
+        </div>
+        <div class="footer-social">
+          <h4>Síguenos</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/coreltechsoluciones " target="_blank">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/ @coreltech.ve" target="_blank">TikTok</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Coreltech IT Solutions. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 🎞️ AOS Animaciones -->
+  <script src="https://unpkg.com/aos @2.3.4/dist/aos.js"></script>
+
+  <!-- 🧠 Script Principal -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- 🧮 Inicializar AOS -->
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  </script>
+
+  <!-- 📧 EmailJS - Script y Conexión -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js "></script>
+  <script>
+    // Inicializa EmailJS con tu Public Key
+    (function () {
+      emailjs.init("T5hTXojZBvmNuw3Ef"); // ← Reemplaza con tu Public Key
+    })();
+
+    // Manejador del formulario
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const formMessage = document.getElementById('form-message');
+      formMessage.textContent = 'Enviando mensaje...';
+      formMessage.style.color = 'blue';
+
+      // Enviar formulario con EmailJS
+      emailjs.sendForm("coreltech-contacto", "template_eld0k1o", this)
+        .then(function () {
+          formMessage.textContent = 'Gracias por tu mensaje. Te responderemos pronto.';
+          formMessage.style.color = 'green';
+          document.getElementById('contact-form').reset();
+        }, function (error) {
+          formMessage.textContent = 'Hubo un error al enviar el mensaje. Inténtalo de nuevo.';
+          formMessage.style.color = 'red';
+          console.error("Error EmailJS:", error);
+        });
+    });
+  </script>
+</body>
+</html>

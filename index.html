@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Coreltech IT Solutions - Soluciones tecnológicas profesionales, rápidas y confiables.">
+  <title>Coreltech IT Solutions</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- AOS Animaciones -->
+  <link href=" https://unpkg.com/aos @2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Estilos principales -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/img/favicon.webp" type="image/webp">
+</head>
+<body>
+
+  <!-- 🧭 Menú de navegación -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150">
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="sobre.html">Sobre Nosotros</a></li>
+          <li><a href="portafolio.html">Portafolio</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 🎯 Hero principal -->
+  <section class="hero" data-aos="fade-up">
+    <div class="container hero-content">
+      <h1>Tecnología que funciona para ti</h1>
+      <p>Soluciones IT profesionales, rápidas y confiables para usuarios caseros, PYMEs y empresas.</p>
+      <a href="contacto.html" class="btn-primary">Contáctanos ahora</a>
+    </div>
+  </section>
+
+  <!-- 🛠️ Servicios -->
+  <section class="services" data-aos="fade-up">
+    <div class="container">
+      <h2>Nuestros Servicios</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="assets/img/hardware-maintenance.webp" alt="Mantenimiento de Hardware" class="service-img">
+          <h3>Mantenimiento de Hardware</h3>
+          <p>Reparación, limpieza y actualización de equipos de cómputo y periféricos.</p>
+        </div>
+        <div class="card">
+          <img src="assets/img/technical-support.webp" alt="Soporte Técnico" class="service-img">
+          <h3>Soporte Técnico</h3>
+          <p>Asistencia remota y presencial para resolver problemas tecnológicos en tiempo real.</p>
+        </div>
+        <div class="card">
+          <img src="assets/img/it-consulting.webp" alt="Asesoría IT" class="service-img">
+          <h3>Asesoría IT</h3>
+          <p>Recomendaciones personalizadas para mejorar tu infraestructura tecnológica.</p>
+        </div>
+        <div class="card">
+          <img src="assets/img/training.webp" alt="Adiestramiento Tecnológico" class="service-img">
+          <h3>Adiestramiento Tecnológico</h3>
+          <p>Cursos y talleres personalizados para usuarios de todos los niveles.</p>
+        </div>
+        <div class="card">
+          <img src="assets/img/network-security.webp" alt="Redes y Seguridad" class="service-img">
+          <h3>Redes y Seguridad</h3>
+          <p>Diseño, instalación y mantenimiento de redes seguras y confiables.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📰 Últimas Publicaciones del Blog -->
+<section class="blog-preview" data-aos="fade-up">
+  <div class="container">
+    <h2>Últimas Publicaciones del Blog</h2>
+    <div id="blog-posts" class="posts"></div>
+    <a href="https://coreltech-blog.vercel.app " target="_blank" class="btn-primary">Ir al blog completo</a>
+  </div>
+</section>
+
+  <!-- 📞 Botón de WhatsApp -->
+  <a href="https://wa.me/584145828186 " target="_blank" class="whatsapp-button" aria-label="Contáctanos por WhatsApp">
+    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp">
+  </a>
+
+  <!-- 📌 Footer -->
+  <footer class="footer" data-aos="fade-up">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="assets/img/logo.webp" alt="Logo Coreltech" width="130">
+          <p>Soluciones IT profesionales, rápidas y confiables.</p>
+        </div>
+        <div class="footer-contact">
+          <p><strong>Email:</strong> <a href="mailto:coreltech.soluciones@gmail.com">coreltech.soluciones@gmail.com</a></p>
+          <p><strong>Teléfono:</strong> +58 414 582 8186</p>
+        </div>
+        <div class="footer-social">
+          <h4>Síguenos</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/coreltechsoluciones " target="_blank">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/ @coreltech.ve" target="_blank">TikTok</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Coreltech IT Solutions. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 🎞️ AOS JS -->
+  <script src="https://unpkg.com/aos @2.3.4/dist/aos.js"></script>
+
+  <!-- 🧠 Script para cargar artículos del blog -->
+  <script>
+    async function fetchBlogPosts() {
+      const container = document.getElementById("blog-posts");
+
+      // Limpiar contenido previo (para evitar duplicados)
+      container.innerHTML = "";
+
+      try {
+        const response = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://coreltech-blog.vercel.app/index.xml");
+        const data = await response.json();
+
+        // Ordenar por fecha más reciente
+        const posts = data.items
+          .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
+          .slice(0, 3);
+
+        posts.forEach(post => {
+          const postElement = document.createElement("div");
+          postElement.className = "post";
+
+          // Usar miniatura real o por defecto
+          const thumbnail = post["media:content"]?.url || post["media:thumbnail"]?.url || 'assets/img/blog-article-default.webp';
+
+          postElement.innerHTML = `
+            <img src="${thumbnail}" alt="${post.title}" class="service-img">
+            <h4>${post.title}</h4>
+            <p>${new Date(post.pubDate).toLocaleDateString()}</p>
+            <a href="${post.link}" target="_blank" class="btn-secondary">Leer más</a>
+          `;
+          container.appendChild(postElement);
+        });
+      } catch (error) {
+        container.innerHTML = "<p>No se pudieron cargar los artículos del blog</p>";
+        console.error("Error al cargar el blog:", error);
+      }
+    }
+
+    // Cargar artículos del blog
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchBlogPosts();
+      AOS.init({ duration: 800, once: true });
+    });
+  </script>
+
+</body>
+</html>
