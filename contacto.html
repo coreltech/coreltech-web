@@ -9,9 +9,6 @@
   <!-- Google Fonts - Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <!-- AOS Animaciones -->
-  <link href=" https://unpkg.com/aos @2.3.4/dist/aos.css" rel="stylesheet">
-
   <!-- Estilos principales -->
   <link rel="stylesheet" href="assets/css/styles.css">
 
@@ -26,7 +23,8 @@
       <a href="index.html" class="logo">
         <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150">
       </a>
-      <nav>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <nav class="nav-mobile">
         <ul class="nav-links">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="servicios.html">Servicios</a></li>
@@ -38,16 +36,16 @@
     </div>
   </header>
 
-  <!-- 📞 Título Principal -->
-  <section class="hero" data-aos="fade-up">
+  <!-- 📞 Hero Principal -->
+  <section class="hero fade-up">
     <div class="container hero-content">
       <h1>Contáctanos</h1>
-      <p>¿Tienes dudas o necesitas ayuda con tus equipos? ¡Escríbenos y te responderemos a la brevedad!</p>
+      <p>¿Tienes dudas o necesitas ayuda con tus equipos? Escríbenos por WhatsApp o envíanos un mensaje.</p>
     </div>
   </section>
 
   <!-- 📨 Formulario de Contacto -->
-  <section class="contact-section" data-aos="fade-up">
+  <section class="contact-section fade-up">
     <div class="container">
       <h2>Envíanos un Mensaje</h2>
       <form id="contact-form" class="contact-form">
@@ -67,7 +65,7 @@
           <label for="message">Mensaje:</label>
           <textarea id="message" name="message" rows="5" placeholder="Cuéntanos cómo podemos ayudarte..." required></textarea>
         </div>
-        <button type="submit" class="btn-primary">Enviar Mensaje</button>
+        <button type="submit" class="btn-primary">Enviar por Email</button>
       </form>
 
       <!-- Mensaje de éxito/error -->
@@ -76,7 +74,7 @@
   </section>
 
   <!-- 📍 Datos de Contacto -->
-  <section class="contact-info" data-aos="fade-up">
+  <section class="contact-info fade-up">
     <div class="container">
       <h2>También Puedes Contactarnos Por</h2>
       <div class="contact-details">
@@ -85,20 +83,20 @@
           <p><a href="mailto:coreltech.soluciones@gmail.com">coreltech.soluciones@gmail.com</a></p>
         </div>
         <div class="contact-item">
-          <h3>Teléfono</h3>
-          <p>+58 414 582 8186</p>
+          <h3>WhatsApp</h3>
+          <p><a href=" https://wa.me/584145828186 " target="_blank">+58 414 582 8186</a></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 📞 Botón Flotante de WhatsApp -->
-  <a href="https://wa.me/584145828186 " target="_blank" class="whatsapp-button" aria-label="Contáctanos por WhatsApp">
-    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp">
+  <!-- 📞 Botón Flotante de WhatsApp (móvil) -->
+  <a href="https://wa.me/584145828186 " target="_blank" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
+    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50">
   </a>
 
-  <!-- 📌 Footer con Redes Sociales -->
-  <footer class="footer" data-aos="fade-up">
+  <!-- 📌 Footer -->
+  <footer class="footer">
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
@@ -123,48 +121,63 @@
     </div>
   </footer>
 
-  <!-- 🎞️ AOS Animaciones -->
-  <script src="https://unpkg.com/aos @2.3.4/dist/aos.js"></script>
-
-  <!-- 🧠 Script Principal -->
-  <script src="assets/js/main.js"></script>
-
-  <!-- 🧮 Inicializar AOS -->
+  <!-- ✅ Script ligero: menú móvil + animaciones -->
   <script>
-    AOS.init({
-      duration: 800,
-      once: true
+    // Menú móvil
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
-  </script>
 
-  <!-- 📧 EmailJS - Script y Conexión -->
-  <script src="https://cdn.emailjs.com/dist/email.min.js "></script>
-  <script>
-    // Inicializa EmailJS con tu Public Key
-    (function () {
-      emailjs.init("T5hTXojZBvmNuw3Ef"); // ← Reemplaza con tu Public Key
-    })();
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Animaciones al hacer scroll
+    const fadeElements = document.querySelectorAll('.fade-up');
+
+    const fadeInOnScroll = () => {
+      fadeElements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < window.innerHeight - elementVisible && !el.classList.contains('visible')) {
+          el.classList.add('visible');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', fadeInOnScroll);
+    window.addEventListener('load', fadeInOnScroll);
 
     // Manejador del formulario
     document.getElementById('contact-form').addEventListener('submit', function (e) {
       e.preventDefault();
 
       const formMessage = document.getElementById('form-message');
-      formMessage.textContent = 'Enviando mensaje...';
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value || 'No proporcionado';
+      const message = document.getElementById('message').value;
+
+      // Enviar por correo usando mailto
+      const subject = encodeURIComponent(`Nuevo contacto desde el sitio web`);
+      const body = `Hola,\n\nRecibiste un nuevo mensaje:\n\nNombre: ${name}\nEmail: ${email}\nTeléfono: ${phone}\n\nMensaje:\n${message}\n\n---\nEste mensaje fue enviado desde el formulario de contacto de coreltech-web.vercel.app`;
+
+      window.location.href = `mailto:coreltech.soluciones@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+
+      formMessage.textContent = 'Redirigiendo a tu cliente de correo...';
       formMessage.style.color = 'blue';
 
-      // Enviar formulario con EmailJS
-      emailjs.sendForm("coreltech-contacto", "template_eld0k1o", this)
-        .then(function () {
-          formMessage.textContent = 'Gracias por tu mensaje. Te responderemos pronto.';
-          formMessage.style.color = 'green';
-          document.getElementById('contact-form').reset();
-        }, function (error) {
-          formMessage.textContent = 'Hubo un error al enviar el mensaje. Inténtalo de nuevo.';
-          formMessage.style.color = 'red';
-          console.error("Error EmailJS:", error);
-        });
+      setTimeout(() => {
+        formMessage.textContent = 'Si tu cliente de correo no abre, haz clic en "Email" arriba.';
+        formMessage.style.color = 'orange';
+      }, 2000);
     });
   </script>
+
 </body>
 </html>

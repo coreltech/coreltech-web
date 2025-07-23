@@ -9,9 +9,6 @@
   <!-- Google Fonts - Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <!-- AOS Animaciones -->
-  <link href=" https://unpkg.com/aos @2.3.4/dist/aos.css" rel="stylesheet">
-
   <!-- Estilos principales -->
   <link rel="stylesheet" href="assets/css/styles.css">
 
@@ -26,7 +23,8 @@
       <a href="index.html" class="logo">
         <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150">
       </a>
-      <nav>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <nav class="nav-mobile">
         <ul class="nav-links">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="servicios.html">Servicios</a></li>
@@ -38,71 +36,115 @@
     </div>
   </header>
 
-  <!-- 📁 Título Principal -->
-  <section class="hero" data-aos="fade-up">
+  <!-- 📁 Hero Principal -->
+  <section class="hero fade-up">
     <div class="container hero-content">
       <h1>Nuestro Portafolio</h1>
-      <p>Proyectos destacados que demuestran nuestra experiencia y compromiso con la calidad.</p>
+      <p><strong>Tecnología aplicada con precisión.</strong> Proyectos reales que resuelven problemas reales.</p>
     </div>
   </section>
 
-  <!-- 📦 Galería de Proyectos -->
-  <section class="portfolio-section" data-aos="fade-up">
+  <!-- 📦 Galería de Proyectos - Diseño técnico elevado -->
+  <section class="portfolio-grid-section fade-up">
     <div class="container">
-      <h2>Proyectos Recientes</h2>
+      <h2 class="section-title">Proyectos Destacados</h2>
       <div class="portfolio-grid">
-        <div class="portfolio-item">
+
+        <!-- Proyecto 1 -->
+        <article class="portfolio-item fade-up">
+          <div class="project-header">
+            <span class="project-tag">Redes</span>
+            <span class="project-year">2024</span>
+          </div>
           <img src="assets/img/portfolio1.webp" alt="Actualización de red empresarial" class="portfolio-img">
-          <h3>Actualización de red empresarial</h3>
-          <p>Implementación de red estructurada en oficina de 20 usuarios.</p>
-          <a href="#" class="btn-secondary">Ver detalles</a>
-        </div>
+          <div class="project-info">
+            <h3>Actualización de red empresarial</h3>
+            <p>Implementación de red estructurada en oficina de 20 usuarios. Cableado UTP categoría 6, switches gestionables, VLANs y monitoreo continuo.</p>
+            <a href="#" class="btn-primary">Ver caso de éxito</a>
+          </div>
+        </article>
 
-        <div class="portfolio-item">
+        <!-- Proyecto 2 -->
+        <article class="portfolio-item fade-up">
+          <div class="project-header">
+            <span class="project-tag">Soporte</span>
+            <span class="project-year">2024</span>
+          </div>
           <img src="assets/img/portfolio2.webp" alt="Soporte técnico integral" class="portfolio-img">
-          <h3>Soporte técnico integral</h3>
-          <p>Asistencia mensual en mantenimiento de equipos y redes.</p>
-          <a href="#" class="btn-secondary">Ver detalles</a>
-        </div>
+          <div class="project-info">
+            <h3>Soporte técnico integral</h3>
+            <p>Asistencia mensual en mantenimiento de equipos y redes para PYME. Reducción del 70% en tiempos de inactividad.</p>
+            <a href="#" class="btn-primary">Ver resultados</a>
+          </div>
+        </article>
 
-        <div class="portfolio-item">
+        <!-- Proyecto 3 -->
+        <article class="portfolio-item fade-up">
+          <div class="project-header">
+            <span class="project-tag">Capacitación</span>
+            <span class="project-year">2024</span>
+          </div>
           <img src="assets/img/portfolio3.webp" alt="Capacitación en herramientas IT" class="portfolio-img">
-          <h3>Capacitación en herramientas IT</h3>
-          <p>Talleres personalizados de uso de software y seguridad digital.</p>
-          <a href="#" class="btn-secondary">Ver detalles</a>
-        </div>
+          <div class="project-info">
+            <h3>Capacitación en herramientas IT</h3>
+            <p>Talleres personalizados de uso de software y seguridad digital para equipo administrativo.</p>
+            <a href="#" class="btn-primary">Ver programa</a>
+          </div>
+        </article>
 
-        <div class="portfolio-item">
+        <!-- Proyecto 4 -->
+        <article class="portfolio-item fade-up">
+          <div class="project-header">
+            <span class="project-tag">Seguridad</span>
+            <span class="project-year">2023</span>
+          </div>
           <img src="assets/img/portfolio4.webp" alt="Instalación de sistema de seguridad" class="portfolio-img">
-          <h3>Instalación de sistema de seguridad</h3>
-          <p>Implementación de cámaras IP y control de acceso en centro comercial.</p>
-          <a href="#" class="btn-secondary">Ver detalles</a>
-        </div>
+          <div class="project-info">
+            <h3>Instalación de sistema de seguridad</h3>
+            <p>Implementación de cámaras IP y control de acceso en centro comercial. Integración con alarmas y monitoreo remoto.</p>
+            <a href="#" class="btn-primary">Ver detalles</a>
+          </div>
+        </article>
 
-        <div class="portfolio-item">
+        <!-- Proyecto 5 -->
+        <article class="portfolio-item fade-up">
+          <div class="project-header">
+            <span class="project-tag">Recuperación</span>
+            <span class="project-year">2023</span>
+          </div>
           <img src="assets/img/portfolio5.webp" alt="Recuperación de datos" class="portfolio-img">
-          <h3>Recuperación de datos</h3>
-          <p>Recuperación exitosa de información crítica en disco dañado.</p>
-          <a href="#" class="btn-secondary">Ver detalles</a>
-        </div>
+          <div class="project-info">
+            <h3>Recuperación de datos</h3>
+            <p>Recuperación exitosa de información crítica en disco dañado. 98% de los datos restaurados sin pérdida.</p>
+            <a href="#" class="btn-primary">Ver proceso</a>
+          </div>
+        </article>
 
-        <div class="portfolio-item">
+        <!-- Proyecto 6 -->
+        <article class="portfolio-item fade-up">
+          <div class="project-header">
+            <span class="project-tag">WiFi</span>
+            <span class="project-year">2023</span>
+          </div>
           <img src="assets/img/portfolio6.webp" alt="Configuración de red WiFi" class="portfolio-img">
-          <h3>Configuración de red WiFi</h3>
-          <p>Diseño e instalación de red inalámbrica segura para oficina remota.</p>
-          <a href="#" class="btn-secondary">Ver detalles</a>
-        </div>
+          <div class="project-info">
+            <h3>Configuración de red WiFi</h3>
+            <p>Diseño e instalación de red inalámbrica segura para oficina remota. Cobertura total, sin puntos muertos.</p>
+            <a href="#" class="btn-primary">Ver diseño</a>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
 
-  <!-- 📞 Botón Flotante de WhatsApp -->
-  <a href="https://wa.me/584145828186 " target="_blank" class="whatsapp-button" aria-label="Contáctanos por WhatsApp">
-    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp">
+  <!-- 📞 Botón Flotante de WhatsApp (móvil) -->
+  <a href=" https://wa.me/584145828186 " target="_blank" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
+    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50">
   </a>
 
-  <!-- 📌 Footer con Redes Sociales -->
-  <footer class="footer" data-aos="fade-up">
+  <!-- 📌 Footer -->
+  <footer class="footer">
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
@@ -127,18 +169,37 @@
     </div>
   </footer>
 
-  <!-- 🎞️ AOS Animaciones -->
-  <script src="https://unpkg.com/aos @2.3.4/dist/aos.js"></script>
-
-  <!-- 🧠 Script Principal -->
-  <script src="assets/js/main.js"></script>
-
-  <!-- 🧮 Inicializar AOS -->
+  <!-- ✅ Script ligero: menú móvil + animaciones -->
   <script>
-    AOS.init({
-      duration: 800,
-      once: true
+    // Menú móvil
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Animaciones al hacer scroll
+    const fadeElements = document.querySelectorAll('.fade-up');
+
+    const fadeInOnScroll = () => {
+      fadeElements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < window.innerHeight - elementVisible && !el.classList.contains('visible')) {
+          el.classList.add('visible');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', fadeInOnScroll);
+    window.addEventListener('load', fadeInOnScroll);
   </script>
 
 </body>

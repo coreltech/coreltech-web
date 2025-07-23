@@ -9,9 +9,6 @@
   <!-- Google Fonts - Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <!-- AOS Animaciones -->
-  <link href=" https://unpkg.com/aos @2.3.4/dist/aos.css" rel="stylesheet">
-
   <!-- Estilos principales -->
   <link rel="stylesheet" href="assets/css/styles.css">
   
@@ -26,7 +23,8 @@
       <a href="index.html" class="logo">
         <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150">
       </a>
-      <nav>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <nav class="nav-mobile">
         <ul class="nav-links">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="servicios.html">Servicios</a></li>
@@ -39,7 +37,7 @@
   </header>
 
   <!-- 🧰 Hero de Servicios -->
-  <section class="hero" data-aos="fade-up">
+  <section class="hero fade-up">
     <div class="container hero-content">
       <h1>Nuestros Servicios</h1>
       <p>Ofrecemos soluciones tecnológicas completas para usuarios caseros, PYMEs y empresas.</p>
@@ -47,13 +45,13 @@
   </section>
 
   <!-- 🛠️ Sección de Servicios Detallados -->
-  <section class="services-details" data-aos="fade-up">
+  <section class="services-details fade-up">
     <div class="container">
       
       <!-- Servicio 1: Mantenimiento de Hardware -->
       <article id="hardware" class="service">
         <h2>Mantenimiento de Hardware</h2>
-        <div class="service-content" data-aos="fade-right">
+        <div class="service-content">
           <img src="assets/img/hardware-maintenance.webp" alt="Mantenimiento de Hardware" class="service-img">
           <div class="service-text">
             <p>Ofrecemos mantenimiento preventivo y correctivo de equipos de cómputo, periféricos y componentes internos.</p>
@@ -71,7 +69,7 @@
       <!-- Servicio 2: Soporte Técnico -->
       <article id="soporte" class="service">
         <h2>Soporte Técnico</h2>
-        <div class="service-content" data-aos="fade-left">
+        <div class="service-content">
           <img src="assets/img/technical-support.webp" alt="Soporte Técnico" class="service-img">
           <div class="service-text">
             <p>Asistencia remota y presencial para resolver problemas tecnológicos en tiempo real.</p>
@@ -89,7 +87,7 @@
       <!-- Servicio 3: Asesoría IT -->
       <article id="asesoria" class="service">
         <h2>Asesoría IT</h2>
-        <div class="service-content" data-aos="fade-right">
+        <div class="service-content">
           <img src="assets/img/it-consulting.webp" alt="Asesoría IT" class="service-img">
           <div class="service-text">
             <p>Te ayudamos a tomar las mejores decisiones tecnológicas para tu negocio o uso personal.</p>
@@ -107,7 +105,7 @@
       <!-- Servicio 4: Adiestramiento Tecnológico -->
       <article id="adiestramiento" class="service">
         <h2>Adiestramiento Tecnológico</h2>
-        <div class="service-content" data-aos="fade-left">
+        <div class="service-content">
           <img src="assets/img/training.webp" alt="Adiestramiento Tecnológico" class="service-img">
           <div class="service-text">
             <p>Cursos y talleres personalizados para usuarios de todos los niveles.</p>
@@ -125,7 +123,7 @@
       <!-- Servicio 5: Redes y Seguridad -->
       <article id="redes" class="service">
         <h2>Redes y Seguridad</h2>
-        <div class="service-content" data-aos="fade-right">
+        <div class="service-content">
           <img src="assets/img/network-security.webp" alt="Redes y Seguridad" class="service-img">
           <div class="service-text">
             <p>Diseño, instalación y mantenimiento de redes seguras y confiables.</p>
@@ -143,13 +141,13 @@
     </div>
   </section>
 
-  <!-- 📞 Botón Flotante de WhatsApp -->
-  <a href="https://wa.me/584145828186 " target="_blank" class="whatsapp-button" aria-label="Contáctanos por WhatsApp">
-    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp">
+  <!-- 📞 Botón Flotante de WhatsApp (móvil) -->
+  <a href=" https://wa.me/584145828186 " target="_blank" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
+    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50">
   </a>
 
   <!-- 📌 Footer con Redes Sociales -->
-  <footer class="footer" data-aos="fade-up">
+  <footer class="footer">
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
@@ -174,15 +172,37 @@
     </div>
   </footer>
 
-  <!-- 🎞️ AOS Animaciones -->
-  <script src="https://unpkg.com/aos @2.3.4/dist/aos.js"></script>
-
-  <!-- 🧠 Inicializar AOS -->
+  <!-- ✅ Script ligero: menú móvil + animaciones -->
   <script>
-    AOS.init({
-      duration: 800,
-      once: true
+    // Menú móvil
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Animaciones al hacer scroll
+    const fadeElements = document.querySelectorAll('.fade-up, .service-content');
+
+    const fadeInOnScroll = () => {
+      fadeElements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < window.innerHeight - elementVisible && !el.classList.contains('visible')) {
+          el.classList.add('visible');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', fadeInOnScroll);
+    window.addEventListener('load', fadeInOnScroll);
   </script>
 
 </body>
