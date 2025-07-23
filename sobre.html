@@ -5,23 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Conoce más sobre Coreltech IT Solutions, nuestra misión, visión y filosofía de trabajo.">
   <title>Sobre Nosotros - Coreltech IT Solutions</title>
-
   <!-- Google Fonts - Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
   <!-- Estilos principales -->
   <link rel="stylesheet" href="assets/css/styles.css">
-
   <!-- Favicon -->
   <link rel="icon" href="assets/img/favicon.webp" type="image/webp">
 </head>
 <body>
-
   <!-- 🧭 Menú de Navegación -->
   <header class="navbar">
     <div class="container">
       <a href="index.html" class="logo">
-        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150">
+        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150" height="60">
       </a>
       <button class="menu-toggle" aria-label="Abrir menú">☰</button>
       <nav class="nav-mobile">
@@ -36,77 +32,88 @@
     </div>
   </header>
 
-  <!-- 🏢 Hero Principal -->
+  <!-- 🌐 Hero con Imagen Lateral -->
   <section class="hero fade-up">
-    <div class="container hero-content">
-      <h1>Sobre Coreltech IT Solutions</h1>
-      <p>Una empresa técnica, real, con soluciones prácticas.</p>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Sobre Coreltech IT Solutions</h1>
+        <p>Una empresa técnica, real, con soluciones prácticas y ética profesional. Nos dedicamos a resolver problemas reales con tecnología eficiente y humana.</p>
+        <div class="hero-buttons">
+          <a href="contacto.html" class="btn-primary">Contáctanos</a>
+          <a href="portafolio.html" class="btn-secondary">Ver nuestro trabajo</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="assets/img/about-hero.webp" alt="Equipo técnico de Coreltech trabajando" width="400" height="300" loading="lazy">
+      </div>
     </div>
   </section>
 
-  <!-- 🌱 Estructura de Raíz con Imágenes Reales -->
-  <section class="tree-section">
-    <div class="container tree-container">
-
-      <!-- Nodo central: Historia + imagen real -->
-      <div class="tree-node main-node fade-up">
-        <img src="assets/img/about-us.webp" alt="Nuestra historia" class="node-img">
-        <h2>Nuestra Historia</h2>
-        <p>Coreltech nació para ofrecer soluciones tecnológicas integrales, con ética, eficiencia y enfoque en el cliente.</p>
-      </div>
-
-      <!-- Rama horizontal: Misión → Visión -->
-      <div class="tree-branch horizontal-branch fade-up">
-        <div class="tree-node">
-          <img src="assets/img/real-mission.webp" alt="Equipo planificando" class="node-thumb">
-          <h3>Misión</h3>
-          <p>Proporcionar soluciones tecnológicas integrales y personalizadas, garantizando un servicio de calidad y honestidad.</p>
+  <!-- 🔄 Secciones Alternadas: Historia, Misión, Visión, Valores, Filosofía -->
+  <section class="content-alternate">
+    <div class="container">
+      
+      <!-- 1. Nuestra Historia -->
+      <div class="content-row fade-up">
+        <div class="content-text">
+          <h2>Nuestra Historia</h2>
+          <p>Coreltech nació de la necesidad de ofrecer soluciones tecnológicas integrales, con ética, eficiencia y enfoque en el cliente. Desde el primer día, nos comprometimos a resolver problemas reales, no solo vender servicios.</p>
+          <p>Con años de experiencia en hardware, software y redes, hemos construido una reputación basada en la confianza, la transparencia y los resultados.</p>
         </div>
-        <div class="connector"></div>
-        <div class="tree-node">
-          <img src="assets/img/real-vision.webp" alt="Futuro tecnológico" class="node-thumb">
-          <h3>Visión</h3>
-          <p>Ser reconocidos como una solución de confianza en servicios IT, destacando por nuestra ética y calidad.</p>
+        <div class="content-image">
+          <img src="assets/img/about-us.webp" alt="Nuestra historia" loading="lazy">
         </div>
       </div>
 
-      <!-- Rama vertical: Valores -->
-      <div class="tree-branch vertical-branch fade-up">
-        <div class="connector"></div>
-        <div class="tree-node">
-          <h3>Nuestros Valores</h3>
+      <!-- 2. Misión -->
+      <div class="content-row fade-up reverse">
+        <div class="content-text">
+          <h2>Misión</h2>
+          <p>Proporcionar soluciones tecnológicas integrales y personalizadas, garantizando un servicio de calidad, honestidad y soporte continuo.</p>
+          <p>Creemos que la tecnología debe servir al usuario, no al revés. Por eso, cada solución está diseñada para tu realidad, no para lucir bonita.</p>
         </div>
-        <div class="values-grid">
-          <div class="value-card">
-            <img src="assets/img/value-quality-real.webp" alt="Trabajo de calidad" class="value-thumb">
-            <strong>Calidad</strong>
-            <p>Excelencia en cada proyecto.</p>
-          </div>
-          <div class="value-card">
-            <img src="assets/img/value-honesty-real.webp" alt="Conversación honesta" class="value-thumb">
-            <strong>Sinceridad</strong>
-            <p>Transparencia total.</p>
-          </div>
-          <div class="value-card">
-            <img src="assets/img/value-professionalism-real.webp" alt="Profesionalismo" class="value-thumb">
-            <strong>Profesionalismo</strong>
-            <p>Ética y compromiso.</p>
-          </div>
-          <div class="value-card">
-            <img src="assets/img/value-innovation-real.webp" alt="Innovación práctica" class="value-thumb">
-            <strong>Innovación</strong>
-            <p>Tecnología actualizada.</p>
-          </div>
+        <div class="content-image">
+          <img src="assets/img/real-mission.webp" alt="Misión de Coreltech" loading="lazy">
         </div>
       </div>
 
-      <!-- Última rama: Filosofía -->
-      <div class="tree-branch philosophy-branch fade-up">
-        <div class="connector"></div>
-        <div class="tree-node">
-          <img src="assets/img/real-workflow.webp" alt="Flujo de trabajo real" class="node-thumb">
+      <!-- 3. Visión -->
+      <div class="content-row fade-up">
+        <div class="content-text">
+          <h2>Visión</h2>
+          <p>Ser reconocidos como la solución de confianza en servicios IT, destacando por nuestra ética, profesionalismo y capacidad de innovación.</p>
+          <p>Queremos ser el puente entre la tecnología y las personas, haciendo que lo complejo sea simple y accesible.</p>
+        </div>
+        <div class="content-image">
+          <img src="assets/img/real-vision.webp" alt="Visión de Coreltech" loading="lazy">
+        </div>
+      </div>
+
+      <!-- 4. Nuestros Valores -->
+      <div class="content-row fade-up reverse">
+        <div class="content-text">
+          <h2>Nuestros Valores</h2>
+          <ul class="check-list">
+            <li><strong>Calidad:</strong> Excelencia en cada proyecto, sin compromisos.</li>
+            <li><strong>Sinceridad:</strong> Transparencia total en diagnósticos y presupuestos.</li>
+            <li><strong>Profesionalismo:</strong> Ética, puntualidad y compromiso en cada interacción.</li>
+            <li><strong>Innovación:</strong> Tecnología actualizada, pero siempre funcional.</li>
+          </ul>
+        </div>
+        <div class="content-image">
+          <img src="assets/img/value-professionalism-real.webp" alt="Nuestros valores" loading="lazy">
+        </div>
+      </div>
+
+      <!-- 5. Filosofía de Trabajo -->
+      <div class="content-row fade-up">
+        <div class="content-text">
           <h2>Filosofía de Trabajo</h2>
           <p>La tecnología debe facilitar la vida, no complicarla. Por eso trabajamos con claridad, funcionalidad y cercanía.</p>
+          <p>Cada solución está pensada para tu realidad, no para lucir bonita. Escuchamos, diagnosticamos y resolvemos de raíz, sin partes innecesarias ni promesas vacías.</p>
+        </div>
+        <div class="content-image">
+          <img src="assets/img/real-workflow.webp" alt="Flujo de trabajo de Coreltech" loading="lazy">
         </div>
       </div>
 
@@ -114,8 +121,8 @@
   </section>
 
   <!-- 📞 Botón Flotante de WhatsApp (móvil) -->
-  <a href=" https://wa.me/584145828186 " target="_blank" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
-    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50">
+  <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
+    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50" height="50">
   </a>
 
   <!-- 📌 Footer -->
@@ -123,7 +130,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
-          <img src="assets/img/logo.webp" alt="Logo Coreltech" width="130">
+          <img src="assets/img/logo.webp" alt="Logo Coreltech" width="130" height="50">
           <p>Soluciones IT profesionales, rápidas y confiables.</p>
         </div>
         <div class="footer-contact">
@@ -133,8 +140,8 @@
         <div class="footer-social">
           <h4>Síguenos</h4>
           <ul>
-            <li><a href="https://www.instagram.com/coreltechsoluciones " target="_blank">Instagram</a></li>
-            <li><a href="https://www.tiktok.com/ @coreltech.ve" target="_blank">TikTok</a></li>
+            <li><a href="https://www.instagram.com/coreltechsoluciones" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@coreltech.ve" target="_blank" rel="noopener">TikTok</a></li>
           </ul>
         </div>
       </div>
@@ -149,11 +156,9 @@
     // Menú móvil
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
-
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -162,7 +167,6 @@
 
     // Animaciones al hacer scroll
     const fadeElements = document.querySelectorAll('.fade-up');
-
     const fadeInOnScroll = () => {
       fadeElements.forEach(el => {
         const elementTop = el.getBoundingClientRect().top;
@@ -172,10 +176,8 @@
         }
       });
     };
-
     window.addEventListener('scroll', fadeInOnScroll);
     window.addEventListener('load', fadeInOnScroll);
   </script>
-
 </body>
 </html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gracias por contactarnos. Pronto te responderemos.">
+  <!-- Evita que se indexe en buscadores -->
+  <meta name="robots" content="noindex">
+  <title>Gracias - Coreltech IT Solutions</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <!-- Estilos principales -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Favicon -->
+  <link rel="icon" href="assets/img/favicon.webp" type="image/webp">
+
+  <!-- 🔁 Precarga de imágenes críticas -->
+<link rel="preload" as="image" href="assets/img/hero-tech.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/services-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/portfolio-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/contact-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/about-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/logo.webp" type="image/webp">
+</head>
+<body>
+  <!-- 🧭 Menú de Navegación -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150" height="60">
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <nav class="nav-mobile">
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="sobre.html">Sobre Nosotros</a></li>
+          <li><a href="portafolio.html">Portafolio</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ✅ Hero de Agradecimiento -->
+  <section class="hero fade-up">
+    <div class="container">
+      <div class="hero-content">
+        <h1>¡Gracias por tu mensaje!</h1>
+        <p>Un técnico de Coreltech se pondrá en contacto contigo en menos de 24 horas.</p>
+        <p id="countdown">Redirigiendo al inicio en <strong>10</strong> segundos...</p>
+        <div class="hero-buttons">
+          <a href="index.html" id="manual-btn" class="btn-primary">Volver al inicio ahora</a>
+          <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-secondary">💬 Hablar por WhatsApp</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="assets/img/thanks.webp" alt="Gracias por contactarnos" width="400" height="300" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- 📞 Botón Flotante de WhatsApp (móvil) -->
+  <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
+    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50" height="50">
+  </a>
+
+  <!-- 📌 Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="assets/img/logo.webp" alt="Logo Coreltech" width="130" height="50">
+          <p>Soluciones IT profesionales, rápidas y confiables.</p>
+        </div>
+        <div class="footer-contact">
+          <p><strong>Email:</strong> <a href="mailto:coreltech.soluciones@gmail.com">coreltech.soluciones@gmail.com</a></p>
+          <p><strong>Teléfono:</strong> +58 414 582 8186</p>
+        </div>
+        <div class="footer-social">
+          <h4>Síguenos</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/coreltechsoluciones" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@coreltech.ve" target="_blank" rel="noopener">TikTok</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Coreltech IT Solutions. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ✅ Script: menú móvil + animaciones + temporizador -->
+  <script>
+    // Menú móvil
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Animaciones al hacer scroll
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const fadeInOnScroll = () => {
+      fadeElements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < window.innerHeight - elementVisible && !el.classList.contains('visible')) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', fadeInOnScroll);
+    window.addEventListener('load', fadeInOnScroll);
+
+    // Temporizador de redirección
+    const countdownElement = document.getElementById('countdown');
+    const manualBtn = document.getElementById('manual-btn');
+    let timeLeft = 10;
+
+    const timer = setInterval(() => {
+      timeLeft--;
+      countdownElement.innerHTML = `Redirigiendo al inicio en <strong>${timeLeft}</strong> segundos...`;
+
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        window.location.href = 'index.html';
+      }
+    }, 1000);
+
+    // Permite al usuario saltar el temporizador
+    manualBtn.addEventListener('click', () => {
+      clearInterval(timer);
+    });
+  </script>
+</body>
+</html>

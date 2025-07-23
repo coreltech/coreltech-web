@@ -5,23 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Coreltech IT Solutions - Soluciones tecnológicas profesionales, rápidas y confiables en hardware, software y redes.">
   <title>Inicio - Coreltech IT Solutions</title>
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
   <!-- Estilos principales -->
   <link rel="stylesheet" href="assets/css/styles.css">
-
   <!-- Favicon -->
   <link rel="icon" href="assets/img/favicon.webp" type="image/webp">
+
+  <!-- 🔁 Precarga de imágenes críticas -->
+<link rel="preload" as="image" href="assets/img/hero-tech.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/services-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/portfolio-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/contact-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/about-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/logo.webp" type="image/webp">
 </head>
 <body>
-
   <!-- 🧭 Menú de navegación -->
   <header class="navbar">
     <div class="container">
       <a href="index.html" class="logo">
-        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150">
+        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150" height="60">
       </a>
       <button class="menu-toggle" aria-label="Abrir menú">☰</button>
       <nav class="nav-mobile">
@@ -45,55 +49,51 @@
         <p>Resolvemos problemas técnicos reales con enfoque profesional, rapidez y garantía. No vendemos partes, vendemos tranquilidad.</p>
         <div class="hero-buttons">
           <a href="servicios.html" class="btn-primary">Ver todos los servicios</a>
-          <a href=" https://wa.me/584145828186 " target="_blank" class="btn-secondary">💬 Habla con un técnico</a>
+          <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-secondary" title="Contactar por WhatsApp">💬 Habla con un técnico</a>
         </div>
       </div>
       <div class="hero-image">
-        <img src="assets/img/hero-tech.webp" alt="Tecnología profesional" width="400">
+        <img src="assets/img/hero-tech.webp" alt="Tecnología profesional" width="400" height="300" loading="lazy">
       </div>
     </div>
   </section>
 
   <!-- 🔧 Tríada Técnica: Hardware, Software, Redes -->
-<section class="tech-triad fade-up">
-  <div class="container">
-    <h2 class="section-title">Nuestro alcance técnico</h2>
-    <div class="triad-grid">
-
-      <!-- Hardware -->
-      <div class="triad-card">
-        <img src="assets/img/real-hardware.webp" alt="Técnico reparando hardware" class="triad-img">
-        <h3>Hardware</h3>
-        <p>Limpieza, reparación, mantenimiento y actualización de equipos. Recuperamos lo que otros dan por perdido.</p>
-        <a href="servicios.html#hardware" class="btn-secondary">Ver detalles</a>
+  <section class="tech-triad fade-up">
+    <div class="container">
+      <h2 class="section-title">Nuestro alcance técnico</h2>
+      <div class="triad-grid">
+        <!-- Hardware -->
+        <div class="triad-card">
+          <img src="assets/img/real-hardware.webp" alt="Técnico reparando hardware" class="triad-img" loading="lazy">
+          <h3>Hardware</h3>
+          <p>Limpieza, reparación, mantenimiento y actualización de equipos. Recuperamos lo que otros dan por perdido.</p>
+          <a href="servicios.html#hardware" class="btn-secondary">Ver detalles</a>
+        </div>
+        <!-- Software -->
+        <div class="triad-card">
+          <img src="assets/img/real-software.webp" alt="Interfaz de software" class="triad-img" loading="lazy">
+          <h3>Software</h3>
+          <p>Instalación, configuración, recuperación de datos y eliminación de malware. Tu sistema como nuevo.</p>
+          <a href="servicios.html#soporte" class="btn-secondary">Ver detalles</a>
+        </div>
+        <!-- Redes -->
+        <div class="triad-card">
+          <img src="assets/img/real-network.webp" alt="Red empresarial" class="triad-img" loading="lazy">
+          <h3>Redes</h3>
+          <p>Diseño, instalación y mantenimiento de redes seguras y confiables. Wi-Fi sin puntos muertos.</p>
+          <a href="servicios.html#redes" class="btn-secondary">Ver detalles</a>
+        </div>
       </div>
-
-      <!-- Software -->
-      <div class="triad-card">
-        <img src="assets/img/real-software.webp" alt="Interfaz de software" class="triad-img">
-        <h3>Software</h3>
-        <p>Instalación, configuración, recuperación de datos y eliminación de malware. Tu sistema como nuevo.</p>
-        <a href="servicios.html#soporte" class="btn-secondary">Ver detalles</a>
-      </div>
-
-      <!-- Redes -->
-      <div class="triad-card">
-        <img src="assets/img/real-network.webp" alt="Red empresarial" class="triad-img">
-        <h3>Redes</h3>
-        <p>Diseño, instalación y mantenimiento de redes seguras y confiables. Wi-Fi sin puntos muertos.</p>
-        <a href="servicios.html#redes" class="btn-secondary">Ver detalles</a>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- 🔍 Problemas Comunes - Imagen intercalada -->
   <section class="problems-with-image fade-up">
     <div class="container">
       <div class="content-with-image">
         <div class="image-side">
-          <img src="assets/img/problem-pc-slow.webp" alt="PC lenta" class="content-img">
+          <img src="assets/img/problem-pc-slow.webp" alt="PC lenta" class="content-img" loading="lazy">
         </div>
         <div class="text-side">
           <h2>¿Tu equipo falla o va lento?</h2>
@@ -104,7 +104,7 @@
             <li>✅ Optimización del sistema</li>
             <li>✅ Garantía de funcionamiento</li>
           </ul>
-          <a href="https://wa.me/584145828186 " target="_blank" class="btn-primary">Solicitar ayuda ahora</a>
+          <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-primary" title="Solicitar ayuda técnica">Solicitar ayuda ahora</a>
         </div>
       </div>
     </div>
@@ -115,13 +115,13 @@
     <div class="container">
       <h2 class="section-title">Consejos Técnicos Recientes</h2>
       <div id="blog-posts" class="posts"></div>
-      <a href="https://coreltech-blog.vercel.app " target="_blank" class="btn-primary">Ver todos los artículos</a>
+      <a href="https://coreltech-blog.vercel.app" target="_blank" rel="noopener" class="btn-primary">Ver todos los artículos</a>
     </div>
   </section>
 
   <!-- 📞 Botón Flotante de WhatsApp (móvil) -->
-  <a href="https://wa.me/584145828186 " target="_blank" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
-    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50">
+  <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
+    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50" height="50">
   </a>
 
   <!-- 📌 Footer -->
@@ -129,7 +129,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
-          <img src="assets/img/logo.webp" alt="Logo Coreltech" width="130">
+          <img src="assets/img/logo.webp" alt="Logo Coreltech" width="130" height="50">
           <p>Soluciones IT profesionales, rápidas y confiables.</p>
         </div>
         <div class="footer-contact">
@@ -139,8 +139,8 @@
         <div class="footer-social">
           <h4>Síguenos</h4>
           <ul>
-            <li><a href="https://www.instagram.com/coreltechsoluciones " target="_blank">Instagram</a></li>
-            <li><a href="https://www.tiktok.com/ @coreltech.ve" target="_blank">TikTok</a></li>
+            <li><a href="https://www.instagram.com/coreltechsoluciones" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@coreltech.ve" target="_blank" rel="noopener">TikTok</a></li>
           </ul>
         </div>
       </div>
@@ -155,11 +155,9 @@
     // Menú móvil
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
-
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -168,7 +166,6 @@
 
     // Animaciones al hacer scroll
     const fadeElements = document.querySelectorAll('.fade-up');
-
     const fadeInOnScroll = () => {
       fadeElements.forEach(el => {
         const elementTop = el.getBoundingClientRect().top;
@@ -178,33 +175,27 @@
         }
       });
     };
-
     window.addEventListener('scroll', fadeInOnScroll);
     window.addEventListener('load', fadeInOnScroll);
 
     // Cargar artículos del blog
     async function fetchBlogPosts() {
       const container = document.getElementById("blog-posts");
-
       try {
         const response = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://coreltech-blog.vercel.app/index.xml");
         const data = await response.json();
-
         const posts = data.items
           .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
           .slice(0, 3);
-
         posts.forEach(post => {
           const postElement = document.createElement("div");
           postElement.className = "post";
-
           const thumbnail = post["media:content"]?.url || post["media:thumbnail"]?.url || 'assets/img/blog-article-default.webp';
-
           postElement.innerHTML = `
-            <img src="${thumbnail}" alt="${post.title}" class="service-img">
+            <img src="${thumbnail}" alt="${post.title}" class="service-img" loading="lazy">
             <h4>${post.title}</h4>
             <p>${new Date(post.pubDate).toLocaleDateString()}</p>
-            <a href="${post.link}" target="_blank" class="btn-secondary">Leer más</a>
+            <a href="${post.link}" target="_blank" rel="noopener" class="btn-secondary">Leer más</a>
           `;
           container.appendChild(postElement);
         });
@@ -213,9 +204,7 @@
         console.error("Error al cargar el blog:", error);
       }
     }
-
     document.addEventListener("DOMContentLoaded", fetchBlogPosts);
   </script>
-
 </body>
 </html>

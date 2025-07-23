@@ -5,23 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Servicios de Coreltech: mantenimiento de hardware, soporte técnico, asesoría IT, adiestramiento y redes seguras.">
   <title>Servicios - Coreltech IT Solutions</title>
-
   <!-- Google Fonts - Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
   <!-- Estilos principales -->
   <link rel="stylesheet" href="assets/css/styles.css">
-  
   <!-- Favicon -->
   <link rel="icon" href="assets/img/favicon.webp" type="image/webp">
+
+  <!-- 🔁 Precarga de imágenes críticas -->
+<link rel="preload" as="image" href="assets/img/hero-tech.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/services-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/portfolio-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/contact-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/about-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/logo.webp" type="image/webp">
 </head>
 <body>
-
   <!-- 🧭 Menú de Navegación -->
   <header class="navbar">
     <div class="container">
       <a href="index.html" class="logo">
-        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150">
+        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150" height="60">
       </a>
       <button class="menu-toggle" aria-label="Abrir menú">☰</button>
       <nav class="nav-mobile">
@@ -36,104 +40,113 @@
     </div>
   </header>
 
-  <!-- 🧰 Hero de Servicios -->
+  <!-- 🧰 Hero de Servicios con Imagen Lateral -->
   <section class="hero fade-up">
-    <div class="container hero-content">
-      <h1>Nuestros Servicios</h1>
-      <p>Ofrecemos soluciones tecnológicas completas para usuarios caseros, PYMEs y empresas.</p>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Nuestros Servicios</h1>
+        <p>Ofrecemos soluciones tecnológicas completas para usuarios caseros, PYMEs y empresas. Cada servicio está diseñado para resolver problemas reales con enfoque técnico y ético.</p>
+        <div class="hero-buttons">
+          <a href="contacto.html" class="btn-primary">Solicitar servicio</a>
+          <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-secondary" title="Habla con un técnico por WhatsApp">💬 Habla con un técnico</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="assets/img/services-hero.webp" alt="Técnico trabajando en reparación de hardware" width="400" height="300" loading="lazy">
+      </div>
     </div>
   </section>
 
   <!-- 🛠️ Sección de Servicios Detallados -->
-  <section class="services-details fade-up">
+  <section class="services-details">
     <div class="container">
       
-      <!-- Servicio 1: Mantenimiento de Hardware -->
-      <article id="hardware" class="service">
+      <!-- 1. Mantenimiento de Hardware -->
+      <article id="hardware" class="service fade-up">
         <h2>Mantenimiento de Hardware</h2>
         <div class="service-content">
-          <img src="assets/img/hardware-maintenance.webp" alt="Mantenimiento de Hardware" class="service-img">
+          <img src="assets/img/hardware-maintenance.webp" alt="Mantenimiento de Hardware" class="service-img" loading="lazy" width="300" height="160">
           <div class="service-text">
-            <p>Ofrecemos mantenimiento preventivo y correctivo de equipos de cómputo, periféricos y componentes internos.</p>
-            <ul>
-              <li>Limpieza física y térmica de equipos</li>
-              <li>Reemplazo de componentes dañados</li>
-              <li>Actualización de hardware</li>
-              <li>Diagnóstico técnico completo</li>
+            <p>Prevenimos fallas y extendemos la vida útil de tus equipos con limpieza, diagnóstico y actualización profesional.</p>
+            <ul class="check-list">
+              <li>✅ Limpieza física y térmica de equipos</li>
+              <li>✅ Reemplazo de componentes dañados</li>
+              <li>✅ Actualización de hardware (RAM, SSD, etc.)</li>
+              <li>✅ Diagnóstico técnico completo</li>
             </ul>
-            <p>Trabajamos con equipos de escritorio, laptops, servidores y dispositivos periféricos.</p>
+            <p>Trabajamos con equipos de escritorio, laptops, servidores y dispositivos periféricos. Recuperamos lo que otros dan por perdido.</p>
           </div>
         </div>
       </article>
 
-      <!-- Servicio 2: Soporte Técnico -->
-      <article id="soporte" class="service">
+      <!-- 2. Soporte Técnico -->
+      <article id="soporte" class="service fade-up">
         <h2>Soporte Técnico</h2>
         <div class="service-content">
-          <img src="assets/img/technical-support.webp" alt="Soporte Técnico" class="service-img">
+          <img src="assets/img/technical-support.webp" alt="Soporte Técnico" class="service-img" loading="lazy" width="300" height="160">
           <div class="service-text">
-            <p>Asistencia remota y presencial para resolver problemas tecnológicos en tiempo real.</p>
-            <ul>
-              <li>Diagnóstico y solución de fallas</li>
-              <li>Instalación y configuración de software</li>
-              <li>Soporte remoto mediante conexión segura</li>
-              <li>Asistencia presencial en sitio</li>
+            <p>Asistencia remota y presencial para resolver problemas tecnológicos en tiempo real, sin complicaciones.</p>
+            <ul class="check-list">
+              <li>✅ Diagnóstico y solución de fallas</li>
+              <li>✅ Instalación y configuración de software</li>
+              <li>✅ Soporte remoto seguro y en tiempo real</li>
+              <li>✅ Asistencia presencial en sitio (Caracas y alrededores)</li>
             </ul>
-            <p>Ofrecemos planes de soporte mensual o por evento puntual según tus necesidades.</p>
+            <p>Ofrecemos planes de soporte mensual o por evento puntual según tus necesidades. Sin contratos ocultos.</p>
           </div>
         </div>
       </article>
 
-      <!-- Servicio 3: Asesoría IT -->
-      <article id="asesoria" class="service">
+      <!-- 3. Asesoría IT -->
+      <article id="asesoria" class="service fade-up">
         <h2>Asesoría IT</h2>
         <div class="service-content">
-          <img src="assets/img/it-consulting.webp" alt="Asesoría IT" class="service-img">
+          <img src="assets/img/it-consulting.webp" alt="Asesoría IT" class="service-img" loading="lazy" width="300" height="160">
           <div class="service-text">
-            <p>Te ayudamos a tomar las mejores decisiones tecnológicas para tu negocio o uso personal.</p>
-            <ul>
-              <li>Evaluación de infraestructura actual</li>
-              <li>Recomendaciones de mejora</li>
-              <li>Asesoría en seguridad informática</li>
-              <li>Consultoría en adquisición de equipos</li>
+            <p>Te ayudamos a tomar las mejores decisiones tecnológicas para tu negocio o uso personal, con ética y transparencia.</p>
+            <ul class="check-list">
+              <li>✅ Evaluación de infraestructura actual</li>
+              <li>✅ Recomendaciones de mejora sin sesgo comercial</li>
+              <li>✅ Asesoría en seguridad informática</li>
+              <li>✅ Consultoría en adquisición de equipos</li>
             </ul>
-            <p>Contamos con experiencia en PYMEs, comercios y usuarios caseros.</p>
+            <p>Contamos con experiencia en PYMEs, comercios y usuarios caseros. No vendemos partes, vendemos tranquilidad.</p>
           </div>
         </div>
       </article>
 
-      <!-- Servicio 4: Adiestramiento Tecnológico -->
-      <article id="adiestramiento" class="service">
+      <!-- 4. Adiestramiento Tecnológico -->
+      <article id="adiestramiento" class="service fade-up">
         <h2>Adiestramiento Tecnológico</h2>
         <div class="service-content">
-          <img src="assets/img/training.webp" alt="Adiestramiento Tecnológico" class="service-img">
+          <img src="assets/img/training.webp" alt="Adiestramiento Tecnológico" class="service-img" loading="lazy" width="300" height="160">
           <div class="service-text">
-            <p>Cursos y talleres personalizados para usuarios de todos los niveles.</p>
-            <ul>
-              <li>Talleres de uso básico de PC</li>
-              <li>Capacitación en herramientas ofimáticas</li>
-              <li>Seguridad digital para usuarios no técnicos</li>
-              <li>Clases individuales o grupales</li>
+            <p>Cursos y talleres personalizados para usuarios de todos los niveles, desde principiantes hasta usuarios avanzados.</p>
+            <ul class="check-list">
+              <li>✅ Talleres de uso básico de PC y laptop</li>
+              <li>✅ Capacitación en herramientas ofimáticas (Word, Excel, Google Workspace)</li>
+              <li>✅ Seguridad digital para usuarios no técnicos</li>
+              <li>✅ Clases individuales o grupales (presenciales o virtuales)</li>
             </ul>
-            <p>Formamos usuarios seguros, autónomos y productivos.</p>
+            <p>Formamos usuarios seguros, autónomos y productivos. Ideal para empresas, familias o personas mayores.</p>
           </div>
         </div>
       </article>
 
-      <!-- Servicio 5: Redes y Seguridad -->
-      <article id="redes" class="service">
+      <!-- 5. Redes y Seguridad -->
+      <article id="redes" class="service fade-up">
         <h2>Redes y Seguridad</h2>
         <div class="service-content">
-          <img src="assets/img/network-security.webp" alt="Redes y Seguridad" class="service-img">
+          <img src="assets/img/network-security.webp" alt="Redes y Seguridad" class="service-img" loading="lazy" width="300" height="160">
           <div class="service-text">
-            <p>Diseño, instalación y mantenimiento de redes seguras y confiables.</p>
-            <ul>
-              <li>Configuración de redes LAN y WiFi</li>
-              <li>Instalación de puntos de red adicionales</li>
-              <li>Configuración de routers y firewalls</li>
-              <li>Seguridad de redes empresariales</li>
+            <p>Diseño, instalación y mantenimiento de redes seguras y confiables, sin puntos muertos ni caídas.</p>
+            <ul class="check-list">
+              <li>✅ Configuración de redes LAN y WiFi de alta velocidad</li>
+              <li>✅ Instalación de puntos de red adicionales</li>
+              <li>✅ Configuración de routers, switches y firewalls</li>
+              <li>✅ Seguridad de redes empresariales y hogareñas</li>
             </ul>
-            <p>Garantizamos una conectividad estable y segura para tu negocio o hogar.</p>
+            <p>Garantizamos una conectividad estable, segura y eficiente para tu negocio o hogar. Wi-Fi en toda tu casa o oficina.</p>
           </div>
         </div>
       </article>
@@ -141,17 +154,33 @@
     </div>
   </section>
 
+  <!-- 🎯 CTA Final Fuerte -->
+  <section class="problems-with-image fade-up" style="background-color: #f0f8ff; padding: 4rem 0; margin: 2rem 0;">
+    <div class="container">
+      <div class="content-with-image reverse">
+        <div class="image-side">
+          <img src="assets/img/cta-tech.webp" alt="Técnico ayudando a cliente" class="content-img" loading="lazy" width="400" height="250">
+        </div>
+        <div class="text-side">
+          <h2>¿Necesitas un servicio técnico real?</h2>
+          <p>No vendemos partes, vendemos tranquilidad. Diagnóstico claro, solución real, garantía de funcionamiento.</p>
+          <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-primary">Solicitar servicio ahora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 📞 Botón Flotante de WhatsApp (móvil) -->
-  <a href=" https://wa.me/584145828186 " target="_blank" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
-    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50">
+  <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
+    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50" height="50">
   </a>
 
-  <!-- 📌 Footer con Redes Sociales -->
+  <!-- 📌 Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
-          <img src="assets/img/logo.webp" alt="Logo Coreltech" width="130">
+          <img src="assets/img/logo.webp" alt="Logo Coreltech" width="130" height="50">
           <p>Soluciones IT profesionales, rápidas y confiables.</p>
         </div>
         <div class="footer-contact">
@@ -161,8 +190,8 @@
         <div class="footer-social">
           <h4>Síguenos</h4>
           <ul>
-            <li><a href="https://www.instagram.com/coreltechsoluciones " target="_blank">Instagram</a></li>
-            <li><a href="https://www.tiktok.com/ @coreltech.ve" target="_blank">TikTok</a></li>
+            <li><a href="https://www.instagram.com/coreltechsoluciones" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@coreltech.ve" target="_blank" rel="noopener">TikTok</a></li>
           </ul>
         </div>
       </div>
@@ -177,11 +206,9 @@
     // Menú móvil
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
-
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -190,7 +217,6 @@
 
     // Animaciones al hacer scroll
     const fadeElements = document.querySelectorAll('.fade-up, .service-content');
-
     const fadeInOnScroll = () => {
       fadeElements.forEach(el => {
         const elementTop = el.getBoundingClientRect().top;
@@ -200,10 +226,8 @@
         }
       });
     };
-
     window.addEventListener('scroll', fadeInOnScroll);
     window.addEventListener('load', fadeInOnScroll);
   </script>
-
 </body>
 </html>

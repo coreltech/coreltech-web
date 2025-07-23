@@ -5,23 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Contáctanos para más información sobre nuestros servicios de tecnología, soporte técnico y asesoría IT.">
   <title>Contacto - Coreltech IT Solutions</title>
-
   <!-- Google Fonts - Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
   <!-- Estilos principales -->
   <link rel="stylesheet" href="assets/css/styles.css">
-
   <!-- Favicon -->
   <link rel="icon" href="assets/img/favicon.webp" type="image/webp">
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- 🔁 Precarga de imágenes críticas -->
+<link rel="preload" as="image" href="assets/img/hero-tech.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/services-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/portfolio-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/contact-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/about-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/logo.webp" type="image/webp">
 </head>
 <body>
-
   <!-- 🧭 Menú de Navegación -->
   <header class="navbar">
     <div class="container">
       <a href="index.html" class="logo">
-        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150">
+        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150" height="60">
       </a>
       <button class="menu-toggle" aria-label="Abrir menú">☰</button>
       <nav class="nav-mobile">
@@ -36,63 +42,79 @@
     </div>
   </header>
 
-  <!-- 📞 Hero Principal -->
+  <!-- 📞 Hero con Imagen Lateral -->
   <section class="hero fade-up">
-    <div class="container hero-content">
-      <h1>Contáctanos</h1>
-      <p>¿Tienes dudas o necesitas ayuda con tus equipos? Escríbenos por WhatsApp o envíanos un mensaje.</p>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Hablemos de tu Proyecto</h1>
+        <p><strong>No vendemos partes, vendemos tranquilidad.</strong> Escríbenos y te responderemos en menos de 24 horas con una solución clara y real.</p>
+        <div class="hero-buttons">
+          <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-primary" title="Habla con un técnico por WhatsApp">💬 Hablar por WhatsApp</a>
+          <a href="portafolio.html" class="btn-secondary">Ver casos de éxito</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="assets/img/contact-hero.webp" alt="Técnico atendiendo a cliente" width="400" height="300" loading="lazy">
+      </div>
     </div>
   </section>
 
-  <!-- 📨 Formulario de Contacto -->
+  <!-- 📨 Formulario de Contacto con EmailJS -->
   <section class="contact-section fade-up">
     <div class="container">
-      <h2>Envíanos un Mensaje</h2>
+      <h2 class="section-title">Envíanos un Mensaje</h2>
+      <p style="text-align: center; color: #555; margin-bottom: 2rem;">
+        Completa el formulario y uno de nuestros técnicos te responderá personalmente.
+      </p>
       <form id="contact-form" class="contact-form">
-        <div class="form-group">
-          <label for="name">Nombre:</label>
-          <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" placeholder="tu@email.com" required>
-        </div>
-        <div class="form-group">
-          <label for="phone">Teléfono (opcional):</label>
-          <input type="tel" id="phone" name="phone" placeholder="+58 414 582 8186">
-        </div>
-        <div class="form-group">
-          <label for="message">Mensaje:</label>
-          <textarea id="message" name="message" rows="5" placeholder="Cuéntanos cómo podemos ayudarte..." required></textarea>
-        </div>
-        <button type="submit" class="btn-primary">Enviar por Email</button>
-      </form>
+        <label for="name">Nombre *</label>
+        <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
 
-      <!-- Mensaje de éxito/error -->
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+
+        <label for="phone">Teléfono (opcional)</label>
+        <input type="tel" id="phone" name="phone" placeholder="+58 414 582 8186">
+
+        <label for="message">Mensaje *</label>
+        <textarea id="message" name="message" rows="5" placeholder="Cuéntanos tu problema o proyecto..." required></textarea>
+
+        <button type="submit" class="btn-primary" id="submit-btn">
+          <span id="btn-text">Enviar Mensaje</span>
+          <span id="loading" style="display: none;">Enviando...</span>
+        </button>
+      </form>
       <div id="form-message" class="form-message"></div>
     </div>
   </section>
 
-  <!-- 📍 Datos de Contacto -->
-  <section class="contact-info fade-up">
+  <!-- 📍 Datos de Contacto Alternativos -->
+  <section class="problems-with-image fade-up" style="background-color: #f0f8ff; padding: 4rem 0;">
     <div class="container">
-      <h2>También Puedes Contactarnos Por</h2>
-      <div class="contact-details">
-        <div class="contact-item">
-          <h3>Email</h3>
-          <p><a href="mailto:coreltech.soluciones@gmail.com">coreltech.soluciones@gmail.com</a></p>
+      <div class="content-with-image reverse">
+        <div class="image-side">
+          <img src="assets/img/contact-info.webp" alt="Información de contacto" class="content-img" loading="lazy" width="400" height="250">
         </div>
-        <div class="contact-item">
-          <h3>WhatsApp</h3>
-          <p><a href=" https://wa.me/584145828186 " target="_blank">+58 414 582 8186</a></p>
+        <div class="text-side">
+          <h2>También Puedes Contactarnos Por</h2>
+          <div class="contact-details">
+            <div class="contact-item">
+              <h3>📧 Email</h3>
+              <p><a href="mailto:coreltech.soluciones@gmail.com">coreltech.soluciones@gmail.com</a></p>
+            </div>
+            <div class="contact-item">
+              <h3>📱 WhatsApp</h3>
+              <p><a href="https://wa.me/584145828186" target="_blank" rel="noopener">+58 414 582 8186</a></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 📞 Botón Flotante de WhatsApp (móvil) -->
-  <a href="https://wa.me/584145828186 " target="_blank" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
-    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50">
+  <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
+    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50" height="50">
   </a>
 
   <!-- 📌 Footer -->
@@ -100,7 +122,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
-          <img src="assets/img/logo.webp" alt="Logo Coreltech" width="130">
+          <img src="assets/img/logo.webp" alt="Logo Coreltech" width="130" height="50">
           <p>Soluciones IT profesionales, rápidas y confiables.</p>
         </div>
         <div class="footer-contact">
@@ -110,8 +132,8 @@
         <div class="footer-social">
           <h4>Síguenos</h4>
           <ul>
-            <li><a href="https://www.instagram.com/coreltechsoluciones " target="_blank">Instagram</a></li>
-            <li><a href="https://www.tiktok.com/ @coreltech.ve" target="_blank">TikTok</a></li>
+            <li><a href="https://www.instagram.com/coreltechsoluciones" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@coreltech.ve" target="_blank" rel="noopener">TikTok</a></li>
           </ul>
         </div>
       </div>
@@ -121,16 +143,19 @@
     </div>
   </footer>
 
-  <!-- ✅ Script ligero: menú móvil + animaciones -->
+  <!-- ✅ Script: EmailJS + Menú + Animaciones -->
   <script>
+    // Inicializa EmailJS con tu Public Key
+    (function() {
+      emailjs.init("YOUR_PUBLIC_KEY"); // ← Reemplaza con tu clave pública
+    })();
+
     // Menú móvil
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
-
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -139,7 +164,6 @@
 
     // Animaciones al hacer scroll
     const fadeElements = document.querySelectorAll('.fade-up');
-
     const fadeInOnScroll = () => {
       fadeElements.forEach(el => {
         const elementTop = el.getBoundingClientRect().top;
@@ -149,35 +173,41 @@
         }
       });
     };
-
     window.addEventListener('scroll', fadeInOnScroll);
     window.addEventListener('load', fadeInOnScroll);
 
-    // Manejador del formulario
+    // Manejo del formulario con EmailJS
     document.getElementById('contact-form').addEventListener('submit', function (e) {
       e.preventDefault();
 
+      const btnText = document.getElementById('btn-text');
+      const loading = document.getElementById('loading');
+      const submitBtn = document.getElementById('submit-btn');
       const formMessage = document.getElementById('form-message');
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('phone').value || 'No proporcionado';
-      const message = document.getElementById('message').value;
 
-      // Enviar por correo usando mailto
-      const subject = encodeURIComponent(`Nuevo contacto desde el sitio web`);
-      const body = `Hola,\n\nRecibiste un nuevo mensaje:\n\nNombre: ${name}\nEmail: ${email}\nTeléfono: ${phone}\n\nMensaje:\n${message}\n\n---\nEste mensaje fue enviado desde el formulario de contacto de coreltech-web.vercel.app`;
+      // Mostrar estado de carga
+      submitBtn.disabled = true;
+      btnText.style.display = 'none';
+      loading.style.display = 'inline';
 
-      window.location.href = `mailto:coreltech.soluciones@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+      const serviceID = 'YOUR_SERVICE_ID'; // ← Reemplaza
+      const templateID = 'YOUR_TEMPLATE_ID'; // ← Reemplaza
 
-      formMessage.textContent = 'Redirigiendo a tu cliente de correo...';
-      formMessage.style.color = 'blue';
-
-      setTimeout(() => {
-        formMessage.textContent = 'Si tu cliente de correo no abre, haz clic en "Email" arriba.';
-        formMessage.style.color = 'orange';
-      }, 2000);
+      // Enviar con EmailJS
+      emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+          formMessage.innerHTML = '<p style="color: green;">¡Mensaje enviado con éxito! Te responderemos en menos de 24 horas.</p>';
+          this.reset();
+        }, (error) => {
+          formMessage.innerHTML = `<p style="color: red;">Error: ${error.text}</p>`;
+        })
+        .finally(() => {
+          // Restaurar botón
+          submitBtn.disabled = false;
+          btnText.style.display = 'inline';
+          loading.style.display = 'none';
+        });
     });
   </script>
-
 </body>
 </html>

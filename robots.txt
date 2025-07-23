@@ -1,12 +1,19 @@
-# robots.txt
-# Para: Todos los motores de búsqueda
-
 User-agent: *
 Allow: /
 
-# Preferencias de Google
-User-agent: Googlebot
-Allow: /
+# Mapa del sitio
+Sitemap: https://coreltech-web.vercel.app/sitemap.xml
 
-# Dirección del sitemap (si lo tienes)
-Sitemap: https://coreltech.vercel.app/sitemap.xml 
+# No rastrear formularios o páginas sensibles
+Disallow: /gracias.html
+
+# No rastrear directorios privados (si existen)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Bloquear archivos sensibles (opcional)
+# Disallow: /*.pdf$
+# Disallow: /*.zip$
+
+# Búsqueda de Google
+# Host: coreltech-web.vercel.app

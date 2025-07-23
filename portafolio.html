@@ -3,25 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explora nuestro portafolio de proyectos tecnológicos realizados para PYMEs, empresas y usuarios caseros.">
+  <meta name="description" content="Portafolio de Coreltech: proyectos reales en redes, soporte, seguridad y recuperación de datos. Calidad, experiencia y excelencia técnica.">
   <title>Portafolio - Coreltech IT Solutions</title>
-
   <!-- Google Fonts - Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
   <!-- Estilos principales -->
   <link rel="stylesheet" href="assets/css/styles.css">
-
   <!-- Favicon -->
   <link rel="icon" href="assets/img/favicon.webp" type="image/webp">
+
+  <!-- 🔁 Precarga de imágenes críticas -->
+<link rel="preload" as="image" href="assets/img/hero-tech.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/services-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/portfolio-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/contact-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/about-hero.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/img/logo.webp" type="image/webp">
 </head>
 <body>
-
   <!-- 🧭 Menú de Navegación -->
   <header class="navbar">
     <div class="container">
       <a href="index.html" class="logo">
-        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150">
+        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150" height="60">
       </a>
       <button class="menu-toggle" aria-label="Abrir menú">☰</button>
       <nav class="nav-mobile">
@@ -36,31 +40,44 @@
     </div>
   </header>
 
-  <!-- 📁 Hero Principal -->
+  <!-- 📁 Hero con Imagen Lateral -->
   <section class="hero fade-up">
-    <div class="container hero-content">
-      <h1>Nuestro Portafolio</h1>
-      <p><strong>Tecnología aplicada con precisión.</strong> Proyectos reales que resuelven problemas reales.</p>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Portafolio de Excelencia Técnica</h1>
+        <p><strong>Proyectos reales, resultados concretos.</strong> Cada caso es una prueba de nuestro compromiso con la calidad, la ética y la resolución de problemas reales.</p>
+        <div class="hero-buttons">
+          <a href="contacto.html" class="btn-primary">Solicitar proyecto</a>
+          <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-secondary" title="Habla con un técnico por WhatsApp">💬 Habla con un técnico</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="assets/img/portfolio-hero.webp" alt="Equipo técnico analizando red empresarial" width="400" height="300" loading="lazy">
+      </div>
     </div>
   </section>
 
-  <!-- 📦 Galería de Proyectos - Diseño técnico elevado -->
+  <!-- 📦 Galería de Proyectos - Casos de Éxito -->
   <section class="portfolio-grid-section fade-up">
     <div class="container">
-      <h2 class="section-title">Proyectos Destacados</h2>
+      <h2 class="section-title">Casos de Éxito</h2>
+      <p style="text-align: center; color: #555; margin-bottom: 3rem; font-size: 1.1rem;">
+        Cada proyecto es una historia de superación técnica. Aquí mostramos cómo transformamos problemas complejos en soluciones duraderas.
+      </p>
       <div class="portfolio-grid">
-
+        
         <!-- Proyecto 1 -->
         <article class="portfolio-item fade-up">
           <div class="project-header">
             <span class="project-tag">Redes</span>
             <span class="project-year">2024</span>
           </div>
-          <img src="assets/img/portfolio1.webp" alt="Actualización de red empresarial" class="portfolio-img">
+          <img src="assets/img/portfolio1.webp" alt="Red empresarial con cableado estructurado" class="portfolio-img" loading="lazy" width="300" height="180">
           <div class="project-info">
-            <h3>Actualización de red empresarial</h3>
-            <p>Implementación de red estructurada en oficina de 20 usuarios. Cableado UTP categoría 6, switches gestionables, VLANs y monitoreo continuo.</p>
-            <a href="#" class="btn-primary">Ver caso de éxito</a>
+            <h3>Red Empresarial Estructurada</h3>
+            <p>Implementación de red con cableado UTP Cat 6, switches gestionables, VLANs y monitoreo continuo para oficina de 20 usuarios.</p>
+            <p><strong>Resultado:</strong> 99.9% de disponibilidad, sin caídas en 6 meses.</p>
+            <a href="contacto.html" class="btn-primary">Consultar detalles</a>
           </div>
         </article>
 
@@ -70,11 +87,12 @@
             <span class="project-tag">Soporte</span>
             <span class="project-year">2024</span>
           </div>
-          <img src="assets/img/portfolio2.webp" alt="Soporte técnico integral" class="portfolio-img">
+          <img src="assets/img/portfolio2.webp" alt="Soporte técnico mensual" class="portfolio-img" loading="lazy" width="300" height="180">
           <div class="project-info">
-            <h3>Soporte técnico integral</h3>
-            <p>Asistencia mensual en mantenimiento de equipos y redes para PYME. Reducción del 70% en tiempos de inactividad.</p>
-            <a href="#" class="btn-primary">Ver resultados</a>
+            <h3>Soporte Técnico Integral Mensual</h3>
+            <p>Mantenimiento proactivo de equipos y redes para PYME. Incluye limpieza, actualizaciones, copias de seguridad y asistencia remota.</p>
+            <p><strong>Resultado:</strong> Reducción del 70% en tiempos de inactividad.</p>
+            <a href="contacto.html" class="btn-primary">Consultar detalles</a>
           </div>
         </article>
 
@@ -84,11 +102,12 @@
             <span class="project-tag">Capacitación</span>
             <span class="project-year">2024</span>
           </div>
-          <img src="assets/img/portfolio3.webp" alt="Capacitación en herramientas IT" class="portfolio-img">
+          <img src="assets/img/portfolio3.webp" alt="Taller de seguridad digital" class="portfolio-img" loading="lazy" width="300" height="180">
           <div class="project-info">
-            <h3>Capacitación en herramientas IT</h3>
-            <p>Talleres personalizados de uso de software y seguridad digital para equipo administrativo.</p>
-            <a href="#" class="btn-primary">Ver programa</a>
+            <h3>Capacitación en Seguridad Digital</h3>
+            <p>Talleres personalizados para equipo administrativo: prevención de phishing, manejo seguro de contraseñas y copias de seguridad.</p>
+            <p><strong>Resultado:</strong> 0 incidentes de seguridad reportados tras capacitación.</p>
+            <a href="contacto.html" class="btn-primary">Consultar detalles</a>
           </div>
         </article>
 
@@ -98,11 +117,12 @@
             <span class="project-tag">Seguridad</span>
             <span class="project-year">2023</span>
           </div>
-          <img src="assets/img/portfolio4.webp" alt="Instalación de sistema de seguridad" class="portfolio-img">
+          <img src="assets/img/portfolio4.webp" alt="Sistema de cámaras IP" class="portfolio-img" loading="lazy" width="300" height="180">
           <div class="project-info">
-            <h3>Instalación de sistema de seguridad</h3>
-            <p>Implementación de cámaras IP y control de acceso en centro comercial. Integración con alarmas y monitoreo remoto.</p>
-            <a href="#" class="btn-primary">Ver detalles</a>
+            <h3>Sistema de Seguridad IP</h3>
+            <p>Instalación de cámaras IP, control de acceso y alarmas en centro comercial. Integración con monitoreo remoto 24/7.</p>
+            <p><strong>Resultado:</strong> Reducción del 60% en incidentes de seguridad.</p>
+            <a href="contacto.html" class="btn-primary">Consultar detalles</a>
           </div>
         </article>
 
@@ -112,11 +132,12 @@
             <span class="project-tag">Recuperación</span>
             <span class="project-year">2023</span>
           </div>
-          <img src="assets/img/portfolio5.webp" alt="Recuperación de datos" class="portfolio-img">
+          <img src="assets/img/portfolio5.webp" alt="Recuperación de datos de disco dañado" class="portfolio-img" loading="lazy" width="300" height="180">
           <div class="project-info">
-            <h3>Recuperación de datos</h3>
-            <p>Recuperación exitosa de información crítica en disco dañado. 98% de los datos restaurados sin pérdida.</p>
-            <a href="#" class="btn-primary">Ver proceso</a>
+            <h3>Recuperación de Datos Críticos</h3>
+            <p>Recuperación de información en disco dañado (fallo físico). Proceso en sala limpia con herramientas especializadas.</p>
+            <p><strong>Resultado:</strong> 98% de los datos restaurados sin pérdida.</p>
+            <a href="contacto.html" class="btn-primary">Consultar detalles</a>
           </div>
         </article>
 
@@ -126,11 +147,12 @@
             <span class="project-tag">WiFi</span>
             <span class="project-year">2023</span>
           </div>
-          <img src="assets/img/portfolio6.webp" alt="Configuración de red WiFi" class="portfolio-img">
+          <img src="assets/img/portfolio6.webp" alt="Red WiFi sin puntos muertos" class="portfolio-img" loading="lazy" width="300" height="180">
           <div class="project-info">
-            <h3>Configuración de red WiFi</h3>
-            <p>Diseño e instalación de red inalámbrica segura para oficina remota. Cobertura total, sin puntos muertos.</p>
-            <a href="#" class="btn-primary">Ver diseño</a>
+            <h3>Red WiFi de Alta Cobertura</h3>
+            <p>Diseño e instalación de red inalámbrica con puntos de acceso estratégicos. Cobertura total en oficina de 3 pisos.</p>
+            <p><strong>Resultado:</strong> 0 puntos muertos, velocidad estable en todo el edificio.</p>
+            <a href="contacto.html" class="btn-primary">Consultar detalles</a>
           </div>
         </article>
 
@@ -138,9 +160,30 @@
     </div>
   </section>
 
+  <!-- 🎯 Sección de Confianza y Excelencia -->
+  <section class="problems-with-image fade-up" style="background-color: #f0f8ff; padding: 4rem 0; margin: 2rem 0;">
+    <div class="container">
+      <div class="content-with-image">
+        <div class="image-side">
+          <img src="assets/img/excellence.webp" alt="Equipo técnico revisando servidor" class="content-img" loading="lazy" width="400" height="250">
+        </div>
+        <div class="text-side">
+          <h2>¿Por qué elegirnos?</h2>
+          <ul class="check-list">
+            <li>✅ <strong>Experiencia real:</strong> +5 años resolviendo problemas técnicos complejos.</li>
+            <li>✅ <strong>Ética profesional:</strong> Transparencia total en diagnósticos y presupuestos.</li>
+            <li>✅ <strong>Calidad garantizada:</strong> Trabajo con estándares industriales, no "arreglos temporales".</li>
+            <li>✅ <strong>Soporte continuo:</strong> No desaparecemos después del servicio.</li>
+          </ul>
+          <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-primary">Agenda una consulta técnica</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 📞 Botón Flotante de WhatsApp (móvil) -->
-  <a href=" https://wa.me/584145828186 " target="_blank" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
-    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50">
+  <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
+    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50" height="50">
   </a>
 
   <!-- 📌 Footer -->
@@ -148,7 +191,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
-          <img src="assets/img/logo.webp" alt="Logo Coreltech" width="130">
+          <img src="assets/img/logo.webp" alt="Logo Coreltech" width="130" height="50">
           <p>Soluciones IT profesionales, rápidas y confiables.</p>
         </div>
         <div class="footer-contact">
@@ -158,8 +201,8 @@
         <div class="footer-social">
           <h4>Síguenos</h4>
           <ul>
-            <li><a href="https://www.instagram.com/coreltechsoluciones " target="_blank">Instagram</a></li>
-            <li><a href="https://www.tiktok.com/ @coreltech.ve" target="_blank">TikTok</a></li>
+            <li><a href="https://www.instagram.com/coreltechsoluciones" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@coreltech.ve" target="_blank" rel="noopener">TikTok</a></li>
           </ul>
         </div>
       </div>
@@ -174,11 +217,9 @@
     // Menú móvil
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
-
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -187,7 +228,6 @@
 
     // Animaciones al hacer scroll
     const fadeElements = document.querySelectorAll('.fade-up');
-
     const fadeInOnScroll = () => {
       fadeElements.forEach(el => {
         const elementTop = el.getBoundingClientRect().top;
@@ -197,10 +237,8 @@
         }
       });
     };
-
     window.addEventListener('scroll', fadeInOnScroll);
     window.addEventListener('load', fadeInOnScroll);
   </script>
-
 </body>
 </html>
