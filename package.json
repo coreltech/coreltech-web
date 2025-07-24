@@ -1,0 +1,15 @@
+{
+  "name": "coreltech",
+  "version": "1.0.0",
+  "description": "Página web oficial de **Coreltech IT Solutions**, una empresa dedicada a ofrecer servicios tecnológicos profesionales, rápidos y confiables.",
+  "main": "optimizar-imagenes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sharp": "^0.34.3"
+  }
+}
