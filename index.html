@@ -11,14 +11,13 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <!-- Favicon -->
   <link rel="icon" href="assets/img/favicon.webp" type="image/webp">
-
   <!-- 🔁 Precarga de imágenes críticas -->
-<link rel="preload" as="image" href="assets/img/hero-tech.webp" type="image/webp">
-<link rel="preload" as="image" href="assets/img/services-hero.webp" type="image/webp">
-<link rel="preload" as="image" href="assets/img/portfolio-hero.webp" type="image/webp">
-<link rel="preload" as="image" href="assets/img/contact-hero.webp" type="image/webp">
-<link rel="preload" as="image" href="assets/img/about-hero.webp" type="image/webp">
-<link rel="preload" as="image" href="assets/img/logo.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/img/hero-tech.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/img/services-hero.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/img/portfolio-hero.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/img/contact-hero.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/img/about-hero.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/img/logo.webp" type="image/webp">
 </head>
 <body>
   <!-- 🧭 Menú de navegación -->
@@ -53,7 +52,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="assets/img/hero-tech.webp" alt="Tecnología profesional" width="400" height="300" loading="lazy">
+        <img src="assets/img/hero-tech.webp" alt="Tecnología profesional" loading="lazy">
       </div>
     </div>
   </section>
@@ -150,61 +149,151 @@
     </div>
   </footer>
 
-  <!-- ✅ Script ligero: menú móvil + animaciones + blog -->
+  <!-- ✅ Script único: menú móvil + animaciones + blog -->
   <script>
     // Menú móvil
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-      });
-    });
-
-    // Animaciones al hacer scroll
-    const fadeElements = document.querySelectorAll('.fade-up');
-    const fadeInOnScroll = () => {
-      fadeElements.forEach(el => {
-        const elementTop = el.getBoundingClientRect().top;
-        const elementVisible = 150;
-        if (elementTop < window.innerHeight - elementVisible && !el.classList.contains('visible')) {
-          el.classList.add('visible');
-        }
-      });
-    };
-    window.addEventListener('scroll', fadeInOnScroll);
-    window.addEventListener('load', fadeInOnScroll);
-
-    // Cargar artículos del blog
-    async function fetchBlogPosts() {
-      const container = document.getElementById("blog-posts");
-      try {
-        const response = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://coreltech-blog.vercel.app/index.xml");
-        const data = await response.json();
-        const posts = data.items
-          .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
-          .slice(0, 3);
-        posts.forEach(post => {
-          const postElement = document.createElement("div");
-          postElement.className = "post";
-          const thumbnail = post["media:content"]?.url || post["media:thumbnail"]?.url || 'assets/img/blog-article-default.webp';
-          postElement.innerHTML = `
-            <img src="${thumbnail}" alt="${post.title}" class="service-img" loading="lazy">
-            <h4>${post.title}</h4>
-            <p>${new Date(post.pubDate).toLocaleDateString()}</p>
-            <a href="${post.link}" target="_blank" rel="noopener" class="btn-secondary">Leer más</a>
-          `;
-          container.appendChild(postElement);
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
         });
-      } catch (error) {
-        container.innerHTML = "<p>No se pudieron cargar los artículos del blog</p>";
-        console.error("Error al cargar el blog:", error);
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+          });
+        });
       }
-    }
-    document.addEventListener("DOMContentLoaded", fetchBlogPosts);
+
+      // Animaciones al hacer scroll (ejecutar inmediatamente)
+      const fadeInOnScroll = () => {
+        const fadeElements = document.querySelectorAll('.fade-up');
+        fadeElements.forEach(el => {
+          const elementTop = el.getBoundingClientRect().top;
+          const elementVisible = 150;
+          if (elementTop < window.innerHeight - elementVisible && !el.classList.contains('visible')) {
+            el.classList.add('visible');
+          }
+        });
+      };
+      window.addEventListener('scroll', fadeInOnScroll);
+      // window.addEventListener('load', fadeInOnScroll); // Opcional
+
+      // === SCRIPT PARA CARGAR POSTS DEL BLOG ===
+      (async function fetchBlogPosts() {
+        console.log("[Blog] 🚀 Iniciando carga de posts...");
+        const container = document.getElementById("blog-posts");
+        const placeholderImage = 'assets/img/blog-article-default.webp'; // Asegúrate de que esta imagen exista
+
+        if (!container) {
+            console.error("[Blog] ❌ Error: Contenedor #blog-posts no encontrado.");
+            return;
+        }
+
+        try {
+            console.log("[Blog] 📡 Solicitando datos a:", "https://coreltech-blog.vercel.app/posts.json");
+            const response = await fetch("https://coreltech-blog.vercel.app/posts.json");
+
+            if (!response.ok) {
+                throw new Error(`[Blog] ❌ Error HTTP: ${response.status} - ${response.statusText}`);
+            }
+
+            console.log("[Blog] ✅ Respuesta 200 OK recibida. Parseando JSON...");
+            const postsData = await response.json();
+            console.log("[Blog] 📦 Datos JSON parseados:", postsData);
+
+            // --- Verificación directa del array ---
+            if (!Array.isArray(postsData)) {
+                 console.error("[Blog] ❌ Error: Los datos recibidos NO son un array.");
+                 throw new Error("[Blog] ❌ Formato de datos inesperado.");
+            }
+
+            if (postsData.length === 0) {
+                container.innerHTML = "<p style='color: #888; text-align: center; grid-column: 1 / -1;'>Próximamente artículos del blog.</p>";
+                console.warn("[Blog] ⚠️ El array de posts está vacío.");
+                return;
+            }
+
+            console.log(`[Blog] 🧼 Limpiando contenedor y preparando para mostrar ${Math.min(postsData.length, 3)} posts.`);
+            container.innerHTML = ''; // Limpiar cualquier contenido previo
+
+            const postsToShow = postsData.slice(0, 3);
+            console.log("[Blog] 🎯 Posts seleccionados para mostrar:", postsToShow);
+
+            postsToShow.forEach((post, index) => {
+                console.log(`[Blog] 🧱 Procesando post ${index + 1}: '${post.title}'`);
+
+                const postElement = document.createElement("div");
+                postElement.className = "post fade-up";
+                // Forzar visibilidad
+                postElement.style.width = '100%';
+                postElement.style.justifySelf = 'center';
+
+                const title = post.title || "Artículo sin título";
+                console.log(`[Blog] 📰 Título post ${index + 1}:`, title);
+
+                // Formatear la fecha
+                let pubDate = "Fecha desconocida";
+                if (post.date) {
+                    const dateObj = new Date(post.date);
+                    if (!isNaN(dateObj.getTime())) {
+                        pubDate = dateObj.toLocaleDateString('es-ES', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        });
+                        console.log(`[Blog] 📅 Fecha post ${index + 1}:`, pubDate);
+                    } else {
+                        console.warn(`[Blog] ⚠️ Fecha inválida para el post ${index + 1} ('${title}'):`, post.date);
+                    }
+                }
+
+                // Resolver URLs relativas
+                let articleUrl = '#';
+                let thumbnailUrl = placeholderImage;
+                try {
+                    console.log(`[Blog] 🔗 Resolviendo URL del artículo para post ${index + 1}:`, post.url);
+                    if (post.url) {
+                        articleUrl = new URL(post.url, "https://coreltech-blog.vercel.app/").href;
+                        console.log(`[Blog] ✅ URL del artículo resuelta:`, articleUrl);
+                    }
+
+                    console.log(`[Blog] 🖼️ Resolviendo URL de la miniatura para post ${index + 1}:`, post.thumbnail);
+                    if (post.thumbnail) {
+                        const normalizedThumbPath = post.thumbnail.replace(/^\.\./, '');
+                        thumbnailUrl = new URL(normalizedThumbPath, "https://coreltech-blog.vercel.app/").href;
+                        console.log(`[Blog] ✅ URL de miniatura resuelta:`, thumbnailUrl);
+                    }
+                } catch (urlError) {
+                    console.error(`[Blog] ❌ Error al construir URLs para el post ${index + 1} ('${title}'):`, urlError);
+                }
+
+                // Crear el HTML interno del post
+                console.log(`[Blog] 🏗️ Creando HTML para post ${index + 1}...`);
+                const postHTML = `
+                    <img src="${thumbnailUrl}" alt="${title}" class="service-img" loading="lazy" onerror="console.warn('[Blog] ⚠️ Error al cargar imagen (onerror):', this.src); this.onerror=null; this.src='${placeholderImage}';">
+                    <h4>${title}</h4>
+                    <p>${pubDate}</p>
+                    <a href="${articleUrl}" target="_blank" rel="noopener" class="btn-secondary">Leer más</a>
+                `;
+                postElement.innerHTML = postHTML;
+                console.log(`[Blog] ➕ Agregando elemento post ${index + 1} al contenedor.`);
+                container.appendChild(postElement);
+            });
+            console.log("[Blog] ✅ Todos los posts se han procesado y agregado al DOM.");
+
+        } catch (error) {
+            console.error("[Blog] ❌ Error crítico en fetchBlogPosts:", error);
+            if (container) {
+                 container.innerHTML = `<p style="color: #a00; text-align: center; grid-column: 1 / -1;">Error al cargar artículos. <a href="https://coreltech-blog.vercel.app" target="_blank">Visita el blog</a></p>`;
+            }
+        }
+      })();
+      // === FIN DEL SCRIPT DEL BLOG ===
+
+    });
+    console.log("[Main] Scripts cargados.");
   </script>
 </body>
 </html>

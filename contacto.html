@@ -15,12 +15,12 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <!-- 🔁 Precarga de imágenes críticas -->
-<link rel="preload" as="image" href="assets/img/hero-tech.webp" type="image/webp">
-<link rel="preload" as="image" href="assets/img/services-hero.webp" type="image/webp">
-<link rel="preload" as="image" href="assets/img/portfolio-hero.webp" type="image/webp">
-<link rel="preload" as="image" href="assets/img/contact-hero.webp" type="image/webp">
-<link rel="preload" as="image" href="assets/img/about-hero.webp" type="image/webp">
-<link rel="preload" as="image" href="assets/img/logo.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/img/hero-tech.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/img/services-hero.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/img/portfolio-hero.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/img/contact-hero.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/img/about-hero.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/img/logo.webp" type="image/webp">
 </head>
 <body>
   <!-- 🧭 Menú de Navegación -->
@@ -54,7 +54,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="assets/img/contact-hero.webp" alt="Técnico atendiendo a cliente" width="400" height="300" loading="lazy">
+        <img src="assets/img/contact-hero.webp" alt="Técnico atendiendo a cliente" class="content-img" loading="lazy">
       </div>
     </div>
   </section>
@@ -93,7 +93,7 @@
     <div class="container">
       <div class="content-with-image reverse">
         <div class="image-side">
-          <img src="assets/img/contact-info.webp" alt="Información de contacto" class="content-img" loading="lazy" width="400" height="250">
+          <img src="assets/img/contact-info.webp" alt="Información de contacto" class="content-img" loading="lazy">
         </div>
         <div class="text-side">
           <h2>También Puedes Contactarnos Por</h2>
@@ -147,7 +147,7 @@
   <script>
     // Inicializa EmailJS con tu Public Key
     (function() {
-      emailjs.init("YOUR_PUBLIC_KEY"); // ← Reemplaza con tu clave pública
+      emailjs.init("YOUR_PUBLIC_KEY"); // ← Reemplaza con tu clave pública de EmailJS
     })();
 
     // Menú móvil
@@ -190,8 +190,8 @@
       btnText.style.display = 'none';
       loading.style.display = 'inline';
 
-      const serviceID = 'YOUR_SERVICE_ID'; // ← Reemplaza
-      const templateID = 'YOUR_TEMPLATE_ID'; // ← Reemplaza
+      const serviceID = 'YOUR_SERVICE_ID'; // ← Reemplaza con tu Service ID de EmailJS
+      const templateID = 'YOUR_TEMPLATE_ID'; // ← Reemplaza con tu Template ID de EmailJS
 
       // Enviar con EmailJS
       emailjs.sendForm(serviceID, templateID, this)
