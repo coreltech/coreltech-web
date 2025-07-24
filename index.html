@@ -192,7 +192,7 @@
         }
 
         try {
-            console.log("[Blog] 📡 Solicitando datos a:", "https://coreltech-blog.vercel.app/posts.json");
+            console.log("[Blog] 📡 Solicitando datos a:", "https://coreltech-blog.vercel.app/feed/posts.json");
             const response = await fetch("https://coreltech-blog.vercel.app/posts.json");
 
             if (!response.ok) {
