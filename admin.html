@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración - Mensajes</title>
+  <!-- Google Fonts - Poppins (igual que tu sitio) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <!-- Estilos básicos para la tabla y la página -->
+  <style>
+    :root {
+      --color-primary: #003366;
+      --color-secondary: #0066cc;
+      --color-white: #fff;
+      --color-light: #f9f9f9;
+      --color-gray: #ddd;
+      --font-main: 'Poppins', sans-serif;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: var(--font-main);
+      color: #333;
+      background-color: var(--color-light);
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, .05);
+    }
+    h1 {
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #f0f8ff; /* Color de fondo similar al navbar */
+      color: var(--color-primary);
+      font-weight: 500;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    tr:hover {
+      background-color: #f0f8ff;
+    }
+    .loading, .error, .empty {
+      text-align: center;
+      padding: 20px;
+      font-style: italic;
+    }
+    .loading {
+      color: var(--color-secondary);
+    }
+    .error {
+      color: #a00;
+      background-color: #ffebee;
+      border: 1px solid #ffcdd2;
+      border-radius: 5px;
+    }
+    .empty {
+      color: #666;
+    }
+    .refresh-btn {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: var(--font-main);
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+      margin-bottom: 1rem;
+    }
+    .refresh-btn:hover {
+      background-color: #004080;
+    }
+    .timestamp {
+      font-size: 0.85rem;
+      color: #666;
+    }
+    /* Estilos responsivos básicos */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+      tr {
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #fff;
+      }
+      td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+      }
+      td:before {
+        content: attr(data-label) ": ";
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        text-align: left;
+        font-weight: bold;
+        color: var(--color-primary);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Panel de Administración - Mensajes de Contacto</h1>
+    <button id="refresh-btn" class="refresh-btn">🔄 Actualizar Mensajes</button>
+    <div id="status-message"></div>
+    <div class="table-container">
+      <table id="messages-table">
+        <thead>
+          <tr>
+            <th>Fecha/Hora</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Mensaje</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Los datos se llenarán aquí con JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Incluir SDKs de Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    // 1. Configuración de Firebase (LA MISMA de contacto.html)
+    // ⚠️ RECUERDA REEMPLAZAR ESTOS VALORES CON LOS TUYOS ⚠️
+        const firebaseConfig = {
+      apiKey: "AIzaSyBRlLI6jyodHvj_RSsKOjFF8B2HeM1UW7E",
+      authDomain: "coreltechweb-contactos.firebaseapp.com",
+      projectId: "coreltechweb-contactos",
+      storageBucket: "coreltechweb-contactos.firebasestorage.app",
+      messagingSenderId: "597588902592",
+      appId: "1:597588902592:web:c721408e00e62de26fe325"
+    };
+
+    // 2. Inicializar Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // 3. Referencias a elementos del DOM
+    const tableBody = document.querySelector('#messages-table tbody');
+    const statusMessage = document.getElementById('status-message');
+    const refreshBtn = document.getElementById('refresh-btn');
+
+    // 4. Función para mostrar mensajes de estado
+    function showStatus(message, type = 'info') {
+      statusMessage.textContent = message;
+      statusMessage.className = type; // 'loading', 'error', 'empty'
+    }
+
+    // 5. Función para cargar y mostrar mensajes
+    async function loadMessages() {
+      showStatus('Cargando mensajes...', 'loading');
+
+      try {
+        // Obtener todos los documentos de la colección 'mensajes_contacto'
+        // Ordenar por fecha_envio descendente (los más recientes primero)
+        const querySnapshot = await db.collection('mensajes_contacto')
+                                      .orderBy('fecha_envio', 'desc')
+                                      .get();
+
+        tableBody.innerHTML = ''; // Limpiar tabla
+
+        if (querySnapshot.empty) {
+          showStatus('No hay mensajes aún.', 'empty');
+          const row = document.createElement('tr');
+          row.innerHTML = `<td colspan="5" class="empty">No se encontraron mensajes.</td>`;
+          tableBody.appendChild(row);
+          return;
+        }
+
+        showStatus(`Cargados ${querySnapshot.size} mensajes.`); // Mensaje de éxito
+
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          
+          // Formatear la fecha
+          let fechaFormateada = 'Sin fecha';
+          if (data.fecha_envio) {
+             try {
+               // toDate() convierte el Timestamp de Firestore a un objeto Date de JavaScript
+               const fecha = data.fecha_envio.toDate ? data.fecha_envio.toDate() : new Date(data.fecha_envio);
+               // Formatear la fecha como desees, por ejemplo: DD/MM/YYYY HH:MM:SS
+               fechaFormateada = fecha.toLocaleString('es-ES', {
+                 year: 'numeric',
+                 month: '2-digit',
+                 day: '2-digit',
+                 hour: '2-digit',
+                 minute: '2-digit',
+                 second: '2-digit'
+               });
+             } catch (dateError) {
+               console.error("Error al formatear la fecha:", dateError);
+               fechaFormateada = data.fecha_envio.toString ? data.fecha_envio.toString() : 'Fecha inválida';
+             }
+          }
+
+          // Crear una nueva fila en la tabla
+          const row = document.createElement('tr');
+          
+          // Para diseño responsivo, añadimos data-label
+          row.innerHTML = `
+            <td data-label="Fecha/Hora"><span class="timestamp">${fechaFormateada}</span></td>
+            <td data-label="Nombre">${data.nombre || 'N/A'}</td>
+            <td data-label="Email">${data.email ? `<a href="mailto:${data.email}">${data.email}</a>` : 'N/A'}</td>
+            <td data-label="Teléfono">${data.telefono ? `<a href="tel:${data.telefono}">${data.telefono}</a>` : 'N/A'}</td>
+            <td data-label="Mensaje">${data.mensaje ? data.mensaje.replace(/\n/g, '<br>') : 'N/A'}</td>
+          `;
+          tableBody.appendChild(row);
+        });
+
+      } catch (error) {
+        console.error("Error al cargar mensajes: ", error);
+        showStatus(`Error al cargar mensajes: ${error.message}`, 'error');
+        tableBody.innerHTML = `<tr><td colspan="5" class="error">Error al cargar mensajes: ${error.message}</td></tr>`;
+      }
+    }
+
+    // 6. Asignar evento al botón de refrescar
+    refreshBtn.addEventListener('click', loadMessages);
+
+    // 7. Cargar mensajes cuando se cargue la página
+    window.addEventListener('DOMContentLoaded', loadMessages);
+  </script>
+</body>
+</html>

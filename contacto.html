@@ -11,8 +11,9 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <!-- Favicon -->
   <link rel="icon" href="assets/img/favicon.webp" type="image/webp">
-  <!-- EmailJS SDK -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
 
   <!-- 🔁 Precarga de imágenes críticas -->
   <link rel="preload" as="image" href="assets/img/hero-tech.webp" type="image/webp">
@@ -27,7 +28,7 @@
   <header class="navbar">
     <div class="container">
       <a href="index.html" class="logo">
-        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="150" height="60">
+        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="180" height="70">
       </a>
       <button class="menu-toggle" aria-label="Abrir menú">☰</button>
       <nav class="nav-mobile">
@@ -59,7 +60,7 @@
     </div>
   </section>
 
-  <!-- 📨 Formulario de Contacto con EmailJS -->
+  <!-- 📨 Formulario de Contacto con Firebase -->
   <section class="contact-section fade-up">
     <div class="container">
       <h2 class="section-title">Envíanos un Mensaje</h2>
@@ -88,15 +89,15 @@
     </div>
   </section>
 
-  <!-- 📍 Datos de Contacto Alternativos -->
-  <section class="problems-with-image fade-up" style="background-color: #f0f8ff; padding: 4rem 0;">
+  <!-- 📍 Datos de Contacto Alternativos (MEJORADO) -->
+  <section class="contact-alternatives fade-up">
     <div class="container">
       <div class="content-with-image reverse">
         <div class="image-side">
           <img src="assets/img/contact-info.webp" alt="Información de contacto" class="content-img" loading="lazy">
         </div>
-        <div class="text-side">
-          <h2>También Puedes Contactarnos Por</h2>
+        <div class="text-side contact-info">
+          <h2>Otras Formas de Contacto</h2>
           <div class="contact-details">
             <div class="contact-item">
               <h3>📧 Email</h3>
@@ -105,6 +106,7 @@
             <div class="contact-item">
               <h3>📱 WhatsApp</h3>
               <p><a href="https://wa.me/584145828186" target="_blank" rel="noopener">+58 414 582 8186</a></p>
+              <p class="contact-note">Respuesta rápida, ideal para consultas urgentes.</p>
             </div>
           </div>
         </div>
@@ -122,7 +124,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
-          <img src="assets/img/logo.webp" alt="Logo Coreltech" width="130" height="50">
+          <img src="assets/img/logo2.webp" alt="Logo Coreltech" width="150" height="60">
           <p>Soluciones IT profesionales, rápidas y confiables.</p>
         </div>
         <div class="footer-contact">
@@ -143,24 +145,38 @@
     </div>
   </footer>
 
-  <!-- ✅ Script: EmailJS + Menú + Animaciones -->
+  <!-- ✅ Script: Firebase + Menú + Animaciones -->
   <script>
-    // Inicializa EmailJS con tu Public Key
-    (function() {
-      emailjs.init("YOUR_PUBLIC_KEY"); // ← Reemplaza con tu clave pública de EmailJS
-    })();
+    // Configuración de Firebase (REEMPLAZA CON TUS DATOS REALES)
+    const firebaseConfig = {
+      apiKey: "AIzaSyBRlLI6jyodHvj_RSsKOjFF8B2HeM1UW7E",
+      authDomain: "coreltechweb-contactos.firebaseapp.com",
+      projectId: "coreltechweb-contactos",
+      storageBucket: "coreltechweb-contactos.firebasestorage.app",
+      messagingSenderId: "T597588902592",
+      appId: "1:597588902592:web:c721408e00e62de26fe325"
+      // measurementId: "G-3FMVE049YG" // Opcional, puedes eliminar esta línea si no la tienes
+    };
+
+    // Inicializar Firebase
+    firebase.initializeApp(firebaseConfig);
+    // Obtener una referencia a la base de datos Firestore
+    const db = firebase.firestore();
 
     // Menú móvil
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-      });
-    });
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+        });
+    }
+
 
     // Animaciones al hacer scroll
     const fadeElements = document.querySelectorAll('.fade-up');
@@ -176,8 +192,8 @@
     window.addEventListener('scroll', fadeInOnScroll);
     window.addEventListener('load', fadeInOnScroll);
 
-    // Manejo del formulario con EmailJS
-    document.getElementById('contact-form').addEventListener('submit', function (e) {
+    // Manejo del formulario con Firebase Firestore
+    document.getElementById('contact-form').addEventListener('submit', async function (e) {
       e.preventDefault();
 
       const btnText = document.getElementById('btn-text');
@@ -185,28 +201,103 @@
       const submitBtn = document.getElementById('submit-btn');
       const formMessage = document.getElementById('form-message');
 
+      // Obtener valores del formulario
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      // Validación básica simple
+      if (!name || !email || !message) {
+        formMessage.innerHTML = '<p style="color: red;">Por favor, completa todos los campos obligatorios (*).</p>';
+        return; // Detener el envío si hay campos vacíos
+      }
+
+      // Expresión regular básica para validar email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+         formMessage.innerHTML = '<p style="color: red;">Por favor, ingresa un email válido.</p>';
+         return;
+      }
+
       // Mostrar estado de carga
       submitBtn.disabled = true;
       btnText.style.display = 'none';
       loading.style.display = 'inline';
+      formMessage.innerHTML = ''; // Limpiar mensajes anteriores
 
-      const serviceID = 'YOUR_SERVICE_ID'; // ← Reemplaza con tu Service ID de EmailJS
-      const templateID = 'YOUR_TEMPLATE_ID'; // ← Reemplaza con tu Template ID de EmailJS
+      try {
+  // 1. Guardar datos en Firestore
+  const docRef = await db.collection('mensajes_contacto').add({
+    nombre: name,
+    email: email,
+    telefono: phone || null,
+    mensaje: message,
+    fecha_envio: firebase.firestore.FieldValue.serverTimestamp()
+  });
 
-      // Enviar con EmailJS
-      emailjs.sendForm(serviceID, templateID, this)
-        .then(() => {
-          formMessage.innerHTML = '<p style="color: green;">¡Mensaje enviado con éxito! Te responderemos en menos de 24 horas.</p>';
-          this.reset();
-        }, (error) => {
-          formMessage.innerHTML = `<p style="color: red;">Error: ${error.text}</p>`;
-        })
-        .finally(() => {
-          // Restaurar botón
-          submitBtn.disabled = false;
-          btnText.style.display = 'inline';
-          loading.style.display = 'none';
-        });
+  console.log("Mensaje guardado en Firestore con ID: ", docRef.id);
+
+  // 2. ENVIAR NOTIFICACIÓN POR TELEGRAM (nuevo paso)
+  // --- CONFIGURACIÓN ---
+  // REEMPLAZA ESTOS VALORES CON LOS TUYOS OBTENIDOS EN LOS PASOS 1 Y 2
+  const TELEGRAM_BOT_TOKEN = '7916545098:AAFiNbbKpecLTsNQ3Kz8MRoztm8GhN_P3bw'; // Ejemplo: '1234567890:AAH1a2B3c4D5e6F7g8H9i0JkLmNoPqRsTuV'
+  const TELEGRAM_CHAT_ID = '7523354646';        // Ejemplo: '987654321'
+  // ---------------------
+
+  // Crear el mensaje de notificación con formato Markdown
+  let mensajeNotificacion = `🔔 *¡Nuevo Mensaje de Contacto!*\n\n`;
+  mensajeNotificacion += `*Nombre:* ${name}\n`;
+  mensajeNotificacion += `*Email:* ${email}\n`;
+  if (phone) {
+    mensajeNotificacion += `*Teléfono:* ${phone}\n`;
+  }
+  mensajeNotificacion += `\n*Mensaje:*\n${message}`;
+
+  // URL de la API de Telegram Bot para enviar mensajes
+  const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+  // Enviar la notificación usando fetch
+  // Usamos .catch() para que un error en la notificación no afecte el flujo principal
+  fetch(telegramUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      chat_id: TELEGRAM_CHAT_ID,
+      text: mensajeNotificacion,
+      parse_mode: 'Markdown' // Permite formato básico como *negrita*
+    })
+  })
+  .then(response => {
+    if (!response.ok) {
+      console.warn("⚠️ La notificación a Telegram pudo haber fallado. Status:", response.status);
+      return response.text().then(text => { throw new Error(text); });
+    }
+    console.log("✅ Notificación enviada a Telegram.");
+    return response.json();
+  })
+  .catch(error => {
+    console.error("❌ Error al enviar notificación a Telegram:", error);
+    // Opcional: Mostrar un mensaje al usuario si falla la notificación
+    // formMessage.innerHTML += '<br><small style="color: orange;">(Nota: El mensaje se guardó, pero hubo un problema al enviar la notificación.)</small>';
+  });
+
+  // 3. Mostrar mensaje de éxito al usuario (sin esperar la notificación)
+  formMessage.innerHTML = '<p style="color: green;">¡Mensaje enviado con éxito! Te responderemos en menos de 24 horas.</p>';
+  this.reset();
+
+} catch (error) {
+  console.error("Error al guardar el mensaje en Firestore o enviar notificación:", error);
+  formMessage.innerHTML = `<p style="color: red;">Hubo un error al enviar el mensaje. Intenta nuevamente más tarde. (${error.message})</p>`;
+      } 
+      finally {
+        // Restaurar botón
+        submitBtn.disabled = false;
+        btnText.style.display = 'inline';
+        loading.style.display = 'none';
+      }
     });
   </script>
 </body>
