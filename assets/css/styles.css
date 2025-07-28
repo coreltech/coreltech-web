@@ -3,11 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 html {
   scroll-behavior: smooth;
 }
-
 :root {
   --color-primary: #003366;
   --color-secondary: #0066cc;
@@ -20,7 +18,6 @@ html {
   --font-text: 1rem;
   --font-small: .9rem;
 }
-
 body {
   font-family: var(--font-main);
   color: #333;
@@ -28,7 +25,6 @@ body {
   line-height: 1.6;
   position: relative;
 }
-
 body::before {
   content: '';
   position: fixed;
@@ -41,7 +37,6 @@ body::before {
   z-index: -1;
   pointer-events: none;
 }
-
 .container {
   width: 90%;
   max-width: 1200px;
@@ -50,24 +45,20 @@ body::before {
   position: relative;
   z-index: 1;
 }
-
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
-
 a {
   text-decoration: none;
   color: var(--color-primary);
   transition: color .3s ease;
 }
-
 a:hover {
   color: #004080;
   text-decoration: underline;
 }
-
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-white);
@@ -80,13 +71,11 @@ a:hover {
   text-align: center;
   width: auto;
 }
-
 .btn-primary:hover {
   background-color: #004080;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 51, 102, .3);
 }
-
 .btn-secondary {
   background-color: var(--color-gray);
   color: #333;
@@ -98,22 +87,18 @@ a:hover {
   margin-top: 1rem;
   text-decoration: none;
 }
-
 .btn-secondary:hover {
   background-color: #ccc;
 }
-
 .fade-up {
   opacity: 0;
   transform: translateY(30px);
   transition: all .6s ease;
 }
-
 .fade-up.visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 .card-img {
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, .1);
@@ -121,12 +106,10 @@ a:hover {
   width: 100%;
   height: auto;
 }
-
 .card-img:hover {
   transform: scale(1.03);
   box-shadow: 0 8px 16px rgba(0, 51, 102, .15);
 }
-
 /* Corrección: Imágenes responsivas */
 .service-img,
 .portfolio-img,
@@ -144,19 +127,16 @@ a:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, .1);
   transition: transform .3s ease;
 }
-
 /* Ajuste específico para imágenes de tríada */
 .triad-img {
-  width: 80px;
-  height: 80px;
+  width: 150px;
+  height: 100px;
   border-radius: 12px;
   object-fit: cover;
 }
-
 .triad-card:hover .triad-img {
   transform: scale(1.05);
 }
-
 .content-img {
   width: 100%;
   height: 220px;
@@ -165,11 +145,9 @@ a:hover {
   box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
   transition: transform .3s ease;
 }
-
 .content-img:hover {
   transform: scale(1.02);
 }
-
 .node-thumb,
 .value-thumb {
   width: 90px;
@@ -181,14 +159,29 @@ a:hover {
   margin: 0 1rem 1rem 0;
   border: 1px solid #e0e0e0;
 }
-
+/* === Hero con fondo de circuito impreso sutil === */
 .hero {
-  padding: 5rem 0;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+  padding: 3rem 0; /* Ajustado de 5rem a 3rem como solicitado */
+  /* Gradiente base ligeramente más claro */
+  background: linear-gradient(135deg, #f8f9fc 0%, #eef1f7 100%);
   position: relative;
   overflow: hidden;
 }
-
+/* === Fondo sutil de circuito impreso === */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Patrón SVG de circuito impreso sutil */
+  background-image: url("image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10,10 L30,10 L30,30 L50,30 L50,50 L30,50 L30,70 L10,70 Z' stroke='%23003366' stroke-width='0.8' fill='none' stroke-opacity='0.08'/%3E%3Ccircle cx='70' cy='20' r='5' stroke='%23003366' stroke-width='0.8' fill='none' stroke-opacity='0.08'/%3E%3Cpath d='M60,60 Q70,50 80,60 T100,60' stroke='%23003366' stroke-width='0.8' fill='none' stroke-opacity='0.08'/%3E%3C/svg%3E");
+  background-size: 60px 60px; /* Tamaño del patrón repetido */
+  z-index: 0; /* Detrás del contenido */
+  pointer-events: none; /* No interfiere con clics */
+}
+/* === Mantener la onda SVG en la parte inferior === */
 .hero::after {
   content: '';
   position: absolute;
@@ -196,25 +189,23 @@ a:hover {
   left: 0;
   width: 100%;
   height: 10px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f0f8ff' fill-opacity='0.5' d='M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,202.7C960,203,1056,181,1152,181.3C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
+  background: url("image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f0f8ff' fill-opacity='0.5' d='M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,202.7C960,203,1056,181,1152,181.3C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
   background-size: 1440px 10px;
-  z-index: 0;
+  z-index: 0; /* Asegurarse de que esté detrás del contenido, pero encima del ::before */
 }
-
+/* === Asegurar que el contenido del hero esté por encima del fondo === */
 .hero .container {
   position: relative;
-  z-index: 1;
+  z-index: 1; /* Contenido visible encima de los fondos */
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 3rem;
 }
-
 .hero-content {
   flex: 1;
   max-width: 600px;
 }
-
 .tagline {
   display: block;
   font-size: 1.1rem;
@@ -222,25 +213,21 @@ a:hover {
   font-weight: 500;
   margin-bottom: 1rem;
 }
-
 .hero h1 {
   font-size: 2.5rem;
   color: var(--color-primary);
   margin-bottom: 1rem;
 }
-
 .hero p {
   font-size: 1.1rem;
   color: #555;
   margin-bottom: 2rem;
 }
-
 .hero-buttons {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
-
 .navbar {
   background-color: #f0f8ff;
   padding: 1rem 0;
@@ -249,7 +236,6 @@ a:hover {
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
 }
-
 .navbar .container {
   display: flex;
   justify-content: space-between;
@@ -257,14 +243,12 @@ a:hover {
   padding: .5rem 1rem;
   min-height: 70px;
 }
-
 .logo img {
   max-width: 180px;
   max-height: 60px;
   object-fit: contain;
   vertical-align: middle;
 }
-
 .menu-toggle {
   display: none;
   background: none;
@@ -273,28 +257,23 @@ a:hover {
   cursor: pointer;
   color: var(--color-primary);
 }
-
 .nav-links {
   list-style: none;
   display: flex;
   gap: 2rem;
   margin-left: auto;
 }
-
 .nav-links li a {
   color: var(--color-primary);
   font-weight: 500;
 }
-
 .nav-links li a:hover {
   color: #004080;
 }
-
 .tech-triad {
   padding: 4rem 0;
   background-color: #f0f8ff;
 }
-
 .tech-triad::before {
   content: '';
   display: block;
@@ -304,21 +283,18 @@ a:hover {
   background: linear-gradient(to right, transparent, var(--color-primary), transparent);
   border-radius: 2px;
 }
-
 .tech-triad h2 {
   text-align: center;
   font-size: var(--font-title);
   color: var(--color-primary);
   margin-bottom: 1rem;
 }
-
 .triad-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   justify-items: center;
 }
-
 .triad-card {
   background-color: white;
   padding: 2rem;
@@ -328,23 +304,19 @@ a:hover {
   transition: transform .3s ease;
   width: 100%;
 }
-
 .triad-card:hover {
   transform: translateY(-6px);
 }
-
 .triad-card h3 {
   color: var(--color-primary);
   margin-bottom: 1rem;
 }
-
 .problems-with-image {
   padding: 4rem 0;
   background-color: #fff;
   position: relative;
   overflow: hidden;
 }
-
 .problems-with-image::before {
   content: '';
   position: absolute;
@@ -358,51 +330,52 @@ a:hover {
   z-index: 0;
   pointer-events: none;
 }
-
 .problems-with-image .container {
   position: relative;
   z-index: 1;
 }
-
 .content-with-image {
   display: flex;
   align-items: center;
   gap: 3rem;
   margin: 4rem 0;
 }
-
 .content-with-image.reverse {
   flex-direction: row-reverse;
 }
-
 .content-with-image .image-side {
   flex: 1;
   min-width: 300px;
 }
-
 .content-with-image .text-side {
   flex: 1;
   max-width: 500px;
 }
-
 .check-list {
   margin: 1.5rem 0;
   color: #555;
 }
-
 .check-list li {
   margin-bottom: .5rem;
   list-style: disc;
   color: #555;
 }
-
+/* === Sección de Vista Previa del Blog (Ubicación privilegiada y ajustada) === */
 .blog-preview {
-  padding: 4rem 0;
+  /* Reducir el padding vertical para hacerla menos prominente */
+  padding: 2.5rem 0;
   background-color: #fafafa;
   position: relative;
   overflow: hidden;
 }
-
+/* Opcional: Hacer el título un poco más pequeño */
+.blog-preview h2 {
+  text-align: center;
+  /* Reducir ligeramente el tamaño del título */
+  font-size: 1.6rem; /* Era var(--font-title) que es 1.8rem */
+  color: var(--color-primary);
+  margin-bottom: 2rem; /* Era 3rem */
+}
 .blog-preview::before {
   content: '';
   position: absolute;
@@ -410,25 +383,16 @@ a:hover {
   left: 0;
   width: 100%;
   height: 20px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f0f8ff' fill-opacity='0.4' d='M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,202.7C960,203,1056,181,1152,181.3C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
+  background: url("image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f0f8ff' fill-opacity='0.4' d='M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,202.7C960,203,1056,181,1152,181.3C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
   background-size: 1440px 20px;
   z-index: 0;
 }
-
-.blog-preview h2 {
-  text-align: center;
-  font-size: var(--font-title);
-  color: var(--color-primary);
-  margin-bottom: 3rem;
-}
-
 .posts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   justify-items: center;
 }
-
 .post {
   background-color: #fff;
   padding: 1.5rem;
@@ -437,18 +401,15 @@ a:hover {
   text-align: center;
   width: 100%;
 }
-
 .post h4 {
   margin-bottom: .5rem;
   font-size: 1.1rem;
 }
-
 .post p {
   font-size: .9rem;
   color: #666;
   margin-bottom: 1rem;
 }
-
 .footer {
   padding: 4rem 0;
   background: linear-gradient(135deg, var(--color-primary) 0%, #002244 100%);
@@ -456,7 +417,6 @@ a:hover {
   position: relative;
   overflow: hidden;
 }
-
 .footer::before {
   content: '';
   position: absolute;
@@ -467,54 +427,43 @@ a:hover {
   border-radius: 50%;
   background: rgba(255, 255, 255, .1);
 }
-
 .footer-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   margin-bottom: 2rem;
 }
-
 .footer-logo img {
   max-width: 150px;
   height: auto;
   object-fit: contain;
 }
-
 .footer-logo p {
   margin-top: .5rem;
   font-size: var(--font-small);
 }
-
 .footer-contact p {
   margin-bottom: .5rem;
 }
-
 .footer-contact a {
   color: var(--color-white);
 }
-
 .footer-social h4 {
   margin-bottom: 1rem;
 }
-
 .footer-social ul {
   list-style: none;
 }
-
 .footer-social ul li {
   margin-bottom: .5rem;
 }
-
 .footer-social ul li a {
   color: var(--color-white);
   transition: color .3s ease;
 }
-
 .footer-social ul li a:hover {
   color: #ff6600;
 }
-
 .footer-bottom {
   text-align: center;
   font-size: var(--font-small);
@@ -522,7 +471,6 @@ a:hover {
   border-top: 1px solid rgba(255, 255, 255, .1);
   padding-top: 1rem;
 }
-
 .whatsapp-fab {
   position: fixed;
   bottom: 20px;
@@ -531,20 +479,17 @@ a:hover {
   animation: pulse 2s infinite;
   display: none;
 }
-
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
-
 .tree-section {
   padding: 4rem 0;
   background-color: #fff;
   position: relative;
   overflow: hidden;
 }
-
 .tree-section::before {
   content: '';
   position: absolute;
@@ -558,19 +503,16 @@ a:hover {
   z-index: 0;
   pointer-events: none;
 }
-
 .tree-section .container {
   position: relative;
   z-index: 1;
 }
-
 .tree-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
 }
-
 .tree-node {
   text-align: center;
   max-width: 500px;
@@ -581,22 +523,18 @@ a:hover {
   transition: transform .3s ease;
   width: 100%;
 }
-
 .tree-node h2 {
   color: var(--color-primary);
   margin-bottom: 1rem;
 }
-
 .tree-node h3 {
   color: var(--color-secondary);
   margin-bottom: .75rem;
 }
-
 .main-node {
   border: 2px solid var(--color-primary);
   background: #f0f8ff;
 }
-
 .node-img {
   width: 100%;
   max-width: 300px;
@@ -606,14 +544,12 @@ a:hover {
   margin-bottom: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
 }
-
 .connector {
   width: 2px;
   height: 40px;
   background-color: var(--color-primary);
   margin: 0 auto;
 }
-
 .horizontal-branch {
   display: flex;
   flex-direction: row;
@@ -621,21 +557,20 @@ a:hover {
   justify-content: center;
   gap: 2rem;
 }
-
 .horizontal-branch .connector {
   width: 60px;
   height: 2px;
   margin: 0 1rem;
 }
-
+/* === Corrección de .values-grid para forzar 4 columnas en pantallas grandes === */
 .values-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
+  /* FORZAR 4 columnas de igual tamaño en pantallas grandes */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem; /* Espacio entre tarjetas */
   width: 100%;
   margin-top: 1rem;
 }
-
 .value-card {
   background-color: var(--color-white);
   padding: 1rem;
@@ -643,32 +578,27 @@ a:hover {
   border-left: 4px solid var(--color-primary);
   font-size: .95rem;
 }
-
 .value-card strong {
   color: var(--color-primary);
   display: block;
   margin-bottom: .25rem;
 }
-
 .portfolio-grid-section {
   padding: 4rem 0;
   background-color: var(--color-white);
 }
-
 .portfolio-grid-section h2 {
   text-align: center;
   font-size: var(--font-title);
   color: var(--color-primary);
   margin-bottom: 3rem;
 }
-
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2.5rem;
   justify-items: center;
 }
-
 .portfolio-item {
   background: var(--color-white);
   border-radius: 12px;
@@ -678,17 +608,14 @@ a:hover {
   opacity: 0;
   width: 100%;
 }
-
 .portfolio-item.visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 .portfolio-item:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 24px rgba(0, 51, 102, .15);
 }
-
 .project-header {
   display: flex;
   justify-content: space-between;
@@ -698,30 +625,25 @@ a:hover {
   font-size: .85rem;
   font-weight: 500;
 }
-
 .project-tag {
   background: rgba(255, 255, 255, .2);
   padding: .25rem .5rem;
   border-radius: 4px;
   font-size: .8rem;
 }
-
 .project-year {
   font-weight: 400;
   opacity: .9;
 }
-
 .portfolio-img {
   width: 100%;
   height: 180px;
   object-fit: cover;
 }
-
 .contact-section {
   padding: 4rem 0;
   background-color: #f9f9f9;
 }
-
 .contact-form {
   max-width: 600px;
   margin: 2rem auto;
@@ -730,14 +652,12 @@ a:hover {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, .05);
 }
-
 .contact-form label {
   display: block;
   margin-bottom: .5rem;
   font-weight: 500;
   color: var(--color-primary);
 }
-
 .contact-form input,
 .contact-form textarea {
   width: 100%;
@@ -749,14 +669,12 @@ a:hover {
   box-sizing: border-box;
   transition: border-color .3s ease;
 }
-
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 2px rgba(0, 51, 102, .2);
 }
-
 .contact-form button {
   width: 100%;
   padding: .75rem 1rem;
@@ -769,11 +687,9 @@ a:hover {
   font-weight: 500;
   transition: background .3s ease;
 }
-
 .contact-form button:hover {
   background: #004080;
 }
-
 .form-message {
   margin-top: 1rem;
   padding: 1rem;
@@ -781,28 +697,39 @@ a:hover {
   text-align: center;
   font-size: .95rem;
 }
-
 .form-message[style*="color: green"] {
   background-color: #d4edda;
   color: #155724;
   border: 1px solid #c3e6cb;
 }
-
+/* === Estilos específicos para la sección de Servicios Detallados === */
 .services-details {
   padding: 4rem 0;
   background-color: var(--color-white);
 }
-
 .service {
   margin-bottom: 4rem;
 }
-
+/* Estilo para los títulos principales de cada servicio (MANTENIENDO LA DEFINICIÓN COMPLETA) */
 .service h2 {
-  font-size: 1.8rem;
+  font-size: 1.8rem; /* Puedes ajustar este tamaño si lo deseas */
   margin-bottom: 1.5rem;
-  color: var(--color-primary);
+  color: var(--color-primary); /* Azul principal */
+  text-align: center; /* Centrar el título */
+  position: relative; /* Para el pseudo-elemento decorativo opcional */
+  padding-bottom: 0.5rem; /* Espacio para la línea decorativa */
 }
-
+/* Línea decorativa opcional debajo del título del servicio */
+.service h2::after {
+  content: '';
+  display: block;
+  width: 60px; /* Ancho de la línea */
+  height: 3px; /* Grosor de la línea */
+  background-color: var(--color-secondary); /* Color de la línea */
+  margin: 0.5rem auto 0 auto; /* Centrar la línea */
+  border-radius: 2px; /* Bordes redondeados ligeros */
+}
+/* Manteniendo los estilos existentes para el contenido del servicio */
 .service-content {
   display: flex;
   align-items: center;
@@ -812,20 +739,165 @@ a:hover {
   padding: 1.5rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, .05);
 }
-
 .service-text p {
   margin-bottom: 1rem;
 }
-
 .service-text ul {
   margin-bottom: 1rem;
   padding-left: 1.2rem;
 }
-
 .service-text ul li {
   margin-bottom: .5rem;
   list-style: disc;
   color: #555;
+}
+/* Asegurarse de que las imágenes de servicio también sigan las reglas generales */
+.service-img {
+  /* Hereda de .service-img definido anteriormente, pero podemos reforzar */
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin: 1rem auto;
+  display: block;
+  border: 2px solid var(--color-primary);
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .1);
+  transition: transform .3s ease;
+}
+.service-img:hover {
+  transform: scale(1.02); /* Pequeño efecto al pasar el ratón */
+}
+/* === CTA Final Fuerte - Versión Centrada Robusta (Usando Flexbox) === */
+/* Estilo especial para la última sección de llamada a la acción en servicios.html */
+/* Esta versión redefine completamente el layout interno para centrar todo */
+
+/* Selector más específico para evitar conflictos con otras .problems-with-image */
+.problems-with-image.cta-profesional {
+  background-color: #ffffff; /* Fondo blanco */
+  padding: 3rem 1rem; /* Padding vertical reducido, lateral normal */
+  margin: 2.5rem auto; /* Margen vertical, centrado horizontal */
+  /* border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee; */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra más definida */
+  border-radius: 12px; /* Bordes ligeramente redondeados */
+  max-width: 900px; /* Limitar el ancho máximo */
+  /* Asegurar que el texto base esté centrado */
+  text-align: center;
+}
+
+/* Forzar el contenedor principal a centrar sus hijos directos (los .text-side y .image-side) */
+.problems-with-image.cta-profesional .content-with-image {
+  display: flex !important;
+  flex-direction: column !important; /* Apilar elementos verticalmente */
+  align-items: center !important; /* Centrar horizontalmente */
+  justify-content: center !important; /* Centrar verticalmente si hay espacio */
+  gap: 1rem !important; /* Espacio entre título, texto, imagen y botón */
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  text-align: center !important; /* Heredar alineación centrada */
+}
+
+/* Forzar los contenedores internos a ser bloques centrados */
+.problems-with-image.cta-profesional .image-side,
+.problems-with-image.cta-profesional .text-side {
+  width: auto !important; /* No forzar ancho completo */
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: none !important;
+  text-align: center !important; /* Asegurar texto centrado */
+  display: block !important; /* Mostrar como bloques */
+}
+
+/* Asegurar que el texto (título y párrafo) esté centrado */
+.problems-with-image.cta-profesional .text-side h2,
+.problems-with-image.cta-profesional .text-side p {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+  max-width: 100% !important;
+  display: block !important;
+}
+
+/* Estilos para el título */
+.problems-with-image.cta-profesional .text-side h2 {
+  font-size: 1.8rem !important;
+  color: var(--color-primary) !important;
+  margin: 0 0 0.5rem 0 !important; /* Reducir margen inferior */
+  line-height: 1.3 !important;
+  padding: 0 1rem !important;
+  font-weight: 500 !important;
+}
+
+/* Estilos para el párrafo */
+.problems-with-image.cta-profesional .text-side p {
+  font-size: 1.1rem !important;
+  color: #555 !important;
+  margin: 0 0 1rem 0 !important; /* Reducir margen inferior */
+  line-height: 1.6 !important;
+  padding: 0 1rem !important;
+  max-width: 650px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Estilos para la imagen */
+.problems-with-image.cta-profesional .image-side {
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.problems-with-image.cta-profesional .image-side img.content-img {
+  display: inline-block !important; /* Crucial para centrar con text-align del padre */
+  margin: 0 auto 1rem auto !important; /* Centrar con margen automático y espacio abajo */
+  max-width: 150px !important;
+  height: auto !important;
+  width: auto !important; /* Evitar que se estire */
+  border-radius: 50% !important;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15) !important;
+  border: 3px solid var(--color-primary) !important;
+  transition: transform 0.3s ease !important;
+  object-fit: cover !important; /* Mantener proporciones */
+}
+
+.problems-with-image.cta-profesional .image-side img.content-img:hover {
+  transform: scale(1.05) !important;
+}
+
+/* Botón centrado */
+.problems-with-image.cta-profesional .text-side .btn-primary {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+  padding: 0.9rem 2rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  border-radius: 50px !important;
+  border: 2px solid var(--color-primary) !important;
+  display: inline-block !important;
+  margin: 0.5rem auto 0 auto !important; /* Centrar con margen automático */
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.25) !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  width: auto !important;
+  max-width: 90% !important;
+}
+
+.problems-with-image.cta-profesional .text-side .btn-primary:hover {
+  background-color: #004080 !important;
+  border-color: #004080 !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 6px 18px rgba(0, 51, 102, 0.35) !important;
+  text-decoration: none !important;
 }
 
 /* 📱 MEDIA QUERIES PARA MÓVILES */
@@ -835,47 +907,37 @@ a:hover {
     --font-subtitle: 1.1rem;
     --font-text: 0.95rem;
   }
-  
   .container {
     padding: 1rem;
   }
-  
   .hero {
     padding: 3rem 0;
   }
-  
   .hero .container {
     flex-direction: column;
     gap: 1.5rem;
     text-align: center;
   }
-  
   .hero-content {
     max-width: 100%;
   }
-  
   .hero h1 {
     font-size: 2rem;
   }
-  
   .hero p {
     font-size: 1rem;
   }
-  
   .hero-buttons {
     justify-content: center;
   }
-  
   .hero-image {
     order: -1;
     margin-bottom: 1rem;
     text-align: center;
   }
-  
   .menu-toggle {
     display: block;
   }
-  
   .nav-links {
     display: none;
     flex-direction: column;
@@ -887,141 +949,158 @@ a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
     padding: 1rem 0;
   }
-  
   .nav-links.active {
     display: flex;
   }
-  
   .nav-links li {
     margin: .5rem 0;
     text-align: center;
   }
-  
   .logo img {
     max-width: 150px;
   }
-  
   .content-with-image {
     flex-direction: column;
     gap: 1.5rem;
   }
-  
   .content-with-image.reverse {
     flex-direction: column;
   }
-  
   .content-with-image .image-side,
   .content-with-image .text-side {
     max-width: 100%;
     min-width: unset;
   }
-  
   .text-side {
     text-align: center;
   }
-  
   .check-list {
     text-align: left;
     padding-left: 1rem;
   }
-  
   .triad-grid,
   .posts,
   .portfolio-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
   .triad-card {
     padding: 1.5rem;
   }
-  
   .service-content {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
     padding: 1rem;
   }
-  
   .whatsapp-fab {
     display: block;
   }
-  
   .footer-content {
     gap: 1.5rem;
   }
-  
   .tree-node {
     padding: 1rem;
   }
-  
   .horizontal-branch {
     flex-direction: column;
     gap: 1rem;
   }
-  
   .horizontal-branch .connector {
     width: 2px;
     height: 30px;
     margin: 0 auto;
   }
-  
+  /* Ajuste para tablets: 2 columnas */
   .values-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
   }
-  
   .contact-form {
     padding: 1.5rem;
   }
+  /* Ajuste del tamaño del título en móviles */
+  .service h2 {
+    font-size: 1.6rem; /* Tamaño ligeramente más pequeño en móviles */
+  }
+  /* Ajustes para móviles - CTA Profesional */
+  .problems-with-image.cta-profesional {
+    padding: 2rem 0.5rem;
+    margin: 2rem auto;
+    border-radius: 10px;
+  }
+  .problems-with-image.cta-profesional .text-side h2 {
+    font-size: 1.6rem;
+    padding: 0 0.5rem;
+  }
+  .problems-with-image.cta-profesional .text-side p {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+  .problems-with-image.cta-profesional .image-side img.content-img {
+    max-width: 120px;
+    margin-bottom: 1rem;
+  }
+  .problems-with-image.cta-profesional .text-side .btn-primary {
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    width: auto;
+    max-width: 90%;
+  }
 }
-
 @media (max-width: 480px) {
   :root {
     --font-title: 1.3rem;
     --font-subtitle: 1rem;
   }
-  
   .hero h1 {
     font-size: 1.8rem;
   }
-  
   .hero-buttons {
     flex-direction: column;
     gap: 0.75rem;
   }
-  
   .btn-primary,
   .btn-secondary {
     width: 100%;
     margin-top: 0.75rem;
   }
-  
   .triad-grid {
     gap: 1rem;
   }
-  
   .triad-card {
     padding: 1rem;
   }
-  
   .content-img {
     height: 180px;
   }
-  
   .portfolio-img {
     height: 160px;
   }
+  .service h2 {
+    font-size: 1.4rem; /* Tamaño aún más pequeño en pantallas muy pequeñas */
+  }
+  .values-grid {
+    grid-template-columns: 1fr; /* Una columna en móvil */
+    gap: 1rem;
+  }
+  /* Ajustes para móviles pequeños - CTA Profesional */
+  .problems-with-image.cta-profesional .text-side h2 {
+    font-size: 1.5rem;
+  }
+  .problems-with-image.cta-profesional .text-side p {
+    font-size: 0.95rem;
+  }
+  .problems-with-image.cta-profesional .image-side img.content-img {
+    max-width: 100px;
+  }
 }
-
 /* === Estilos específicos para sobre.html === */
-
 /* Sección contenedora principal */
 .content-alternate {
   padding: 3rem 0;
   background-color: #fff; /* Fondo blanco para contraste */
 }
-
 /* Fila de contenido (imagen + texto) */
 .content-row {
   display: flex;
@@ -1034,32 +1113,26 @@ a:hover {
   box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sombra muy sutil */
   transition: box-shadow 0.3s ease; /* Efecto al pasar el ratón */
 }
-
 .content-row:hover {
   box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Sombra más marcada al pasar el ratón */
 }
-
 /* Alterna el orden para filas "reverse" */
 .content-row.reverse {
   flex-direction: row-reverse;
 }
-
 /* Texto dentro de la fila */
 .content-text {
   flex: 1; /* Ocupa el espacio disponible */
 }
-
 .content-text h2 {
   color: var(--color-primary); /* Azul principal para títulos */
   margin-bottom: 1rem;
   font-size: 1.6rem; /* Tamaño de título ligeramente más grande */
 }
-
 .content-text p {
   margin-bottom: 1rem;
   line-height: 1.7; /* Mejor legibilidad */
 }
-
 /* Imagen dentro de la fila */
 .content-image {
   flex: 1; /* Ocupa el espacio disponible */
@@ -1067,7 +1140,6 @@ a:hover {
   justify-content: center;
   align-items: center;
 }
-
 .content-img {
   width: 100%;
   max-width: 100%; /* Asegura que no se salga del contenedor */
@@ -1076,11 +1148,9 @@ a:hover {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra a las imágenes */
   transition: transform 0.3s ease; /* Efecto al pasar el ratón */
 }
-
 .content-img:hover {
   transform: scale(1.02); /* Pequeño aumento al pasar el ratón */
 }
-
 /* === Estilos Específicos para la Sección de Valores === */
 /* Podemos darle un formato más distintivo a los valores */
 .values-highlight {
@@ -1091,19 +1161,17 @@ a:hover {
   margin: 3rem 0;
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
-
 .values-highlight h2 {
   text-align: center;
   margin-bottom: 1.5rem;
   color: var(--color-primary);
 }
-
-.values-grid {
+/* Ya definido arriba con grid-template-columns: repeat(4, 1fr); */
+/* .values-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grid adaptable */
-  gap: 1.5rem; /* Espacio entre tarjetas de valor */
-}
-
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+} */
 .value-card {
   background-color: white;
   padding: 1.2rem;
@@ -1112,19 +1180,16 @@ a:hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   border-top: 3px solid var(--color-secondary); /* Toque de color secundario */
 }
-
 .value-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
 .value-card strong {
   color: var(--color-primary);
   display: block;
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
 }
-
 /* === Media Queries para Móvil (ya incluidas o similares en el CSS base) === */
 @media (max-width: 768px) {
   .content-row {
@@ -1133,29 +1198,238 @@ a:hover {
     padding: 1rem;
     margin-bottom: 2rem;
   }
-
   .content-row.reverse {
     flex-direction: column !important; /* Asegura columna en móvil */
   }
-
   .content-image {
     order: -1; /* Imagen siempre arriba en móvil */
     margin-bottom: 1rem;
   }
-
   .content-img {
      max-height: 250px; /* Limita altura en móvil */
      object-fit: cover; /* Ajusta la imagen manteniendo proporciones */
   }
-
   .values-highlight {
     padding: 1.5rem 1rem;
     border-radius: 10px; /* Bordes redondeados completos en móvil */
     border-left-width: 3px; /* Ancho de borde lateral más fino */
   }
-
-  .values-grid {
-    grid-template-columns: 1fr; /* Una columna en móvil */
+  /* Ya definido arriba */
+  /* .values-grid {
+    grid-template-columns: 1fr;
     gap: 1rem;
+  } */
+}
+/* === Estilos específicos para la sección de contacto alternativo mejorada === */
+.contact-alternatives {
+  background-color: #f0f8ff; /* Fondo azul claro, igual que el original */
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.contact-alternatives .container {
+  position: relative;
+  z-index: 1;
+}
+/* Asegura que el contenedor interno tenga un buen padding */
+.contact-alternatives .content-with-image {
+  margin: 2rem 0; /* Reduce el margen para que no sea tan grande */
+}
+/* Estilo para el contenedor de información de contacto */
+.contact-info {
+  text-align: center; /* Centra el texto en móvil y desktop */
+}
+.contact-info h2 {
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  text-align: center; /* Asegura que el título también esté alineado */
+}
+/* Contenedor de los detalles de contacto */
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Espacio entre cada método de contacto */
+}
+/* Estilo individual para cada método de contacto */
+.contact-item h3 {
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+.contact-item p {
+  margin-bottom: 0.3rem;
+  color: #444;
+}
+.contact-item a {
+  color: var(--color-secondary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.contact-item a:hover {
+  color: #004080;
+  text-decoration: underline;
+}
+/* Nota adicional para un método de contacto */
+.contact-note {
+  font-size: var(--font-small);
+  color: #666;
+  font-style: italic;
+  margin-top: 0.2rem;
+}
+/* Ajustes para móviles (ya existentes, pero asegurándonos) */
+@media (max-width: 768px) {
+  .contact-alternatives .content-with-image {
+    flex-direction: column !important; /* Siempre columna en móvil */
+    text-align: center; /* Centra texto en móvil */
+    gap: 1.5rem;
+  }
+  .contact-alternatives .content-with-image.reverse {
+    flex-direction: column !important; /* Asegura columna en móvil */
+  }
+  .contact-alternatives .image-side {
+    order: -1; /* Imagen siempre arriba en móvil */
+    margin-bottom: 1rem;
+  }
+  .contact-info {
+    text-align: center; /* Centra el texto en móvil */
+  }
+  .contact-info h2 {
+    text-align: center; /* Centra el título en móvil */
+  }
+  .contact-item h3,
+  .contact-item p {
+    text-align: center; /* Centra el contenido de los items en móvil */
+  }
+}
+
+/* === CTA Final Fuerte - Nueva estructura simple y centrada (Aislada) === */
+/* Esta versión usa una estructura HTML completamente nueva para evitar conflictos */
+
+.cta-aislada {
+  background-color: #ffffff;
+  padding: 3rem 1rem;
+  margin: 3rem auto 2rem auto; /* Margen superior 3rem, inferior 2rem */
+  text-align: center;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  max-width: 900px;
+  width: 90%; /* Similar al ancho de .container */
+}
+
+.cta-contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem; /* Espacio entre elementos */
+  width: 100%;
+}
+
+.cta-titulo {
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin: 0;
+  line-height: 1.3;
+  width: 100%;
+  max-width: 650px;
+}
+
+.cta-texto {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.6;
+  width: 100%;
+  max-width: 650px;
+}
+
+.cta-imagen {
+  display: block;
+  width: 100%; /* Ancho completo del contenedor (hasta max-width) */
+  max-width: 300px; /* Limitar el ancho máximo, ajusta si deseas otro tamaño */
+  height: auto; /* Altura automática para mantener la proporción */
+  object-fit: cover;
+  /* Cambiar a bordes redondeados como las otras imágenes */
+  border-radius: 12px; /* Mismo valor que .content-img, .triad-img, etc. */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Mantener la sombra */
+  border: 2px solid var(--color-primary); /* Mismo borde que otras imágenes */
+  transition: transform 0.3s ease;
+  margin: 0.5rem 0; /* Margen arriba y abajo */
+}
+
+.cta-imagen:hover {
+  transform: scale(1.05);
+}
+
+/* Botón */
+.btn-primary.cta-boton {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 0.9rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: 2px solid var(--color-primary);
+  display: inline-block;
+  margin: 0.5rem 0 0 0; /* Margen solo arriba */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.25);
+  text-decoration: none;
+  cursor: pointer;
+  width: auto;
+  max-width: 90%;
+}
+
+.btn-primary.cta-boton:hover {
+  background-color: #004080;
+  border-color: #004080;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 51, 102, 0.35);
+  text-decoration: none;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+  .cta-aislada {
+    padding: 2rem 0.5rem;
+    margin: 2rem auto;
+    border-radius: 10px;
+  }
+
+  .cta-titulo {
+    font-size: 1.6rem;
+  }
+
+  .cta-texto {
+    font-size: 1rem;
+  }
+
+  .cta-imagen {
+    width: 120px;
+    height: 120px;
+  }
+
+  .btn-primary.cta-boton {
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-titulo {
+    font-size: 1.5rem;
+  }
+
+  .cta-texto {
+    font-size: 0.95rem;
+  }
+
+  .cta-imagen {
+    width: 100px;
+    height: 100px;
   }
 }
