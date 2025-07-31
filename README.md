@@ -1,94 +1,77 @@
-# Coreltech IT Solutions - Web Oficial
+# CorelTech - Soluciones Técnicas Profesionales
 
-Página web oficial de **Coreltech IT Solutions**, una empresa venezolana dedicada a ofrecer **soluciones tecnológicas profesionales, rápidas y confiables** en hardware, software y redes.  
-Diseñada para transmitir **calidad, experiencia y ética profesional** desde la primera interacción.
+Sitio web oficial de **CorelTech**, un negocio técnico especializado en reparación de hardware, software, redes y recuperación de datos en Venezuela.
 
----
-
-## 🧾 Características principales
-
-✅ **Diseño moderno y limpio**  
-Diseño técnico y profesional, enfocado en usabilidad y claridad.
-
-✅ **Hero con enfoque claro**  
-Mensajes directos: *"No vendemos partes, vendemos tranquilidad."*
-
-✅ **Secciones estratégicas**
-- Servicios técnicos (hardware, software, redes)
-- Portafolio de casos de éxito
-- Blog integrado con artículos técnicos
-- Sobre nosotros con estructura de árbol de valores
-
-✅ **Experiencia de usuario optimizada**
-- Animaciones suaves con `Intersection Observer`
-- Botón flotante de WhatsApp (móvil)
-- Diseño 100% responsivo
-- Precarga de imágenes críticas
-- Optimización de rendimiento (WebP, lazy loading)
-
-✅ **SEO técnico avanzado**
-- Meta tags completos
-- Open Graph para redes sociales
-- Estructura semántica HTML5
-- Velocidad de carga optimizada
-
-✅ **Integración dinámica**
-- Blog cargado automáticamente desde RSS (`coreltech-blog.vercel.app`)
-- Formulario de contacto con **EmailJS** (sin backend)
-- Página de agradecimiento con temporizador
+> "No vendemos partes, vendemos tranquilidad."
 
 ---
 
-## 🧰 Tecnologías utilizadas
-
-| Tecnología | Uso |
-|----------|-----|
-| **HTML5** | Estructura semántica y accesible |
-| **CSS3** | Estilos con variables, fondos sutiles, transiciones y diseño responsive |
-| **JavaScript puro** | Menú móvil, animaciones, carga de blog, EmailJS |
-| **WebP** | Imágenes optimizadas para alto rendimiento |
-| **Vercel** | Despliegue rápido, seguro y con dominio personalizado |
-| **EmailJS** | Envío de formularios sin backend |
-| **RSS2JSON** | Integración automática del blog técnico |
+## 🎯 Propuesta de Valor
+- Recuperamos lo que otros dan por perdido.
+- Trabajo técnico real, no adivinanzas.
+- Atención rápida y soporte post-servicio.
+- Sin partes innecesarias, solo soluciones reales.
 
 ---
 
-## 📦 Cómo usar localmente
+## 📁 Estructura del Proyecto
 
-1. **Clona el repositorio:**
-   ```bash
-   git clone https://github.com/coreltech/mi_web.git
-
-2. Abre el proyecto en tu editor  (recomendado: VS Code) 
-
-3. Instala Live Server  (extensión para VS Code) 
-
-4. Abre index.html con Live Server  para probar en local 
-
-5. Prueba en móvil y desktop  usando las herramientas de desarrollo 
-
- coreltech-web/
-├── index.html           # Página de inicio
-├── servicios.html       # Servicios detallados
-├── sobre.html           # Historia, misión, valores
-├── portafolio.html      # Proyectos reales y casos de éxito
-├── contacto.html        # Formulario con EmailJS
-├── gracias.html         # Página de agradecimiento (redirección)
+coreltechweb/
+│
+├── index.html              # Página de inicio
+├── hardware.html           # Servicios de hardware
+├── software.html           # Servicios de software
+├── redes.html              # Redes y conectividad
+├── portafolio.html         # Proyectos reales
+├── contacto.html           # Formulario de contacto
+├── robots.txt              # Reglas para motores de búsqueda
+├── sitemap.xml             # Mapa del sitio
+├── README.md               # Documentación del proyecto
+│
 ├── assets/
-│   ├── css/
-│   │   └── styles.css   # Estilos globales optimizados
-│   ├── js/
-│   │   └── script.js    # (Opcional: si separas el JS)
-│   └── img/
-│       └── *.webp       # Imágenes en formato WebP optimizadas
-└── README.md            # Documentación del proyecto  
+│   ├── img/                # Imágenes del sitio (webp)
+│   ├── css/                # Estilos (opcional si separas CSS)
+│   └── js/                 # Scripts (opcional)
 
-📩 Contacto 
 
-¿Tienes dudas o deseas colaborar? 
+---
 
-📧 Email:  coreltech.soluciones@gmail.com 
-📱 WhatsApp:  +58 414 582 8186 
-🌐 Web:  https://coreltech-web.vercel.app
+## 🔧 Tecnologías Utilizadas
+- HTML5 / CSS3
+- JavaScript (vanilla)
+- Firebase Firestore (para guardar formularios)
+- Telegram Bot API (notificaciones en tiempo real)
+- Google Analytics (GA4)
+- Open Graph / Twitter Cards (SEO social)
 
-💼 Coreltech IT Solutions – Soluciones tecnológicas con ética, eficiencia y enfoque en el cliente."
+---
+
+## 🌐 SEO y Optimización
+- Metaetiquetas personalizadas por página.
+- Open Graph para compartir en redes.
+- Imágenes en formato `.webp` (optimizadas).
+- Títulos y descripciones únicas.
+- Velocidad de carga optimizada.
+
+---
+
+## 📢 Cómo Contribuir
+Este es un proyecto personal, pero si deseas proponer mejoras:
+1. Haz un fork del repositorio.
+2. Crea una rama: `feature/nueva-funcionalidad`
+3. Haz commit de tus cambios: `git commit -m "Agrega nueva funcionalidad"`
+4. Haz push: `git push origin feature/nueva-funcionalidad`
+5. Abre un Pull Request.
+
+---
+
+## 📬 Contacto
+- WhatsApp: [+58 414 582 8186](https://wa.me/584145828186)
+- Email: coreltech.soluciones@gmail.com
+- Instagram: [@coreltechsoluciones](https://www.instagram.com/coreltechsoluciones)
+- TikTok: [@coreltech.ve](https://www.tiktok.com/@coreltech.ve)
+
+---
+
+## 📎 Licencia
+Este proyecto no tiene licencia de código abierto. Todos los derechos reservados © 2025 CorelTech.

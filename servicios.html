@@ -3,221 +3,876 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Servicios de Coreltech: mantenimiento de hardware, soporte técnico, asesoría IT, adiestramiento y redes seguras.">
-  <title>Servicios - Coreltech IT Solutions</title>
-  <!-- Google Fonts - Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <!-- Estilos principales -->
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <!-- Favicon -->
-  <link rel="icon" href="assets/img/favicon.webp" type="image/webp">
-  <!-- 🔁 Precarga de imágenes críticas -->
-  <link rel="preload" as="image" href="assets/img/hero-tech.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/img/services-hero.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/img/portfolio-hero.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/img/contact-hero.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/img/about-hero.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/img/logo.webp" type="image/webp">
+  <meta name="description" content="Descubre todos nuestros servicios técnicos: hardware, software, redes, recuperación de datos y más. Soluciones profesionales, rápidas y con garantía." />
+  <title>Servicios | CorelTech - Soluciones Técnicas Profesionales</title>
+  <style>
+    :root {
+      --azul-principal: #1a56db;
+      --azul-oscuro: #0f3b8b;
+      --gris-oscurito: #1e293b;
+      --gris-claro: #f8fafc;
+      --gris-medio: #64748b;
+      --blanco: #ffffff;
+      --fondo-suave: #f8fafc;
+      --sombra-suave: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --sombra-media: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --transicion: all 0.3s ease;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--gris-oscurito);
+      background-color: var(--blanco);
+      background-image: url('assets/img/bg-pattern.webp');
+      background-attachment: fixed;
+      background-size: 400px;
+      background-position: center;
+      background-repeat: repeat;
+      background-blend-mode: overlay;
+      background-color: rgba(255, 255, 255, 0.95);
+    }
+    /* CABECERA */
+    header {
+      background-color: var(--azul-principal);
+      color: var(--blanco);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--sombra-suave);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    nav ul li {
+      margin-left: 2rem;
+    }
+    nav ul li a {
+      color: var(--blanco);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: var(--transicion);
+    }
+    nav ul li a:hover {
+      color: #e0e7ff;
+    }
+    /* MENÚ HAMBURGUESA */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 101;
+    }
+    .menu-toggle span {
+      width: 100%;
+      height: 3px;
+      background: var(--blanco);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -6px);
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--azul-principal);
+        padding: 80px 5% 2rem;
+        z-index: 100;
+        animation: slideIn 0.4s ease;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      nav ul li {
+        margin: 1rem 0;
+      }
+      nav ul li a {
+        font-size: 1.3rem;
+        color: var(--blanco);
+        padding: 0.8rem 0;
+        display: block;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      body.menu-open {
+        overflow: hidden;
+      }
+    }
+    @keyframes slideIn {
+      from {
+        transform: translateY(-10%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    /* HERO */
+    .hero {
+      background: 
+        linear-gradient(135deg, 
+          rgba(15, 59, 139, 0.4), 
+          rgba(26, 86, 219, 0.25)
+        ), 
+        url('assets/img/hero-servicios.webp') center/cover no-repeat;
+      color: var(--blanco);
+      padding: 6rem 5% 4rem;
+      text-align: center;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      pointer-events: none;
+    }
+    .hero h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1.2rem;
+      color: var(--blanco);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      opacity: 0.95;
+    }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transicion);
+      text-align: center;
+    }
+    .btn-primary {
+      background: var(--blanco);
+      color: var(--azul-principal);
+      box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.15);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--blanco);
+      border: 2px solid var(--blanco);
+    }
+    .btn-secondary:hover {
+      background: var(--blanco);
+      color: var(--azul-principal);
+    }
+    /* SERVICIOS */
+    .services {
+      padding: 6rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-size: 2.4rem;
+      color: var(--azul-oscuro);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--azul-principal);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+    .service-card {
+      background: var(--blanco);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--sombra-suave);
+      transition: var(--transicion);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--sombra-media);
+    }
+    .service-img {
+      width: 100%;
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+    }
+    .service-content {
+      padding: 1.8rem;
+    }
+    .service-content h3 {
+      font-size: 1.5rem;
+      color: var(--azul-oscuro);
+      margin-bottom: 1rem;
+    }
+    .service-content p {
+      color: var(--gris-medio);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .service-content a {
+      color: var(--azul-principal);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .service-content a:hover {
+      text-decoration: underline;
+    }
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal {
+      background: var(--blanco);
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(26, 86, 219, 0.15);
+      position: relative;
+      animation: modalIn 0.4s ease;
+    }
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .modal-header {
+      padding: 1.8rem 1.8rem 0;
+    }
+    .modal-header h3 {
+      font-size: 1.8rem;
+      color: var(--azul-oscuro);
+      margin-bottom: 0.5rem;
+    }
+    .modal-header p {
+      color: var(--gris-medio);
+      font-size: 1rem;
+    }
+    .modal-body {
+      padding: 1.8rem;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .modal-body h4 {
+      color: var(--azul-oscuro);
+      margin: 1.2rem 0 0.5rem;
+    }
+    .modal-body ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .modal-body li {
+      margin-bottom: 0.5rem;
+      color: var(--gris-medio);
+    }
+    .modal-actions {
+      padding: 1.8rem;
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+    .btn-close {
+      background: var(--gris-medio);
+      color: var(--blanco);
+    }
+    .btn-close:hover {
+      background: #475569;
+    }
+    /* FOOTER */
+    footer {
+      background: var(--gris-oscurito);
+      color: var(--blanco);
+      padding: 4rem 5% 2rem;
+      text-align: center;
+      margin-top: 6rem;
+      position: relative;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, var(--azul-principal), var(--azul-oscuro));
+      border-radius: 10px 10px 0 0;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      text-align: left;
+      margin-bottom: 3rem;
+    }
+    .footer-logo img {
+      height: 40px;
+      margin-bottom: 1rem;
+    }
+    .footer-logo p {
+      opacity: 0.8;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      color: #e0e7ff;
+    }
+    footer h4 {
+      color: var(--blanco);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      position: relative;
+      display: inline-block;
+      font-weight: 600;
+    }
+    footer h4::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--blanco);
+      opacity: 0.3;
+      border-radius: 2px;
+    }
+    footer ul {
+      list-style: none;
+    }
+    footer ul li {
+      margin-bottom: 0.8rem;
+    }
+    footer a {
+      color: #e0e7ff;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: var(--transicion);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+    footer a:hover {
+      opacity: 1;
+      color: var(--blanco);
+      text-decoration: underline;
+      transform: translateX(2px);
+    }
+    footer a svg {
+      width: 16px;
+      height: 16px;
+      transition: var(--transicion);
+    }
+    footer a:hover svg {
+      color: var(--azul-principal);
+      transform: scale(1.1);
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      color: #e0e7ff;
+    }
+    /* WHATSAPP FAB */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 2.5rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+      transition: var(--transicion);
+      z-index: 1000;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    .whatsapp-fab:hover {
+      transform: scale(1.1) translateY(-5px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    }
+    .whatsapp-fab img {
+      width: 36px;
+      height: 36px;
+      filter: brightness(1.1) contrast(1.1);
+    }
+    /* ANIMACIONES */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .btn {
+        width: 100%;
+      }
+      nav ul li {
+        margin-left: 1.5rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .whatsapp-fab {
+        bottom: 2.8rem;
+        width: 55px;
+        height: 55px;
+      }
+      .whatsapp-fab img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- 🧭 Menú de Navegación -->
-  <header class="navbar">
-    <div class="container">
-      <a href="index.html" class="logo">
-        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="180" height="70">
-      </a>
-      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
-      <nav class="nav-mobile">
-        <ul class="nav-links">
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
-          <li><a href="sobre.html">Sobre Nosotros</a></li>
-          <li><a href="portafolio.html">Portafolio</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-      </nav>
-    </div>
+  <!-- CABECERA -->
+  <header>
+    <a href="index.html" class="logo" aria-label="Inicio">
+      <img src="assets/img/logo2.webp" alt="Logo de CorelTech" width="200" height="40">
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="hardware.html">Hardware</a></li>
+        <li><a href="software.html">Software</a></li>
+        <li><a href="redes.html">Redes</a></li>
+        <li><a href="portafolio.html">Portafolio</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
   </header>
-  
-  <!-- 🧰 Hero de Servicios con Imagen Lateral -->
+
+  <!-- HERO -->
   <section class="hero fade-up">
-    <div class="container">
-      <div class="hero-content">
-        <h1>Nuestros Servicios</h1>
-        <p>Ofrecemos soluciones tecnológicas completas para usuarios caseros, PYMEs y empresas. Cada servicio está diseñado para resolver problemas reales con enfoque técnico y ético.</p>
-        <div class="hero-buttons">
-          <a href="contacto.html" class="btn-primary">Solicitar servicio</a>
-          <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-secondary" title="Habla con un técnico por WhatsApp">💬 Habla con un técnico</a>
-        </div>
-      </div>
-      <div class="hero-image">
-        <img src="assets/img/services-hero.webp" alt="Técnico trabajando en reparación de hardware" loading="lazy">
+    <div class="hero-content">
+      <h2>¿Qué podemos hacer por ti?</h2>
+      <p>Explora nuestros servicios técnicos profesionales, diseñados para recuperar, reparar y optimizar tu tecnología.</p>
+      <div class="hero-buttons">
+        <a href="contacto.html" class="btn-primary">Solicitar Servicio</a>
+        <a href="portafolio.html" class="btn-secondary">Ver Casos de Éxito</a>
       </div>
     </div>
   </section>
-  
-  <!-- 🛠️ Sección de Servicios Detallados -->
-  <section class="services-details">
-    <div class="container">
-      <!-- 1. Mantenimiento de Hardware -->
-      <article id="hardware" class="service fade-up">
-        <h2>Mantenimiento de Hardware</h2>
+
+  <!-- SERVICIOS -->
+  <section class="services fade-up">
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <div class="services-grid">
+      <!-- Servicio 1 -->
+      <div class="service-card" data-modal="diagnostico">
+        <div class="service-img" style="background-image: url('assets/img/real-diagnostico.webp');"></div>
         <div class="service-content">
-          <img src="assets/img/hardware-maintenance.webp" alt="Mantenimiento de Hardware" class="service-img" loading="lazy">
-          <div class="service-text">
-            <p>Prevenimos fallas y extendemos la vida útil de tus equipos con limpieza, diagnóstico y actualización profesional.</p>
-            <ul class="check-list">
-              <li>✅ Limpieza física y térmica de equipos</li>
-              <li>✅ Reemplazo de componentes dañados</li>
-              <li>✅ Actualización de hardware (RAM, SSD, etc.)</li>
-              <li>✅ Diagnóstico técnico completo</li>
-            </ul>
-            <p>Trabajamos con equipos de escritorio, laptops, servidores y dispositivos periféricos. Recuperamos lo que otros dan por perdido.</p>
-          </div>
-        </div>
-      </article>
-      
-      <!-- 2. Soporte Técnico -->
-      <article id="soporte" class="service fade-up">
-        <h2>Soporte Técnico</h2>
-        <div class="service-content">
-          <img src="assets/img/technical-support.webp" alt="Soporte Técnico" class="service-img" loading="lazy">
-          <div class="service-text">
-            <p>Asistencia remota y presencial para resolver problemas tecnológicos en tiempo real, sin complicaciones.</p>
-            <ul class="check-list">
-              <li>✅ Diagnóstico y solución de fallas</li>
-              <li>✅ Instalación y configuración de software</li>
-              <li>✅ Soporte remoto seguro y en tiempo real</li>
-              <li>✅ Asistencia presencial en sitio (Caracas y alrededores)</li>
-            </ul>
-            <p>Ofrecemos planes de soporte mensual o por evento puntual según tus necesidades. Sin contratos ocultos.</p>
-          </div>
-        </div>
-      </article>
-      
-      <!-- 3. Asesoría IT -->
-      <article id="asesoria" class="service fade-up">
-        <h2>Asesoría IT</h2>
-        <div class="service-content">
-          <img src="assets/img/it-consulting.webp" alt="Asesoría IT" class="service-img" loading="lazy">
-          <div class="service-text">
-            <p>Te ayudamos a tomar las mejores decisiones tecnológicas para tu negocio o uso personal, con ética y transparencia.</p>
-            <ul class="check-list">
-              <li>✅ Evaluación de infraestructura actual</li>
-              <li>✅ Recomendaciones de mejora sin sesgo comercial</li>
-              <li>✅ Asesoría en seguridad informática</li>
-              <li>✅ Consultoría en adquisición de equipos</li>
-            </ul>
-            <p>Contamos con experiencia en PYMEs, comercios y usuarios caseros. No vendemos partes, vendemos tranquilidad.</p>
-          </div>
-        </div>
-      </article>
-      
-      <!-- 4. Adiestramiento Tecnológico -->
-      <article id="adiestramiento" class="service fade-up">
-        <h2>Adiestramiento Tecnológico</h2>
-        <div class="service-content">
-          <img src="assets/img/training.webp" alt="Adiestramiento Tecnológico" class="service-img" loading="lazy">
-          <div class="service-text">
-            <p>Cursos y talleres personalizados para usuarios de todos los niveles, desde principiantes hasta usuarios avanzados.</p>
-            <ul class="check-list">
-              <li>✅ Talleres de uso básico de PC y laptop</li>
-              <li>✅ Capacitación en herramientas ofimáticas (Word, Excel, Google Workspace)</li>
-              <li>✅ Seguridad digital para usuarios no técnicos</li>
-              <li>✅ Clases individuales o grupales (presenciales o virtuales)</li>
-            </ul>
-            <p>Formamos usuarios seguros, autónomos y productivos. Ideal para empresas, familias o personas mayores.</p>
-          </div>
-        </div>
-      </article>
-      
-      <!-- 5. Redes y Seguridad -->
-      <article id="redes" class="service fade-up">
-        <h2>Redes y Seguridad</h2>
-        <div class="service-content">
-          <img src="assets/img/network-security.webp" alt="Redes y Seguridad" class="service-img" loading="lazy">
-          <div class="service-text">
-            <p>Diseño, instalación y mantenimiento de redes seguras y confiables, sin puntos muertos ni caídas.</p>
-            <ul class="check-list">
-              <li>✅ Configuración de redes LAN y WiFi de alta velocidad</li>
-              <li>✅ Instalación de puntos de red adicionales</li>
-              <li>✅ Configuración de routers, switches y firewalls</li>
-              <li>✅ Seguridad de redes empresariales y hogareñas</li>
-            </ul>
-            <p>Garantizamos una conectividad estable, segura y eficiente para tu negocio o hogar. Wi-Fi en toda tu casa o oficina.</p>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-  
-             <!-- 🎯 CTA Final Fuerte (Nueva estructura simple y centrada) -->
-  <section class="cta-aislada fade-up">
-    <div class="cta-contenedor">
-      <h2 class="cta-titulo">¿Necesitas un servicio técnico real?</h2>
-      <p class="cta-texto">No vendemos partes, vendemos tranquilidad. Diagnóstico claro, solución real, garantía de funcionamiento.</p>
-      <img src="assets/img/cta-tech.webp" alt="Técnico ayudando a cliente" class="cta-imagen" loading="lazy">
-      <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-primary cta-boton">Solicitar servicio ahora</a>
-    </div>
-  </section>
-  
-  <!-- 📞 Botón Flotante de WhatsApp (móvil) -->
-  <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
-    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50" height="50">
-  </a>
-  
-  <!-- 📌 Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <img src="assets/img/logo2.webp" alt="Logo Coreltech" width="150" height="60">
-          <p>Soluciones IT profesionales, rápidas y confiables.</p>
-        </div>
-        <div class="footer-contact">
-          <p><strong>Email:</strong> <a href="mailto:coreltech.soluciones@gmail.com">coreltech.soluciones@gmail.com</a></p>
-          <p><strong>Teléfono:</strong> +58 414 582 8186</p>
-        </div>
-        <div class="footer-social">
-          <h4>Síguenos</h4>
-          <ul>
-            <li><a href="https://www.instagram.com/coreltechsoluciones" target="_blank" rel="noopener">Instagram</a></li>
-            <li><a href="https://www.tiktok.com/@coreltech.ve" target="_blank" rel="noopener">TikTok</a></li>
-          </ul>
+          <h3>Diagnóstico Avanzado</h3>
+          <p>Identificamos el problema real con herramientas profesionales, sin adivinanzas.</p>
+          <a href="#" class="open-modal">Ver detalles →</a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Coreltech IT Solutions. Todos los derechos reservados.</p>
+
+      <!-- Servicio 2 -->
+      <div class="service-card" data-modal="limpieza">
+        <div class="service-img" style="background-image: url('assets/img/real-limpieza.webp');"></div>
+        <div class="service-content">
+          <h3>Limpieza Profunda</h3>
+          <p>Eliminamos polvo y residuos que causan sobrecalentamiento y fallos.</p>
+          <a href="#" class="open-modal">Ver detalles →</a>
+        </div>
       </div>
+
+      <!-- Servicio 3 -->
+      <div class="service-card" data-modal="cambio-piezas">
+        <div class="service-img" style="background-image: url('assets/img/real-parts.webp');"></div>
+        <div class="service-content">
+          <h3>Cambio de Piezas</h3>
+          <p>Reemplazo profesional con asesoría clara sobre calidad, garantía y costo-beneficio.</p>
+          <a href="#" class="open-modal">Ver detalles →</a>
+        </div>
+      </div>
+
+      <!-- Servicio 4 -->
+      <div class="service-card" data-modal="recuperacion">
+        <div class="service-img" style="background-image: url('assets/img/real-recuperacion.webp');"></div>
+        <div class="service-content">
+          <h3>Recuperación de Datos</h3>
+          <p>Extraemos información de discos dañados, incluso si el equipo no enciende.</p>
+          <a href="#" class="open-modal">Ver detalles →</a>
+        </div>
+      </div>
+
+      <!-- Servicio 5 -->
+      <div class="service-card" data-modal="mantenimiento">
+        <div class="service-img" style="background-image: url('assets/img/real-mantenimiento.webp');"></div>
+        <div class="service-content">
+          <h3>Mantenimiento Preventivo</h3>
+          <p>Revisión programada para prevenir fallas y extender la vida útil del equipo.</p>
+          <a href="#" class="open-modal">Ver detalles →</a>
+        </div>
+      </div>
+
+      <!-- Servicio 6 -->
+      <div class="service-card" data-modal="soporte-remoto">
+        <div class="service-img" style="background-image: url('assets/img/real-soporte.webp');"></div>
+        <div class="service-content">
+          <h3>Soporte Remoto</h3>
+          <p>Asistencia en tiempo real sin que tengas que mover tu equipo.</p>
+          <a href="#" class="open-modal">Ver detalles →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="assets/img/logo2.webp" alt="Logo CorelTech" width="150" height="60">
+        <p>Soluciones técnicas profesionales con más de 10 años de experiencia en el mercado venezolano.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:coreltech.soluciones@gmail.com">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            Email
+          </a></li>
+          <li><a href="https://wa.me/584145828186" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            WhatsApp
+          </a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="hardware.html">Hardware</a></li>
+          <li><a href="software.html">Software</a></li>
+          <li><a href="redes.html">Redes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Redes Sociales</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/coreltechsoluciones" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            Instagram
+          </a></li>
+          <li><a href="https://www.tiktok.com/@coreltech.ve" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 7.34v0a10 10 0 0 1-3.47 1.54 4.3 4.3 0 0 1-4.24-1.76 4.26 4.26 0 0 1 .3-5.24A10.05 10.05 0 0 1 12 2.11v4.75h0a4.25 4.25 0 1 0 4.25 4.25V12a10 10 0 1 1-6.34-9.31"></path>
+            </svg>
+            TikTok
+          </a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 CorelTech. No vendemos partes, vendemos tranquilidad.</p>
     </div>
   </footer>
-  
-  <!-- ✅ Script ligero: menú móvil + animaciones -->
+
+  <!-- BOTÓN WHATSAPP -->
+  <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
+    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="60" height="60">
+  </a>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="service-modal">
+      <div class="modal-header">
+        <h3 id="modal-title">Título del Servicio</h3>
+        <p id="modal-subtitle">Detalles del servicio</p>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Contenido dinámico -->
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="btn-close-modal">Cerrar</button>
+        <a href="contacto.html" class="btn btn-primary">Solicitar Ahora</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
   <script>
-    // Menú móvil
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
+    document.addEventListener("DOMContentLoaded", () => {
+      // === MENÚ HAMBURGUESA ===
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navMenu = document.querySelector('nav ul');
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          menuToggle.classList.toggle('active');
+          navMenu.classList.toggle('show');
+          document.body.classList.toggle('menu-open');
+        });
+        navMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('show');
+            document.body.classList.remove('menu-open');
+          });
+        });
+        document.addEventListener('click', (e) => {
+          if (!e.target.closest('header')) {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('show');
+            document.body.classList.remove('menu-open');
+          }
+        });
+      }
+
+      // === ANIMACIONES ===
+      const fadeElements = document.querySelectorAll('.fade-up');
+      const fadeInOnScroll = () => {
+        fadeElements.forEach(el => {
+          const elementTop = el.getBoundingClientRect().top;
+          if (elementTop < window.innerHeight - 100 && !el.classList.contains('visible')) {
+            el.classList.add('visible');
+          }
+        });
+      };
+      window.addEventListener('scroll', fadeInOnScroll);
+      window.addEventListener('load', fadeInOnScroll);
+
+      // === MODAL DE SERVICIOS ===
+      const modalOverlay = document.getElementById('modal-overlay');
+      const modal = document.getElementById('service-modal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalSubtitle = document.getElementById('modal-subtitle');
+      const modalBody = document.getElementById('modal-body');
+      const btnCloseModal = document.getElementById('btn-close-modal');
+
+      const services = {
+        diagnostico: {
+          title: "Diagnóstico Avanzado",
+          subtitle: "Identificamos el problema real",
+          content: `
+            <p>Nuestro diagnóstico no es adivinanza. Usamos herramientas profesionales para identificar con precisión el origen del problema.</p>
+            <h4>¿Qué incluye?</h4>
+            <ul>
+              <li>Pruebas de hardware (RAM, disco, fuente, placa).</li>
+              <li>Análisis de rendimiento y temperatura.</li>
+              <li>Reporte técnico detallado.</li>
+              <li>Presupuesto sin compromiso.</li>
+            </ul>
+            <p>Ideal para equipos que no encienden, se reinician o funcionan de forma inestable.</p>
+          `
+        },
+        limpieza: {
+          title: "Limpieza Profunda",
+          subtitle: "Eliminamos el enemigo invisible: el polvo",
+          content: `
+            <p>El polvo es la causa de muchos fallos prematuros. Limpiamos tu equipo de forma profesional y segura.</p>
+            <h4>¿Qué hacemos?</h4>
+            <ul>
+              <li>Desmontaje completo del equipo.</li>
+              <li>Limpieza de ventiladores, disipadores y componentes.</li>
+              <li>Reemplazo de pasta térmica.</li>
+              <li>Verificación de conectores y estado físico.</li>
+            </ul>
+            <p>Recomendado cada 6-12 meses para equipos en uso constante.</p>
+          `
+        },
+        'cambio-piezas': {
+          title: "Cambio de Piezas",
+          subtitle: "Reemplazo profesional con garantía",
+          content: `
+            <p>Cuando una pieza falla, la reemplazamos con componentes de calidad comprobada.</p>
+            <h4>¿Qué ofrecemos?</h4>
+            <ul>
+              <li>Asesoría clara sobre opciones y precios.</li>
+              <li>Garantía en piezas y mano de obra.</li>
+              <li>Pruebas exhaustivas después del reemplazo.</li>
+              <li>Documentación del trabajo realizado.</li>
+            </ul>
+            <p>Trabajamos con proveedores confiables y priorizamos tu presupuesto y necesidades.</p>
+          `
+        },
+        recuperacion: {
+          title: "Recuperación de Datos",
+          subtitle: "Extraemos información incluso de discos dañados",
+          content: `
+            <p>¿Formateo accidental? ¿Disco que no se detecta? Recuperamos tus archivos importantes.</p>
+            <h4>¿Qué recuperamos?</h4>
+            <ul>
+              <li>Fotos, documentos, videos, bases de datos.</li>
+              <li>Discos duros, SSD, memorias USB, tarjetas SD.</li>
+              <li>Equipos que no encienden o tienen fallas físicas.</li>
+            </ul>
+            <p><strong>Política de éxito:</strong> Sin recuperación, sin cobro (aplica condiciones).</p>
+          `
+        },
+        mantenimiento: {
+          title: "Mantenimiento Preventivo",
+          subtitle: "Evita problemas antes de que ocurran",
+          content: `
+            <p>Un mantenimiento regular extiende la vida útil de tu equipo y evita fallos inesperados.</p>
+            <h4>¿Qué incluye?</h4>
+            <ul>
+              <li>Limpieza interna y cambio de pasta térmica.</li>
+              <li>Actualización de drivers y sistema.</li>
+              <li>Optimización de rendimiento.</li>
+              <li>Verificación de seguridad y antivirus.</li>
+            </ul>
+            <p>Ideal para empresas, clínicas y equipos en uso intensivo.</p>
+          `
+        },
+        'soporte-remoto': {
+          title: "Soporte Remoto",
+          subtitle: "Ayuda técnica sin mover tu equipo",
+          content: `
+            <p>Resolvemos dudas, configuramos software y eliminamos virus sin que tengas que desplazarte.</p>
+            <h4>¿Qué cubrimos?</h4>
+            <ul>
+              <li>Instalación y configuración de programas.</li>
+              <li>Eliminación de malware y optimización.</li>
+              <li>Configuración de correo, impresoras, redes.</li>
+              <li>Asesoría para compras tecnológicas.</li>
+            </ul>
+            <p>Agenda una sesión y conectamos en minutos.</p>
+          `
+        }
+      };
+
+      document.querySelectorAll('.open-modal').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const serviceKey = e.target.closest('.service-card').dataset.modal;
+          const service = services[serviceKey];
+          if (service) {
+            modalTitle.textContent = service.title;
+            modalSubtitle.textContent = service.subtitle;
+            modalBody.innerHTML = service.content;
+            modalOverlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+          }
+        });
       });
-    });
-    // Animaciones al hacer scroll
-    const fadeElements = document.querySelectorAll('.fade-up, .service-content');
-    const fadeInOnScroll = () => {
-      fadeElements.forEach(el => {
-        const elementTop = el.getBoundingClientRect().top;
-        const elementVisible = 150;
-        if (elementTop < window.innerHeight - elementVisible && !el.classList.contains('visible')) {
-          el.classList.add('visible');
+
+      btnCloseModal.addEventListener('click', () => {
+        modalOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      });
+
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+          modalOverlay.style.display = 'none';
+          document.body.style.overflow = 'auto';
         }
       });
-    };
-    window.addEventListener('scroll', fadeInOnScroll);
-    window.addEventListener('load', fadeInOnScroll);
+    });
   </script>
 </body>
 </html>

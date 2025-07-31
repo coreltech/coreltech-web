@@ -1,0 +1,123 @@
+# humanstxt.org/
+# === FICHERO HUMANS.TXT PARA CORELTECH ===
+# Versión: 1.0
+# Última actualización: 2025-04-05
+# https://coreltechweb.com/humans.txt
+
+# ------------------------------
+# 🧍 TEAM / EQUIPO
+# ------------------------------
+
+# ESPAÑOL
+Agustín Lugo Arias
+    Rol: Fundador y Técnico Principal
+    Ubicación: Caracas, Venezuela
+    Email: coreltech.soluciones@gmail.com
+    Teléfono: +58 414 582 8186
+    WhatsApp: https://wa.me/584145828186
+    Instagram: https://www.instagram.com/coreltechsoluciones
+    TikTok: https://www.tiktok.com/@coreltech.ve
+    Especialidades: 
+        - Diagnóstico avanzado de hardware
+        - Recuperación de datos de discos dañados
+        - Limpieza profunda y mantenimiento preventivo
+        - Instalación y configuración de redes
+        - Soporte técnico remoto
+
+# ENGLISH
+Agustín Lugo Arias
+    Role: Founder & Lead Technician
+    Location: Caracas, Venezuela
+    Email: coreltech.soluciones@gmail.com
+    Phone: +58 414 582 8186
+    WhatsApp: https://wa.me/584145828186
+    Instagram: https://www.instagram.com/coreltechsoluciones
+    TikTok: https://www.tiktok.com/@coreltech.ve
+    Expertise:
+        - Advanced hardware diagnostics
+        - Data recovery from damaged drives
+        - Deep cleaning and preventive maintenance
+        - Network setup and configuration
+        - Remote technical support
+
+# ------------------------------
+# 🛠️ TECHNOLOGY COLOPHON / COLOFÓN TÉCNICO
+# ------------------------------
+
+# FRONTEND
+    HTML5, CSS3, JavaScript (Vanilla)
+    WebP (optimización de imágenes)
+    Google Fonts: Poppins
+    Diseño responsive y accesible (WCAG 2.1 AA)
+    Animaciones con CSS3 y scroll-animations
+
+# BACKEND & INFRAESTRUCTURA
+    Firebase (Google): 
+        - Hosting: https://coreltechweb-contactos.web.app
+        - Firestore: Almacenamiento de mensajes de contacto
+        - Authentication: (futuro acceso a clientes)
+    Telegram Bot API: Notificaciones en tiempo real
+    Netlify / Vercel / GitHub Pages (hosting estático)
+
+# SEGURIDAD
+    Reglas de Firestore: 
+        - Lectura: Autenticada
+        - Escritura: Pública (formularios), con validación de email
+    Validación de formularios: Frontend + backend (Firebase)
+    Protección contra spam: Validación de campos y límite de tiempo
+    HTTPS: Activado en todo el sitio
+
+# HERRAMIENTAS DE DESARROLLO
+    Editor: Visual Studio Code
+    Control de versiones: Git
+    Optimización de imágenes: Squoosh.app, TinyPNG
+    SEO: Google Analytics (GA4), Search Console, Open Graph
+    Pruebas: Google PageSpeed Insights, Lighthouse
+
+# ------------------------------
+# 🙏 THANKS / AGRADECIMIENTOS
+# ------------------------------
+
+# ESPAÑOL
+    A todos nuestros clientes por confiar en nosotros día a día.
+    A la comunidad de desarrolladores y técnicos que comparten conocimiento libremente.
+    A Google, Mozilla y W3C por mantener abiertas las normas del web.
+    A los creadores de herramientas libres como Pexels, Canva y Figma.
+
+# ENGLISH
+    To all our clients for trusting us every day.
+    To the developer and tech community for sharing knowledge openly.
+    To Google, Mozilla, and W3C for keeping web standards open.
+    To the creators of free tools like Pexels, Canva, and Figma.
+
+# ------------------------------
+# 🏢 ORGANIZATION / ORGANIZACIÓN
+# ------------------------------
+
+# ESPAÑOL
+    Nombre: CorelTech
+    Misión: Recuperar lo que otros dan por perdido.
+    Propuesta de Valor: No vendemos partes, vendemos tranquilidad.
+    Ubicación: Naguanagua, Carabobo, Venezuela
+    Año de Fundación: 2015
+    Sitio Web: https://coreltech-web.vercel.app/
+
+# ENGLISH
+    Name: CorelTech
+    Mission: Recover what others give up as lost.
+    Value Proposition: We don't sell parts, we sell peace of mind.
+    Location: Naguanagua, Carabobo, Venezuela
+    Founded: 2015
+    Website: https://coreltech-web.vercel.app/
+
+# ------------------------------
+# 📅 LAST UPDATE / ÚLTIMA ACTUALIZACIÓN
+# ------------------------------
+
+2025-07-30
+
+# ------------------------------
+# 🌐 SITE / SITIO WEB
+# ------------------------------
+
+https://coreltech-web.vercel.app

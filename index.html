@@ -1,291 +1,1023 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Coreltech IT Solutions - Soluciones tecnológicas profesionales, rápidas y confiables en hardware, software y redes.">
-  <title>Inicio - Coreltech IT Solutions</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <!-- Estilos principales -->
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <!-- Favicon -->
-  <link rel="icon" href="assets/img/favicon.webp" type="image/webp">
-  <!-- 🔁 Precarga de imágenes críticas -->
-  <link rel="preload" as="image" href="assets/img/hero-tech.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/img/services-hero.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/img/portfolio-hero.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/img/contact-hero.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/img/about-hero.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/img/logo.webp" type="image/webp">
+  <!-- ========== HEAD: INDEX.HTML ========== -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CorelTech - Soluciones Técnicas Profesionales en Venezuela</title>
+<meta name="description" content="Expertos en recuperar lo que otros dan por perdido. Servicios profesionales de hardware, software y redes en Venezuela. Atención rápida, garantía y sin partes innecesarias.">
+<meta name="keywords" content="reparación de laptop, técnico en Venezuela, recuperación de datos, mantenimiento de PC, soporte técnico, CorelTech">
+<meta name="author" content="CorelTech">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://coreltech-web.vercel.app//">
+
+<!-- GEO -->
+<meta name="geo.region" content="VE">
+<meta name="geo.placename" content="Caracas, Venezuela">
+<meta name="language" content="es">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="es_VE">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CorelTech - Soluciones Técnicas Profesionales en Venezuela">
+<meta property="og:description" content="Expertos en recuperar lo que otros dan por perdido. Servicios profesionales de hardware, software y redes en Venezuela.">
+<meta property="og:url" content="https://coreltech-web.vercel.app//">
+<meta property="og:site_name" content="CorelTech">
+<meta property="og:image" content="https://coreltech-web.vercel.app/assets/img/hero-inicio.webp">
+<meta property="og:image:alt" content="CorelTech - Soluciones técnicas profesionales en Venezuela">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@coreltechsoluciones">
+<meta name="twitter:title" content="CorelTech - Soluciones Técnicas Profesionales en Venezuela">
+<meta name="twitter:description" content="Expertos en recuperar lo que otros dan por perdido. Servicios profesionales de hardware, software y redes en Venezuela.">
+<meta name="twitter:image" content="https://coreltech-web.vercel.app/assets/img/hero-inicio.webp">
+<meta name="twitter:image:alt" content="CorelTech - Soluciones técnicas profesionales en Venezuela">
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', ' G-3FMVE049YG');
+</script>
+<!-- ========== FIN HEAD: INDEX.HTML ========== -->
+  <style>
+    /* ==================== 
+       VARIABLES DE DISEÑO
+       ==================== */
+    :root {
+      --azul-principal: #1a56db;
+      --azul-oscuro: #0f3b8b;
+      --gris-oscurito: #1e293b;
+      --gris-medio: #64748b;
+      --blanco: #ffffff;
+      --fondo-suave: #f8fafc;
+      --sombra-suave: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --transicion: all 0.3s ease;
+    }
+
+    /* ==================== 
+       RESETEO BÁSICO
+       ==================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--gris-oscurito);
+      background-color: var(--blanco);
+    }
+
+    /* ==================== 
+       CABECERA (HEADER)
+       ==================== */
+    header {
+  background-color: var(--azul-principal);
+  color: var(--blanco);
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--sombra-suave);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    nav ul li {
+      margin-left: 2rem;
+    }
+    nav ul li a {
+      color: var(--blanco);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: var(--transicion);
+    }
+    nav ul li a:hover {
+      color: #e0e7ff;
+    }
+    /* MENÚ HAMBURGUESA */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background: var(--blanco);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animación al abrir */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* Mostrar menú hamburguesa en móviles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--azul-principal);
+    padding: 80px 5% 2rem;
+    z-index: 100;
+    animation: slideIn 0.4s ease;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav ul li {
+    margin: 1rem 0;
+  }
+
+  nav ul li a {
+    font-size: 1.3rem;
+    color: var(--blanco);
+    padding: 0.8rem 0;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Evitar scroll en body cuando el menú está abierto */
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+/* Animación de entrada del menú */
+@keyframes slideIn {
+  from {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+    /* ====================HERO (SECCIÓN PRINCIPAL) - Más sutil ==================== */
+.hero {
+  background: 
+    linear-gradient(135deg, 
+      rgba(15, 59, 139, 0.25), 
+      rgba(26, 86, 219, 0.15)), 
+    url('assets/img/hero-inicio.webp') center/cover no-repeat;
+  color: var(--blanco);
+  padding: 6rem 5% 4rem;
+  text-align: center;
+  position: relative;
+}
+
+/* Opcional: Añadir un overlay extra sutil para mayor consistencia */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  border-radius: 0 0 50% 50% / 0 0 30px 30px;
+}
+    .hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  animation: fadeInUp 1s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      opacity: 0.95;
+      animation: fadeInUp 1s ease 0.3s both;
+    }
+    .hero-buttons {
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+
+    /* Botón con fondo blanco y borde azul (visible en cualquier fondo) */
+    .btn-primary {
+      display: inline-block;
+      background: var(--blanco);
+      color: var(--azul-principal);
+      border: 2px solid var(--azul-principal);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 1rem;
+      transition: var(--transicion);
+      box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    }
+    .btn-primary:hover {
+      background: var(--azul-principal);
+      color: var(--blanco);
+      transform: scale(1.05);
+    }
+
+    /* Botón con contorno blanco (para usar en fondos oscuros) */
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--blanco);
+      border: 2px solid var(--blanco);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 1rem;
+      transition: var(--transicion);
+    }
+    .btn-secondary:hover {
+      background: var(--blanco);
+      color: var(--azul-principal);
+    }
+
+    /* Botón con fondo azul (para usar en fondos claros, como el blog) */
+    .btn-blue {
+      display: inline-block;
+      background: var(--azul-principal);
+      color: var(--blanco);
+      border: 2px solid var(--azul-principal);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 auto;
+      transition: var(--transicion);
+    }
+    .btn-blue:hover {
+      background: var(--azul-oscuro);
+      transform: scale(1.05);
+    }
+
+    /* ==================== 
+       BLOG DESTACADO
+       ==================== */
+    .blog-highlight {
+      padding: 4rem 5%;
+      background-color: var(--fondo-suave);
+    }
+    .section-title {
+      font-size: 2rem;
+      color: var(--azul-oscuro);
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--azul-principal);
+      margin: 0.5rem auto;
+    }
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .post {
+      background: var(--blanco);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--sombra-suave);
+      transition: var(--transicion);
+    }
+    .post:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .post img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .post h4 {
+      font-size: 1.2rem;
+      padding: 1rem;
+      margin: 0;
+    }
+    .post-meta {
+      font-size: 0.9rem;
+      color: var(--gris-medio);
+      padding: 0 1rem 0.5rem;
+    }
+    .post-summary {
+      font-size: 0.95rem;
+      color: var(--gris-medio);
+      padding: 0 1rem;
+    }
+    .post a {
+      display: block;
+      text-align: center;
+      padding: 1rem;
+      color: var(--azul-principal);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .post a:hover {
+      background: var(--fondo-suave);
+    }
+
+    /* ==================== 
+       SERVICIOS
+       ==================== */
+    .services {
+      padding: 4rem 5%;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: var(--blanco);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--sombra-suave);
+      transition: var(--transicion);
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .service-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .service-content {
+      padding: 1.5rem;
+    }
+    .service-content h3 {
+      font-size: 1.4rem;
+      color: var(--azul-oscuro);
+      margin-bottom: 1rem;
+    }
+    .service-content p {
+      color: var(--gris-medio);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+    .service-content a {
+      color: var(--azul-principal);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .service-content a:hover {
+      color: var(--azul-oscuro);
+    }
+
+    /* ==================== 
+       MENSAJE CLAVE - Estilo sutil, sin fondo azul
+       ==================== */
+    .message {
+      text-align: center;
+      padding: 3rem 5%;
+      background-color: var(--fondo-suave);
+      color: var(--azul-oscuro);
+      margin: 0;
+    }
+    .message h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .message p {
+      font-size: 1.1rem;
+      color: var(--gris-medio);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ==================== 
+       CTA FINAL (llamado a la acción)
+       ==================== */
+    .cta-final {
+      text-align: center;
+      padding: 4rem 5%;
+      background-color: var(--gris-oscurito);
+      color: var(--blanco);
+    }
+    .cta-final h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+    .cta-final p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      opacity: 0.9;
+    }
+
+    /* FOOTER */
+footer {
+  background: var(--gris-oscurito);
+  color: var(--blanco);
+  padding: 4rem 5% 2rem;
+  text-align: center;
+  margin-top: 6rem;
+  position: relative;
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(90deg, var(--azul-principal), var(--azul-oscuro));
+}
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+.footer-logo img {
+  height: 40px;
+  margin-bottom: 1rem;
+}
+.footer-logo p {
+  opacity: 0.8;
+  line-height: 1.7;
+}
+footer h4 {
+  color: var(--blanco);
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  position: relative;
+  display: inline-block;
+}
+footer h4::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--blanco);
+  opacity: 0.3;
+}
+footer ul {
+  list-style: none;
+}
+footer ul li {
+  margin-bottom: 0.8rem;
+}
+footer a {
+  color: #e0e7ff;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: var(--transicion);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+footer a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+footer a svg {
+  width: 16px;
+  height: 16px;
+}
+.footer-bottom {
+  border-top: 1px solid #334155;
+  padding-top: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+    /* ==================== 
+       COPYRIGHT - Sin franja blanca extra
+       ==================== */
+    .footer-credit {
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .footer-credit p {
+      margin: 0;
+    }
+
+    /* ==================== 
+       WHATSAPP FAB (botón flotante)
+       ==================== */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+      transition: transform 0.3s ease;
+    }
+    .whatsapp-fab:hover {
+      transform: scale(1.1);
+    }
+    .whatsapp-fab img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+
+    /* ==================== 
+       ANIMACIONES
+       ==================== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fade-up {
+      opacity: 0;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    /* ==================== 
+       RESPONSIVE (móviles)
+       ==================== */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      nav ul {
+        display: none;
+      }
+      .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      .btn-primary,
+      .btn-secondary,
+      .btn-blue {
+        margin: 0.5rem auto;
+        width: 90%;
+      }
+      @media (max-width: 480px) {
+  .whatsapp-fab {
+    bottom: 3rem;
+      }
+      /* === BADGE: HECHO CON CUIDADO === */
+.badge-made-with-care {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--gris-medio);
+  text-align: center;
+  font-weight: 500;
+}
+
+.badge-made-with-care .heart {
+  font-size: 1.1em;
+  margin-right: 0.3rem;
+  animation: pulse 1.5s infinite;
+}
+
+.badge-made-with-care .badge-link {
+  color: var(--azul-oscuro);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.badge-made-with-care .badge-link:hover {
+  color: var(--azul-principal);
+  text-decoration: underline;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+/* === BADGE: HECHO CON CUIDADO (SVG) === */
+.badge-made-with-care {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--blanco);
+  text-align: center;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.badge-made-with-care .heart-svg {
+  width: 16px;
+  height: 16px;
+  color: var(--blanco);
+  transition: all 0.3s ease;
+  animation: pulse-blue 1.5s infinite;
+}
+
+@keyframes pulse-blue {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.badge-made-with-care .badge-link {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.badge-made-with-care .badge-link:hover {
+  color: var(--blanco);
+  text-decoration: underline;
+}
+  </style>
+
 </head>
 <body>
-  <!-- 🧭 Menú de navegación -->
-  <header class="navbar">
-    <div class="container">
-      <a href="index.html" class="logo">
-        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="200" height="80">
-      </a>
-      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
-      <nav class="nav-mobile">
-        <ul class="nav-links">
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
-          <li><a href="sobre.html">Sobre Nosotros</a></li>
-          <li><a href="portafolio.html">Portafolio</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  <!-- 🌐 Hero Principal - Tecnología integral -->
-  <section class="hero fade-up">
-    <div class="container">
-      <div class="hero-content">
-        <span class="tagline">Soluciones completas en tecnología</span>
-        <h1>Hardware, Software y Redes en una sola solución</h1>
-        <p>Resolvemos problemas técnicos reales con enfoque profesional, rapidez y garantía. No vendemos partes, vendemos tranquilidad.</p>
-        <div class="hero-buttons">
-          <a href="servicios.html" class="btn-primary">Ver todos los servicios</a>
-          <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-secondary" title="Contactar por WhatsApp">💬 Habla con un técnico</a>
-        </div>
-      </div>
-      <div class="hero-image">
-        <img src="assets/img/hero-tech.webp" alt="Tecnología profesional" loading="lazy">
-      </div>
-    </div>
-  </section>
-  <!-- 📰 Últimas Publicaciones del Blog -->
-  <section class="blog-preview fade-up">
-    <div class="container">
-      <h2 class="section-title">Publicaciones Del Blog</h2>
-      <div id="blog-posts" class="posts"></div>
-      <a href="https://coreltech-blog.vercel.app" target="_blank" rel="noopener" class="btn-primary">Ver todos los artículos</a>
+  <!-- CABECERA -->
+<header>
+  <a href="index.html" class="logo" aria-label="Inicio">
+    <img src="assets/img/logo2.webp" alt="Logo de CorelTech" width="200" height="40">
+  </a>
+
+  <!-- Menú Hamburguesa (solo en móvil) -->
+  <button class="menu-toggle" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Navegación -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="hardware.html">Hardware</a></li>
+      <li><a href="software.html">Software</a></li>
+      <li><a href="redes.html">Redes</a></li>
+      <li><a href="portafolio.html">Portafolio</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <!-- HERO (sección principal) -->
+  <section class="hero">
+    <h1>Hardware, Software y Redes en una sola solución</h1>
+    <p>Resolvemos problemas técnicos reales con enfoque profesional, rapidez y garantía. No vendemos partes, vendemos tranquilidad.</p>
+    <div class="hero-buttons">
+      <a href="hardware.html" class="btn-primary">Ver todos los servicios</a>
+      <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-secondary">💬 Habla con un técnico</a>
     </div>
   </section>
-  <!-- 🔧 Tríada Técnica: Hardware, Software, Redes -->
-  <section class="tech-triad fade-up">
-    <div class="container">
-      <h2 class="section-title">Nuestro alcance técnico</h2>
-      <div class="triad-grid">
-        <!-- Hardware -->
-        <div class="triad-card">
-          <img src="assets/img/real-hardware.webp" alt="Técnico reparando hardware" class="triad-img" loading="lazy">
+
+  <!-- BLOG DESTACADO -->
+  <section class="blog-highlight fade-up">
+    <h2 class="section-title">Lo último en tecnología y soluciones</h2>
+    <div id="blog-posts" class="posts">
+      <!-- Cargado dinámicamente por JavaScript -->
+    </div>
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="https://coreltech-blog.vercel.app" target="_blank" rel="noopener" class="btn-blue">Ver todos los artículos</a>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="services fade-up">
+    <h2 class="section-title">Nuestro alcance técnico</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="assets/img/real-hardware.webp" alt="Técnico reparando hardware" class="service-img" loading="lazy">
+        <div class="service-content">
           <h3>Hardware</h3>
           <p>Limpieza, reparación, mantenimiento y actualización de equipos. Recuperamos lo que otros dan por perdido.</p>
-          <a href="servicios.html#hardware" class="btn-secondary">Ver detalles</a>
+          <a href="hardware.html">Ver detalles →</a>
         </div>
-        <!-- Software -->
-        <div class="triad-card">
-          <img src="assets/img/real-software.webp" alt="Interfaz de software" class="triad-img" loading="lazy">
+      </div>
+      <div class="service-card">
+        <img src="assets/img/real-software.webp" alt="Interfaz de software" class="service-img" loading="lazy">
+        <div class="service-content">
           <h3>Software</h3>
           <p>Instalación, configuración, recuperación de datos y eliminación de malware. Tu sistema como nuevo.</p>
-          <a href="servicios.html#soporte" class="btn-secondary">Ver detalles</a>
+          <a href="software.html">Ver detalles →</a>
         </div>
-        <!-- Redes -->
-        <div class="triad-card">
-          <img src="assets/img/real-network.webp" alt="Red empresarial" class="triad-img" loading="lazy">
+      </div>
+      <div class="service-card">
+        <img src="assets/img/real-network.webp" alt="Red empresarial" class="service-img" loading="lazy">
+        <div class="service-content">
           <h3>Redes</h3>
           <p>Diseño, instalación y mantenimiento de redes seguras y confiables. Wi-Fi sin puntos muertos.</p>
-          <a href="servicios.html#redes" class="btn-secondary">Ver detalles</a>
+          <a href="redes.html">Ver detalles →</a>
         </div>
       </div>
     </div>
   </section>
-  <!-- 🔍 Problemas Comunes - Imagen intercalada -->
-  <section class="problems-with-image fade-up">
-    <div class="container">
-      <div class="content-with-image">
-        <div class="image-side">
-          <img src="assets/img/problem-pc-slow.webp" alt="PC lenta" class="content-img" loading="lazy">
-        </div>
-        <div class="text-side">
-          <h2>¿Tu equipo falla o va lento?</h2>
-          <p>No importa si es hardware, software o red: diagnosticamos el problema real y lo resolvemos de raíz.</p>
-          <ul class="check-list">
-            <li>✅ Diagnóstico técnico completo</li>
-            <li>✅ Limpieza física y digital</li>
-            <li>✅ Optimización del sistema</li>
-            <li>✅ Garantía de funcionamiento</li>
-          </ul>
-          <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-primary" title="Solicitar ayuda técnica">Solicitar ayuda ahora</a>
-        </div>
-      </div>
-    </div>
+
+  <!-- MENSAJE CLAVE - Sin fondo azul, integrado visualmente -->
+  <section class="message fade-up">
+    <h2>No vendemos partes, vendemos tranquilidad.</h2>
+    <p>Esa es nuestra filosofía. Confianza, claridad y soluciones de raíz.</p>
   </section>
-  
-  <!-- 📞 Botón Flotante de WhatsApp (móvil) -->
+
+
+  <!-- SEPARADOR SUAVE ANTES DEL FOOTER -->
+<div style="background: var(--fondo-suave); padding: 3rem 0; text-align: center;">
+  <p style="color: var(--gris-medio); font-size: 1.1rem;">
+    ¿Tienes una emergencia técnica? 
+    <a href="https://wa.me/584145828186" target="_blank" style="color: var(--azul-principal); text-decoration: underline; font-weight: 600;">
+      Contáctanos ahora por WhatsApp
+    </a>
+  </p>
+</div>
+
+  <!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-logo">
+      <img src="assets/img/logo2.webp" alt="Logo CorelTech" width="150" height="60">
+      <p>Soluciones técnicas profesionales con más de 10 años de experiencia en el mercado venezolano.</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="mailto:coreltech.soluciones@gmail.com">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          Email
+        </a></li>
+        <li><a href="https://wa.me/584145828186" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          WhatsApp
+        </a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="hardware.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          Hardware
+        </a></li>
+        <li><a href="software.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+          </svg>
+          Software
+        </a></li>
+        <li><a href="redes.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="4"></circle>
+            <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line>
+            <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line>
+            <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line>
+            <line x1="14.83" y1="9.17" x2="18.36" y2="5.64"></line>
+            <line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line>
+          </svg>
+          Redes
+        </a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Redes Sociales</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/coreltechsoluciones" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          Instagram
+        </a></li>
+        <li><a href="https://www.tiktok.com/@coreltech.ve" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 7.34v0a10 10 0 0 1-3.47 1.54 4.3 4.3 0 0 1-4.24-1.76 4.26 4.26 0 0 1 .3-5.24A10.05 10.05 0 0 1 12 2.11v4.75h0a4.25 4.25 0 1 0 4.25 4.25V12a10 10 0 1 1-6.34-9.31"></path>
+          </svg>
+          TikTok
+        </a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 CorelTech. No vendemos partes, vendemos tranquilidad.</p>
+  </div>
+  <!-- BADGE: HECHO CON CUIDADO -->
+<p class="badge-made-with-care">
+  <span class="heart">💙</span>
+  <strong>Hecho con cuidado</strong> por <a href="creditos.html" class="badge-link">Agustín Lugo</a>
+</p>
+</footer>
+
+  <!-- BOTÓN DE WHATSAPP FLOTANTE -->
   <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
     <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50" height="50">
   </a>
-  <!-- 📌 Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <img src="assets/img/logo2.webp" alt="Logo Coreltech" width="150" height="60">
-          <p>Soluciones IT profesionales, rápidas y confiables.</p>
-        </div>
-        <div class="footer-contact">
-          <p><strong>Email:</strong> <a href="mailto:coreltech.soluciones@gmail.com">coreltech.soluciones@gmail.com</a></p>
-          <p><strong>Teléfono:</strong> +58 414 582 8186</p>
-        </div>
-        <div class="footer-social">
-          <h4>Síguenos</h4>
-          <ul>
-            <li><a href="https://www.instagram.com/coreltechsoluciones" target="_blank" rel="noopener">Instagram</a></li>
-            <li><a href="https://www.tiktok.com/@coreltech.ve" target="_blank" rel="noopener">TikTok</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Coreltech IT Solutions. Todos los derechos reservados.</p>
-      </div>
-    </div>
-  </footer>
-    <!-- ✅ Script único: menú móvil + animaciones + blog -->
+
+  <!-- SCRIPT: Animaciones y carga de blog -->
   <script>
-    // Menú móvil
-    document.addEventListener("DOMContentLoaded", () => {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-          navLinks.classList.toggle('active');
-        });
-        document.querySelectorAll('.nav-links a').forEach(link => {
-          link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-          });
-        });
-      }
-      // Animaciones al hacer scroll
-      const fadeInOnScroll = () => {
-        const fadeElements = document.querySelectorAll('.fade-up');
-        fadeElements.forEach(el => {
-          const elementTop = el.getBoundingClientRect().top;
-          const elementVisible = 150;
-          if (elementTop < window.innerHeight - elementVisible && !el.classList.contains('visible')) {
-            el.classList.add('visible');
-          }
-        });
-      };
+  document.addEventListener("DOMContentLoaded", () => {
+    // === ANIMACIONES AL HACER SCROLL ===
+    const fadeInOnScroll = () => {
+      const elements = document.querySelectorAll('.fade-up:not(.visible)');
+      elements.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('load', fadeInOnScroll);
+    window.addEventListener('scroll', fadeInOnScroll);
 
-      // Función mejorada para inicializar las animaciones
-      const initFadeIn = () => {
-        // Ejecutar inmediatamente
-        fadeInOnScroll();
-        // Volver a ejecutar después de un breve momento para asegurar renderizado completo
-        setTimeout(fadeInOnScroll, 100); // 100ms de retraso
-      };
+   // === CARGAR POSTS DEL BLOG (versión con imágenes seguras) ===
+(async () => {
+  const container = document.getElementById("blog-posts");
+  if (!container) return;
 
-      // ✅ Ejecutar inmediatamente al cargar para mostrar elementos visibles
-      window.addEventListener('load', initFadeIn);
-      // Seguir ejecutando al hacer scroll
-      window.addEventListener('scroll', fadeInOnScroll);
+  // Ruta de imagen por defecto (asegúrate de que este archivo exista)
+  const placeholder = 'assets/img/blog-article-default.webp';
+  const baseUrl = "https://coreltech-blog.vercel.app";
+  const feedUrl = `${baseUrl}/feed/posts.json`;
+
+  // Mensaje de carga
+  container.innerHTML = '<p style="color: #64748b; text-align: center; grid-column: 1 / -1;">Cargando artículos...</p>';
+
+  try {
+    const res = await fetch(feedUrl, { mode: 'cors' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    const posts = await res.json();
+
+    if (!Array.isArray(posts) || posts.length === 0) {
+      container.innerHTML = '<p style="color: #64748b; text-align: center; grid-column: 1 / -1;">No hay artículos disponibles por ahora.</p>';
+      return;
+    }
+
+    const latest = posts.slice(0, 3);
+    container.innerHTML = ''; // Limpiar antes de agregar
+
+    latest.forEach(post => {
+      const title = post.title || "Artículo sin título";
+      const date = new Date(post.date).toLocaleDateString('es-VE', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      const author = post.author || "Equipo CorelTech";
+      const summary = post.summary || "Este artículo no tiene resumen disponible.";
       
-      // === SCRIPT PARA CARGAR POSTS DEL BLOG ===
-      (async function fetchBlogPosts() {
-        console.log("[Blog] 🚀 Iniciando carga de posts...");
-        const container = document.getElementById("blog-posts");
-        const placeholderImage = 'assets/img/blog-article-default.webp';
-        const baseUrl = "https://coreltech-blog.vercel.app";
-        if (!container) {
-          console.error("[Blog] ❌ Error: Contenedor #blog-posts no encontrado.");
-          return;
-        }
-        try {
-          const feedUrl = "https://coreltech-blog.vercel.app/feed/posts.json";
-          console.log("[Blog] 📡 Solicitando datos a:", feedUrl);
-          const response = await fetch(feedUrl);
-          if (!response.ok) {
-            throw new Error(`[Blog] ❌ Error HTTP: ${response.status} - ${response.statusText}`);
-          }
-          const postsData = await response.json();
-          console.log("[Blog] 📦 Datos JSON parseados:", postsData);
-          // Verificar que sea un array
-          if (!Array.isArray(postsData)) {
-            throw new Error("[Blog] ❌ Error: Los datos recibidos NO son un array.");
-          }
-          if (postsData.length === 0) {
-            container.innerHTML = "<p style='color: #888; text-align: center; grid-column: 1 / -1;'>Próximamente artículos del blog.</p>";
-            console.warn("[Blog] ⚠️ El array de posts está vacío.");
-            return;
-          }
-          console.log(`[Blog] 🧼 Limpiando contenedor y preparando para mostrar ${Math.min(postsData.length, 3)} posts.`);
-          container.innerHTML = ''; // Limpiar cualquier contenido previo
-          const postsToShow = postsData.slice(0, 3);
-          console.log("[Blog] 🎯 Posts seleccionados para mostrar:", postsToShow);
-          postsToShow.forEach((post, index) => {
-            console.log(`[Blog] 🧱 Procesando post ${index + 1}: '${post.title}'`);
-            const postElement = document.createElement("div");
-            postElement.className = "post fade-up"; // ✅ Añadido fade-up para animar los posts
-            const title = post.title || "Artículo sin título";
-            const author = post.author || "Autor desconocido";
-            const readingTime = post.readingTime || "";
-            const pubDate = post.date || "Fecha desconocida";
-            const summary = post.summary || "";
-            // Resolver URLs correctamente
-            let articleUrl = '#';
-            if (post.url) {
-              try {
-                if (post.url.startsWith('http')) {
-                  articleUrl = post.url;
-                } else if (post.url.startsWith('/')) {
-                  articleUrl = baseUrl + post.url;
-                } else {
-                  articleUrl = baseUrl + '/' + post.url;
-                }
-                console.log(`[Blog] ✅ URL del artículo resuelta:`, articleUrl);
-              } catch (urlError) {
-                console.error(`[Blog] ❌ Error al construir URL para el post '${title}':`, urlError);
-              }
-            }
-            let thumbnailUrl = placeholderImage;
-            if (post.thumbnail) {
-              try {
-                if (post.thumbnail.startsWith('http')) {
-                  thumbnailUrl = post.thumbnail;
-                } else if (post.thumbnail.startsWith('/')) {
-                  thumbnailUrl = baseUrl + post.thumbnail;
-                } else {
-                  thumbnailUrl = baseUrl + '/' + post.thumbnail;
-                }
-                console.log(`[Blog] ✅ URL de miniatura resuelta:`, thumbnailUrl);
-              } catch (urlError) {
-                console.error(`[Blog] ❌ Error al construir thumbnail URL para el post '${title}':`, urlError);
-              }
-            }
-            // Crear el HTML interno del post
-            console.log(`[Blog] 🏗️ Creando HTML para post ${index + 1}...`);
-            const postHTML = `
-              <img src="${thumbnailUrl}" alt="${title}" class="service-img" loading="lazy" 
-                   onerror="console.warn('[Blog] ⚠️ Error al cargar imagen (onerror):', this.src); this.onerror=null; this.src='${placeholderImage}';">
-              <h4>${title}</h4>
-              <p class="post-meta">${pubDate} • ${author} ${readingTime ? '• ' + readingTime : ''}</p>
-              <p class="post-summary">${summary}</p>
-              <a href="${articleUrl}" target="_blank" rel="noopener" class="btn-secondary">Leer más</a>
-            `;
-            postElement.innerHTML = postHTML;
-            console.log(`[Blog] ➕ Agregando elemento post ${index + 1} al contenedor.`);
-            container.appendChild(postElement);
-          });
-          // ✅ Activar animaciones para los posts cargados
-          setTimeout(fadeInOnScroll, 100);
-          // Ejecutar fadeInOnScroll nuevamente para asegurar visibilidad inmediata
-          fadeInOnScroll(); // <--- Llamada adicional
-          console.log("[Blog] ✅ Todos los posts se han procesado y agregado al DOM.");
-        } catch (error) {
-          console.error("[Blog] ❌ Error crítico en fetchBlogPosts:", error);
-          if (container) {
-            container.innerHTML = `<p style="color: #a00; text-align: center; grid-column: 1 / -1;">
-              Error al cargar artículos. <a href="https://coreltech-blog.vercel.app" target="_blank">Visita el blog</a>
-            </p>`;
-          }
-        }
-      })();
-      console.log("[Main] Scripts cargados.");
+      // ✅ Corrección: Asegurar URL absoluta de la imagen
+      let imgSrc = post.image || post.thumbnail || placeholder;
+      if (imgSrc && !imgSrc.startsWith('http')) {
+        imgSrc = imgSrc.startsWith('/') ? `${baseUrl}${imgSrc}` : `${baseUrl}/${imgSrc}`;
+      }
+      const postUrl = post.url ? (post.url.startsWith('http') ? post.url : `${baseUrl}${post.url}`) : '#';
+
+      const postElement = document.createElement('div');
+      postElement.className = 'post fade-up';
+      postElement.innerHTML = `
+        <img src="${imgSrc}" alt="${title}" 
+             loading="lazy" 
+             onerror="this.onerror=null;this.src='${placeholder}'; this.style.opacity=0.5;"
+             style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+        <h4 style="margin: 1rem 0; font-size: 1.2rem; color: var(--azul-oscuro);">${title}</h4>
+        <p class="post-meta" style="color: #64748b; font-size: 0.9rem; margin: 0 0 0.5rem;">${date} • ${author}</p>
+        <p class="post-summary" style="color: var(--gris-medio); font-size: 0.95rem; margin: 0 0 1rem;">${summary}</p>
+        <a href="${postUrl}" target="_blank" rel="noopener" 
+           style="color: var(--azul-principal); text-decoration: none; font-weight: 600; font-size: 0.95rem;">
+          Leer más →
+        </a>
+      `;
+      container.appendChild(postElement);
     });
-  </script>
+
+    // Activar animaciones
+    setTimeout(() => {
+      document.querySelectorAll('.fade-up').forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 50) {
+          el.classList.add('visible');
+        }
+      });
+    }, 100);
+
+  } catch (err) {
+    console.error('[Blog] ❌ Error al cargar artículos:', err);
+    container.innerHTML = `
+      <p style="color: #a00; text-align: center; grid-column: 1 / -1;">
+        No se pudieron cargar los artículos.<br>
+        <a href="${baseUrl}" target="_blank" style="color: var(--azul-principal); text-decoration: underline;">
+          Visita nuestro blog
+        </a>
+      </p>
+    `;
+  }
+})();
+  });
+</script>
+<script>
+  // Menú hamburguesa
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('nav ul');
+
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menuToggle.classList.toggle('active');
+    navMenu.classList.toggle('show');
+    document.body.classList.toggle('menu-open');
+  });
+
+  // Cerrar menú al hacer clic en un enlace
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      navMenu.classList.remove('show');
+      document.body.classList.remove('menu-open');
+    });
+  });
+
+  // Cerrar menú al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('header')) {
+      menuToggle.classList.remove('active');
+      navMenu.classList.remove('show');
+      document.body.classList.remove('menu-open');
+    }
+  });
+</script>
 </body>
 </html>

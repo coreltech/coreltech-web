@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ========== HEAD: REDES.HTML ========== -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redes | CorelTech - Soluciones de Conectividad Profesionales</title>
+<meta name="description" content="Instalación y mantenimiento de redes Wi-Fi, cámaras IP y sistemas mesh. Sin puntos muertos, sin lentitud. Soluciones profesionales en Venezuela.">
+<meta name="keywords" content="instalación de redes, cámaras IP, Wi-Fi mesh, configuración de router, red para oficina, CorelTech">
+<meta name="author" content="CorelTech">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://coreltech-web.vercel.app/redes.html">
+
+<!-- GEO -->
+<meta name="geo.region" content="VE">
+<meta name="geo.placename" content="Caracas, Venezuela">
+<meta name="language" content="es">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="es_VE">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Redes | CorelTech - Soluciones de Conectividad Profesionales">
+<meta property="og:description" content="Instalación y mantenimiento de redes Wi-Fi, cámaras IP y sistemas mesh. Sin puntos muertos, sin lentitud.">
+<meta property="og:url" content="https://coreltech-web.vercel.app/redes.html">
+<meta property="og:site_name" content="CorelTech">
+<meta property="og:image" content="https://coreltech-web.vercel.app/assets/img/hero-redes.webp">
+<meta property="og:image:alt" content="Instalación de red Wi-Fi mesh y cámaras de seguridad">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@coreltechsoluciones">
+<meta name="twitter:title" content="Redes | CorelTech - Soluciones de Conectividad Profesionales">
+<meta name="twitter:description" content="Instalación y mantenimiento de redes Wi-Fi, cámaras IP y sistemas mesh. Sin puntos muertos, sin lentitud.">
+<meta name="twitter:image" content="https://coreltech-web.vercel.app/assets/img/hero-redes.webp">
+<meta name="twitter:image:alt" content="Instalación de red Wi-Fi mesh y cámaras de seguridad">
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', ' G-3FMVE049YG');
+</script>
+<!-- ========== FIN HEAD: REDES.HTML ========== -->
+  <style>
+    :root {
+      --azul-principal: #1a56db;
+      --azul-oscuro: #0f3b8b;
+      --gris-oscurito: #1e293b;
+      --gris-claro: #f8fafc;
+      --gris-medio: #64748b;
+      --blanco: #ffffff;
+      --fondo-suave: #f8fafc;
+      --sombra-suave: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --sombra-media: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --transicion: all 0.3s ease;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--gris-oscurito);
+      background-color: var(--blanco);
+      background-image: url('assets/img/bg-pattern.webp');
+      background-attachment: fixed;
+      background-size: 400px;
+      background-position: center;
+      background-repeat: repeat;
+      background-blend-mode: overlay;
+      background-color: rgba(255, 255, 255, 0.95);
+    }
+    /* CABECERA */
+    header {
+      background-color: var(--azul-principal);
+      color: var(--blanco);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--sombra-suave);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    nav ul li {
+      margin-left: 2rem;
+    }
+    nav ul li a {
+      color: var(--blanco);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: var(--transicion);
+    }
+    nav ul li a:hover {
+      color: #e0e7ff;
+    }
+    /* MENÚ HAMBURGUESA */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background: var(--blanco);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animación al abrir */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* Mostrar menú hamburguesa en móviles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--azul-principal);
+    padding: 80px 5% 2rem;
+    z-index: 100;
+    animation: slideIn 0.4s ease;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav ul li {
+    margin: 1rem 0;
+  }
+
+  nav ul li a {
+    font-size: 1.3rem;
+    color: var(--blanco);
+    padding: 0.8rem 0;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Evitar scroll en body cuando el menú está abierto */
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+/* Animación de entrada del menú */
+@keyframes slideIn {
+  from {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+    /* HERO */
+    .hero {
+      background: 
+        linear-gradient(135deg, 
+          rgba(15, 59, 139, 0.4), 
+          rgba(26, 86, 219, 0.25)
+        ), 
+        url('assets/img/hero-redes.webp') center/cover no-repeat;
+      color: var(--blanco);
+      padding: 6rem 5% 4rem;
+      text-align: center;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      pointer-events: none;
+    }
+    .hero h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1.2rem;
+      color: var(--blanco);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      opacity: 0.95;
+    }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transicion);
+      text-align: center;
+    }
+    .btn-primary {
+      background: var(--blanco);
+      color: var(--azul-principal);
+      box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.15);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--blanco);
+      border: 2px solid var(--blanco);
+    }
+    .btn-secondary:hover {
+      background: var(--blanco);
+      color: var(--azul-principal);
+    }
+    /* CONTENEDOR GENERAL */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+    /* TÍTULO CON ESTILO */
+    .section-title {
+      font-size: 2.2rem;
+      color: var(--azul-oscuro);
+      text-align: center;
+      margin: 4rem 0 2rem;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--azul-principal);
+    }
+    /* SERVICIOS */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 3rem auto;
+      max-width: 1200px;
+    }
+    .service-card {
+      background: var(--blanco);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--sombra-suave);
+      transition: var(--transicion);
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sombra-media);
+    }
+    .service-img {
+      width: 100%;
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .service-content {
+      padding: 1.5rem;
+    }
+    .service-content h3 {
+      font-size: 1.4rem;
+      color: var(--azul-oscuro);
+      margin-bottom: 0.8rem;
+      text-align: center;
+    }
+    .service-content p {
+      color: var(--gris-medio);
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+    /* BENEFICIOS */
+    .benefits {
+      padding: 5rem 0;
+      background-color: var(--gris-claro);
+      text-align: center;
+    }
+    .benefits h2 {
+      font-size: 2.2rem;
+      color: var(--azul-oscuro);
+      margin-bottom: 1rem;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.8rem;
+      max-width: 1000px;
+      margin: 3rem auto 0;
+      text-align: left;
+    }
+    .benefit-card {
+      background: var(--blanco);
+      padding: 1.4rem;
+      border-radius: 12px;
+      box-shadow: var(--sombra-suave);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: var(--transicion);
+    }
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--sombra-media);
+    }
+    .benefit-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: var(--azul-principal);
+      color: var(--blanco);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .benefit-content strong {
+      color: var(--azul-oscuro);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .benefit-content p {
+      color: var(--gris-medio);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    /* CASOS COMUNES */
+    .scenarios {
+      padding: 5rem 0;
+    }
+    .scenarios h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: var(--azul-oscuro);
+      margin-bottom: 3rem;
+    }
+    .scenario {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      padding: 1.8rem;
+      background: var(--blanco);
+      border-radius: 12px;
+      box-shadow: var(--sombra-suave);
+      border-left: 5px solid var(--azul-principal);
+    }
+    .scenario strong {
+      color: var(--azul-oscuro);
+      font-weight: 600;
+    }
+    /* TESTIMONIO */
+    .testimonial {
+      font-style: italic;
+      text-align: center;
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: var(--fondo-suave);
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      position: relative;
+    }
+    .testimonial::before {
+      content: '"';
+      font-size: 5rem;
+      color: var(--azul-principal);
+      opacity: 0.2;
+      position: absolute;
+      top: -40px;
+      left: 20px;
+    }
+    .author {
+      margin-top: 1rem;
+      font-weight: 600;
+      color: var(--azul-oscuro);
+    }
+    /* CTA FINAL */
+    .cta {
+      text-align: center;
+      padding: 6rem 5%;
+      background-color: var(--fondo-suave);
+    }
+    .cta h2 {
+      font-size: 2.4rem;
+      color: var(--azul-oscuro);
+      margin-bottom: 1rem;
+    }
+    .cta p {
+      font-size: 1.2rem;
+      color: var(--gris-medio);
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+    }
+    /* FOOTER */
+    footer {
+      background: var(--gris-oscurito);
+      color: var(--blanco);
+      padding: 4rem 5% 2rem;
+      text-align: center;
+      margin-top: 6rem;
+      position: relative;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, var(--azul-principal), var(--azul-oscuro));
+      border-radius: 10px 10px 0 0;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      text-align: left;
+      margin-bottom: 3rem;
+    }
+    .footer-logo img {
+      height: 40px;
+      margin-bottom: 1rem;
+    }
+    .footer-logo p {
+      opacity: 0.8;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      color: #e0e7ff;
+    }
+    footer h4 {
+      color: var(--blanco);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      position: relative;
+      display: inline-block;
+      font-weight: 600;
+    }
+    footer h4::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--blanco);
+      opacity: 0.3;
+      border-radius: 2px;
+    }
+    footer ul {
+      list-style: none;
+    }
+    footer ul li {
+      margin-bottom: 0.8rem;
+    }
+    footer a {
+      color: #e0e7ff;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: var(--transicion);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+    footer a:hover {
+      opacity: 1;
+      color: var(--blanco);
+      text-decoration: underline;
+      transform: translateX(2px);
+    }
+    footer a svg {
+      width: 16px;
+      height: 16px;
+      transition: var(--transicion);
+    }
+    footer a:hover svg {
+      color: var(--azul-principal);
+      transform: scale(1.1);
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      color: #e0e7ff;
+    }
+     /* ==================== 
+       WHATSAPP FAB (botón flotante)
+       ==================== */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+      transition: transform 0.3s ease;
+    }
+    .whatsapp-fab:hover {
+      transform: scale(1.1);
+    }
+    .whatsapp-fab img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+
+    /* ==================== 
+       ANIMACIONES
+       ==================== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fade-up {
+      opacity: 0;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    /* ==================== 
+       RESPONSIVE (móviles)
+       ==================== */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      nav ul {
+        display: none;
+      }
+      .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      .btn-primary,
+      .btn-secondary,
+      .btn-blue {
+        margin: 0.5rem auto;
+        width: 90%;
+      }
+      @media (max-width: 480px) {
+  .whatsapp-fab {
+    bottom: 3rem;
+      }
+    /* === BADGE: HECHO CON CUIDADO === */
+.badge-made-with-care {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--gris-medio);
+  text-align: center;
+  font-weight: 500;
+}
+
+.badge-made-with-care .heart {
+  font-size: 1.1em;
+  margin-right: 0.3rem;
+  animation: pulse 1.5s infinite;
+}
+
+.badge-made-with-care .badge-link {
+  color: var(--azul-oscuro);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.badge-made-with-care .badge-link:hover {
+  color: var(--azul-principal);
+  text-decoration: underline;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+/* === BADGE: HECHO CON CUIDADO (SVG) === */
+.badge-made-with-care {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--blanco);
+  text-align: center;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.badge-made-with-care .heart-svg {
+  width: 16px;
+  height: 16px;
+  color: var(--blanco);
+  transition: all 0.3s ease;
+  animation: pulse-blue 1.5s infinite;
+}
+
+@keyframes pulse-blue {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.badge-made-with-care .badge-link {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.badge-made-with-care .badge-link:hover {
+  color: var(--blanco);
+  text-decoration: underline;
+}
+  </style>
+
+
+</head>
+<body>
+  <!-- CABECERA -->
+  <header>
+  <a href="index.html" class="logo" aria-label="Inicio">
+    <img src="assets/img/logo2.webp" alt="Logo de CorelTech" width="200" height="40">
+  </a>
+
+  <!-- Menú Hamburguesa (solo en móvil) -->
+  <button class="menu-toggle" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Navegación -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="hardware.html">Hardware</a></li>
+      <li><a href="software.html">Software</a></li>
+      <li><a href="redes.html">Redes</a></li>
+      <li><a href="portafolio.html">Portafolio</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <!-- HERO -->
+  <section class="hero fade-up">
+    <div class="hero-content">
+      <h2>Redes seguras, estables y sin puntos muertos</h2>
+      <p>Diseño, instalación y mantenimiento de redes para hogares y empresas. Wi-Fi que llega a todos lados.</p>
+      <div class="hero-buttons">
+        <a href="contacto.html" class="btn-primary">Solicitar Servicio</a>
+        <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-secondary">💬 Habla con un técnico</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <section class="container fade-up">
+    <h2 class="section-title">Conectamos tu mundo con confianza</h2>
+    <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: var(--gris-medio); font-size: 1.1rem;">
+      ¿Tu Wi-Fi no llega al segundo piso? ¿Tu red se cae en horas pico? ¿Tienes cámaras que no se conectan? Una red mal diseñada frena tu productividad. Nosotros la construimos <strong>para que funcione, no para que exista</strong>.
+    </p>
+
+    <!-- SERVICIOS -->
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-img" style="background-image: url('assets/img/real-wifi.webp');"></div>
+        <div class="service-content">
+          <h3>Instalación de Redes Wi-Fi y Cableadas</h3>
+          <p>Implementamos redes inalámbricas y estructuradas con equipos de calidad y diseño profesional.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img" style="background-image: url('assets/img/real-router.webp');"></div>
+        <div class="service-content">
+          <h3>Configuración de Routers y Switches</h3>
+          <p>Configuración avanzada para redes estables, seguras y de alto rendimiento.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img" style="background-image: url('assets/img/real-cameras.webp');"></div>
+        <div class="service-content">
+          <h3>Instalación de Cámaras IP</h3>
+          <p>Monitoreo 24/7 con cámaras inteligentes, almacenamiento local o en la nube.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img" style="background-image: url('assets/img/real-auditoria.webp');"></div>
+        <div class="service-content">
+          <h3>Auditoría de Red</h3>
+          <p>Analizamos tu red actual para detectar cuellos de botella, interferencias y riesgos de seguridad.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img" style="background-image: url('assets/img/real-mesh.webp');"></div>
+        <div class="service-content">
+          <h3>Optimización de Cobertura</h3>
+          <p>Eliminamos zonas muertas con puntos de acceso estratégicos o sistemas mesh.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img" style="background-image: url('assets/img/real-mantenimiento.webp');"></div>
+        <div class="service-content">
+          <h3>Mantenimiento Preventivo</h3>
+          <p>Actualizaciones, revisiones y ajustes periódicos para mantener tu red en óptimas condiciones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section class="benefits fade-up">
+    <h2 class="section-title">Por qué Elegirnos</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">📶</div>
+        <div class="benefit-content">
+          <strong>Cobertura total</strong>
+          <p>Wi-Fi que llega a cada rincón, sin puntos muertos ni caídas.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🔒</div>
+        <div class="benefit-content">
+          <strong>Seguridad garantizada</strong>
+          <p>Redes protegidas contra intrusiones y dispositivos no autorizados.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⚡</div>
+        <div class="benefit-content">
+          <strong>Rendimiento optimizado</strong>
+          <p>Velocidad y estabilidad para videoconferencias, streaming y trabajo remoto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASOS COMUNES -->
+  <section class="scenarios fade-up">
+    <h2 class="section-title">Casos Comunes</h2>
+    <div class="scenario">
+      <strong>Oficina con red lenta</strong>: reestructuramos la red y agregamos switches gestionados. Productividad mejorada en un 70%.
+    </div>
+    <div class="scenario">
+      <strong>Casa con Wi-Fi débil</strong>: instalamos sistema mesh y optimizamos canales. Ahora el Wi-Fi llega al jardín y al garaje.
+    </div>
+    <div class="scenario">
+      <strong>Tienda con cámaras offline</strong>: reconfiguramos red y agregamos respaldo para monitoreo continuo.
+    </div>
+  </section>
+
+  <!-- TESTIMONIO -->
+  <section class="testimonial fade-up">
+    <p>"En mi consultorio nunca había tenido red estable. Ahora, con la solución de CorelTech, todos los equipos conectan sin problemas y las consultas en línea funcionan perfecto."</p>
+    <div class="author">— Dr. Andrés L., consultorio médico</div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta fade-up">
+    <h2>¿Tu red no te da lo que necesitas?</h2>
+    <p>Solicita una auditoría gratuita de tu red. Te diremos cómo mejorarla.</p>
+    <a href="contacto.html" class="btn-primary">Agenda una evaluación gratuita</a>
+  </section>
+
+  <!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-logo">
+      <img src="assets/img/logo2.webp" alt="Logo CorelTech" width="150" height="60">
+      <p>Soluciones técnicas profesionales con más de 10 años de experiencia en el mercado venezolano.</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="mailto:coreltech.soluciones@gmail.com">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          Email
+        </a></li>
+        <li><a href="https://wa.me/584145828186" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          WhatsApp
+        </a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="hardware.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          Hardware
+        </a></li>
+        <li><a href="software.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+          </svg>
+          Software
+        </a></li>
+        <li><a href="redes.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="4"></circle>
+            <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line>
+            <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line>
+            <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line>
+            <line x1="14.83" y1="9.17" x2="18.36" y2="5.64"></line>
+            <line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line>
+          </svg>
+          Redes
+        </a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Redes Sociales</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/coreltechsoluciones" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          Instagram
+        </a></li>
+        <li><a href="https://www.tiktok.com/@coreltech.ve" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 7.34v0a10 10 0 0 1-3.47 1.54 4.3 4.3 0 0 1-4.24-1.76 4.26 4.26 0 0 1 .3-5.24A10.05 10.05 0 0 1 12 2.11v4.75h0a4.25 4.25 0 1 0 4.25 4.25V12a10 10 0 1 1-6.34-9.31"></path>
+          </svg>
+          TikTok
+        </a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 CorelTech. No vendemos partes, vendemos tranquilidad.</p>
+  </div>
+  <!-- BADGE: HECHO CON CUIDADO -->
+<p class="badge-made-with-care">
+  <span class="heart">💙</span>
+  <strong>Hecho con cuidado</strong> por <a href="creditos.html" class="badge-link">Agustín Lugo</a>
+</p>
+</footer>
+  <!-- BOTÓN WHATSAPP -->
+  <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
+    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="60" height="60">
+  </a>
+
+  <!-- SCRIPT: Animaciones -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const fadeElements = document.querySelectorAll('.fade-up');
+      const fadeInOnScroll = () => {
+        fadeElements.forEach(el => {
+          const elementTop = el.getBoundingClientRect().top;
+          if (elementTop < window.innerHeight - 100 && !el.classList.contains('visible')) {
+            el.classList.add('visible');
+          }
+        });
+      };
+      window.addEventListener('scroll', fadeInOnScroll);
+      window.addEventListener('load', fadeInOnScroll);
+    });
+  </script>
+  <script>
+  // Menú hamburguesa
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('nav ul');
+
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menuToggle.classList.toggle('active');
+    navMenu.classList.toggle('show');
+    document.body.classList.toggle('menu-open');
+  });
+
+  // Cerrar menú al hacer clic en un enlace
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      navMenu.classList.remove('show');
+      document.body.classList.remove('menu-open');
+    });
+  });
+
+  // Cerrar menú al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('header')) {
+      menuToggle.classList.remove('active');
+      navMenu.classList.remove('show');
+      document.body.classList.remove('menu-open');
+    }
+  });
+</script>
+</body>
+</html>

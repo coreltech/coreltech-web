@@ -1,184 +1,1203 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Contáctanos para más información sobre nuestros servicios de tecnología, soporte técnico y asesoría IT.">
-  <title>Contacto - Coreltech IT Solutions</title>
-  <!-- Google Fonts - Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <!-- Estilos principales -->
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <!-- Favicon -->
-  <link rel="icon" href="assets/img/favicon.webp" type="image/webp">
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+  <!-- ========== HEAD: CONTACTO.HTML ========== -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto | CorelTech - Soluciones Técnicas Profesionales</title>
+<meta name="description" content="Contáctanos para servicios de hardware, software y redes. Soporte por WhatsApp, email o visita al taller. Atención rápida y sin compromiso.">
+<meta name="keywords" content="contacto técnico, WhatsApp técnico, soporte remoto, presupuesto sin compromiso, CorelTech">
+<meta name="author" content="CorelTech">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://coreltech-web.vercel.app/contacto.html">
 
-  <!-- 🔁 Precarga de imágenes críticas -->
-  <link rel="preload" as="image" href="assets/img/hero-tech.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/img/services-hero.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/img/portfolio-hero.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/img/contact-hero.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/img/about-hero.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/img/logo.webp" type="image/webp">
+<!-- GEO -->
+<meta name="geo.region" content="VE">
+<meta name="geo.placename" content="Caracas, Venezuela">
+<meta name="language" content="es">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="es_VE">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contacto | CorelTech - Soluciones Técnicas Profesionales">
+<meta property="og:description" content="Contáctanos para servicios de hardware, software y redes. Soporte por WhatsApp, email o visita al taller. Atención rápida y sin compromiso.">
+<meta property="og:url" content="https://coreltech-web.vercel.app/contacto.html">
+<meta property="og:site_name" content="CorelTech">
+<meta property="og:image" content="https://coreltech-web.vercel.app/assets/img/hero-contacto.webp">
+<meta property="og:image:alt" content="Técnico atendiendo cliente en taller técnico">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@coreltechsoluciones">
+<meta name="twitter:title" content="Contacto | CorelTech - Soluciones Técnicas Profesionales">
+<meta name="twitter:description" content="Contáctanos para servicios de hardware, software y redes. Soporte por WhatsApp, email o visita al taller. Atención rápida y sin compromiso.">
+<meta name="twitter:image" content="https://coreltech-web.vercel.app/assets/img/hero-contacto.webp">
+<meta name="twitter:image:alt" content="Técnico atendiendo cliente en taller técnico">
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', ' G-3FMVE049YG');
+</script>
+<!-- ========== FIN HEAD: CONTACTO.HTML ========== -->
+  <style>
+    :root {
+      --azul-principal: #1a56db;
+      --azul-oscuro: #0f3b8b;
+      --gris-oscurito: #1e293b;
+      --gris-claro: #f8fafc;
+      --gris-medio: #64748b;
+      --blanco: #ffffff;
+      --fondo-suave: #f8fafc;
+      --sombra-suave: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --sombra-media: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --transicion: all 0.3s ease;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--gris-oscurito);
+      background-color: var(--blanco);
+      background-image: url('assets/img/bg-pattern.webp');
+      background-attachment: fixed;
+      background-size: 400px;
+      background-position: center;
+      background-repeat: repeat;
+      background-blend-mode: overlay;
+      background-color: rgba(255, 255, 255, 0.95);
+    }
+    /* CABECERA */
+    header {
+      background-color: var(--azul-principal);
+      color: var(--blanco);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--sombra-suave);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    nav ul li {
+      margin-left: 2rem;
+    }
+    nav ul li a {
+      color: var(--blanco);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: var(--transicion);
+    }
+    nav ul li a:hover {
+      color: #e0e7ff;
+    }
+    /* MENÚ HAMBURGUESA */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 101;
+    }
+    .menu-toggle span {
+      width: 100%;
+      height: 3px;
+      background: var(--blanco);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -6px);
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--azul-principal);
+        padding: 80px 5% 2rem;
+        z-index: 100;
+        animation: slideIn 0.4s ease;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      nav ul li {
+        margin: 1rem 0;
+      }
+      nav ul li a {
+        font-size: 1.3rem;
+        color: var(--blanco);
+        padding: 0.8rem 0;
+        display: block;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      body.menu-open {
+        overflow: hidden;
+      }
+    }
+    @keyframes slideIn {
+      from {
+        transform: translateY(-10%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    /* HERO */
+    .hero {
+      background: 
+        linear-gradient(135deg, 
+          rgba(15, 59, 139, 0.4), 
+          rgba(26, 86, 219, 0.25)
+        ), 
+        url('assets/img/contacto-hero.webp') center/cover no-repeat;
+      color: var(--blanco);
+      padding: 6rem 5% 4rem;
+      text-align: center;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      pointer-events: none;
+    }
+    .hero h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1.2rem;
+      color: var(--blanco);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      opacity: 0.95;
+    }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transicion);
+      text-align: center;
+    }
+    .btn-primary {
+      background: var(--blanco);
+      color: var(--azul-principal);
+      box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.15);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--blanco);
+      border: 2px solid var(--blanco);
+    }
+    .btn-secondary:hover {
+      background: var(--blanco);
+      color: var(--azul-principal);
+    }
+    /* FORMULARIO PREMIUM */
+    .contact-section {
+      position: relative;
+      padding: 6rem 5%;
+      margin: 0 auto;
+      max-width: 1400px;
+    }
+    .form-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      box-shadow:
+        0 15px 35px -10px rgba(0, 0, 0, 0.1),
+        0 5px 15px -5px rgba(0, 0, 0, 0.05),
+        0 0 0 1px rgba(255, 255, 255, 0.9);
+      overflow: hidden;
+      transition: var(--transicion);
+      z-index: 10;
+      border: 1px solid rgba(26, 86, 219, 0.15);
+    }
+    .form-container:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.15),
+        0 10px 20px -5px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.9);
+    }
+    .form-content {
+      padding: 3rem;
+    }
+    .form-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .form-header h2 {
+      font-size: 2.2rem;
+      color: var(--azul-oscuro);
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    .form-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--azul-principal);
+    }
+    .form-header p {
+      color: var(--gris-medio);
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.8rem;
+    }
+    .form-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--gris-oscurito);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .form-group label svg {
+      width: 18px;
+      height: 18px;
+      color: var(--azul-principal);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 1rem 1rem 1rem 2.5rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-family: inherit;
+      transition: var(--transicion);
+      background-color: #f8fafc;
+      font-size: 1rem;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--azul-principal);
+      box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
+      background-color: var(--blanco);
+    }
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    .input-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gris-medio);
+    }
+    .form-actions {
+      grid-column: span 2;
+      margin-top: 1rem;
+    }
+    .btn-submit {
+      background: linear-gradient(135deg, var(--azul-principal), var(--azul-oscuro));
+      color: var(--blanco);
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transicion);
+      width: 100%;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(26, 86, 219, 0.3);
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px -2px rgba(26, 86, 219, 0.4);
+    }
+    .btn-submit svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+    #form-message {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+    /* CONTACTOS PREMIUM */
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 4rem auto 0;
+    }
+    .contact-card {
+      background: var(--blanco);
+      padding: 1.8rem;
+      border-radius: 12px;
+      box-shadow: var(--sombra-suave);
+      text-align: center;
+      transition: var(--transicion);
+    }
+    .contact-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sombra-media);
+    }
+    .contact-card h3 {
+      color: var(--azul-oscuro);
+      margin-bottom: 0.8rem;
+    }
+    .contact-card p {
+      color: var(--gris-medio);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .contact-card a {
+      color: var(--azul-principal);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      transition: var(--transicion);
+    }
+    .contact-card a:hover {
+      color: var(--azul-oscuro);
+      text-decoration: underline;
+    }
+    .contact-card a svg {
+      width: 16px;
+      height: 16px;
+    }
+    /* FOOTER */
+    footer {
+      background: var(--gris-oscurito);
+      color: var(--blanco);
+      padding: 4rem 5% 2rem;
+      text-align: center;
+      margin-top: 6rem;
+      position: relative;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, var(--azul-principal), var(--azul-oscuro));
+      border-radius: 10px 10px 0 0;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      text-align: left;
+      margin-bottom: 3rem;
+    }
+    .footer-logo img {
+      height: 40px;
+      margin-bottom: 1rem;
+    }
+    .footer-logo p {
+      opacity: 0.8;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      color: #e0e7ff;
+    }
+    footer h4 {
+      color: var(--blanco);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      position: relative;
+      display: inline-block;
+      font-weight: 600;
+    }
+    footer h4::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--blanco);
+      opacity: 0.3;
+      border-radius: 2px;
+    }
+    footer ul {
+      list-style: none;
+    }
+    footer ul li {
+      margin-bottom: 0.8rem;
+    }
+    footer a {
+      color: #e0e7ff;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: var(--transicion);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+    footer a:hover {
+      opacity: 1;
+      color: var(--blanco);
+      text-decoration: underline;
+      transform: translateX(2px);
+    }
+    footer a svg {
+      width: 16px;
+      height: 16px;
+      transition: var(--transicion);
+    }
+    footer a:hover svg {
+      color: var(--azul-principal);
+      transform: scale(1.1);
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      color: #e0e7ff;
+    }
+    /* WHATSAPP FAB */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 2.5rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+      transition: var(--transicion);
+      z-index: 1000;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    .whatsapp-fab:hover {
+      transform: scale(1.1) translateY(-5px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    }
+    .whatsapp-fab img {
+      width: 36px;
+      height: 36px;
+      filter: brightness(1.1) contrast(1.1);
+    }
+    /* ANIMACIONES */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .btn {
+        width: 100%;
+      }
+      nav ul li {
+        margin-left: 1.5rem;
+      }
+      .form-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .form-group.full-width {
+        grid-column: span 1 !important;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100% !important;
+      }
+      .form-actions {
+        grid-column: span 1;
+      }
+      .contact-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 480px) {
+      .whatsapp-fab {
+        bottom: 2.8rem;
+        width: 55px;
+        height: 55px;
+      }
+      .whatsapp-fab img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+    /* HERO */
+.hero {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--blanco);
+  margin-bottom: 4rem;
+}
+
+.hero-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(15, 59, 139, 0.4), rgba(26, 86, 219, 0.3));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: var(--blanco);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  opacity: 0.95;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+/* CONTACTOS PREMIUM */
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 4rem auto 0;
+}
+
+.contact-card {
+  background: var(--blanco);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+  transition: var(--transicion);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--azul-principal), var(--azul-oscuro));
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.15);
+}
+
+/* Contenedor del ícono */
+.contact-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 86, 219, 0.1);
+  border-radius: 50%;
+  color: var(--azul-principal);
+  transition: all 0.3s ease;
+}
+
+.contact-icon-wrapper svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.contact-card:hover .contact-icon-wrapper {
+  background: var(--azul-principal);
+  color: var(--blanco);
+  transform: scale(1.05);
+}
+
+.contact-card h3 {
+  font-size: 1.5rem;
+  color: var(--azul-oscuro);
+  margin-bottom: 1rem;
+}
+
+.contact-card p {
+  color: var(--gris-medio);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.contact-card a {
+  color: var(--azul-principal);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transicion);
+}
+
+.contact-card a:hover {
+  color: var(--azul-oscuro);
+  text-decoration: underline;
+}
+
+.contact-card a svg {
+  width: 16px;
+  height: 16px;
+}
+/* === BADGE: HECHO CON CUIDADO === */
+.badge-made-with-care {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--gris-medio);
+  text-align: center;
+  font-weight: 500;
+}
+
+.badge-made-with-care .heart {
+  font-size: 1.1em;
+  margin-right: 0.3rem;
+  animation: pulse 1.5s infinite;
+}
+
+.badge-made-with-care .badge-link {
+  color: var(--azul-oscuro);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.badge-made-with-care .badge-link:hover {
+  color: var(--azul-principal);
+  text-decoration: underline;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+/* === BADGE: HECHO CON CUIDADO (SVG) === */
+.badge-made-with-care {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--blanco);
+  text-align: center;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.badge-made-with-care .heart-svg {
+  width: 16px;
+  height: 16px;
+  color: var(--blanco);
+  transition: all 0.3s ease;
+  animation: pulse-blue 1.5s infinite;
+}
+
+@keyframes pulse-blue {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.badge-made-with-care .badge-link {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.badge-made-with-care .badge-link:hover {
+  color: var(--blanco);
+  text-decoration: underline;
+}
+  </style>
+
 </head>
 <body>
-  <!-- 🧭 Menú de Navegación -->
-  <header class="navbar">
-    <div class="container">
-      <a href="index.html" class="logo">
-        <img src="assets/img/logo.webp" alt="Logo Coreltech" width="180" height="70">
-      </a>
-      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
-      <nav class="nav-mobile">
-        <ul class="nav-links">
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
-          <li><a href="sobre.html">Sobre Nosotros</a></li>
-          <li><a href="portafolio.html">Portafolio</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-      </nav>
-    </div>
+  <!-- CABECERA -->
+  <header>
+    <a href="index.html" class="logo" aria-label="Inicio">
+      <img src="assets/img/logo2.webp" alt="Logo de CorelTech" width="200" height="40">
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="hardware.html">Hardware</a></li>
+        <li><a href="software.html">Software</a></li>
+        <li><a href="redes.html">Redes</a></li>
+        <li><a href="portafolio.html">Portafolio</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- 📞 Hero con Imagen Lateral -->
-  <section class="hero fade-up">
-    <div class="container">
-      <div class="hero-content">
-        <h1>Hablemos de tu Proyecto</h1>
-        <p><strong>No vendemos partes, vendemos tranquilidad.</strong> Escríbenos y te responderemos en menos de 24 horas con una solución clara y real.</p>
-        <div class="hero-buttons">
-          <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-primary" title="Habla con un técnico por WhatsApp">💬 Hablar por WhatsApp</a>
-          <a href="portafolio.html" class="btn-secondary">Ver casos de éxito</a>
-        </div>
-      </div>
-      <div class="hero-image">
-        <img src="assets/img/contact-hero.webp" alt="Técnico atendiendo a cliente" class="content-img" loading="lazy">
-      </div>
+  <!-- HERO -->
+<section class="hero fade-up">
+  <div class="hero-image-container">
+    <img src="assets/img/hero-contacto.webp" alt="Técnico atendiendo cliente" class="hero-img" loading="lazy">
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <h1>Soluciones Técnicas a tu Medida</h1>
+    <p><strong>Expertos en recuperar lo que otros dan por perdido.</strong> Contacta a nuestro equipo para una evaluación profesional sin compromiso.</p>
+    <div class="hero-buttons">
+      <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-secondary">💬 WhatsApp Directo</a>
+      <a href="portafolio.html" class="btn-primary">Ver Nuestro Trabajo</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 📨 Formulario de Contacto con Firebase -->
+  <!-- FORMULARIO PREMIUM -->
   <section class="contact-section fade-up">
-    <div class="container">
-      <h2 class="section-title">Envíanos un Mensaje</h2>
-      <p style="text-align: center; color: #555; margin-bottom: 2rem;">
-        Completa el formulario y uno de nuestros técnicos te responderá personalmente.
-      </p>
-      <form id="contact-form" class="contact-form">
-        <label for="name">Nombre *</label>
-        <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
-
-        <label for="email">Email *</label>
-        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
-
-        <label for="phone">Teléfono (opcional)</label>
-        <input type="tel" id="phone" name="phone" placeholder="+58 414 582 8186">
-
-        <label for="message">Mensaje *</label>
-        <textarea id="message" name="message" rows="5" placeholder="Cuéntanos tu problema o proyecto..." required></textarea>
-
-        <button type="submit" class="btn-primary" id="submit-btn">
-          <span id="btn-text">Enviar Mensaje</span>
-          <span id="loading" style="display: none;">Enviando...</span>
-        </button>
-      </form>
-      <div id="form-message" class="form-message"></div>
-    </div>
-  </section>
-
-  <!-- 📍 Datos de Contacto Alternativos (MEJORADO) -->
-  <section class="contact-alternatives fade-up">
-    <div class="container">
-      <div class="content-with-image reverse">
-        <div class="image-side">
-          <img src="assets/img/contact-info.webp" alt="Información de contacto" class="content-img" loading="lazy">
+    <div class="form-container">
+      <div class="form-content">
+        <div class="form-header">
+          <h2>Contacto Directo</h2>
+          <p>Complete el formulario y nuestro equipo técnico se pondrá en contacto con usted en menos de 24 horas.</p>
         </div>
-        <div class="text-side contact-info">
-          <h2>Otras Formas de Contacto</h2>
-          <div class="contact-details">
-            <div class="contact-item">
-              <h3>📧 Email</h3>
-              <p><a href="mailto:coreltech.soluciones@gmail.com">coreltech.soluciones@gmail.com</a></p>
+        <form id="contact-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Nombre
+              </label>
+              <input type="text" id="name" name="nombre" required>
+              <div class="input-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
             </div>
-            <div class="contact-item">
-              <h3>📱 WhatsApp</h3>
-              <p><a href="https://wa.me/584145828186" target="_blank" rel="noopener">+58 414 582 8186</a></p>
-              <p class="contact-note">Respuesta rápida, ideal para consultas urgentes.</p>
+            <div class="form-group">
+              <label for="email">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Email
+              </label>
+              <input type="email" id="email" name="email" required>
+              <div class="input-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="phone">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                Teléfono
+              </label>
+              <input type="tel" id="phone" name="telefono" required>
+              <div class="input-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="service">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                Servicio
+              </label>
+              <select id="service" name="servicio" required>
+                <option value="">Selecciona un servicio</option>
+                <option value="hardware">Reparación de Hardware</option>
+                <option value="software">Instalación de Software</option>
+                <option value="redes">Configuración de Redes</option>
+                <option value="otro">Otro</option>
+              </select>
+              <div class="input-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+              </div>
+            </div>
+            <div class="form-group full-width">
+              <label for="message">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                Mensaje
+              </label>
+              <textarea id="message" name="mensaje" rows="5" required></textarea>
+              <div class="input-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
             </div>
           </div>
-        </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-submit">
+              <span id="btn-text">Enviar Consulta</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 2L11 13"></path>
+                <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+              </svg>
+            </button>
+            <div id="form-message"></div>
+          </div>
+        </form>
       </div>
     </div>
   </section>
 
-  <!-- 📞 Botón Flotante de WhatsApp (móvil) -->
+
+  <div class="form-actions">
+    <button type="submit" class="btn-submit">
+      <span id="btn-text">Enviar Consulta</span>
+      <svg>...</svg>
+    </button>
+    <div id="form-message"></div>
+  </div>
+</form>
+
+  <!-- CONTACTOS PREMIUM -->
+<section class="contact-section fade-up">
+  <div class="contact-cards">
+    <!-- Tarjeta 1: WhatsApp -->
+    <div class="contact-card">
+      <div class="contact-icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+      </div>
+      <h3>Llamadas y WhatsApp</h3>
+      <p>Atención inmediata para urgencias técnicas</p>
+      <a href="https://wa.me/584145828186" target="_blank" rel="noopener">+58 414 582 8186</a>
+    </div>
+
+    <!-- Tarjeta 2: Correo Electrónico -->
+    <div class="contact-card">
+      <div class="contact-icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </div>
+      <h3>Correo Electrónico</h3>
+      <p>Para consultas detalladas o documentación técnica</p>
+      <a href="mailto:coreltech.soluciones@gmail.com">coreltech.soluciones@gmail.com</a>
+    </div>
+
+    <!-- Tarjeta 3: Visita Nuestro Taller -->
+    <div class="contact-card">
+      <div class="contact-icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+      </div>
+      <h3>Visita Nuestro Taller</h3>
+      <p>Agenda una cita para diagnóstico presencial</p>
+      <a href="https://goo.gl/maps/" target="_blank" rel="noopener">Ver Ubicación</a>
+    </div>
+  </div>
+</section>
+
+  <!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-logo">
+      <img src="assets/img/logo2.webp" alt="Logo CorelTech" width="150" height="60">
+      <p>Soluciones técnicas profesionales con más de 10 años de experiencia en el mercado venezolano.</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="mailto:coreltech.soluciones@gmail.com">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          Email
+        </a></li>
+        <li><a href="https://wa.me/584145828186" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          WhatsApp
+        </a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="hardware.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          Hardware
+        </a></li>
+        <li><a href="software.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+          </svg>
+          Software
+        </a></li>
+        <li><a href="redes.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="4"></circle>
+            <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line>
+            <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line>
+            <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line>
+            <line x1="14.83" y1="9.17" x2="18.36" y2="5.64"></line>
+            <line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line>
+          </svg>
+          Redes
+        </a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Redes Sociales</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/coreltechsoluciones" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          Instagram
+        </a></li>
+        <li><a href="https://www.tiktok.com/@coreltech.ve" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 7.34v0a10 10 0 0 1-3.47 1.54 4.3 4.3 0 0 1-4.24-1.76 4.26 4.26 0 0 1 .3-5.24A10.05 10.05 0 0 1 12 2.11v4.75h0a4.25 4.25 0 1 0 4.25 4.25V12a10 10 0 1 1-6.34-9.31"></path>
+          </svg>
+          TikTok
+        </a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 CorelTech. No vendemos partes, vendemos tranquilidad.</p>
+  </div>
+  <!-- BADGE: HECHO CON CUIDADO -->
+<p class="badge-made-with-care">
+  <span class="heart">💙</span>
+  <strong>Hecho con cuidado</strong> por <a href="creditos.html" class="badge-link">Agustín Lugo</a>
+</p>
+</footer>
+
+  <!-- BOTÓN WHATSAPP -->
   <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
-    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50" height="50">
+    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="60" height="60">
   </a>
 
-  <!-- 📌 Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <img src="assets/img/logo2.webp" alt="Logo Coreltech" width="150" height="60">
-          <p>Soluciones IT profesionales, rápidas y confiables.</p>
-        </div>
-        <div class="footer-contact">
-          <p><strong>Email:</strong> <a href="mailto:coreltech.soluciones@gmail.com">coreltech.soluciones@gmail.com</a></p>
-          <p><strong>Teléfono:</strong> +58 414 582 8186</p>
-        </div>
-        <div class="footer-social">
-          <h4>Síguenos</h4>
-          <ul>
-            <li><a href="https://www.instagram.com/coreltechsoluciones" target="_blank" rel="noopener">Instagram</a></li>
-            <li><a href="https://www.tiktok.com/@coreltech.ve" target="_blank" rel="noopener">TikTok</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Coreltech IT Solutions. Todos los derechos reservados.</p>
-      </div>
-    </div>
-  </footer>
+<!-- ✅ Script: Firebase + Telegram + Menú + Animaciones -->
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script>
+  // === CONFIGURACIÓN DE FIREBASE ===
+  const firebaseConfig = {
+    apiKey: "AIzaSyBRlLI6jyodHvj_RSsKOjFF8B2HeM1UW7E",
+    authDomain: "coreltechweb-contactos.firebaseapp.com",
+    projectId: "coreltechweb-contactos",
+    storageBucket: "coreltechweb-contactos.appspot.com",
+    messagingSenderId: "597588902592",
+    appId: "1:597588902592:web:c721408e00e62de26fe325"
+  };
 
-  <!-- ✅ Script: Firebase + Menú + Animaciones -->
-  <script>
-    // Configuración de Firebase (REEMPLAZA CON TUS DATOS REALES)
-    const firebaseConfig = {
-      apiKey: "AIzaSyBRlLI6jyodHvj_RSsKOjFF8B2HeM1UW7E",
-      authDomain: "coreltechweb-contactos.firebaseapp.com",
-      projectId: "coreltechweb-contactos",
-      storageBucket: "coreltechweb-contactos.firebasestorage.app",
-      messagingSenderId: "T597588902592",
-      appId: "1:597588902592:web:c721408e00e62de26fe325"
-      // measurementId: "G-3FMVE049YG" // Opcional, puedes eliminar esta línea si no la tienes
-    };
-
-    // Inicializar Firebase
+  // Inicializar Firebase
+  if (!window.firebase || !firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
-    // Obtener una referencia a la base de datos Firestore
-    const db = firebase.firestore();
+  }
+  const db = firebase.firestore();
 
-    // Menú móvil
+  // === MENÚ HAMBURGUESA ===
+  document.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        });
-        document.querySelectorAll('.nav-links a').forEach(link => {
+    const navMenu = document.querySelector('nav ul');
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('show');
+        document.body.classList.toggle('menu-open');
+      });
+
+      navMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
+          menuToggle.classList.remove('active');
+          navMenu.classList.remove('show');
+          document.body.classList.remove('menu-open');
         });
-        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('header')) {
+          menuToggle.classList.remove('active');
+          navMenu.classList.remove('show');
+          document.body.classList.remove('menu-open');
+        }
+      });
     }
 
-
-    // Animaciones al hacer scroll
+    // === ANIMACIONES AL HACER SCROLL ===
     const fadeElements = document.querySelectorAll('.fade-up');
     const fadeInOnScroll = () => {
       fadeElements.forEach(el => {
@@ -192,113 +1211,112 @@
     window.addEventListener('scroll', fadeInOnScroll);
     window.addEventListener('load', fadeInOnScroll);
 
-    // Manejo del formulario con Firebase Firestore
-    document.getElementById('contact-form').addEventListener('submit', async function (e) {
-      e.preventDefault();
+    // === FORMULARIO CON FIRESTORE Y TELEGRAM ===
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
 
-      const btnText = document.getElementById('btn-text');
-      const loading = document.getElementById('loading');
-      const submitBtn = document.getElementById('submit-btn');
-      const formMessage = document.getElementById('form-message');
+        const btnText = document.getElementById('btn-text');
+        const loading = document.querySelector('#form-message + .loading') || { style: { display: 'none' } }; // Opcional: si usas un spinner
+        const submitBtn = form.querySelector('.btn-submit');
+        const formMessage = document.getElementById('form-message');
 
-      // Obtener valores del formulario
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const message = document.getElementById('message').value.trim();
+        // Obtener valores del formulario (usando el 'name' del input)
+        const nombre = form.nombre.value.trim();
+        const email = form.email.value.trim();
+        const telefono = form.telefono.value.trim();
+        const servicio = form.servicio.value;
+        const mensaje = form.mensaje.value.trim();
 
-      // Validación básica simple
-      if (!name || !email || !message) {
-        formMessage.innerHTML = '<p style="color: red;">Por favor, completa todos los campos obligatorios (*).</p>';
-        return; // Detener el envío si hay campos vacíos
-      }
+        // Validación básica
+        if (!nombre || !email || !servicio || !mensaje) {
+          showMessage('Por favor, completa todos los campos obligatorios.', 'error');
+          return;
+        }
 
-      // Expresión regular básica para validar email
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-         formMessage.innerHTML = '<p style="color: red;">Por favor, ingresa un email válido.</p>';
-         return;
-      }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          showMessage('Por favor, ingresa un email válido.', 'error');
+          return;
+        }
 
-      // Mostrar estado de carga
-      submitBtn.disabled = true;
-      btnText.style.display = 'none';
-      loading.style.display = 'inline';
-      formMessage.innerHTML = ''; // Limpiar mensajes anteriores
+        // Estado de carga
+        submitBtn.disabled = true;
+        btnText.textContent = 'Enviando...';
+        form.querySelector('.btn-submit svg').style.opacity = '0';
 
-      try {
-  // 1. Guardar datos en Firestore
-  const docRef = await db.collection('mensajes_contacto').add({
-    nombre: name,
-    email: email,
-    telefono: phone || null,
-    mensaje: message,
-    fecha_envio: firebase.firestore.FieldValue.serverTimestamp()
-  });
+        try {
+          // 1. Guardar en Firebase Firestore
+          const docRef = await db.collection('mensajes_contacto').add({
+            nombre,
+            email,
+            telefono: telefono || null,
+            servicio,
+            mensaje,
+            fecha_envio: firebase.firestore.FieldValue.serverTimestamp(),
+            leido: false
+          });
 
-  console.log("Mensaje guardado en Firestore con ID: ", docRef.id);
+          console.log("✅ Mensaje guardado en Firestore con ID:", docRef.id);
 
-  // 2. ENVIAR NOTIFICACIÓN POR TELEGRAM (nuevo paso)
-  // --- CONFIGURACIÓN ---
-  // REEMPLAZA ESTOS VALORES CON LOS TUYOS OBTENIDOS EN LOS PASOS 1 Y 2
-  const TELEGRAM_BOT_TOKEN = '7916545098:AAFiNbbKpecLTsNQ3Kz8MRoztm8GhN_P3bw'; // Ejemplo: '1234567890:AAH1a2B3c4D5e6F7g8H9i0JkLmNoPqRsTuV'
-  const TELEGRAM_CHAT_ID = '7523354646';        // Ejemplo: '987654321'
-  // ---------------------
+          // 2. Enviar notificación a Telegram
+          const TELEGRAM_BOT_TOKEN = '7916545098:AAFiNbbKpecLTsNQ3Kz8MRoztm8GhN_P3bw';
+          const TELEGRAM_CHAT_ID = '7523354646';
 
-  // Crear el mensaje de notificación con formato Markdown
-  let mensajeNotificacion = `🔔 *¡Nuevo Mensaje de Contacto!*\n\n`;
-  mensajeNotificacion += `*Nombre:* ${name}\n`;
-  mensajeNotificacion += `*Email:* ${email}\n`;
-  if (phone) {
-    mensajeNotificacion += `*Teléfono:* ${phone}\n`;
-  }
-  mensajeNotificacion += `\n*Mensaje:*\n${message}`;
+          const mensajeNotificacion = `🔔 *Nuevo Mensaje de Contacto*\n\n` +
+            `*Nombre:* ${nombre}\n` +
+            `*Email:* ${email}\n` +
+            (telefono ? `*Teléfono:* ${telefono}\n` : '') +
+            `*Servicio:* ${servicio}\n` +
+            `\n*Mensaje:*\n${mensaje}`;
 
-  // URL de la API de Telegram Bot para enviar mensajes
-  const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+          const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
-  // Enviar la notificación usando fetch
-  // Usamos .catch() para que un error en la notificación no afecte el flujo principal
-  fetch(telegramUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      chat_id: TELEGRAM_CHAT_ID,
-      text: mensajeNotificacion,
-      parse_mode: 'Markdown' // Permite formato básico como *negrita*
-    })
-  })
-  .then(response => {
-    if (!response.ok) {
-      console.warn("⚠️ La notificación a Telegram pudo haber fallado. Status:", response.status);
-      return response.text().then(text => { throw new Error(text); });
+          fetch(telegramUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: TELEGRAM_CHAT_ID,
+              text: mensajeNotificacion,
+              parse_mode: 'Markdown'
+            })
+          })
+          .then(response => {
+            if (!response.ok) throw new Error(`Telegram API Error: ${response.status}`);
+            console.log("✅ Notificación enviada a Telegram.");
+          })
+          .catch(error => {
+            console.error("❌ Error al enviar a Telegram:", error);
+            // No detenemos el flujo: el mensaje ya se guardó
+          });
+
+          // 3. Mostrar éxito
+          showMessage('¡Mensaje enviado con éxito! Te responderemos en menos de 24 horas.', 'success');
+          form.reset();
+        } catch (error) {
+          console.error("❌ Error al enviar mensaje:", error);
+          showMessage(`Hubo un error. Intenta nuevamente. (${error.message})`, 'error');
+        } finally {
+          // Restaurar botón
+          submitBtn.disabled = false;
+          btnText.textContent = 'Enviar Consulta';
+          form.querySelector('.btn-submit svg').style.opacity = '1';
+        }
+      });
     }
-    console.log("✅ Notificación enviada a Telegram.");
-    return response.json();
-  })
-  .catch(error => {
-    console.error("❌ Error al enviar notificación a Telegram:", error);
-    // Opcional: Mostrar un mensaje al usuario si falla la notificación
-    // formMessage.innerHTML += '<br><small style="color: orange;">(Nota: El mensaje se guardó, pero hubo un problema al enviar la notificación.)</small>';
-  });
 
-  // 3. Mostrar mensaje de éxito al usuario (sin esperar la notificación)
-  formMessage.innerHTML = '<p style="color: green;">¡Mensaje enviado con éxito! Te responderemos en menos de 24 horas.</p>';
-  this.reset();
-
-} catch (error) {
-  console.error("Error al guardar el mensaje en Firestore o enviar notificación:", error);
-  formMessage.innerHTML = `<p style="color: red;">Hubo un error al enviar el mensaje. Intenta nuevamente más tarde. (${error.message})</p>`;
-      } 
-      finally {
-        // Restaurar botón
-        submitBtn.disabled = false;
-        btnText.style.display = 'inline';
-        loading.style.display = 'none';
+    function showMessage(text, type) {
+      const formMessage = document.getElementById('form-message');
+      formMessage.innerHTML = `<p style="color: ${type === 'error' ? '#dc2626' : '#16a34a'}">${text}</p>`;
+      formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (type === 'success') {
+        setTimeout(() => {
+          formMessage.innerHTML = '';
+        }, 5000);
       }
-    });
-  </script>
+    }
+  });
+</script>
 </body>
 </html>

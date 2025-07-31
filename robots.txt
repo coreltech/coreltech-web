@@ -1,19 +1,17 @@
 User-agent: *
 Allow: /
 
-# Mapa del sitio
+# Archivos y carpetas que NO deben rastrearse
+Disallow: /assets/img/
+Disallow: /assets/css/
+Disallow: /assets/js/
+Disallow: /private/
+Disallow: /temp/
+
+# Archivos específicos
+Disallow: /*.webp$
+Disallow: /*.css$
+Disallow: /*.js$
+
+# Sitemap
 Sitemap: https://coreltech-web.vercel.app/sitemap.xml
-
-# No rastrear formularios o páginas sensibles
-Disallow: /gracias.html
-
-# No rastrear directorios privados (si existen)
-# Disallow: /admin/
-# Disallow: /private/
-
-# Bloquear archivos sensibles (opcional)
-# Disallow: /*.pdf$
-# Disallow: /*.zip$
-
-# Búsqueda de Google
-# Host: coreltech-web.vercel.app
