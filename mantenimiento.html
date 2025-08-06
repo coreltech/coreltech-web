@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ========== HEAD: MANTENIMIENTO.HTML ========== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mantenimiento IT | CorelTech - Servicios Premium Recurrentes</title>
+  <meta name="description" content="Auditoría IT y mantenimiento mensual para empresas. Prevención de fallos, seguridad y estabilidad garantizada con soporte técnico proactivo.">
+  <meta name="keywords" content="mantenimiento IT, auditoría tecnológica, soporte mensual, servicios premium, CorelTech, redes empresariales, mantenimiento preventivo">
+  <meta name="author" content="CorelTech">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://coreltech-web.vercel.app/mantenimiento.html">
+  <!-- GEO -->
+  <meta name="geo.region" content="VE">
+  <meta name="geo.placename" content="Caracas, Venezuela">
+  <meta name="language" content="es">
+  <!-- Open Graph -->
+  <meta property="og:locale" content="es_VE">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mantenimiento IT | CorelTech - Servicios Premium Recurrentes">
+  <meta property="og:description" content="Auditoría IT y mantenimiento mensual para empresas. Prevención de fallos, seguridad y estabilidad garantizada.">
+  <meta property="og:url" content="https://coreltech-web.vercel.app/mantenimiento.html">
+  <meta property="og:site_name" content="CorelTech">
+  <meta property="og:image" content="https://coreltech-web.vercel.app/assets/img/hero-mantenimiento.webp">
+  <meta property="og:image:alt" content="Técnico revisando servidores en un centro de datos">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@coreltechsoluciones">
+  <meta name="twitter:title" content="Mantenimiento IT | CorelTech - Servicios Premium Recurrentes">
+  <meta name="twitter:description" content="Auditoría IT y mantenimiento mensual para empresas. Prevención de fallos, seguridad y estabilidad garantizada.">
+  <meta name="twitter:image" content="https://coreltech-web.vercel.app/assets/img/hero-mantenimiento.webp">
+  <meta name="twitter:image:alt" content="Técnico revisando servidores en un centro de datos">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" href="https://coreltech-it.vercel.app/assets/img/favicon.webp" type="image/webp">
+  <style>
+    :root {
+      --azul-principal: #1a56db;
+      --azul-oscuro: #0f3b8b;
+      --gris-oscurito: #1e293b;
+      --gris-claro: #f8fafc;
+      --gris-medio: #64748b;
+      --blanco: #ffffff;
+      --fondo-suave: #f8fafc;
+      --sombra-suave: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --sombra-media: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --transicion: all 0.3s ease;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--gris-oscurito);
+      background-color: var(--blanco);
+      background-image: url('assets/img/bg-pattern.webp');
+      background-attachment: fixed;
+      background-size: 400px;
+      background-position: center;
+      background-repeat: repeat;
+      background-blend-mode: overlay;
+      background-color: rgba(255, 255, 255, 0.95);
+    }
+    /* CABECERA */
+    header {
+      background-color: var(--azul-principal);
+      color: var(--blanco);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--sombra-suave);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    nav ul li {
+      margin-left: 2rem;
+    }
+    nav ul li a {
+      color: var(--blanco);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: var(--transicion);
+    }
+    nav ul li a:hover {
+      color: #e0e7ff;
+    }
+    /* MENÚ HAMBURGUESA */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 101;
+    }
+    .menu-toggle span {
+      width: 100%;
+      height: 3px;
+      background: var(--blanco);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -6px);
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--azul-principal);
+        padding: 80px 5% 2rem;
+        z-index: 100;
+        animation: slideIn 0.4s ease;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      nav ul li {
+        margin: 1rem 0;
+      }
+      nav ul li a {
+        font-size: 1.3rem;
+        color: var(--blanco);
+        padding: 0.8rem 0;
+        display: block;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      body.menu-open {
+        overflow: hidden;
+      }
+    }
+    @keyframes slideIn {
+      from {
+        transform: translateY(-10%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    /* HERO */
+    .hero {
+      background: 
+        linear-gradient(135deg, 
+          rgba(15, 59, 139, 0.4), 
+          rgba(26, 86, 219, 0.25)
+        ), 
+        url('https://coreltech-web.vercel.app/assets/img/hero-mantenimiento.webp') center/cover no-repeat;
+      color: var(--blanco);
+      padding: 6rem 5% 4rem;
+      text-align: center;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      pointer-events: none;
+    }
+    .hero h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1.2rem;
+      color: var(--blanco);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      opacity: 0.95;
+    }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transicion);
+      text-align: center;
+    }
+    .btn-primary {
+      background: var(--blanco);
+      color: var(--azul-principal);
+      box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.15);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--blanco);
+      border: 2px solid var(--blanco);
+    }
+    .btn-secondary:hover {
+      background: var(--blanco);
+      color: var(--azul-principal);
+    }
+    /* CONTENEDOR GENERAL */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+    /* TÍTULO CON ESTILO */
+    .section-title {
+      font-size: 2.2rem;
+      color: var(--azul-oscuro);
+      text-align: center;
+      margin: 4rem 0 2rem;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--azul-principal);
+    }
+    /* PLANES DE MANTENIMIENTO */
+    .plans {
+      padding: 5rem 0;
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 3rem auto;
+      max-width: 1200px;
+    }
+    .plan-card {
+      background: var(--blanco);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--sombra-suave);
+      transition: var(--transicion);
+      border: 1px solid var(--gris-claro);
+    }
+    .plan-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sombra-media);
+      border-color: var(--azul-principal);
+    }
+    .plan-header {
+      padding: 1.5rem;
+      background: var(--azul-principal);
+      color: var(--blanco);
+      text-align: center;
+    }
+    .plan-name {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .plan-price {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .plan-features {
+      padding: 1.8rem;
+    }
+    .plan-features ul {
+      list-style: none;
+    }
+    .plan-features li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--gris-claro);
+      color: var(--gris-medio);
+      font-size: 0.95rem;
+    }
+    .plan-features li::before {
+      content: "✓";
+      color: var(--azul-principal);
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+    .plan-features li:last-child {
+      border-bottom: none;
+    }
+    .plan-cta {
+      padding: 1.5rem;
+      text-align: center;
+    }
+    /* BENEFICIOS */
+    .benefits {
+      padding: 5rem 0;
+      background-color: var(--gris-claro);
+    }
+    .benefits h2 {
+      font-size: 2.2rem;
+      color: var(--azul-oscuro);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.8rem;
+      max-width: 1000px;
+      margin: 3rem auto 0;
+      text-align: left;
+    }
+    .benefit-card {
+      background: var(--blanco);
+      padding: 1.4rem;
+      border-radius: 12px;
+      box-shadow: var(--sombra-suave);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: var(--transicion);
+    }
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--sombra-media);
+    }
+    .benefit-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: var(--azul-principal);
+      color: var(--blanco);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .benefit-content strong {
+      color: var(--azul-oscuro);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .benefit-content p {
+      color: var(--gris-medio);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    /* AUDITORÍA IT */
+    .audit {
+      padding: 5rem 0;
+    }
+    .audit h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: var(--azul-oscuro);
+      margin-bottom: 3rem;
+    }
+    .audit-card {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: var(--blanco);
+      border-radius: 12px;
+      box-shadow: var(--sombra-suave);
+      border-left: 5px solid var(--azul-principal);
+    }
+    .audit-card strong {
+      color: var(--azul-oscuro);
+      font-weight: 600;
+    }
+    /* CTA FINAL */
+    .cta {
+      text-align: center;
+      padding: 6rem 5%;
+      background-color: var(--fondo-suave);
+    }
+    .cta h2 {
+      font-size: 2.4rem;
+      color: var(--azul-oscuro);
+      margin-bottom: 1rem;
+    }
+    .cta p {
+      font-size: 1.2rem;
+      color: var(--gris-medio);
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+    }
+    /* ANIMACIONES */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .btn {
+        width: 100%;
+      }
+      nav ul li {
+        margin-left: 1.5rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+    /* FOOTER */
+    footer {
+      background: var(--gris-oscurito);
+      color: var(--blanco);
+      padding: 4rem 5% 2rem;
+      text-align: center;
+      margin-top: 6rem;
+      position: relative;
+      border-top: 4px solid transparent;
+      background-clip: padding-box;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, var(--azul-principal), var(--azul-oscuro));
+      border-radius: 10px 10px 0 0;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      text-align: left;
+      margin-bottom: 3rem;
+    }
+    .footer-logo img {
+      height: 40px;
+      margin-bottom: 1rem;
+    }
+    .footer-logo p {
+      opacity: 0.8;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      color: #e0e7ff;
+    }
+    footer h4 {
+      color: var(--blanco);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      position: relative;
+      display: inline-block;
+      font-weight: 600;
+    }
+    footer h4::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--blanco);
+      opacity: 0.3;
+      border-radius: 2px;
+    }
+    footer ul {
+      list-style: none;
+    }
+    footer ul li {
+      margin-bottom: 0.8rem;
+    }
+    footer a {
+      color: #e0e7ff;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: var(--transicion);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+    footer a:hover {
+      opacity: 1;
+      color: var(--blanco);
+      text-decoration: underline;
+      transform: translateX(2px);
+    }
+    footer a svg {
+      width: 16px;
+      height: 16px;
+      transition: var(--transicion);
+    }
+    footer a:hover svg {
+      color: var(--azul-principal);
+      transform: scale(1.1);
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      color: #e0e7ff;
+    }
+    /* WHATSAPP FAB */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+      transition: transform 0.3s ease;
+    }
+    .whatsapp-fab:hover {
+      transform: scale(1.1);
+    }
+    .whatsapp-fab img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+    /* ANIMACIONES */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fade-up {
+      opacity: 0;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    @media (max-width: 480px) {
+      .whatsapp-fab {
+        bottom: 3rem;
+      }
+    }
+    /* BADGE: HECHO CON CUIDADO */
+    .badge-made-with-care {
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--gris-medio);
+      text-align: center;
+      font-weight: 500;
+    }
+    .badge-made-with-care .heart {
+      font-size: 1.1em;
+      margin-right: 0.3rem;
+      animation: pulse 1.5s infinite;
+    }
+    .badge-made-with-care .badge-link {
+      color: var(--azul-oscuro);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    .badge-made-with-care .badge-link:hover {
+      color: var(--azul-principal);
+      text-decoration: underline;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- CABECERA -->
+  <header>
+    <a href="index.html" class="logo" aria-label="Inicio">
+      <img src="assets/img/logo2.webp" alt="Logo de CorelTech" width="200" height="40">
+    </a>
+    <!-- Menú Hamburguesa -->
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <!-- Navegación -->
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="hardware.html">Hardware</a></li>
+        <li><a href="software.html">Software</a></li>
+        <li><a href="redes.html">Redes</a></li>
+        <li><a href="mantenimiento.html" class="active">Mantenimiento</a></li>
+        <li><a href="portafolio.html">Portafolio</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero fade-up">
+    <div class="hero-content">
+      <h2>Mantenimiento IT Proactivo</h2>
+      <p>Deja de reaccionar a fallos. <strong>Previene problemas antes de que ocurran</strong> con un plan de mantenimiento mensual profesional.</p>
+      <div class="hero-buttons">
+        <a href="contacto.html" class="btn-primary">Solicitar Auditoría Gratuita</a>
+        <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="btn-secondary">💬 Habla con un técnico</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANES DE MANTENIMIENTO -->
+  <section class="plans fade-up">
+    <h2 class="section-title">Planes de Mantenimiento Mensual</h2>
+    <div class="plans-grid">
+      <!-- Plan Básico -->
+      <div class="plan-card">
+        <div class="plan-header">
+          <div class="plan-name">🟢 Básico</div>
+          <div class="plan-price">$120 USD/mes</div>
+        </div>
+        <div class="plan-features">
+          <ul>
+            <li>Hasta 5 equipos</li>
+            <li>Soporte remoto ilimitado</li>
+            <li>Actualizaciones de seguridad</li>
+            <li>1 visita mensual</li>
+            <li>Revisión de red básica</li>
+          </ul>
+        </div>
+        <div class="plan-cta">
+          <a href="contacto.html" class="btn-primary">Contratar</a>
+        </div>
+      </div>
+      <!-- Plan Medio -->
+      <div class="plan-card">
+        <div class="plan-header">
+          <div class="plan-name">🟡 Medio</div>
+          <div class="plan-price">$250 USD/mes</div>
+        </div>
+        <div class="plan-features">
+          <ul>
+            <li>Hasta 10 equipos</li>
+            <li>Soporte prioritario</li>
+            <li>Backups verificados</li>
+            <li>2 visitas mensuales</li>
+            <li>Monitoreo de red</li>
+            <li>Informe mensual</li>
+          </ul>
+        </div>
+        <div class="plan-cta">
+          <a href="contacto.html" class="btn-primary">Contratar</a>
+        </div>
+      </div>
+      <!-- Plan Avanzado -->
+      <div class="plan-card">
+        <div class="plan-header">
+          <div class="plan-name">🔵 Avanzado</div>
+          <div class="plan-price">$450 USD/mes</div>
+        </div>
+        <div class="plan-features">
+          <ul>
+            <li>Infraestructura completa</li>
+            <li>Monitoreo 24/7</li>
+            <li>Respuesta en 4 horas</li>
+            <li>Pruebas de recuperación</li>
+            <li>Asesoría en migraciones</li>
+            <li>Informe detallado mensual</li>
+          </ul>
+        </div>
+        <div class="plan-cta">
+          <a href="contacto.html" class="btn-primary">Solicitar auditoría</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section class="container fade-up">
+    <h2 class="section-title">Beneficios del Mantenimiento Proactivo</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🛡️</div>
+        <div class="benefit-content">
+          <strong>Evita pérdidas de datos</strong>
+          <p>Backups regulares y verificados protegen tu información crítica.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⏱️</div>
+        <div class="benefit-content">
+          <strong>Ahorra tiempo y dinero</strong>
+          <p>Prevenir cuesta menos que reparar después de un fallo mayor.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📈</div>
+        <div class="benefit-content">
+          <strong>Mayor productividad</strong>
+          <p>Tus empleados trabajan sin interrupciones por fallas técnicas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDITORÍA IT -->
+  <section class="audit fade-up">
+    <h2 class="section-title">Auditoría IT Inicial</h2>
+    <div class="audit-card">
+      <p>Antes de comenzar cualquier plan, realizamos una <strong>auditoría técnica completa</strong> de tu infraestructura:</p>
+      <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
+        <li><strong>Redes:</strong> WiFi, switches, routers, puntos muertos.</li>
+        <li><strong>Equipos:</strong> Estado de hardware, temperatura, rendimiento.</li>
+        <li><strong>Software:</strong> Actualizaciones, licencias, seguridad.</li>
+        <li><strong>Backups:</strong> Verificación de copias de seguridad.</li>
+        <li><strong>Riesgos:</strong> Vulnerabilidades y puntos críticos.</li>
+      </ul>
+      <p>Al final, recibes un <strong>informe detallado con recomendaciones</strong> y un plan de acción personalizado.</p>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta fade-up">
+    <h2>¿Listo para dejar de reaccionar y empezar a prevenir?</h2>
+    <p>Ofrecemos una <strong>auditoría gratuita</strong> para empresas que consideren un plan de mantenimiento.</p>
+    <a href="contacto.html" class="btn-primary">Solicitar auditoría gratuita</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="assets/img/logo2.webp" alt="Logo CorelTech" width="150" height="60">
+        <p>Soluciones técnicas profesionales con más de 10 años de experiencia en el mercado venezolano.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:coreltech.soluciones@gmail.com">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            Email
+          </a></li>
+          <li><a href="https://wa.me/584145828186" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            WhatsApp
+          </a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="hardware.html">Hardware</a></li>
+          <li><a href="software.html">Software</a></li>
+          <li><a href="redes.html">Redes</a></li>
+          <li><a href="mantenimiento.html">Mantenimiento</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Redes Sociales</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/coreltechsoluciones" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            Instagram
+          </a></li>
+          <li><a href="https://www.tiktok.com/@coreltech.ve" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 7.34v0a10 10 0 0 1-3.47 1.54 4.3 4.3 0 0 1-4.24-1.76 4.26 4.26 0 0 1 .3-5.24A10.05 10.05 0 0 1 12 2.11v4.75h0a4.25 4.25 0 1 0 4.25 4.25V12a10 10 0 1 1-6.34-9.31"></path>
+            </svg>
+            TikTok
+          </a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 CorelTech. No vendemos partes, vendemos tranquilidad.</p>
+    </div>
+    <p class="badge-made-with-care">
+      <span class="heart">💙</span>
+      <strong>Hecho con cuidado</strong> por <a href="creditos.html" class="badge-link">Agustín Lugo</a>
+    </p>
+  </footer>
+
+  <!-- BOTÓN WHATSAPP -->
+  <a href="https://wa.me/584145828186" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Contáctanos por WhatsApp">
+    <img src="assets/img/whatsapp-icon.webp" alt="WhatsApp" width="50" height="50">
+  </a>
+
+  <!-- SCRIPTS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const fadeElements = document.querySelectorAll('.fade-up');
+      const fadeInOnScroll = () => {
+        fadeElements.forEach(el => {
+          const elementTop = el.getBoundingClientRect().top;
+          if (elementTop < window.innerHeight - 100 && !el.classList.contains('visible')) {
+            el.classList.add('visible');
+          }
+        });
+      };
+      window.addEventListener('scroll', fadeInOnScroll);
+      window.addEventListener('load', fadeInOnScroll);
+    });
+
+    // Menú hamburguesa
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('nav ul');
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menuToggle.classList.toggle('active');
+      navMenu.classList.toggle('show');
+      document.body.classList.toggle('menu-open');
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('show');
+        document.body.classList.remove('menu-open');
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('header')) {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('show');
+        document.body.classList.remove('menu-open');
+      }
+    });
+  </script>
+</body>
+</html>
