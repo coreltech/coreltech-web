@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nuevo Caso – CorelTech</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .btn-corel {
+      background-color: #0d6efd;
+      color: white;
+      font-weight: 600;
+    }
+    .btn-corel:hover {
+      background-color: #0b5ed7;
+    }
+    .form-label {
+      font-weight: 500;
+      color: #495057;
+    }
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+    .equipo-block {
+      position: relative;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      background: #fff;
+    }
+    .eliminar-equipo {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+    }
+    .miniatura-foto {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border: 2px solid #dee2e6;
+      border-radius: 8px;
+      margin: 4px;
+      cursor: pointer;
+    }
+    .fotos-equipo {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .no-print {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 12px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 1000;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <div class="text-center mb-4">
+      <h1 class="fw-bold">📝 Nuevo Caso Técnico</h1>
+      <p class="text-muted">CorelTech – No vendemos partes, vendemos tranquilidad.</p>
+    </div>
+
+    <form id="form-caso">
+      <!-- Sección: Cliente -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>👤 Datos del Cliente</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="cliente-nombre" required />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">ID (Cédula o RIF)</label>
+              <input type="text" class="form-control" id="cliente-id" placeholder="V-12345678" required />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Teléfono</label>
+              <input type="tel" class="form-control" id="cliente-telefono" required />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Correo</label>
+              <input type="email" class="form-control" id="cliente-correo" />
+            </div>
+            <div class="col-12 mb-3">
+              <label class="form-label">Dirección</label>
+              <textarea class="form-control" id="cliente-direccion" rows="2" required></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección: Equipos (con diagnóstico técnico) -->
+      <div class="card mb-4">
+        <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">🖥️ Equipos Atendidos</h5>
+          <button type="button" class="btn btn-light btn-sm" onclick="agregarEquipo()">
+            <i class="bi bi-plus-circle"></i> Agregar otro
+          </button>
+        </div>
+        <div class="card-body">
+          <div id="lista-equipos">
+            <!-- Bloque inicial de equipo -->
+            <div class="equipo-block mb-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="mb-0">Equipo #1</h6>
+                <button type="button" class="btn btn-outline-danger btn-sm eliminar-equipo" onclick="this.closest('.equipo-block').remove()">
+                  <i class="bi bi-trash"></i> Eliminar
+                </button>
+              </div>
+
+              <!-- Datos del equipo -->
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Tipo de Equipo</label>
+                  <select class="form-select equipo-tipo" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="pc-clon">PC Clon</option>
+                    <option value="marca">PC de Marca</option>
+                    <option value="laptop">Laptop</option>
+                    <option value="servidor">Servidor</option>
+                    <option value="router">Router / Firewall</option>
+                    <option value="switch">Switch</option>
+                    <option value="impresora">Impresora</option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Marca</label>
+                  <input type="text" class="form-control equipo-marca" />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Modelo</label>
+                  <input type="text" class="form-control equipo-modelo" />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Número de Serie</label>
+                  <input type="text" class="form-control equipo-serial" />
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label class="form-label">RAM</label>
+                  <select class="form-select equipo-ram" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="4 GB">4 GB</option>
+                    <option value="8 GB">8 GB</option>
+                    <option value="16 GB">16 GB</option>
+                    <option value="32 GB">32 GB</option>
+                    <option value="64 GB">64 GB</option>
+                  </select>
+                </div>
+                <div class="col-12 mb-3">
+                  <label class="form-label">Discos</label>
+                  <div class="lista-discos mb-2"></div>
+                  <button type="button" class="btn btn-outline-secondary btn-sm" onclick="agregarDisco(this)">
+                    <i class="bi bi-plus-circle"></i> Agregar Disco
+                  </button>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label class="form-label">Sistema Operativo</label>
+                  <select class="form-select equipo-so">
+                    <option value="">Seleccionar...</option>
+                    <option value="windows10">Windows 10</option>
+                    <option value="windows11">Windows 11</option>
+                    <option value="linux">Linux</option>
+                    <option value="macos">macOS</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Diagnóstico técnico del equipo -->
+              <div class="mb-3">
+                <label class="form-label"><strong>Diagnóstico Técnico del Equipo</strong></label>
+                <textarea class="form-control equipo-diagnostico" rows="4" placeholder="Ej: Se detectó sobrecalentamiento por acumulación de polvo. Disco SSD con 85% de wear leveling. Fuente de poder inestable (ruido)."></textarea>
+              </div>
+
+              <!-- Trabajo realizado por equipo -->
+              <div class="mb-3">
+                <label class="form-label"><strong>Falla reportada</strong></label>
+                <textarea class="form-control equipo-falla" rows="2" placeholder="Ej: No enciende, lento, pantalla azul..."></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label"><strong>Trabajo realizado</strong></label>
+                <textarea class="form-control equipo-trabajo" rows="3" placeholder="Ej: Limpieza, instalación de Windows, eliminación de malware..."></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label"><strong>Recomendaciones</strong></label>
+                <textarea class="form-control equipo-recomendaciones" rows="2" placeholder="Ej: Mantenimiento cada 6 meses, respaldar datos..."></textarea>
+              </div>
+
+              <!-- Fotos por equipo -->
+              <div>
+                <button type="button" class="btn btn-sm btn-outline-info equipo-fotos-btn" onclick="abrirSubidaFotosEquipo(this)">
+                  📷 Subir fotos para este equipo
+                </button>
+                <div class="fotos-equipo"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección: Diagnóstico General de la Visita -->
+      <div class="card mb-4">
+        <div class="card-header bg-info text-white">
+          <h5>🌐 Diagnóstico General de la Visita</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label"><strong>Infraestructura de Red</strong></label>
+            <textarea class="form-control" id="diagnostico-red" rows="4" placeholder="Ej: Router MikroTik con firmware desactualizado. Switch con puerto 3 inestable. Cobertura Wi-Fi adecuada."></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label"><strong>Observaciones Generales</strong></label>
+            <textarea class="form-control" id="observaciones-generales" rows="3" placeholder="Ej: Cliente reporta lentitud general. Equipos con acumulación de polvo. Falta mantenimiento preventivo."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección: Fotos generales del caso -->
+      <div class="card mb-4">
+        <div class="card-header bg-info text-white">
+          <h5>📷 Fotos Generales del Servicio</h5>
+        </div>
+        <div class="card-body">
+          <p class="text-muted">Fotos del lugar, red, cableado, o que no corresponden a un equipo específico.</p>
+          <button type="button" class="btn btn-primary" onclick="abrirSubidaFotosGenerales()">
+            <i class="bi bi-cloud-upload"></i> Subir a Cloudinary
+          </button>
+          <div id="lista-fotos-generales" class="mt-3"></div>
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-4">
+        <button type="button" class="btn btn-secondary" onclick="window.location.href='/app/index.html'">Cancelar</button>
+        <button type="submit" class="btn btn-corel">Guardar Caso</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 CorelTech – Soporte técnico profesional.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="/firebase-config.js"></script>
+  <script src="/app/js/auth.js"></script>
+  <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+  <script>
+    // ================================
+    // Cloudinary
+    // ================================
+    const CLOUD_NAME = 'dj1msosxc';
+    const UPLOAD_PRESET = 'coreltech-fotos';
+    const fotosGenerales = [];
+
+    function abrirSubidaFotosGenerales() {
+      cloudinary.openUploadWidget({
+        cloudName: CLOUD_NAME,
+        uploadPreset: UPLOAD_PRESET,
+        sources: ['local', 'camera'],
+        multiple: true,
+        folder: 'casos-tecnicos'
+      }, (error, result) => {
+        if (!error && result && result.event === "success") {
+          fotosGenerales.push(result.info.secure_url);
+          const img = document.createElement("img");
+          img.src = result.info.secure_url;
+          img.classList.add("miniatura-foto");
+          img.onclick = () => window.open(result.info.secure_url, '_blank');
+          document.getElementById("lista-fotos-generales").appendChild(img);
+        }
+      });
+    }
+
+    function abrirSubidaFotosEquipo(btn) {
+      const contenedorFotos = btn.nextElementSibling;
+      cloudinary.openUploadWidget({
+        cloudName: CLOUD_NAME,
+        uploadPreset: UPLOAD_PRESET,
+        sources: ['local', 'camera'],
+        multiple: true,
+        folder: 'casos-tecnicos/equipos'
+      }, (error, result) => {
+        if (!error && result && result.event === "success") {
+          const img = document.createElement("img");
+          img.src = result.info.secure_url;
+          img.classList.add("miniatura-foto");
+          img.dataset.url = result.info.secure_url;
+          img.onclick = () => window.open(result.info.secure_url, '_blank');
+          contenedorFotos.appendChild(img);
+        }
+      });
+    }
+
+    // ================================
+    // Equipos
+    // ================================
+    let contadorEquipos = 1;
+
+    // ================================
+    // Función: Agregar nuevo equipo
+    // ================================
+    function agregarEquipo() {
+      contadorEquipos++;
+      const lista = document.getElementById("lista-equipos");
+      const div = document.createElement("div");
+      div.classList.add("equipo-block", "mb-4");
+      div.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h6 class="mb-0">Equipo #${contadorEquipos}</h6>
+          <button type="button" class="btn btn-outline-danger btn-sm eliminar-equipo" onclick="this.closest('.equipo-block').remove()">
+            <i class="bi bi-trash"></i> Eliminar
+          </button>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Tipo de Equipo</label>
+            <select class="form-select equipo-tipo" required>
+              <option value="">Seleccionar...</option>
+              <option value="pc-clon">PC Clon</option>
+              <option value="marca">PC de Marca</option>
+              <option value="laptop">Laptop</option>
+              <option value="servidor">Servidor</option>
+              <option value="router">Router / Firewall</option>
+              <option value="switch">Switch</option>
+              <option value="impresora">Impresora</option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Marca</label>
+            <input type="text" class="form-control equipo-marca" />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Modelo</label>
+            <input type="text" class="form-control equipo-modelo" />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Número de Serie</label>
+            <input type="text" class="form-control equipo-serial" />
+          </div>
+          <div class="col-md-4 mb-3">
+            <label class="form-label">RAM</label>
+            <select class="form-select equipo-ram" required>
+              <option value="">Seleccionar...</option>
+              <option value="4 GB">4 GB</option>
+              <option value="8 GB">8 GB</option>
+              <option value="16 GB">16 GB</option>
+              <option value="32 GB">32 GB</option>
+              <option value="64 GB">64 GB</option>
+            </select>
+          </div>
+          <div class="col-12 mb-3">
+            <label class="form-label">Discos</label>
+            <div class="lista-discos mb-2"></div>
+            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="agregarDisco(this)">
+              <i class="bi bi-plus-circle"></i> Agregar Disco
+            </button>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Sistema Operativo</label>
+            <select class="form-select equipo-so">
+              <option value="">Seleccionar...</option>
+              <option value="windows10">Windows 10</option>
+              <option value="windows11">Windows 11</option>
+              <option value="linux">Linux</option>
+              <option value="macos">macOS</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"><strong>Diagnóstico Técnico del Equipo</strong></label>
+          <textarea class="form-control equipo-diagnostico" rows="4" placeholder="Ej: Se detectó sobrecalentamiento por acumulación de polvo. Disco SSD con 85% de wear leveling. Fuente de poder inestable (ruido)."></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"><strong>Falla reportada</strong></label>
+          <textarea class="form-control equipo-falla" rows="2" placeholder="Ej: No enciende, lento, pantalla azul..."></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"><strong>Trabajo realizado</strong></label>
+          <textarea class="form-control equipo-trabajo" rows="3" placeholder="Ej: Limpieza, instalación de Windows, eliminación de malware..."></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"><strong>Recomendaciones</strong></label>
+          <textarea class="form-control equipo-recomendaciones" rows="2" placeholder="Ej: Mantenimiento cada 6 meses, respaldar datos..."></textarea>
+        </div>
+        <div>
+          <button type="button" class="btn btn-sm btn-outline-info equipo-fotos-btn" onclick="abrirSubidaFotosEquipo(this)">
+            📷 Subir fotos para este equipo
+          </button>
+          <div class="fotos-equipo"></div>
+        </div>
+      `;
+      lista.appendChild(div);
+    }
+
+    // ================================
+    // Función: Agregar disco con formato controlado
+    // ================================
+    function agregarDisco(btn) {
+      const contenedor = btn.previousElementSibling;
+      const div = document.createElement("div");
+      div.classList.add("input-group", "mb-2", "disco-item");
+      div.innerHTML = `
+        <select class="form-select" style="max-width: 100px;" required>
+          <option value="HDD">HDD</option>
+          <option value="SSD">SSD</option>
+          <option value="M.2">M.2</option>
+          <option value="NVMe">NVMe</option>
+        </select>
+        <select class="form-select" style="max-width: 100px;" required>
+          <option value="250 GB">250 GB</option>
+          <option value="500 GB">500 GB</option>
+          <option value="1 TB">1 TB</option>
+          <option value="2 TB">2 TB</option>
+          <option value="4 TB">4 TB</option>
+        </select>
+        <input type="text" class="form-control" placeholder="Partición (opcional)" style="max-width: 120px;">
+        <button type="button" class="btn btn-outline-danger btn-sm" onclick="this.parentElement.remove()">
+          <i class="bi bi-trash"></i>
+        </button>
+      `;
+      contenedor.appendChild(div);
+    }
+
+    // ================================
+    // Guardar caso
+    // ================================
+    document.getElementById("form-caso").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      try {
+        const user = firebase.auth().currentUser;
+        if (!user) throw new Error("No autenticado");
+
+        const db = firebase.firestore();
+        const casoId = await generateCaseId();
+        const clienteId = document.getElementById("cliente-id").value.trim().toUpperCase();
+
+        const clienteData = {
+          nombre: document.getElementById("cliente-nombre").value,
+          tipo: clienteId.startsWith('V') ? 'natural' : 'juridico',
+          telefono: document.getElementById("cliente-telefono").value,
+          correo: document.getElementById("cliente-correo").value || null,
+          direccion: document.getElementById("cliente-direccion").value,
+          esRecurrente: true,
+          fechaRegistro: new Date(),
+          ultimoServicio: new Date(),
+          totalCasos: 1,
+          equipos: []
+        };
+
+        const equiposData = [];
+        const equiposSeriales = [];
+        const equipoBlocks = document.querySelectorAll(".equipo-block");
+
+        for (const block of equipoBlocks) {
+          // Capturar todos los discos del equipo
+          const discos = [];
+          const discoItems = block.querySelectorAll(".disco-item");
+          for (const item of discoItems) {
+            const tipo = item.querySelector("select:nth-child(1)").value;
+            const capacidad = item.querySelector("select:nth-child(2)").value;
+            const particion = item.querySelector("input").value.trim() || null;
+            discos.push({ tipo, capacidad, particion });
+          }
+
+          const serial = block.querySelector(".equipo-serial").value.trim().toUpperCase() || `NO_SERIAL_${Date.now()}`;
+          const fotosEquipo = Array.from(block.querySelectorAll(".fotos-equipo img")).map(img => img.dataset.url);
+
+          const equipo = {
+            clienteId: clienteId,
+            estado: "activo",
+            tipo: block.querySelector(".equipo-tipo").value,
+            marca: block.querySelector(".equipo-marca").value,
+            modelo: block.querySelector(".equipo-modelo").value,
+            serial: serial,
+            ram: block.querySelector(".equipo-ram").value,
+            discos: discos,
+            sistemaOperativo: block.querySelector(".equipo-so").value,
+            fechaIncorporacion: new Date(),
+            creadoPor: user.email,
+            modificadoPor: user.email,
+            diagnostico: {
+              tecnico: block.querySelector(".equipo-diagnostico").value.trim() || "No se registró diagnóstico técnico para este equipo."
+            },
+            fallaReportada: block.querySelector(".equipo-falla").value,
+            trabajoRealizado: block.querySelector(".equipo-trabajo").value,
+            recomendaciones: block.querySelector(".equipo-recomendaciones").value,
+            fotos: fotosEquipo
+          };
+
+          equiposData.push(equipo);
+          equiposSeriales.push(serial);
+        }
+
+        // Capturar diagnóstico general
+        const diagnosticoRed = document.getElementById("diagnostico-red").value.trim() || "No se registró diagnóstico de red.";
+        const observacionesGenerales = document.getElementById("observaciones-generales").value.trim() || "No se registraron observaciones generales.";
+
+        // Guardar sin transacción
+        const clienteRef = db.collection("clientes").doc(clienteId);
+        const clienteDoc = await clienteRef.get();
+
+        if (clienteDoc.exists) {
+          const data = clienteDoc.data();
+          const equipos = [...new Set([...(data.equipos || []), ...equiposSeriales])];
+          await clienteRef.set({
+            ultimoServicio: new Date(),
+            equipos: equipos
+          }, { merge: true });
+        } else {
+          await clienteRef.set({ ...clienteData, equipos: equiposSeriales });
+        }
+
+        for (const equipo of equiposData) {
+          await db.collection("equipos").doc(equipo.serial).set(equipo, { merge: true });
+        }
+
+        await db.collection("casos").doc(casoId).set({
+          casoId: casoId,
+          clienteId: clienteId,
+          equipos: equiposSeriales,
+          tecnicoAsignado: user.email,
+          creadoPor: user.email,
+          tipoServicio: ["hardware", "software", "redes"],
+          problemaReportado: "Diagnóstico técnico en sitio",
+          fechaSolicitud: new Date(),
+          diagnostico: {
+            fotos: fotosGenerales,
+            red: diagnosticoRed,
+            observacionesGenerales: observacionesGenerales
+          },
+          accionesRealizadas: [],
+          repuestos: [],
+          estado: "entregado",
+          historialEstados: [
+            { estado: "solicitado", fecha: new Date(), por: user.email },
+            { estado: "entregado", fecha: new Date(), por: user.email }
+          ],
+          informeGenerado: false,
+          firmaCliente: true
+        });
+
+        alert(`✅ Caso ${casoId} guardado con éxito.`);
+        window.location.href = `/app/informe.html?id=${casoId}`;
+
+      } catch (error) {
+        console.error("Error al guardar:", error);
+        alert("❌ Error al guardar: " + error.message);
+      }
+    });
+
+    // ================================
+    // Generar ID de caso
+    // ================================
+    async function generateCaseId() {
+      const db = firebase.firestore();
+      const year = new Date().getFullYear();
+      const snapshot = await db.collection("casos")
+        .where("casoId", ">=", `CT-${year}-`)
+        .where("casoId", "<", `CT-${year}-\uf8ff`)
+        .get();
+      const count = snapshot.size + 1;
+      return `CT-${year}-${count.toString().padStart(3, '0')}`;
+    }
+
+    // ================================
+    // Cargar cliente desde URL
+    // ================================
+    window.addEventListener("load", async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const clienteId = urlParams.get("cliente");
+      if (clienteId) {
+        try {
+          const db = firebase.firestore();
+          const doc = await db.collection("clientes").doc(clienteId).get();
+          if (doc.exists) {
+            const data = doc.data();
+            document.getElementById("cliente-id").value = clienteId;
+            document.getElementById("cliente-nombre").value = data.nombre || "";
+            document.getElementById("cliente-telefono").value = data.telefono || "";
+            document.getElementById("cliente-correo").value = data.correo || "";
+            document.getElementById("cliente-direccion").value = data.direccion || "";
+
+            if (data.equipos?.length) {
+              document.getElementById("lista-equipos").innerHTML = '';
+              for (const serial of data.equipos) {
+                const equipoDoc = await db.collection("equipos").doc(serial).get();
+                if (equipoDoc.exists) {
+                  const eq = equipoDoc.data();
+                  agregarEquipoConDatos(eq, serial);
+                }
+              }
+            }
+          }
+        } catch (error) {
+          console.error("Error al cargar cliente desde URL:", error);
+          alert("⚠️ No se pudo cargar los datos del cliente.");
+        }
+      }
+    });
+
+    // ================================
+    // Cargar equipo con datos
+    // ================================
+    function agregarEquipoConDatos(equipo, serial) {
+      contadorEquipos++;
+      const lista = document.getElementById("lista-equipos");
+      const div = document.createElement("div");
+      div.classList.add("equipo-block", "mb-4");
+      div.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h6 class="mb-0">Equipo #${contadorEquipos} (Cargado)</h6>
+          <button type="button" class="btn btn-outline-danger btn-sm eliminar-equipo" onclick="this.closest('.equipo-block').remove()">
+            <i class="bi bi-trash"></i> Eliminar
+          </button>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Tipo de Equipo</label>
+            <select class="form-select equipo-tipo" required>
+              <option value="${equipo.tipo}" selected>${equipo.tipo}</option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Marca</label>
+            <input type="text" class="form-control equipo-marca" value="${equipo.marca || ''}" />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Modelo</label>
+            <input type="text" class="form-control equipo-modelo" value="${equipo.modelo || ''}" />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Número de Serie</label>
+            <input type="text" class="form-control equipo-serial" value="${serial}" readonly />
+          </div>
+          <div class="col-md-4 mb-3">
+            <label class="form-label">RAM</label>
+            <select class="form-select equipo-ram" required>
+              <option value="">Seleccionar...</option>
+              <option value="4 GB" ${equipo.ram === '4 GB' ? 'selected' : ''}>4 GB</option>
+              <option value="8 GB" ${equipo.ram === '8 GB' ? 'selected' : ''}>8 GB</option>
+              <option value="16 GB" ${equipo.ram === '16 GB' ? 'selected' : ''}>16 GB</option>
+              <option value="32 GB" ${equipo.ram === '32 GB' ? 'selected' : ''}>32 GB</option>
+              <option value="64 GB" ${equipo.ram === '64 GB' ? 'selected' : ''}>64 GB</option>
+            </select>
+          </div>
+          <div class="col-12 mb-3">
+            <label class="form-label">Discos</label>
+            <div class="lista-discos mb-2"></div>
+            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="agregarDisco(this)">
+              <i class="bi bi-plus-circle"></i> Agregar Disco
+            </button>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Sistema Operativo</label>
+            <select class="form-select equipo-so">
+              <option value="">Seleccionar...</option>
+              <option value="windows10" ${equipo.sistemaOperativo === 'windows10' ? 'selected' : ''}>Windows 10</option>
+              <option value="windows11" ${equipo.sistemaOperativo === 'windows11' ? 'selected' : ''}>Windows 11</option>
+              <option value="linux" ${equipo.sistemaOperativo === 'linux' ? 'selected' : ''}>Linux</option>
+              <option value="macos" ${equipo.sistemaOperativo === 'macos' ? 'selected' : ''}>macOS</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"><strong>Diagnóstico Técnico del Equipo</strong></label>
+          <textarea class="form-control equipo-diagnostico" rows="4" placeholder="Ej: Se detectó sobrecalentamiento por acumulación de polvo. Disco SSD con 85% de wear leveling. Fuente de poder inestable (ruido).">${equipo.diagnostico?.tecnico || ''}</textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"><strong>Falla reportada</strong></label>
+          <textarea class="form-control equipo-falla" rows="2" placeholder="Ej: No enciende, lento, pantalla azul...">${equipo.fallaReportada || ''}</textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"><strong>Trabajo realizado</strong></label>
+          <textarea class="form-control equipo-trabajo" rows="3" placeholder="Ej: Limpieza, instalación de Windows, eliminación de malware...">${equipo.trabajoRealizado || ''}</textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"><strong>Recomendaciones</strong></label>
+          <textarea class="form-control equipo-recomendaciones" rows="2" placeholder="Ej: Mantenimiento cada 6 meses, respaldar datos...">${equipo.recomendaciones || ''}</textarea>
+        </div>
+        <div>
+          <button type="button" class="btn btn-sm btn-outline-info equipo-fotos-btn" onclick="abrirSubidaFotosEquipo(this)">
+            📷 Subir fotos para este equipo
+          </button>
+          <div class="fotos-equipo"></div>
+        </div>
+      `;
+      lista.appendChild(div);
+
+      // Cargar fotos del equipo
+      if (equipo.fotos?.length) {
+        const contenedor = div.querySelector(".fotos-equipo");
+        equipo.fotos.forEach(url => {
+          const img = document.createElement("img");
+          img.src = url;
+          img.classList.add("miniatura-foto");
+          img.dataset.url = url;
+          img.onclick = () => window.open(url, '_blank');
+          contenedor.appendChild(img);
+        });
+      }
+
+      // Cargar discos del equipo
+      if (equipo.discos?.length) {
+        const listaDiscos = div.querySelector(".lista-discos");
+        equipo.discos.forEach(disco => {
+          const item = document.createElement("div");
+          item.classList.add("input-group", "mb-2", "disco-item");
+          item.innerHTML = `
+            <select class="form-select" style="max-width: 100px;" disabled>
+              <option value="${disco.tipo}" selected>${disco.tipo}</option>
+            </select>
+            <select class="form-select" style="max-width: 100px;" disabled>
+              <option value="${disco.capacidad}" selected>${disco.capacidad}</option>
+            </select>
+            <input type="text" class="form-control" value="${disco.particion || ''}" style="max-width: 120px;" disabled>
+            <button type="button" class="btn btn-outline-danger btn-sm" onclick="this.parentElement.remove()">
+              <i class="bi bi-trash"></i>
+            </button>
+          `;
+          listaDiscos.appendChild(item);
+        });
+      }
+    }
+  </script>
+</body>
+</html>

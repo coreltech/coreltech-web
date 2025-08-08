@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expediente – CorelTech</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .section-title {
+      background-color: #0d6efd;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+    .ficha-equipo {
+      border-left: 4px solid #0d6efd;
+      padding-left: 15px;
+      margin-bottom: 20px;
+    }
+    .ficha-caso {
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      background: white;
+    }
+    .miniatura-foto {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border: 2px solid #dee2e6;
+      border-radius: 8px;
+      margin: 4px;
+      cursor: pointer;
+    }
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body class="p-4">
+  <div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="fw-bold">📂 Expediente del Cliente</h1>
+      <button class="btn btn-secondary" onclick="window.location.href='/app/index.html'">← Volver</button>
+    </div>
+
+    <!-- Datos del Cliente -->
+    <div class="card mb-4">
+      <div class="card-header bg-primary text-white">
+        <h5>👤 Datos del Cliente</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <p><strong>Nombre:</strong> <span id="cliente-nombre">Cargando...</span></p>
+            <p><strong>ID:</strong> <span id="cliente-id">-</span></p>
+            <p><strong>Teléfono:</strong> <span id="cliente-telefono">-</span></p>
+          </div>
+          <div class="col-md-6">
+            <p><strong>Correo:</strong> <span id="cliente-correo">-</span></p>
+            <p><strong>Dirección:</strong> <span id="cliente-direccion">-</span></p>
+            <p><strong>Última visita:</strong> <span id="ultimo-servicio">-</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Equipos Registrados -->
+    <div class="card mb-4">
+      <div class="card-header bg-secondary text-white">
+        <h5>🖥️ Equipos Registrados</h5>
+      </div>
+      <div class="card-body">
+        <div id="lista-equipos" class="row">
+          <!-- Se llenará con JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Historial de Casos -->
+    <div class="card mb-4">
+      <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">📋 Historial de Casos</h5>
+        <button class="btn btn-light btn-sm" onclick="nuevaVisita()">
+          <i class="bi bi-plus-circle"></i> Nueva Visita
+        </button>
+      </div>
+      <div class="card-body">
+        <div id="historial-casos">
+          <!-- Se llenará con JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 CorelTech – Soporte técnico profesional.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="/firebase-config.js"></script>
+  <script src="/app/js/auth.js"></script>
+
+  <script>
+    // ================================
+    // Obtener ID del cliente de la URL
+    // ================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const clienteId = urlParams.get('cliente');
+
+    if (!clienteId) {
+      alert("No se especificó un cliente.");
+      window.location.href = '/app/index.html';
+    }
+
+    // ================================
+    // Cargar expediente del cliente
+    // ================================
+    async function cargarExpediente() {
+      const db = firebase.firestore();
+      const clienteRef = db.collection("clientes").doc(clienteId);
+      const clienteDoc = await clienteRef.get();
+
+      if (!clienteDoc.exists) {
+        alert("Cliente no encontrado.");
+        window.location.href = '/app/index.html';
+        return;
+      }
+
+      const data = clienteDoc.data();
+      document.getElementById("cliente-id").textContent = clienteId;
+      document.getElementById("cliente-nombre").textContent = data.nombre || "-";
+      document.getElementById("cliente-telefono").textContent = data.telefono || "-";
+      document.getElementById("cliente-correo").textContent = data.correo || "-";
+      document.getElementById("cliente-direccion").textContent = data.direccion || "-";
+      document.getElementById("ultimo-servicio").textContent = data.ultimoServicio?.toDate().toLocaleDateString() || "-";
+
+      // ================================
+      // Cargar equipos del cliente
+      // ================================
+      const listaEquipos = document.getElementById("lista-equipos");
+      listaEquipos.innerHTML = '';
+      if (data.equipos?.length) {
+        for (const serial of data.equipos) {
+          const equipoDoc = await db.collection("equipos").doc(serial).get();
+          if (equipoDoc.exists) {
+            const eq = equipoDoc.data();
+            const col = document.createElement("div");
+            col.className = "col-md-6 mb-3";
+            col.innerHTML = `
+              <div class="ficha-equipo">
+                <strong>${eq.tipo || 'Equipo'}</strong><br>
+                ${eq.marca || ''} ${eq.modelo || ''} (Serial: ${serial})<br>
+                <small>SO: ${eq.sistemaOperativo || 'N/A'} | RAM: ${eq.ram || 'N/A'}</small>
+              </div>
+            `;
+            listaEquipos.appendChild(col);
+          }
+        }
+      } else {
+        const col = document.createElement("div");
+        col.className = "col-12";
+        col.innerHTML = '<p class="text-muted">No hay equipos registrados.</p>';
+        listaEquipos.appendChild(col);
+      }
+
+      // ================================
+      // Cargar historial de casos
+      // ================================
+      const historial = document.getElementById("historial-casos");
+      const casosSnapshot = await db.collection("casos")
+        .where("clienteId", "==", clienteId)
+        .orderBy("fechaSolicitud", "desc")
+        .get();
+
+      if (casosSnapshot.empty) {
+        historial.innerHTML = '<p class="text-muted">No hay casos registrados.</p>';
+      } else {
+        casosSnapshot.forEach(doc => {
+          const caso = doc.data();
+          const fecha = caso.fechaSolicitud?.toDate().toLocaleDateString() || 'N/A';
+          const tecnico = caso.tecnicoAsignado.split('@')[0];
+          const fotos = caso.diagnostico?.fotos || [];
+
+          const ficha = document.createElement("div");
+          ficha.className = "ficha-caso";
+          ficha.innerHTML = `
+            <div class="d-flex justify-content-between">
+              <h6>${caso.casoId}</h6>
+              <span class="badge bg-info">${caso.estado}</span>
+            </div>
+            <p><strong>Fecha:</strong> ${fecha}</p>
+            <p><strong>Técnico:</strong> ${tecnico}</p>
+            <p><strong>Equipos:</strong> ${caso.equipos.join(', ')}</p>
+            <div class="mt-2">
+              ${fotos.length > 0 
+                ? fotos.map(url => 
+                    `<img src="${url}" class="miniatura-foto" onclick="window.open('${url}', '_blank')"`
+                  ).join('')
+                : '<small class="text-muted">Sin fotos</small>'
+              }
+            </div>
+            <div class="mt-3">
+              <a href="/app/informe.html?id=${caso.casoId}" class="btn btn-sm btn-outline-primary">Ver Informe</a>
+            </div>
+          `;
+          historial.appendChild(ficha);
+        });
+      }
+    }
+
+    // ================================
+    // Botón: Nueva visita
+    // ================================
+    function nuevaVisita() {
+  window.location.href = `/app/nuevo-caso.html?cliente=${clienteId}`;
+}
+
+    // ================================
+    // Cargar al iniciar
+    // ================================
+    window.onload = cargarExpediente;
+  </script>
+</body>
+</html>

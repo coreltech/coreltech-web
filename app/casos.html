@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Casos – CorelTech</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+    }
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .ficha-caso {
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      background: white;
+    }
+    .ficha-caso:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .badge {
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body class="p-4">
+  <div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="fw-bold">📋 Historial de Casos</h1>
+      <button class="btn btn-secondary" onclick="window.history.back()">← Volver</button>
+    </div>
+
+    <!-- Filtros -->
+    <div class="card mb-4">
+      <div class="card-header bg-primary text-white">
+        <h5>🔍 Filtros de Búsqueda</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <label class="form-label">ID del Cliente</label>
+            <input type="text" id="filtro-cliente" class="form-control" placeholder="V-12345678">
+          </div>
+          <div class="col-md-3 mb-3">
+            <label class="form-label">Estado</label>
+            <select id="filtro-estado" class="form-select">
+              <option value="">Todos</option>
+              <option value="solicitado">Solicitado</option>
+              <option value="entregado">Entregado</option>
+              <option value="diagnostico">Diagnóstico</option>
+            </select>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label class="form-label">Fecha Desde</label>
+            <input type="date" id="filtro-fecha-desde" class="form-control">
+          </div>
+          <div class="col-md-3 mb-3">
+            <label class="form-label">Fecha Hasta</label>
+            <input type="date" id="filtro-fecha-hasta" class="form-control">
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="aplicarFiltros()">Aplicar Filtros</button>
+        <button class="btn btn-outline-secondary" onclick="limpiarFiltros()">Limpiar</button>
+      </div>
+    </div>
+
+    <!-- Lista de Casos -->
+    <div class="card">
+      <div class="card-header bg-info text-white">
+        <h5>📋 Casos Registrados</h5>
+      </div>
+      <div class="card-body">
+        <div id="lista-casos">
+          <p class="text-muted">Cargando casos...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="/firebase-config.js"></script>
+  <script src="/app/js/auth.js"></script>
+
+  <script>
+    let todosLosCasos = [];
+
+    // Cargar todos los casos al iniciar
+    window.onload = async () => {
+      const db = firebase.firestore();
+      const snapshot = await db.collection("casos").get();
+      todosLosCasos = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+        fecha: doc.data().fechaSolicitud?.toDate()
+      }));
+      mostrarCasos(todosLosCasos);
+    };
+
+    // Mostrar casos
+    function mostrarCasos(casos) {
+      const lista = document.getElementById("lista-casos");
+      lista.innerHTML = '';
+      if (casos.length === 0) {
+        lista.innerHTML = '<p class="text-muted">No se encontraron casos.</p>';
+        return;
+      }
+      casos.forEach(caso => {
+        const fecha = caso.fecha?.toLocaleDateString() || 'N/A';
+        const ficha = document.createElement("div");
+        ficha.className = "ficha-caso";
+        ficha.innerHTML = `
+          <div class="d-flex justify-content-between">
+            <h6>${caso.casoId}</h6>
+            <span class="badge bg-info">${caso.estado}</span>
+          </div>
+          <p><strong>Cliente:</strong> ${caso.clienteId}</p>
+          <p><strong>Equipos:</strong> ${caso.equipos.join(', ')}</p>
+          <p><strong>Fecha:</strong> ${fecha}</p>
+          <div class="d-flex justify-content-end">
+            <a href="/app/informe.html?id=${caso.casoId}" class="btn btn-sm btn-outline-primary">Ver Informe</a>
+          </div>
+        `;
+        lista.appendChild(ficha);
+      });
+    }
+
+    // Aplicar filtros
+    function aplicarFiltros() {
+      const cliente = document.getElementById("filtro-cliente").value.trim().toUpperCase();
+      const estado = document.getElementById("filtro-estado").value;
+      const desde = document.getElementById("filtro-fecha-desde").value;
+      const hasta = document.getElementById("filtro-fecha-hasta").value;
+
+      let filtrados = [...todosLosCasos];
+
+      if (cliente) {
+        filtrados = filtrados.filter(c => c.clienteId.includes(cliente));
+      }
+      if (estado) {
+        filtrados = filtrados.filter(c => c.estado === estado);
+      }
+      if (desde) {
+        const fechaDesde = new Date(desde);
+        filtrados = filtrados.filter(c => c.fecha >= fechaDesde);
+      }
+      if (hasta) {
+        const fechaHasta = new Date(hasta);
+        fechaHasta.setHours(23, 59, 59);
+        filtrados = filtrados.filter(c => c.fecha <= fechaHasta);
+      }
+
+      mostrarCasos(filtrados);
+    }
+
+    // Limpiar filtros
+    function limpiarFiltros() {
+      document.getElementById("filtro-cliente").value = '';
+      document.getElementById("filtro-estado").value = '';
+      document.getElementById("filtro-fecha-desde").value = '';
+      document.getElementById("filtro-fecha-hasta").value = '';
+      mostrarCasos(todosLosCasos);
+    }
+  </script>
+</body>
+</html>

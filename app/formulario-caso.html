@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registrar Caso Técnico - CorelTech</title>
+  <!-- Bootstrap 5 para diseño limpio y responsive -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Google Fonts: Inter o Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .btn-corel {
+      background-color: #0d6efd;
+      color: white;
+      font-weight: 600;
+    }
+    .btn-corel:hover {
+      background-color: #0b5ed7;
+    }
+    .nav-tabs .nav-link.active {
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+    }
+    .form-label {
+      font-weight: 500;
+      color: #495057;
+    }
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container py-4">
+    <div class="text-center mb-4">
+      <h1 class="fw-bold">📝 Registro de Caso Técnico</h1>
+      <p class="text-muted">CorelTech – No vendemos partes, vendemos tranquilidad.</p>
+    </div>
+
+    <form id="form-caso">
+
+      <!-- Sección: Cliente -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>👤 Datos del Cliente</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="cliente-nombre" required />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">ID (Cédula o RIF)</label>
+              <input type="text" class="form-control" id="cliente-id" placeholder="V-12345678 o J-12345678-9" required />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Teléfono</label>
+              <input type="tel" class="form-control" id="cliente-telefono" required />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Correo</label>
+              <input type="email" class="form-control" id="cliente-correo" />
+            </div>
+            <div class="col-12 mb-3">
+              <label class="form-label">Dirección</label>
+              <textarea class="form-control" id="cliente-direccion" rows="2" required></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección: Equipo -->
+      <div class="card mb-4">
+        <div class="card-header bg-secondary text-white">
+          <h5>🖥️ Datos del Equipo</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Tipo de Equipo</label>
+              <select class="form-select" id="equipo-tipo" required>
+                <option value="">Seleccionar...</option>
+                <option value="pc-clon">PC Clon</option>
+                <option value="marca">PC de Marca</option>
+                <option value="laptop">Laptop</option>
+                <option value="servidor">Servidor</option>
+                <option value="router">Router / Firewall</option>
+                <option value="switch">Switch</option>
+                <option value="impresora">Impresora</option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Marca</label>
+              <input type="text" class="form-control" id="equipo-marca" />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Modelo</label>
+              <input type="text" class="form-control" id="equipo-modelo" />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Número de Serie</label>
+              <input type="text" class="form-control" id="equipo-serial" />
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="form-label">RAM</label>
+              <input type="text" class="form-control" id="equipo-ram" placeholder="8 GB, 16 GB" />
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Disco</label>
+              <input type="text" class="form-control" id="equipo-disco" placeholder="500 GB HDD, 256 GB SSD" />
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Sistema Operativo</label>
+              <select class="form-select" id="equipo-so">
+                <option value="">Seleccionar...</option>
+                <option value="windows10">Windows 10</option>
+                <option value="windows11">Windows 11</option>
+                <option value="linux">Linux</option>
+                <option value="macos">macOS</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Nombre de Usuario</label>
+              <input type="text" class="form-control" id="equipo-usuario" />
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Hostname</label>
+              <input type="text" class="form-control" id="equipo-hostname" />
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Dirección IP</label>
+              <input type="text" class="form-control" id="equipo-ip" placeholder="192.168.1.100" />
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Dirección MAC</label>
+              <input type="text" class="form-control" id="equipo-mac" placeholder="00:1A:2B:3C:4D:5E" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección: Diagnóstico (Tabs) -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" data-bs-toggle="tab" href="#hardware">🔧 Hardware</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#software">💾 Software</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#redes">🌐 Redes</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          <div class="tab-content">
+
+            <!-- Hardware -->
+            <div class="tab-pane fade show active" id="hardware">
+              <h6>🔍 Diagnóstico de Hardware</h6>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="hw-enciende">
+                <label class="form-check-label" for="hw-enciende">El equipo enciende</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="hw-pantalla">
+                <label class="form-check-label" for="hw-pantalla">La pantalla muestra imagen</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="hw-ventilacion">
+                <label class="form-check-label" for="hw-ventilacion">Ventilación y temperatura normal</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="hw-puertos">
+                <label class="form-check-label" for="hw-puertos">Puertos USB/HDMI funcionan</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="hw-limpieza">
+                <label class="form-check-label" for="hw-limpieza">Se realizó limpieza interna</label>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Observaciones de Hardware</label>
+                <textarea class="form-control" id="hw-observaciones" rows="2"></textarea>
+              </div>
+            </div>
+
+            <!-- Software -->
+            <div class="tab-pane fade" id="software">
+              <h6>🔍 Diagnóstico de Software</h6>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="sw-inicia">
+                <label class="form-check-label" for="sw-inicia">El sistema operativo inicia correctamente</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="sw-malware">
+                <label class="form-check-label" for="sw-malware">No se detectó malware</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="sw-actualizado">
+                <label class="form-check-label" for="sw-actualizado">Sistema y controladores actualizados</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="sw-respaldo">
+                <label class="form-check-label" for="sw-respaldo">Se realizó respaldo de datos</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="sw-reinstalacion">
+                <label class="form-check-label" for="sw-reinstalacion">Se reinstaló el sistema operativo</label>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Observaciones de Software</label>
+                <textarea class="form-control" id="sw-observaciones" rows="2"></textarea>
+              </div>
+            </div>
+
+            <!-- Redes -->
+            <div class="tab-pane fade" id="redes">
+              <h6>🔍 Diagnóstico de Redes</h6>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="red-local">
+                <label class="form-check-label" for="red-local">Conexión a red local estable</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="red-internet">
+                <label class="form-check-label" for="red-internet">Acceso a internet funcionando</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="red-ip">
+                <label class="form-check-label" for="red-ip">Dirección IP asignada correctamente</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="red-cables">
+                <label class="form-check-label" for="red-cables">Cables de red sin daño</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="red-wifi">
+                <label class="form-check-label" for="red-wifi">Wi-Fi sin puntos muertos</label>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Observaciones de Redes</label>
+                <textarea class="form-control" id="red-observaciones" rows="2"></textarea>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección: Fotos -->
+      <div class="card mb-4">
+        <div class="card-header bg-info text-white">
+          <h5>📎 Adjuntar Fotos</h5>
+        </div>
+        <div class="card-body">
+          <p class="text-muted">Toma fotos del equipo, serial, interior o errores.</p>
+          <input type="file" class="form-control" id="fotos" accept="image/*" multiple capture="environment" />
+          <small class="text-muted">Puedes tomar fotos directamente desde el celular.</small>
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-4">
+        <button type="button" class="btn btn-secondary">Cancelar</button>
+        <button type="submit" class="btn btn-corel">Guardar y Generar Informe</button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 CorelTech – Soporte técnico profesional en hardware, software y redes.</p>
+  </footer>
+
+  <!-- Bootstrap JS (para los tabs) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Firebase SDK (configuración básica) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+  <script>
+    // TODO: Insertar tu configuración de Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyBRlLI6jyodHvj_RSsKOjFF8B2HeM1UW7E",
+  authDomain: "coreltechweb-contactos.firebaseapp.com",
+  projectId: "coreltechweb-contactos",
+  storageBucket: "coreltechweb-contactos.firebasestorage.app",
+  messagingSenderId: "597588902592",
+  appId: "1:597588902592:web:c721408e00e62de26fe325",
+  measurementId: "G-3FMVE049YG"
+};
+
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const storage = firebase.storage();
+
+    // Aquí irá la lógica para guardar el caso en Firestore
+    document.getElementById("form-caso").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      alert("Formulario listo. Próximo paso: guardar en Firestore y generar PDF.");
+      // Implementaremos esta función en el siguiente paso
+    });
+  </script>
+
+</body>
+</html>

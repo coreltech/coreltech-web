@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel – CorelTech</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --corel-primary: #0d6efd;
+      --corel-secondary: #6f42c1;
+      --corel-success: #198754;
+      --corel-bg: #f8f9fa;
+      --corel-card: #ffffff;
+      --corel-border: #dee2e6;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--corel-bg);
+      color: #212529;
+      min-height: 100vh;
+    }
+    .navbar {
+      background: linear-gradient(135deg, var(--corel-primary), var(--corel-secondary));
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      color: white !important;
+    }
+    .nav-link {
+      color: rgba(255,255,255,0.9) !important;
+    }
+    .card {
+      border: 1px solid var(--corel-border);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-4px); }
+    .card-header {
+      background-color: var(--corel-primary);
+      color: white;
+      font-weight: 600;
+      border-radius: 12px 12px 0 0 !important;
+    }
+    .btn-corel {
+      background: linear-gradient(135deg, var(--corel-primary), var(--corel-secondary));
+      color: white;
+      font-weight: 600;
+      border: none;
+    }
+    .btn-shortcut {
+      font-size: 0.9rem;
+      padding: 12px;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 1px dashed var(--corel-border);
+      border-radius: 10px;
+      transition: all 0.2s;
+    }
+    .btn-shortcut:hover {
+      background-color: #f1f3f5;
+      border-color: var(--corel-primary);
+      color: var(--corel-primary);
+    }
+    .btn-shortcut i {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+    .footer {
+      margin-top: 60px;
+      text-align: center;
+      color: #6c757d;
+      font-size: 0.9rem;
+      padding: 20px 0;
+    }
+    .stat-card { text-align: center; }
+    .stat-value { font-size: 1.8rem; font-weight: bold; color: var(--corel-primary); }
+    .stat-label { font-size: 0.9rem; color: #6c757d; }
+    .list-group-item-action { cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="bi bi-cpu"></i> CorelTech Panel
+      </a>
+      <div class="ms-auto">
+        <span class="text-white small">
+          <i class="bi bi-person-circle"></i> 
+          <span id="user-email">cargando...</span>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Encabezado -->
+    <div class="text-center mb-4">
+      <h1 class="fw-bold">🛠️ Panel Técnico Centralizado</h1>
+      <p class="text-muted">Gestión avanzada de casos, clientes y mantenimiento</p>
+    </div>
+
+    <!-- Atajos Rápidos -->
+    <div class="card mb-4">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0"><i class="bi bi-lightning"></i> Acciones Rápidas</h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-2">
+            <button class="btn btn-light w-100 btn-shortcut" onclick="window.location.href='/app/nuevo-caso.html'">
+              <i class="bi bi-file-earmark-plus"></i>
+              Nuevo Caso
+            </button>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-light w-100 btn-shortcut" onclick="buscarCliente()">
+              <i class="bi bi-search"></i>
+              Buscar Cliente
+            </button>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-light w-100 btn-shortcut" onclick="window.location.href='/app/casos.html'">
+              <i class="bi bi-journal-text"></i>
+              Historial de Casos
+            </button>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-light w-100 btn-shortcut" onclick="window.location.href='/app/mantenimiento.html'">
+              <i class="bi bi-tools"></i>
+              Mantenimiento
+            </button>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-light w-100 btn-shortcut" onclick="window.location.href='/app/inventario.html'">
+              <i class="bi bi-journal-text"></i>
+              Inventario
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Búsqueda de Cliente -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5><i class="bi bi-person-lines-fill"></i> Buscar Cliente</h5>
+      </div>
+      <div class="card-body">
+        <div class="input-group">
+          <input type="text" id="cliente-id-buscar" class="form-control" placeholder="Ingresa el ID del cliente (ej: V-12345678)">
+          <button class="btn btn-primary" type="button" onclick="abrirExpediente()">
+            <i class="bi bi-search"></i> Buscar
+          </button>
+        </div>
+        <small class="text-muted mt-2 d-block">El sistema mostrará el historial técnico completo</small>
+      </div>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="row mb-4">
+      <div class="col-md-3">
+        <div class="card stat-card">
+          <div class="card-body">
+            <div class="stat-value" id="total-casos">0</div>
+            <div class="stat-label">Casos Totales</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card stat-card">
+          <div class="card-body">
+            <div class="stat-value" id="clientes-unicos">0</div>
+            <div class="stat-label">Clientes</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card stat-card">
+          <div class="card-body">
+            <div class="stat-value" id="equipos-registrados">0</div>
+            <div class="stat-label">Equipos</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card stat-card">
+          <div class="card-body">
+            <div class="stat-value" id="proximos-mantenimientos">0</div>
+            <div class="stat-label">Próximos Mantenimientos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gráfico de Casos por Mes -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5><i class="bi bi-graph-up"></i> Actividad Mensual</h5>
+      </div>
+      <div class="card-body">
+        <canvas id="grafico-casos" height="100"></canvas>
+      </div>
+    </div>
+
+    <!-- Últimos Casos -->
+    <div class="card mb-4">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0"><i class="bi bi-clock-history"></i> Últimos Casos</h5>
+        <a href="/app/casos.html" class="btn btn-sm btn-outline-primary">Ver todos</a>
+      </div>
+      <div class="card-body p-0">
+        <ul class="list-group list-group-flush" id="lista-ultimos-casos">
+          <li class="list-group-item text-center text-muted">Cargando...</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 CorelTech – Plataforma técnica profesional</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="/firebase-config.js"></script>
+  <script src="/app/js/auth.js"></script>
+
+  <script>
+    // ================================
+    // Cargar usuario autenticado
+    // ================================
+    firebase.auth().onAuthStateChanged(async (user) => {
+      if (!user) {
+        window.location.href = '/app/login.html';
+        return;
+      }
+      document.getElementById("user-email").textContent = user.email.split('@')[0];
+      await cargarEstadisticas();
+      await cargarUltimosCasos();
+      await cargarGrafico();
+    });
+
+    // ================================
+    // Buscar cliente
+    // ================================
+    function buscarCliente() {
+      document.getElementById("cliente-id-buscar").focus();
+    }
+
+    async function abrirExpediente() {
+      const id = document.getElementById("cliente-id-buscar").value.trim().toUpperCase();
+      if (!id) return alert("Ingresa un ID de cliente.");
+
+      const db = firebase.firestore();
+      const doc = await db.collection("clientes").doc(id).get();
+
+      if (doc.exists) {
+        window.location.href = `/app/expediente.html?cliente=${id}`;
+      } else {
+        const crear = confirm(`Cliente no encontrado. ¿Crear nuevo caso para ${id}?`);
+        if (crear) {
+          window.location.href = `/app/nuevo-caso.html?cliente=${id}`;
+        }
+      }
+    }
+
+    // ================================
+    // Cargar Estadísticas
+    // ================================
+    async function cargarEstadisticas() {
+      const db = firebase.firestore();
+      const casosSnap = await db.collection("casos").get();
+      const clientesSnap = await db.collection("clientes").get();
+      const equiposSnap = await db.collection("equipos").get();
+
+      let mantenimientos = 0;
+      const seisMeses = new Date();
+      seisMeses.setMonth(seisMeses.getMonth() - 6);
+      const clientes = clientesSnap.docs.map(d => d.data());
+      clientes.forEach(c => {
+        if (c.ultimoServicio?.toDate && c.ultimoServicio.toDate() < seisMeses) {
+          mantenimientos++;
+        }
+      });
+
+      document.getElementById("total-casos").textContent = casosSnap.size;
+      document.getElementById("clientes-unicos").textContent = clientesSnap.size;
+      document.getElementById("equipos-registrados").textContent = equiposSnap.size;
+      document.getElementById("proximos-mantenimientos").textContent = mantenimientos;
+    }
+
+    // ================================
+    // Cargar Últimos Casos
+    // ================================
+    async function cargarUltimosCasos() {
+      const db = firebase.firestore();
+      const lista = document.getElementById("lista-ultimos-casos");
+      lista.innerHTML = '<li class="list-group-item text-center text-muted">Cargando...</li>';
+
+      const snapshot = await db.collection("casos")
+        .orderBy("fechaSolicitud", "desc")
+        .limit(5)
+        .get();
+
+      lista.innerHTML = '';
+      if (snapshot.empty) {
+        lista.innerHTML = '<li class="list-group-item text-center text-muted">No hay casos registrados.</li>';
+      } else {
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          const fecha = data.fechaSolicitud?.toDate().toLocaleDateString() || 'N/A';
+          const clienteId = data.clienteId;
+          const casoId = data.casoId;
+
+          const li = document.createElement("li");
+          li.className = "list-group-item d-flex justify-content-between align-items-center";
+          li.innerHTML = `
+            <div>
+              <strong>${casoId}</strong> - ${clienteId}
+              <br><small class="text-muted">${fecha}</small>
+            </div>
+            <button class="btn btn-sm btn-outline-info" onclick="verInforme('${casoId}')">
+              <i class="bi bi-file-earmark-text"></i>
+            </button>
+          `;
+          lista.appendChild(li);
+        });
+      }
+    }
+
+    // ================================
+    // Ver Informe
+    // ================================
+    function verInforme(casoId) {
+      window.location.href = `/app/informe.html?id=${casoId}`;
+    }
+
+    // ================================
+    // Gráfico de Casos por Mes
+    // ================================
+    async function cargarGrafico() {
+      const db = firebase.firestore();
+      const snapshot = await db.collection("casos").get();
+      const data = {};
+      const now = new Date();
+      const sixMonthsAgo = new Date(now.getFullYear(), now.getMonth() - 5, 1);
+
+      snapshot.forEach(doc => {
+        const fecha = doc.data().fechaSolicitud?.toDate();
+        if (fecha && fecha >= sixMonthsAgo) {
+          const mes = fecha.toLocaleDateString('es-ES', { month: 'short', year: '2-digit' });
+          data[mes] = (data[mes] || 0) + 1;
+        }
+      });
+
+      const meses = Array.from({ length: 6 }, (_, i) => {
+        const d = new Date();
+        d.setMonth(d.getMonth() - 5 + i);
+        return d.toLocaleDateString('es-ES', { month: 'short', year: '2-digit' });
+      });
+
+      const valores = meses.map(mes => data[mes] || 0);
+
+      const ctx = document.getElementById('grafico-casos').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: meses,
+          datasets: [{
+            label: 'Casos por mes',
+            data: valores,
+            borderColor: '#0d6efd',
+            backgroundColor: 'rgba(13, 110, 253, 0.1)',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false }
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
