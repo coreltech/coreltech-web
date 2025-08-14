@@ -4,14 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Panel – CorelTech</title>
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
-  <!-- Chart.js -->
+
+  <!-- Bootstrap 5 (sin espacios al final) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts: Inter (limpia y moderna) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Iconos de Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Chart.js para gráficos -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <style>
     :root {
       --corel-primary: #0d6efd;
@@ -21,42 +26,52 @@
       --corel-card: #ffffff;
       --corel-border: #dee2e6;
     }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--corel-bg);
       color: #212529;
       min-height: 100vh;
     }
+
+    /* Navbar con gradiente */
     .navbar {
       background: linear-gradient(135deg, var(--corel-primary), var(--corel-secondary));
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .navbar-brand {
-      font-weight: 700;
+    .navbar-brand, .nav-link {
       color: white !important;
     }
     .nav-link {
-      color: rgba(255,255,255,0.9) !important;
+      opacity: 0.9;
     }
+
+    /* Tarjetas generales */
     .card {
       border: 1px solid var(--corel-border);
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       transition: transform 0.2s;
     }
-    .card:hover { transform: translateY(-4px); }
+    .card:hover {
+      transform: translateY(-4px);
+    }
     .card-header {
       background-color: var(--corel-primary);
       color: white;
       font-weight: 600;
       border-radius: 12px 12px 0 0 !important;
     }
+
+    /* Botón principal */
     .btn-corel {
       background: linear-gradient(135deg, var(--corel-primary), var(--corel-secondary));
       color: white;
       font-weight: 600;
       border: none;
     }
+
+    /* Atajos rápidos */
     .btn-shortcut {
       font-size: 0.9rem;
       padding: 12px;
@@ -78,6 +93,22 @@
       font-size: 1.8rem;
       margin-bottom: 8px;
     }
+
+    /* Estadísticas */
+    .stat-card {
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--corel-primary);
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+
+    /* Footer */
     .footer {
       margin-top: 60px;
       text-align: center;
@@ -85,15 +116,16 @@
       font-size: 0.9rem;
       padding: 20px 0;
     }
-    .stat-card { text-align: center; }
-    .stat-value { font-size: 1.8rem; font-weight: bold; color: var(--corel-primary); }
-    .stat-label { font-size: 0.9rem; color: #6c757d; }
-    .list-group-item-action { cursor: pointer; }
+
+    /* Listas interactivas */
+    .list-group-item-action {
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- Navbar superior -->
   <nav class="navbar navbar-expand-lg navbar-dark mb-4">
     <div class="container">
       <a class="navbar-brand" href="#">
@@ -110,13 +142,13 @@
 
   <div class="container">
 
-    <!-- Encabezado -->
+    <!-- Encabezado principal -->
     <div class="text-center mb-4">
       <h1 class="fw-bold">🛠️ Panel Técnico Centralizado</h1>
       <p class="text-muted">Gestión avanzada de casos, clientes y mantenimiento</p>
     </div>
 
-    <!-- Atajos Rápidos -->
+    <!-- Atajos rápidos -->
     <div class="card mb-4">
       <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="mb-0"><i class="bi bi-lightning"></i> Acciones Rápidas</h5>
@@ -149,7 +181,7 @@
           </div>
           <div class="col-md-2">
             <button class="btn btn-light w-100 btn-shortcut" onclick="window.location.href='/app/inventario.html'">
-              <i class="bi bi-journal-text"></i>
+              <i class="bi bi-pc-display"></i>
               Inventario
             </button>
           </div>
@@ -157,14 +189,20 @@
       </div>
     </div>
 
-    <!-- Búsqueda de Cliente -->
+    <!-- Búsqueda de cliente -->
     <div class="card mb-4">
       <div class="card-header">
         <h5><i class="bi bi-person-lines-fill"></i> Buscar Cliente</h5>
       </div>
       <div class="card-body">
         <div class="input-group">
-          <input type="text" id="cliente-id-buscar" class="form-control" placeholder="Ingresa el ID del cliente (ej: V-12345678)">
+          <input 
+            type="text" 
+            id="cliente-id-buscar" 
+            class="form-control" 
+            placeholder="Ingresa el ID del cliente (ej: V-12345678)"
+            maxlength="15"
+          >
           <button class="btn btn-primary" type="button" onclick="abrirExpediente()">
             <i class="bi bi-search"></i> Buscar
           </button>
@@ -209,7 +247,7 @@
       </div>
     </div>
 
-    <!-- Gráfico de Casos por Mes -->
+    <!-- Gráfico de actividad -->
     <div class="card mb-4">
       <div class="card-header">
         <h5><i class="bi bi-graph-up"></i> Actividad Mensual</h5>
@@ -219,7 +257,7 @@
       </div>
     </div>
 
-    <!-- Últimos Casos -->
+    <!-- Últimos casos -->
     <div class="card mb-4">
       <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="mb-0"><i class="bi bi-clock-history"></i> Últimos Casos</h5>
@@ -248,162 +286,215 @@
   <script src="/app/js/auth.js"></script>
 
   <script>
-    // ================================
-    // Cargar usuario autenticado
-    // ================================
+    // ==========================================
+    // ✅ 1. Verificar autenticación y cargar datos
+    // Si no hay usuario, redirigir a login
+    // ==========================================
     firebase.auth().onAuthStateChanged(async (user) => {
       if (!user) {
         window.location.href = '/app/login.html';
         return;
       }
+      // Mostrar solo el nombre del correo (antes de @)
       document.getElementById("user-email").textContent = user.email.split('@')[0];
+      
+      // Cargar datos del panel
       await cargarEstadisticas();
       await cargarUltimosCasos();
       await cargarGrafico();
     });
 
-    // ================================
-    // Buscar cliente
-    // ================================
+    // ==========================================
+    // ✅ 2. Foco en campo de búsqueda
+    // Al hacer clic en "Buscar Cliente", enfocar el input
+    // ==========================================
     function buscarCliente() {
       document.getElementById("cliente-id-buscar").focus();
     }
 
+    // ==========================================
+    // ✅ 3. Abrir expediente del cliente
+    // Busca en Firestore si existe, si no, pregunta si crear nuevo caso
+    // ==========================================
     async function abrirExpediente() {
-      const id = document.getElementById("cliente-id-buscar").value.trim().toUpperCase();
-      if (!id) return alert("Ingresa un ID de cliente.");
+      const input = document.getElementById("cliente-id-buscar");
+      const id = input.value.trim().toUpperCase();
+      
+      if (!id) {
+        alert("Por favor, ingresa un ID de cliente.");
+        input.focus();
+        return;
+      }
 
-      const db = firebase.firestore();
-      const doc = await db.collection("clientes").doc(id).get();
+      try {
+        const db = firebase.firestore();
+        const doc = await db.collection("clientes").doc(id).get();
 
-      if (doc.exists) {
-        window.location.href = `/app/expediente.html?cliente=${id}`;
-      } else {
-        const crear = confirm(`Cliente no encontrado. ¿Crear nuevo caso para ${id}?`);
-        if (crear) {
-          window.location.href = `/app/nuevo-caso.html?cliente=${id}`;
+        if (doc.exists) {
+          // Cliente existe → abrir expediente
+          window.location.href = `/app/expediente.html?cliente=${id}`;
+        } else {
+          // Cliente no existe → ofrecer crear caso
+          const crear = confirm(`Cliente no encontrado. ¿Crear nuevo caso para ${id}?`);
+          if (crear) {
+            window.location.href = `/app/nuevo-caso.html?cliente=${id}`;
+          }
         }
+      } catch (error) {
+        console.error("Error al buscar cliente:", error);
+        alert("Error al conectar con la base de datos. Intenta de nuevo.");
       }
     }
 
-    // ================================
-    // Cargar Estadísticas
-    // ================================
+    // ==========================================
+    // ✅ 4. Cargar estadísticas desde Firebase
+    // Muestra: casos, clientes, equipos y mantenimientos pendientes
+    // ==========================================
     async function cargarEstadisticas() {
       const db = firebase.firestore();
-      const casosSnap = await db.collection("casos").get();
-      const clientesSnap = await db.collection("clientes").get();
-      const equiposSnap = await db.collection("equipos").get();
+      try {
+        const [casosSnap, clientesSnap, equiposSnap] = await Promise.all([
+          db.collection("casos").get(),
+          db.collection("clientes").get(),
+          db.collection("equipos").get()
+        ]);
 
-      let mantenimientos = 0;
-      const seisMeses = new Date();
-      seisMeses.setMonth(seisMeses.getMonth() - 6);
-      const clientes = clientesSnap.docs.map(d => d.data());
-      clientes.forEach(c => {
-        if (c.ultimoServicio?.toDate && c.ultimoServicio.toDate() < seisMeses) {
-          mantenimientos++;
-        }
-      });
+        let mantenimientos = 0;
+        const seisMesesAtras = new Date();
+        seisMesesAtras.setMonth(seisMesesAtras.getMonth() - 6);
 
-      document.getElementById("total-casos").textContent = casosSnap.size;
-      document.getElementById("clientes-unicos").textContent = clientesSnap.size;
-      document.getElementById("equipos-registrados").textContent = equiposSnap.size;
-      document.getElementById("proximos-mantenimientos").textContent = mantenimientos;
+        clientesSnap.docs.forEach(doc => {
+          const data = doc.data();
+          const ultimaFecha = data.ultimoServicio?.toDate();
+          if (ultimaFecha && ultimaFecha < seisMesesAtras) {
+            mantenimientos++;
+          }
+        });
+
+        // Actualizar elementos en pantalla
+        document.getElementById("total-casos").textContent = casosSnap.size;
+        document.getElementById("clientes-unicos").textContent = clientesSnap.size;
+        document.getElementById("equipos-registrados").textContent = equiposSnap.size;
+        document.getElementById("proximos-mantenimientos").textContent = mantenimientos;
+
+      } catch (error) {
+        console.error("Error cargando estadísticas:", error);
+      }
     }
 
-    // ================================
-    // Cargar Últimos Casos
-    // ================================
+    // ==========================================
+    // ✅ 5. Cargar últimos 5 casos
+    // Muestra lista con enlace a informe
+    // ==========================================
     async function cargarUltimosCasos() {
       const db = firebase.firestore();
       const lista = document.getElementById("lista-ultimos-casos");
       lista.innerHTML = '<li class="list-group-item text-center text-muted">Cargando...</li>';
 
-      const snapshot = await db.collection("casos")
-        .orderBy("fechaSolicitud", "desc")
-        .limit(5)
-        .get();
+      try {
+        const snapshot = await db.collection("casos")
+          .orderBy("fechaSolicitud", "desc")
+          .limit(5)
+          .get();
 
-      lista.innerHTML = '';
-      if (snapshot.empty) {
-        lista.innerHTML = '<li class="list-group-item text-center text-muted">No hay casos registrados.</li>';
-      } else {
-        snapshot.forEach(doc => {
-          const data = doc.data();
-          const fecha = data.fechaSolicitud?.toDate().toLocaleDateString() || 'N/A';
-          const clienteId = data.clienteId;
-          const casoId = data.casoId;
+        lista.innerHTML = '';
+        if (snapshot.empty) {
+          lista.innerHTML = '<li class="list-group-item text-center text-muted">No hay casos registrados.</li>';
+        } else {
+          snapshot.forEach(doc => {
+            const data = doc.data();
+            const fecha = data.fechaSolicitud?.toDate().toLocaleDateString() || 'N/A';
+            const clienteId = data.clienteId || 'Sin cliente';
+            const casoId = data.casoId || 'Sin ID';
 
-          const li = document.createElement("li");
-          li.className = "list-group-item d-flex justify-content-between align-items-center";
-          li.innerHTML = `
-            <div>
-              <strong>${casoId}</strong> - ${clienteId}
-              <br><small class="text-muted">${fecha}</small>
-            </div>
-            <button class="btn btn-sm btn-outline-info" onclick="verInforme('${casoId}')">
-              <i class="bi bi-file-earmark-text"></i>
-            </button>
-          `;
-          lista.appendChild(li);
-        });
+            const li = document.createElement("li");
+            li.className = "list-group-item d-flex justify-content-between align-items-center";
+            li.innerHTML = `
+              <div>
+                <strong>${casoId}</strong> - ${clienteId}
+                <br><small class="text-muted">${fecha}</small>
+              </div>
+              <button class="btn btn-sm btn-outline-info" onclick="verInforme('${casoId}')">
+                <i class="bi bi-file-earmark-text"></i>
+              </button>
+            `;
+            lista.appendChild(li);
+          });
+        }
+      } catch (error) {
+        console.error("Error cargando últimos casos:", error);
+        lista.innerHTML = '<li class="list-group-item text-center text-danger">Error al cargar datos.</li>';
       }
     }
 
-    // ================================
-    // Ver Informe
-    // ================================
+    // ==========================================
+    // ✅ 6. Redirigir a informe técnico
+    // ==========================================
     function verInforme(casoId) {
       window.location.href = `/app/informe.html?id=${casoId}`;
     }
 
-    // ================================
-    // Gráfico de Casos por Mes
-    // ================================
+    // ==========================================
+    // ✅ 7. Gráfico de casos por mes (últimos 6 meses)
+    // Usa Chart.js para mostrar tendencia
+    // ==========================================
     async function cargarGrafico() {
       const db = firebase.firestore();
-      const snapshot = await db.collection("casos").get();
       const data = {};
       const now = new Date();
       const sixMonthsAgo = new Date(now.getFullYear(), now.getMonth() - 5, 1);
 
-      snapshot.forEach(doc => {
-        const fecha = doc.data().fechaSolicitud?.toDate();
-        if (fecha && fecha >= sixMonthsAgo) {
-          const mes = fecha.toLocaleDateString('es-ES', { month: 'short', year: '2-digit' });
-          data[mes] = (data[mes] || 0) + 1;
-        }
-      });
-
-      const meses = Array.from({ length: 6 }, (_, i) => {
-        const d = new Date();
-        d.setMonth(d.getMonth() - 5 + i);
-        return d.toLocaleDateString('es-ES', { month: 'short', year: '2-digit' });
-      });
-
-      const valores = meses.map(mes => data[mes] || 0);
-
-      const ctx = document.getElementById('grafico-casos').getContext('2d');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: meses,
-          datasets: [{
-            label: 'Casos por mes',
-            data: valores,
-            borderColor: '#0d6efd',
-            backgroundColor: 'rgba(13, 110, 253, 0.1)',
-            fill: true,
-            tension: 0.4
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { display: false }
+      try {
+        const snapshot = await db.collection("casos").get();
+        snapshot.forEach(doc => {
+          const fecha = doc.data().fechaSolicitud?.toDate();
+          if (fecha && fecha >= sixMonthsAgo) {
+            const mes = fecha.toLocaleDateString('es-ES', { month: 'short', year: '2-digit' });
+            data[mes] = (data[mes] || 0) + 1;
           }
-        }
-      });
+        });
+
+        // Generar 6 meses desde hoy hacia atrás
+        const meses = Array.from({ length: 6 }, (_, i) => {
+          const d = new Date();
+          d.setMonth(d.getMonth() - 5 + i);
+          return d.toLocaleDateString('es-ES', { month: 'short', year: '2-digit' });
+        });
+
+        const valores = meses.map(mes => data[mes] || 0);
+
+        const ctx = document.getElementById('grafico-casos').getContext('2d');
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: meses,
+            datasets: [{
+              label: 'Casos por mes',
+              data: valores,
+              borderColor: '#0d6efd',
+              backgroundColor: 'rgba(13, 110, 253, 0.1)',
+              fill: true,
+              tension: 0.4
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: false }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  stepSize: 1
+                }
+              }
+            }
+          }
+        });
+      } catch (error) {
+        console.error("Error al generar gráfico:", error);
+      }
     }
   </script>
 </body>

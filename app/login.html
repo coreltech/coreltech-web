@@ -3,14 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Acceso Técnicos – CorelTech</title>
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+  <!-- Evita que motores de búsqueda indexen esta página (importante por ser área privada) -->
+  <meta name="robots" content="noindex, nofollow">
+  
+  <title>🔐 Acceso Técnico – CorelTech</title>
+
+  <!-- Bootstrap 5 (CDN sin espacios) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts: Inter (limpia y moderna) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Iconos de Bootstrap (para candado, correo, etc.) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
   <style>
+    /* Fondo degradado profesional */
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #0d6efd, #0d47a1);
@@ -19,6 +27,8 @@
       align-items: center;
       color: #fff;
     }
+
+    /* Contenedor principal del formulario */
     .login-container {
       background: white;
       border-radius: 16px;
@@ -26,6 +36,8 @@
       overflow: hidden;
       color: #212529;
     }
+
+    /* Encabezado en azul con icono */
     .login-header {
       background: #0d6efd;
       color: white;
@@ -35,28 +47,38 @@
     .login-header h2 {
       margin: 0;
       font-weight: 600;
+      font-size: 1.5rem;
     }
     .login-header p {
       font-size: 0.9rem;
       opacity: 0.9;
     }
+
+    /* Estilo de los campos de entrada */
     .form-control {
       border-radius: 8px;
     }
+
+    /* Botón personalizado de CorelTech */
     .btn-corel {
       background-color: #0d6efd;
       border: none;
       padding: 10px 20px;
       font-weight: 600;
       border-radius: 8px;
+      width: 100%;
     }
     .btn-corel:hover {
       background-color: #0b5ed7;
     }
-    .brand {
-      font-weight: 700;
-      color: #0d6efd;
+
+    /* Mensaje de error */
+    #error-message {
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
     }
+
+    /* Frase final */
     .footer-note {
       text-align: center;
       font-size: 0.85rem;
@@ -70,22 +92,24 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-5">
+        <!-- Contenedor principal del login -->
         <div class="login-container">
 
-          <!-- Header -->
+          <!-- Encabezado -->
           <div class="login-header">
             <h2><i class="bi bi-shield-lock"></i> Acceso Técnico</h2>
             <p>Panel de gestión CorelTech</p>
           </div>
 
-          <!-- Formulario -->
+          <!-- Formulario de inicio de sesión -->
           <div class="p-4">
             <div class="text-center mb-4">
               <h5>Bienvenido</h5>
-              <p style="font-size: 0.9rem;">Ingresa con tu correo corporativo</p>
+              <p class="text-muted">Ingresa con tu correo corporativo</p>
             </div>
 
             <form id="login-form">
+              <!-- Campo: Correo -->
               <div class="mb-3">
                 <label for="email" class="form-label">Correo @coreltech.com</label>
                 <div class="input-group">
@@ -100,6 +124,7 @@
                 </div>
               </div>
 
+              <!-- Campo: Contraseña -->
               <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
                 <div class="input-group">
@@ -114,18 +139,20 @@
                 </div>
               </div>
 
-              <div id="error-message" class="text-danger mb-3" style="display: none; font-size: 0.9rem;"></div>
+              <!-- Mensaje de error (se muestra si hay fallo) -->
+              <div id="error-message" class="text-danger" style="display: none;"></div>
 
-              <button type="submit" class="btn btn-corel w-100">
+              <!-- Botón de inicio de sesión -->
+              <button type="submit" class="btn btn-corel">
                 <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
               </button>
             </form>
 
+            <!-- Nota final -->
             <div class="footer-note mt-4">
               ¿No tienes acceso? Contacta al administrador.
             </div>
           </div>
-
         </div>
 
         <!-- Frase de marca -->
@@ -139,60 +166,119 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS -->
+  <!-- Scripts -->
+  <!-- Bootstrap Bundle (incluye Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Firebase SDK -->
+  <!-- Firebase SDK (versión compat) -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
 
-  <!-- Configuración de Firebase -->
+  <!-- Archivo de configuración de Firebase (asegúrate de que esté en la raíz o ajusta la ruta) -->
   <script src="/firebase-config.js"></script>
-  <!-- Script de autenticación -->
+
   <script>
-    // Verificar si ya está autenticado
-    firebase.auth().onAuthStateChanged((user) => {
+    // ==========================================
+    // ✅ 1. Verificar autenticación al cargar
+    // Si el usuario ya está logueado, redirigir al dashboard
+    // ==========================================
+    firebase.auth().onAuthStateChanged(async (user) => {
+      // Obtener la ruta actual
       const path = window.location.pathname;
-      if (user && path.endsWith('login.html')) {
-        const domain = user.email.split('@')[1];
+
+      // Detectar si estamos en la página de login (cualquier variante)
+      const isLoginPage = path.toLowerCase().includes('login');
+
+      if (user) {
+        const email = user.email;
+        const domain = email?.split('@')[1];
+
+        // Validar dominio permitido
         if (domain === 'coreltech.com') {
-          window.location.href = 'index.html';
+          // Si ya está logueado y está en login.html, redirigir
+          if (isLoginPage) {
+            window.location.href = 'index.html'; // Cambia a '../index.html' si está en subcarpeta
+          }
+        } else {
+          // Si el correo no es válido, cerrar sesión
+          await firebase.auth().signOut();
+          if (isLoginPage) {
+            showError('Acceso denegado. Solo correos @coreltech.com.');
+          }
+        }
+      } else {
+        // Si NO hay usuario y NO está en login, redirigir a login
+        if (!isLoginPage) {
+          window.location.href = 'login.html';
         }
       }
     });
 
-    // Manejar el inicio de sesión
+    // ==========================================
+    // ✅ 2. Manejar el inicio de sesión
+    // Validar correo, contraseña y mostrar errores claros
+    // ==========================================
     document.getElementById('login-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
+      e.preventDefault(); // Evitar recarga
+
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
       const errorDiv = document.getElementById('error-message');
 
-      // Validar dominio
+      // Limpiar mensaje anterior
+      errorDiv.style.display = 'none';
+
+      // Validar dominio en tiempo real
       if (!email.endsWith('@coreltech.com')) {
-        errorDiv.style.display = 'block';
-        errorDiv.textContent = 'Solo se permiten correos @coreltech.com';
+        showError('Solo se permiten correos @coreltech.com');
         return;
       }
 
       try {
         await firebase.auth().signInWithEmailAndPassword(email, password);
-        // Si inicia sesión, redirigir
-        window.location.href = 'index.html';
+        // Si inicia bien, Firebase dispara onAuthStateChanged y redirige
       } catch (error) {
-        let message = 'Error de acceso.';
-        if (error.code === 'auth/wrong-password') {
-          message = 'Contraseña incorrecta.';
-        } else if (error.code === 'auth/user-not-found') {
-          message = 'Usuario no encontrado.';
-        } else if (error.code === 'auth/invalid-credential') {
-          message = 'Credenciales inválidas.';
+        let message = 'Error de acceso. Revisa tus credenciales.';
+        switch (error.code) {
+          case 'auth/wrong-password':
+            message = 'Contraseña incorrecta.';
+            break;
+          case 'auth/user-not-found':
+            message = 'Usuario no encontrado.';
+            break;
+          case 'auth/invalid-credential':
+            message = 'Credenciales inválidas.';
+            break;
+          case 'auth/user-disabled':
+            message = 'Esta cuenta ha sido desactivada.';
+            break;
+          default:
+            console.warn("Error desconocido:", error);
         }
-        errorDiv.style.display = 'block';
-        errorDiv.textContent = message;
+        showError(message);
+      }
+    });
+
+    // ==========================================
+    // ✅ Función auxiliar: mostrar errores
+    // ==========================================
+    function showError(msg) {
+      const errorDiv = document.getElementById('error-message');
+      errorDiv.style.display = 'block';
+      errorDiv.textContent = msg;
+    }
+
+    // ==========================================
+    // ✅ Validación en tiempo real del correo
+    // ==========================================
+    document.getElementById('email').addEventListener('input', function () {
+      const email = this.value.trim();
+      if (email && !email.endsWith('@coreltech.com')) {
+        showError('Solo se permiten correos @coreltech.com');
+      } else {
+        document.getElementById('error-message').style.display = 'none';
       }
     });
   </script>
-
 </body>
 </html>

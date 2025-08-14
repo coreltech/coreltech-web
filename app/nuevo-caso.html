@@ -4,23 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nuevo Caso – CorelTech</title>
+
   <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
   <style>
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f8f9fa;
       color: #212529;
     }
+
     .card {
       border: none;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
+
     .btn-corel {
       background-color: #0d6efd;
       color: white;
@@ -29,16 +35,20 @@
     .btn-corel:hover {
       background-color: #0b5ed7;
     }
+
     .form-label {
       font-weight: 500;
       color: #495057;
     }
+
     footer {
       margin-top: 60px;
       text-align: center;
       color: #6c757d;
       font-size: 0.9rem;
     }
+
+    /* Bloque de equipo individual */
     .equipo-block {
       position: relative;
       border: 1px solid #dee2e6;
@@ -47,12 +57,16 @@
       margin-bottom: 20px;
       background: #fff;
     }
+
+    /* Botón para eliminar equipo */
     .eliminar-equipo {
       position: absolute;
       top: 10px;
       right: 10px;
       z-index: 10;
     }
+
+    /* Miniaturas de fotos */
     .miniatura-foto {
       width: 100px;
       height: 100px;
@@ -62,12 +76,16 @@
       margin: 4px;
       cursor: pointer;
     }
+
+    /* Contenedor de fotos */
     .fotos-equipo {
       margin-top: 10px;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
+
+    /* Botón flotante (solo en móvil) */
     .no-print {
       position: fixed;
       bottom: 20px;
@@ -106,7 +124,14 @@
             </div>
             <div class="col-md-6 mb-3">
               <label class="form-label">ID (Cédula o RIF)</label>
-              <input type="text" class="form-control" id="cliente-id" placeholder="V-12345678" required />
+              <input 
+                type="text" 
+                class="form-control" 
+                id="cliente-id" 
+                placeholder="V-12345678" 
+                maxlength="15"
+                required 
+              />
             </div>
             <div class="col-md-6 mb-3">
               <label class="form-label">Teléfono</label>
@@ -121,10 +146,26 @@
               <textarea class="form-control" id="cliente-direccion" rows="2" required></textarea>
             </div>
           </div>
+
+          <!-- Botón para abrir Obsidian -->
+          <div class="card mt-4 bg-light">
+            <div class="card-body">
+              <h6>📁 ¿Cliente desde Obsidian?</h6>
+              <p class="text-muted small mb-2">
+                Abre tu vault y copia el ID del cliente. Luego haz clic en "Cargar desde Obsidian".
+              </p>
+              <button type="button" class="btn btn-outline-info btn-sm" onclick="instruccionesObsidian()">
+                <i class="bi bi-info-circle"></i> Instrucciones
+              </button>
+              <button type="button" class="btn btn-outline-success btn-sm ms-2" onclick="cargarClienteDesdeObsidian()">
+                <i class="bi bi-person-fill-check"></i> Cargar desde Obsidian
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Sección: Equipos (con diagnóstico técnico) -->
+      <!-- Sección: Equipos -->
       <div class="card mb-4">
         <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
           <h5 class="mb-0">🖥️ Equipos Atendidos</h5>
@@ -134,15 +175,14 @@
         </div>
         <div class="card-body">
           <div id="lista-equipos">
-            <!-- Bloque inicial de equipo -->
-            <div class="equipo-block mb-4">
+            <!-- Bloque inicial del primer equipo -->
+            <div class="equipo-block">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h6 class="mb-0">Equipo #1</h6>
                 <button type="button" class="btn btn-outline-danger btn-sm eliminar-equipo" onclick="this.closest('.equipo-block').remove()">
                   <i class="bi bi-trash"></i> Eliminar
                 </button>
               </div>
-
               <!-- Datos del equipo -->
               <div class="row mb-3">
                 <div class="col-md-6 mb-3">
@@ -200,27 +240,27 @@
                 </div>
               </div>
 
-              <!-- Diagnóstico técnico del equipo -->
+              <!-- Diagnóstico técnico -->
               <div class="mb-3">
                 <label class="form-label"><strong>Diagnóstico Técnico del Equipo</strong></label>
-                <textarea class="form-control equipo-diagnostico" rows="4" placeholder="Ej: Se detectó sobrecalentamiento por acumulación de polvo. Disco SSD con 85% de wear leveling. Fuente de poder inestable (ruido)."></textarea>
+                <textarea class="form-control equipo-diagnostico" rows="4" placeholder="Ej: Sobrecalentamiento, disco con alto wear leveling, fuente inestable."></textarea>
               </div>
 
-              <!-- Trabajo realizado por equipo -->
+              <!-- Falla y trabajo -->
               <div class="mb-3">
                 <label class="form-label"><strong>Falla reportada</strong></label>
-                <textarea class="form-control equipo-falla" rows="2" placeholder="Ej: No enciende, lento, pantalla azul..."></textarea>
+                <textarea class="form-control equipo-falla" rows="2" placeholder="No enciende, lento, pantalla azul..."></textarea>
               </div>
               <div class="mb-3">
                 <label class="form-label"><strong>Trabajo realizado</strong></label>
-                <textarea class="form-control equipo-trabajo" rows="3" placeholder="Ej: Limpieza, instalación de Windows, eliminación de malware..."></textarea>
+                <textarea class="form-control equipo-trabajo" rows="3" placeholder="Limpieza, instalación de sistema, eliminación de malware..."></textarea>
               </div>
               <div class="mb-3">
                 <label class="form-label"><strong>Recomendaciones</strong></label>
-                <textarea class="form-control equipo-recomendaciones" rows="2" placeholder="Ej: Mantenimiento cada 6 meses, respaldar datos..."></textarea>
+                <textarea class="form-control equipo-recomendaciones" rows="2" placeholder="Mantenimiento cada 6 meses, respaldar datos..."></textarea>
               </div>
 
-              <!-- Fotos por equipo -->
+              <!-- Fotos del equipo -->
               <div>
                 <button type="button" class="btn btn-sm btn-outline-info equipo-fotos-btn" onclick="abrirSubidaFotosEquipo(this)">
                   📷 Subir fotos para este equipo
@@ -232,7 +272,7 @@
         </div>
       </div>
 
-      <!-- Sección: Diagnóstico General de la Visita -->
+      <!-- Diagnóstico general -->
       <div class="card mb-4">
         <div class="card-header bg-info text-white">
           <h5>🌐 Diagnóstico General de la Visita</h5>
@@ -240,16 +280,16 @@
         <div class="card-body">
           <div class="mb-3">
             <label class="form-label"><strong>Infraestructura de Red</strong></label>
-            <textarea class="form-control" id="diagnostico-red" rows="4" placeholder="Ej: Router MikroTik con firmware desactualizado. Switch con puerto 3 inestable. Cobertura Wi-Fi adecuada."></textarea>
+            <textarea class="form-control" id="diagnostico-red" rows="4" placeholder="Router MikroTik con firmware desactualizado. Switch con puerto inestable."></textarea>
           </div>
           <div class="mb-3">
             <label class="form-label"><strong>Observaciones Generales</strong></label>
-            <textarea class="form-control" id="observaciones-generales" rows="3" placeholder="Ej: Cliente reporta lentitud general. Equipos con acumulación de polvo. Falta mantenimiento preventivo."></textarea>
+            <textarea class="form-control" id="observaciones-generales" rows="3" placeholder="Cliente reporta lentitud general. Falta mantenimiento preventivo."></textarea>
           </div>
         </div>
       </div>
 
-      <!-- Sección: Fotos generales del caso -->
+      <!-- Fotos generales -->
       <div class="card mb-4">
         <div class="card-header bg-info text-white">
           <h5>📷 Fotos Generales del Servicio</h5>
@@ -272,8 +312,8 @@
   </div>
 
   <!-- Footer -->
-  <footer>
-    <p>© 2025 CorelTech – Soporte técnico profesional.</p>
+  <footer class="container">
+    <p class="text-center">© 2025 CorelTech – Soporte técnico profesional.</p>
   </footer>
 
   <!-- Scripts -->
@@ -285,14 +325,80 @@
   <script src="/app/js/auth.js"></script>
   <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 
+  <!-- Scripts principales -->
   <script>
-    // ================================
-    // Cloudinary
-    // ================================
+    // ==========================================
+    // ✅ 1. Configuración de Cloudinary
+    // ==========================================
     const CLOUD_NAME = 'dj1msosxc';
     const UPLOAD_PRESET = 'coreltech-fotos';
-    const fotosGenerales = [];
+    let fotosGenerales = [];
 
+    // ==========================================
+    // ✅ 2. Abrir Obsidian (instrucciones)
+    // ==========================================
+    function instruccionesObsidian() {
+      const mensaje = `
+📋 PASOS PARA CARGAR UN CLIENTE DE OBSIDIAN:
+
+1. Abre Obsidian y busca el cliente
+   (Ej: V-12345678 - Juan Pérez)
+
+2. Copia el ID: V-12345678
+
+3. Regresa a esta página
+
+4. Haz clic en: "Cargar desde Obsidian"
+
+💡 Así evitas problemas con enlaces bloqueados.
+      `;
+      alert(mensaje);
+    }
+
+    // ==========================================
+    // ✅ 3. Cargar cliente desde Obsidian
+    // ==========================================
+    async function cargarClienteDesdeObsidian() {
+      const id = prompt("📋 Ingresa el ID del cliente (ej: V-12345678)");
+      if (!id) return;
+
+      const nombreField = document.getElementById("cliente-nombre");
+      nombreField.value = "Cargando...";
+
+      // Lista de clientes de ejemplo (puedes reemplazar con JSON local)
+      const clientes = {
+        "V-12345678": {
+          nombre: "Juan Pérez",
+          telefono: "0414-1234567",
+          correo: "juan@email.com",
+          direccion: "Av. Principal, Caracas"
+        },
+        "J-87654321": {
+          nombre: "Empresa XYZ",
+          telefono: "0212-8765432",
+          correo: "contacto@xyz.com",
+          direccion: "Centro Empresarial, Oficina 12"
+        }
+      };
+
+      const cliente = clientes[id.toUpperCase()];
+      if (cliente) {
+        document.getElementById("cliente-id").value = id.toUpperCase();
+        document.getElementById("cliente-nombre").value = cliente.nombre;
+        document.getElementById("cliente-telefono").value = cliente.telefono;
+        document.getElementById("cliente-correo").value = cliente.correo || '';
+        document.getElementById("cliente-direccion").value = cliente.direccion;
+        alert(`✅ Cliente ${cliente.nombre} cargado.`);
+      } else {
+        document.getElementById("cliente-id").value = id.toUpperCase();
+        document.getElementById("cliente-nombre").value = "Cliente nuevo";
+        alert("🆕 Cliente no encontrado. Se creará uno nuevo.");
+      }
+    }
+
+    // ==========================================
+    // ✅ 4. Subir fotos generales (Cloudinary)
+    // ==========================================
     function abrirSubidaFotosGenerales() {
       cloudinary.openUploadWidget({
         cloudName: CLOUD_NAME,
@@ -302,16 +408,21 @@
         folder: 'casos-tecnicos'
       }, (error, result) => {
         if (!error && result && result.event === "success") {
-          fotosGenerales.push(result.info.secure_url);
+          const url = result.info.secure_url;
+          fotosGenerales.push(url);
+
           const img = document.createElement("img");
-          img.src = result.info.secure_url;
+          img.src = url;
           img.classList.add("miniatura-foto");
-          img.onclick = () => window.open(result.info.secure_url, '_blank');
+          img.onclick = () => window.open(url, '_blank');
           document.getElementById("lista-fotos-generales").appendChild(img);
         }
       });
     }
 
+    // ==========================================
+    // ✅ 5. Subir fotos por equipo
+    // ==========================================
     function abrirSubidaFotosEquipo(btn) {
       const contenedorFotos = btn.nextElementSibling;
       cloudinary.openUploadWidget({
@@ -322,24 +433,22 @@
         folder: 'casos-tecnicos/equipos'
       }, (error, result) => {
         if (!error && result && result.event === "success") {
+          const url = result.info.secure_url;
           const img = document.createElement("img");
-          img.src = result.info.secure_url;
+          img.src = url;
           img.classList.add("miniatura-foto");
-          img.dataset.url = result.info.secure_url;
-          img.onclick = () => window.open(result.info.secure_url, '_blank');
+          img.dataset.url = url;
+          img.onclick = () => window.open(url, '_blank');
           contenedorFotos.appendChild(img);
         }
       });
     }
 
-    // ================================
-    // Equipos
-    // ================================
+    // ==========================================
+    // ✅ 6. Agregar nuevo equipo
+    // ==========================================
     let contadorEquipos = 1;
 
-    // ================================
-    // Función: Agregar nuevo equipo
-    // ================================
     function agregarEquipo() {
       contadorEquipos++;
       const lista = document.getElementById("lista-equipos");
@@ -409,19 +518,19 @@
         </div>
         <div class="mb-3">
           <label class="form-label"><strong>Diagnóstico Técnico del Equipo</strong></label>
-          <textarea class="form-control equipo-diagnostico" rows="4" placeholder="Ej: Se detectó sobrecalentamiento por acumulación de polvo. Disco SSD con 85% de wear leveling. Fuente de poder inestable (ruido)."></textarea>
+          <textarea class="form-control equipo-diagnostico" rows="4" placeholder="Sobrecalentamiento, disco con alto wear leveling, fuente inestable."></textarea>
         </div>
         <div class="mb-3">
           <label class="form-label"><strong>Falla reportada</strong></label>
-          <textarea class="form-control equipo-falla" rows="2" placeholder="Ej: No enciende, lento, pantalla azul..."></textarea>
+          <textarea class="form-control equipo-falla" rows="2" placeholder="No enciende, lento, pantalla azul..."></textarea>
         </div>
         <div class="mb-3">
           <label class="form-label"><strong>Trabajo realizado</strong></label>
-          <textarea class="form-control equipo-trabajo" rows="3" placeholder="Ej: Limpieza, instalación de Windows, eliminación de malware..."></textarea>
+          <textarea class="form-control equipo-trabajo" rows="3" placeholder="Limpieza, instalación de sistema, eliminación de malware..."></textarea>
         </div>
         <div class="mb-3">
           <label class="form-label"><strong>Recomendaciones</strong></label>
-          <textarea class="form-control equipo-recomendaciones" rows="2" placeholder="Ej: Mantenimiento cada 6 meses, respaldar datos..."></textarea>
+          <textarea class="form-control equipo-recomendaciones" rows="2" placeholder="Mantenimiento cada 6 meses, respaldar datos..."></textarea>
         </div>
         <div>
           <button type="button" class="btn btn-sm btn-outline-info equipo-fotos-btn" onclick="abrirSubidaFotosEquipo(this)">
@@ -433,9 +542,9 @@
       lista.appendChild(div);
     }
 
-    // ================================
-    // Función: Agregar disco con formato controlado
-    // ================================
+    // ==========================================
+    // ✅ 7. Agregar disco
+    // ==========================================
     function agregarDisco(btn) {
       const contenedor = btn.previousElementSibling;
       const div = document.createElement("div");
@@ -462,9 +571,9 @@
       contenedor.appendChild(div);
     }
 
-    // ================================
-    // Guardar caso
-    // ================================
+    // ==========================================
+    // ✅ 8. Guardar caso en Firebase
+    // ==========================================
     document.getElementById("form-caso").addEventListener("submit", async (e) => {
       e.preventDefault();
 
@@ -494,7 +603,6 @@
         const equipoBlocks = document.querySelectorAll(".equipo-block");
 
         for (const block of equipoBlocks) {
-          // Capturar todos los discos del equipo
           const discos = [];
           const discoItems = block.querySelectorAll(".disco-item");
           for (const item of discoItems) {
@@ -504,7 +612,7 @@
             discos.push({ tipo, capacidad, particion });
           }
 
-          const serial = block.querySelector(".equipo-serial").value.trim().toUpperCase() || `NO_SERIAL_${Date.now()}`;
+          const serial = (block.querySelector(".equipo-serial").value || "").trim().toUpperCase() || `NO_SERIAL_${Date.now()}`;
           const fotosEquipo = Array.from(block.querySelectorAll(".fotos-equipo img")).map(img => img.dataset.url);
 
           const equipo = {
@@ -521,7 +629,7 @@
             creadoPor: user.email,
             modificadoPor: user.email,
             diagnostico: {
-              tecnico: block.querySelector(".equipo-diagnostico").value.trim() || "No se registró diagnóstico técnico para este equipo."
+              tecnico: block.querySelector(".equipo-diagnostico").value.trim() || "No se registró diagnóstico técnico."
             },
             fallaReportada: block.querySelector(".equipo-falla").value,
             trabajoRealizado: block.querySelector(".equipo-trabajo").value,
@@ -533,11 +641,6 @@
           equiposSeriales.push(serial);
         }
 
-        // Capturar diagnóstico general
-        const diagnosticoRed = document.getElementById("diagnostico-red").value.trim() || "No se registró diagnóstico de red.";
-        const observacionesGenerales = document.getElementById("observaciones-generales").value.trim() || "No se registraron observaciones generales.";
-
-        // Guardar sin transacción
         const clienteRef = db.collection("clientes").doc(clienteId);
         const clienteDoc = await clienteRef.get();
 
@@ -546,7 +649,8 @@
           const equipos = [...new Set([...(data.equipos || []), ...equiposSeriales])];
           await clienteRef.set({
             ultimoServicio: new Date(),
-            equipos: equipos
+            equipos: equipos,
+            modificadoPor: user.email
           }, { merge: true });
         } else {
           await clienteRef.set({ ...clienteData, equipos: equiposSeriales });
@@ -555,6 +659,9 @@
         for (const equipo of equiposData) {
           await db.collection("equipos").doc(equipo.serial).set(equipo, { merge: true });
         }
+
+        const diagnosticoRed = document.getElementById("diagnostico-red").value.trim() || "No se registró diagnóstico de red.";
+        const observacionesGenerales = document.getElementById("observaciones-generales").value.trim() || "No se registraron observaciones generales.";
 
         await db.collection("casos").doc(casoId).set({
           casoId: casoId,
@@ -586,13 +693,13 @@
 
       } catch (error) {
         console.error("Error al guardar:", error);
-        alert("❌ Error al guardar: " + error.message);
+        alert("❌ Error: " + (error.message || "No se pudo guardar el caso."));
       }
     });
 
-    // ================================
-    // Generar ID de caso
-    // ================================
+    // ==========================================
+    // ✅ 9. Generar ID de caso único
+    // ==========================================
     async function generateCaseId() {
       const db = firebase.firestore();
       const year = new Date().getFullYear();
@@ -604,19 +711,21 @@
       return `CT-${year}-${count.toString().padStart(3, '0')}`;
     }
 
-    // ================================
-    // Cargar cliente desde URL
-    // ================================
+    // ==========================================
+    // ✅ 10. Cargar cliente desde URL
+    // ==========================================
     window.addEventListener("load", async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const clienteId = urlParams.get("cliente");
+      
       if (clienteId) {
         try {
           const db = firebase.firestore();
-          const doc = await db.collection("clientes").doc(clienteId).get();
+          const doc = await db.collection("clientes").doc(clienteId.toUpperCase()).get();
+          
           if (doc.exists) {
             const data = doc.data();
-            document.getElementById("cliente-id").value = clienteId;
+            document.getElementById("cliente-id").value = clienteId.toUpperCase();
             document.getElementById("cliente-nombre").value = data.nombre || "";
             document.getElementById("cliente-telefono").value = data.telefono || "";
             document.getElementById("cliente-correo").value = data.correo || "";
@@ -627,22 +736,21 @@
               for (const serial of data.equipos) {
                 const equipoDoc = await db.collection("equipos").doc(serial).get();
                 if (equipoDoc.exists) {
-                  const eq = equipoDoc.data();
-                  agregarEquipoConDatos(eq, serial);
+                  agregarEquipoConDatos(equipoDoc.data(), serial);
                 }
               }
             }
           }
         } catch (error) {
-          console.error("Error al cargar cliente desde URL:", error);
+          console.error("Error al cargar cliente:", error);
           alert("⚠️ No se pudo cargar los datos del cliente.");
         }
       }
     });
 
-    // ================================
-    // Cargar equipo con datos
-    // ================================
+    // ==========================================
+    // ✅ 11. Cargar equipo con datos
+    // ==========================================
     function agregarEquipoConDatos(equipo, serial) {
       contadorEquipos++;
       const lista = document.getElementById("lista-equipos");
@@ -705,19 +813,19 @@
         </div>
         <div class="mb-3">
           <label class="form-label"><strong>Diagnóstico Técnico del Equipo</strong></label>
-          <textarea class="form-control equipo-diagnostico" rows="4" placeholder="Ej: Se detectó sobrecalentamiento por acumulación de polvo. Disco SSD con 85% de wear leveling. Fuente de poder inestable (ruido).">${equipo.diagnostico?.tecnico || ''}</textarea>
+          <textarea class="form-control equipo-diagnostico" rows="4" placeholder="Sobrecalentamiento, disco con alto wear leveling, fuente inestable.">${equipo.diagnostico?.tecnico || ''}</textarea>
         </div>
         <div class="mb-3">
           <label class="form-label"><strong>Falla reportada</strong></label>
-          <textarea class="form-control equipo-falla" rows="2" placeholder="Ej: No enciende, lento, pantalla azul...">${equipo.fallaReportada || ''}</textarea>
+          <textarea class="form-control equipo-falla" rows="2" placeholder="No enciende, lento, pantalla azul...">${equipo.fallaReportada || ''}</textarea>
         </div>
         <div class="mb-3">
           <label class="form-label"><strong>Trabajo realizado</strong></label>
-          <textarea class="form-control equipo-trabajo" rows="3" placeholder="Ej: Limpieza, instalación de Windows, eliminación de malware...">${equipo.trabajoRealizado || ''}</textarea>
+          <textarea class="form-control equipo-trabajo" rows="3" placeholder="Limpieza, instalación de sistema, eliminación de malware...">${equipo.trabajoRealizado || ''}</textarea>
         </div>
         <div class="mb-3">
           <label class="form-label"><strong>Recomendaciones</strong></label>
-          <textarea class="form-control equipo-recomendaciones" rows="2" placeholder="Ej: Mantenimiento cada 6 meses, respaldar datos...">${equipo.recomendaciones || ''}</textarea>
+          <textarea class="form-control equipo-recomendaciones" rows="2" placeholder="Mantenimiento cada 6 meses, respaldar datos...">${equipo.recomendaciones || ''}</textarea>
         </div>
         <div>
           <button type="button" class="btn btn-sm btn-outline-info equipo-fotos-btn" onclick="abrirSubidaFotosEquipo(this)">
@@ -728,7 +836,6 @@
       `;
       lista.appendChild(div);
 
-      // Cargar fotos del equipo
       if (equipo.fotos?.length) {
         const contenedor = div.querySelector(".fotos-equipo");
         equipo.fotos.forEach(url => {
@@ -741,7 +848,6 @@
         });
       }
 
-      // Cargar discos del equipo
       if (equipo.discos?.length) {
         const listaDiscos = div.querySelector(".lista-discos");
         equipo.discos.forEach(disco => {

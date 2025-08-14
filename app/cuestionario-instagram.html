@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cuestionario Instagram – CorelTech</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .btn-corel {
+      background: linear-gradient(135deg, #0d6efd, #6f42c1);
+      color: white;
+      font-weight: 600;
+    }
+    .form-label {
+      font-weight: 500;
+      color: #495057;
+    }
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+    .tip {
+      font-size: 0.875rem;
+      color: #6c757d;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <div class="text-center mb-4">
+      <h1 class="fw-bold">📝 Cuestionario: Estrategia en Instagram</h1>
+      <p class="text-muted">Ayúdanos a conocerte mejor para crear una estrategia efectiva.</p>
+    </div>
+
+    <form id="form-instagram">
+      <!-- 1. Información del Cliente -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>👤 Información del Cliente</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">Nombre del contacto principal</label>
+            <input type="text" class="form-control" id="ig-contacto" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Empresa o marca</label>
+            <input type="text" class="form-control" id="ig-empresa" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Correo y teléfono</label>
+            <input type="text" class="form-control" id="ig-correo-telefono" placeholder="ej: contacto@empresa.com | +58 412 123 4567" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Tienes una cuenta de Instagram activa?</label>
+            <div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ig-cuenta" id="ig-si" value="si" required>
+                <label class="form-check-label">Sí → @</label>
+                <input type="text" class="form-control d-inline-block w-auto ms-2" id="ig-usuario" style="width: 200px;" placeholder="usuario">
+              </div>
+              <div class="form-check form-check-inline mt-2">
+                <input class="form-check-input" type="radio" name="ig-cuenta" id="ig-no" value="no">
+                <label class="form-check-label">No, quiero crearla desde cero</label>
+              </div>
+            </div>
+            <small class="tip">Si ya tienes cuenta, comparte tu @usuario</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Objetivo de Instagram -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>🎯 Objetivo de Instagram</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">¿Cuál es el propósito principal de tu cuenta?</label>
+            <select class="form-select" id="ig-propósito" required>
+              <option value="">Selecciona uno principal</option>
+              <option value="vender">Vender productos o servicios</option>
+              <option value="leads">Generar leads o contactos</option>
+              <option value="reconocimiento">Aumentar reconocimiento de marca</option>
+              <option value="experto">Posicionar como experto o influencer</option>
+              <option value="eventos">Promocionar eventos o lanzamientos</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Qué acción debe realizar un seguidor cuando ve tu perfil?</label>
+            <textarea class="form-control" id="ig-accion" rows="2" placeholder="ej: visitar tu sitio web, enviar un DM, hacer una compra, seguirte" required></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Público Objetivo -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>🎯 Tu Público Objetivo</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Edad</label>
+              <input type="text" class="form-control" id="ig-edad">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Género</label>
+              <input type="text" class="form-control" id="ig-genero">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Ubicación</label>
+              <input type="text" class="form-control" id="ig-ubicacion">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Intereses o hábitos en redes sociales</label>
+              <input type="text" class="form-control" id="ig-intereses">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Dónde pasa más tiempo tu público?</label>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="ig-plataforma-instagram">
+              <label class="form-check-label">Instagram</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="ig-plataforma-tiktok">
+              <label class="form-check-label">TikTok</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="ig-plataforma-facebook">
+              <label class="form-check-label">Facebook</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="ig-plataforma-whatsapp">
+              <label class="form-check-label">WhatsApp</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="ig-plataforma-google">
+              <label class="form-check-label">Google</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="ig-plataforma-otro">
+              <label class="form-check-label">Otro: <input type="text" class="form-control d-inline-block w-auto ms-2" id="ig-plataforma-otro-texto" style="width: 150px;"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Estado Actual del Perfil -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>📊 Estado Actual del Perfil</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">¿Tienes contenido publicado?</label>
+            <select class="form-select" id="ig-contenido-publicado">
+              <option value="">Selecciona</option>
+              <option value="varias">Sí, varias publicaciones</option>
+              <option value="pocas">Pocas publicaciones</option>
+              <option value="ninguna">No, está vacío</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Tu perfil es público o privado?</label>
+            <select class="form-select" id="ig-visibilidad">
+              <option value="">Selecciona</option>
+              <option value="publico">Público</option>
+              <option value="privado">Privado</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Tienes biografía optimizada?</label>
+            <select class="form-select" id="ig-biografia">
+              <option value="">Selecciona</option>
+              <option value="si">Sí</option>
+              <option value="no">No</option>
+              <option value="no-se">No sé qué es</option>
+            </select>
+            <small class="tip">Ej: "Estilista en Caracas. Atención a domicilio. ⬇️ Agenda tu cita" + enlace</small>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Tienes enlace en tu biografía?</label>
+            <div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ig-enlace" id="ig-enlace-si" value="si" required>
+                <label class="form-check-label">Sí → ¿A qué sitio?</label>
+                <input type="url" class="form-control d-inline-block w-auto ms-2" id="ig-enlace-url" style="width: 250px;" placeholder="https://tusitio.com">
+              </div>
+              <div class="form-check form-check-inline mt-2">
+                <input class="form-check-input" type="radio" name="ig-enlace" id="ig-enlace-no" value="no">
+                <label class="form-check-label">No</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Contenido y Estilo Visual -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>🎨 Contenido y Estilo Visual</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">¿Tienes fotos, videos o reels listos?</label>
+            <select class="form-select" id="ig-contenido-listo">
+              <option value="">Selecciona</option>
+              <option value="si">Sí, todo listo</option>
+              <option value="parcial">Parcialmente</option>
+              <option value="no">No, necesito ayuda</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Tienes marca, logo, colores o tipografías definidas?</label>
+            <select class="form-select" id="ig-marca">
+              <option value="">Selecciona</option>
+              <option value="si">Sí</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Qué estilo de contenido prefieres?</label>
+            <select class="form-select" id="ig-estilo">
+              <option value="">Selecciona</option>
+              <option value="profesional">Profesional y limpio</option>
+              <option value="creativo">Creativo y artístico</option>
+              <option value="divertido">Divertido y cercano</option>
+              <option value="educativo">Educativo (tips, tutoriales)</option>
+              <option value="detras">Detrás de escena</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Tienes cuentas de referencia que te gusten? (Puedes poner 1-3 @usuarios)</label>
+            <input type="text" class="form-control" id="ig-referencias" placeholder="ej: @naturbeauty, @tecnosoluciones">
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Funcionalidades y Herramientas -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>⚙ Funcionalidades y Herramientas</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">¿Quieres usar Instagram para vender?</label>
+            <div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ig-vender" id="ig-vender-si" value="si" required>
+                <label class="form-check-label">Sí → Quiero tienda en Instagram</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ig-vender" id="ig-vender-no" value="no">
+                <label class="form-check-label">No → Solo generar contactos</label>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Quieres usar Reels o historias destacadas?</label>
+            <select class="form-select" id="ig-reels">
+              <option value="">Selecciona</option>
+              <option value="si">Sí</option>
+              <option value="no">No</option>
+              <option value="no-se">No sé cómo usarlas</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Quieres automatización o programación de publicaciones?</label>
+            <select class="form-select" id="ig-programacion">
+              <option value="">Selecciona</option>
+              <option value="si">Sí</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Necesitas ayuda con engagement (interacción con seguidores)?</label>
+            <select class="form-select" id="ig-engagement">
+              <option value="">Selecciona</option>
+              <option value="si">Sí</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Plazos y Presupuesto -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>📅 Plazos y Presupuesto</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">¿Cuándo quieres que esté lista tu estrategia de Instagram?</label>
+            <textarea class="form-control" id="ig-fecha" rows="2" placeholder="ej: en 2 semanas, para un lanzamiento, etc."></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Tienes un presupuesto aproximado en mente?</label>
+            <select class="form-select" id="ig-presupuesto">
+              <option value="">Selecciona</option>
+              <option value="menos300">Menos de $300 USD</option>
+              <option value="300-600">$300 – $600 USD</option>
+              <option value="mas600">Más de $600 USD</option>
+              <option value="no-se">Aún no lo sé</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Gestión del Perfil -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>🧑‍💼 Gestión del Perfil</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">¿Quieres gestionar tu cuenta tú mismo?</label>
+            <div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ig-gestion" id="ig-gestion-si" value="si" required>
+                <label class="form-check-label">Sí → Quiero capacitación</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ig-gestion" id="ig-gestion-no" value="no">
+                <label class="form-check-label">No → Prefiero que lo gestionen ustedes</label>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Necesitas reportes de crecimiento (seguidores, interacciones, etc.)?</label>
+            <div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ig-reportes" id="ig-reportes-si" value="si" required>
+                <label class="form-check-label">Sí</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ig-reportes" id="ig-reportes-no" value="no">
+                <label class="form-check-label">No</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Comentarios Finales -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>✉ Comentarios Finales</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">¿Hay algo más que quieras compartir sobre tu marca o expectativas con Instagram?</label>
+            <textarea class="form-control" id="ig-comentarios" rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-4">
+        <button type="button" class="btn btn-secondary" onclick="window.history.back()">Cancelar</button>
+        <button type="submit" class="btn btn-corel">Enviar Cuestionario</button>
+      </div>
+    </form>
+  </div>
+
+  <footer>
+    <p>© 2025 CorelTech – Tu tranquilidad es nuestra prioridad.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="/firebase-config.js"></script>
+
+  <script>
+    document.getElementById("form-instagram").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      const user = firebase.auth().currentUser;
+      if (!user) {
+        alert("No autenticado");
+        return;
+      }
+
+      const data = {
+        tipo: "cuestionario-instagram",
+        timestamp: new Date(),
+        usuario: user.email,
+        contacto: document.getElementById("ig-contacto").value,
+        empresa: document.getElementById("ig-empresa").value,
+        correoTelefono: document.getElementById("ig-correo-telefono").value,
+        cuenta: {
+          tiene: document.querySelector('input[name="ig-cuenta"]:checked')?.value,
+          usuario: document.getElementById("ig-usuario").value
+        },
+        proposito: document.getElementById("ig-propósito").value,
+        accion: document.getElementById("ig-accion").value,
+        publico: {
+          edad: document.getElementById("ig-edad").value,
+          genero: document.getElementById("ig-genero").value,
+          ubicacion: document.getElementById("ig-ubicacion").value,
+          intereses: document.getElementById("ig-intereses").value,
+          plataformas: {
+            instagram: document.getElementById("ig-plataforma-instagram").checked,
+            tiktok: document.getElementById("ig-plataforma-tiktok").checked,
+            facebook: document.getElementById("ig-plataforma-facebook").checked,
+            whatsapp: document.getElementById("ig-plataforma-whatsapp").checked,
+            google: document.getElementById("ig-plataforma-google").checked,
+            otro: document.getElementById("ig-plataforma-otro").checked ? document.getElementById("ig-plataforma-otro-texto").value : ""
+          }
+        },
+        estado: {
+          contenido: document.getElementById("ig-contenido-publicado").value,
+          visibilidad: document.getElementById("ig-visibilidad").value,
+          biografia: document.getElementById("ig-biografia").value,
+          enlace: {
+            tiene: document.querySelector('input[name="ig-enlace"]:checked')?.value,
+            url: document.getElementById("ig-enlace-url").value
+          }
+        },
+        contenido: {
+          listo: document.getElementById("ig-contenido-listo").value,
+          marca: document.getElementById("ig-marca").value,
+          estilo: document.getElementById("ig-estilo").value,
+          referencias: document.getElementById("ig-referencias").value
+        },
+        funcionalidades: {
+          vender: document.querySelector('input[name="ig-vender"]:checked')?.value,
+          reels: document.getElementById("ig-reels").value,
+          programacion: document.getElementById("ig-programacion").value,
+          engagement: document.getElementById("ig-engagement").value
+        },
+        plazos: {
+          fecha: document.getElementById("ig-fecha").value,
+          presupuesto: document.getElementById("ig-presupuesto").value
+        },
+        gestion: {
+          puede: document.querySelector('input[name="ig-gestion"]:checked')?.value,
+          reportes: document.querySelector('input[name="ig-reportes"]:checked')?.value
+        },
+        comentarios: document.getElementById("ig-comentarios").value
+      };
+
+      try {
+        const db = firebase.firestore();
+        await db.collection("cuestionarios").add(data);
+        alert("✅ Cuestionario enviado con éxito. Pronto nos pondremos en contacto.");
+        window.location.href = "/app/dashboard.html";
+      } catch (error) {
+        console.error("Error al guardar:", error);
+        alert("❌ Error: " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>

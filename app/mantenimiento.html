@@ -2,20 +2,33 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mantenimiento – CorelTech</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
   <style>
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f8f9fa;
+      color: #212529;
     }
+
+    /* Tarjeta general */
     .card {
       border: none;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
+
+    /* Alerta de mantenimiento */
     .alerta {
       border-left: 5px solid #fd7e14;
       background: #fff3cd;
@@ -26,35 +39,58 @@
     .urgente {
       border-left-color: #dc3545;
       background: #f8d7da;
+      color: #721c24;
+    }
+    .urgente .badge {
+      background-color: #dc3545 !important;
+    }
+
+    /* Icono de información */
+    .info-banner {
+      background: #d1ecf1;
+      border-left: 5px solid #0dcaf0;
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    /* Botón de volver */
+    .btn-volver {
+      font-size: 0.9rem;
+      padding: 6px 12px;
     }
   </style>
 </head>
 <body class="p-4">
   <div class="container py-4">
+    <!-- Encabezado -->
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h1 class="fw-bold">🛠️ Alertas de Mantenimiento Preventivo</h1>
-      <button class="btn btn-secondary" onclick="window.history.back()">← Volver</button>
+      <a href="/app/index.html" class="btn btn-outline-secondary btn-volver">
+        <i class="bi bi-arrow-left"></i> Volver
+      </a>
     </div>
 
-    <!-- Resumen -->
+    <!-- Resumen informativo -->
     <div class="card mb-4">
       <div class="card-body">
-        <p class="mb-0">
-          <i class="bi bi-info-circle"></i> 
+        <div class="info-banner d-flex align-items-center">
+          <i class="bi bi-info-circle me-2"></i>
           Este listado muestra clientes que no han tenido servicio técnico en los últimos <strong>6 meses</strong>.
           Recomendamos contactarlos para ofrecer mantenimiento preventivo.
-        </p>
+        </div>
       </div>
     </div>
 
     <!-- Lista de Alertas -->
     <div class="card">
-      <div class="card-header bg-warning text-white">
-        <h5>⚠️ Clientes que necesitan mantenimiento</h5>
+      <div class="card-header bg-warning text-white d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">⚠️ Clientes que necesitan mantenimiento</h5>
+        <span class="badge bg-danger" id="contador-alertas">0</span>
       </div>
       <div class="card-body">
         <div id="lista-alertas">
-          <p class="text-muted">Cargando alertas...</p>
+          <p class="text-muted text-center">Cargando alertas...</p>
         </div>
       </div>
     </div>
@@ -69,48 +105,70 @@
   <script src="/app/js/auth.js"></script>
 
   <script>
-    // Cargar alertas al iniciar
+    // ==========================================
+    // ✅ 1. Cargar alertas de mantenimiento
+    // ==========================================
     window.onload = async () => {
-      const db = firebase.firestore();
-      const seisMesesAtras = new Date();
-      seisMesesAtras.setMonth(seisMesesAtras.getMonth() - 6);
+      try {
+        const db = firebase.firestore();
+        const seisMesesAtras = new Date();
+        seisMesesAtras.setMonth(seisMesesAtras.getMonth() - 6);
 
-      const snapshot = await db.collection("clientes").get();
-      const clientes = snapshot.docs.map(d => d.data());
+        const snapshot = await db.collection("clientes").get();
+        const clientes = snapshot.docs
+          .map(doc => ({ id: doc.id, ...doc.data() }))
+          .filter(cliente => cliente.ultimoServicio?.toDate);
 
-      const alertas = clientes.filter(c => {
-        if (!c.ultimoServicio?.toDate) return false;
-        return c.ultimoServicio.toDate() < seisMesesAtras;
-      });
+        // Filtrar clientes con última visita antes de 6 meses
+        const alertas = clientes.filter(cliente => {
+          const ultima = cliente.ultimoServicio.toDate();
+          return ultima < seisMesesAtras;
+        });
 
-      const lista = document.getElementById("lista-alertas");
-      lista.innerHTML = '';
+        const lista = document.getElementById("lista-alertas");
+        lista.innerHTML = '';
 
-      if (alertas.length === 0) {
-        lista.innerHTML = '<p class="text-success">✅ No hay clientes pendientes de mantenimiento.</p>';
-        return;
+        // Mostrar contador
+        document.getElementById("contador-alertas").textContent = alertas.length;
+
+        if (alertas.length === 0) {
+          lista.innerHTML = '<p class="text-success text-center">✅ No hay clientes pendientes de mantenimiento.</p>';
+          return;
+        }
+
+        // Ordenar por días sin servicio (más antiguo primero)
+        alertas.sort((a, b) => {
+          const fechaA = a.ultimoServicio.toDate();
+          const fechaB = b.ultimoServicio.toDate();
+          return fechaA - fechaB;
+        });
+
+        // Renderizar cada alerta
+        alertas.forEach(cliente => {
+          const ultima = cliente.ultimoServicio.toDate();
+          const dias = Math.floor((Date.now() - ultima) / (1000 * 60 * 60 * 24));
+          const esUrgente = dias > 365;
+
+          const div = document.createElement("div");
+          div.className = `alerta ${esUrgente ? 'urgente' : ''}`;
+          div.innerHTML = `
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h6 class="mb-0">${cliente.nombre}</h6>
+              <span class="badge ${esUrgente ? 'bg-danger' : 'bg-warning'}">${dias} días</span>
+            </div>
+            <p class="mb-1"><strong>ID:</strong> ${cliente.id}</p>
+            <p class="mb-1"><strong>Última visita:</strong> ${ultima.toLocaleDateString()}</p>
+            <p class="mb-1"><strong>Teléfono:</strong> ${cliente.telefono || 'No registrado'}</p>
+            <p class="mb-0 text-muted">Equipos registrados: ${cliente.equipos?.length || 0}</p>
+          `;
+          lista.appendChild(div);
+        });
+
+      } catch (error) {
+        console.error("Error al cargar alertas:", error);
+        document.getElementById("lista-alertas").innerHTML = 
+          '<p class="text-danger text-center">❌ Error al cargar los datos. Intenta de nuevo más tarde.</p>';
       }
-
-      alertas.sort((a, b) => a.ultimoServicio.toDate() - b.ultimoServicio.toDate());
-
-      alertas.forEach(cliente => {
-        const ultimaVisita = cliente.ultimoServicio.toDate().toLocaleDateString();
-        const dias = Math.floor((Date.now() - cliente.ultimoServicio.toDate()) / (1000 * 60 * 60 * 24));
-        const esUrgente = dias > 365;
-
-        const div = document.createElement("div");
-        div.className = `alerta ${esUrgente ? 'urgente' : ''}`;
-        div.innerHTML = `
-          <div class="d-flex justify-content-between">
-            <h6>${cliente.nombre} (${cliente.nombre})</h6>
-            <span class="badge ${esUrgente ? 'bg-danger' : 'bg-warning'}">${dias} días sin servicio</span>
-          </div>
-          <p class="mb-1"><strong>Última visita:</strong> ${ultimaVisita}</p>
-          <p class="mb-1"><strong>Teléfono:</strong> ${cliente.telefono}</p>
-          <p class="mb-0 text-muted">Equipos registrados: ${cliente.equipos?.length || 0}</p>
-        `;
-        lista.appendChild(div);
-      });
     };
   </script>
 </body>

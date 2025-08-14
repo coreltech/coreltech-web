@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cuestionario Web – CorelTech</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .btn-corel {
+      background: linear-gradient(135deg, #0d6efd, #6f42c1);
+      color: white;
+      font-weight: 600;
+    }
+    .form-label {
+      font-weight: 500;
+      color: #495057;
+    }
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+    .tip {
+      font-size: 0.875rem;
+      color: #6c757d;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <div class="text-center mb-4">
+      <h1 class="fw-bold">📝 Cuestionario: Sitio Web</h1>
+      <p class="text-muted">Ayúdanos a conocerte mejor para crear un sitio a tu medida.</p>
+    </div>
+
+    <form id="form-web">
+      <!-- 1. Información del Proyecto -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>🎯 Información del Proyecto</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">Nombre de tu empresa o marca</label>
+            <input type="text" class="form-control" id="web-empresa" placeholder="ej: ModaVenezuela, Clínica Salud Total" required>
+            <small class="tip">Nombre comercial o razón social</small>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nombre del contacto principal</label>
+            <input type="text" class="form-control" id="web-contacto" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Correo y teléfono de contacto</label>
+            <input type="text" class="form-control" id="web-correo-telefono" placeholder="ej: contacto@empresa.com | +58 412 123 4567" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Este es un sitio nuevo o una actualización?</label>
+            <div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="web-tipo" id="web-nuevo" value="nuevo" required>
+                <label class="form-check-label">Nuevo sitio web</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="web-tipo" id="web-rediseño" value="rediseño">
+                <label class="form-check-label">Rediseño</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="web-tipo" id="web-migracion" value="migracion">
+                <label class="form-check-label">Migración</label>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Si es una actualización, ¿puedes compartir el enlace del sitio actual?</label>
+            <input type="url" class="form-control" id="web-enlace-actual" placeholder="https://tusitio.com">
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Objetivo del Sitio Web -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>🧭 Objetivo del Sitio Web</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">¿Cuál es el propósito principal de tu sitio web?</label>
+            <select class="form-select" id="web-propósito" required>
+              <option value="">Selecciona uno principal</option>
+              <option value="vender">Vender productos o servicios</option>
+              <option value="leads">Generar contactos o leads</option>
+              <option value="portafolio">Mostrar portafolio o proyectos</option>
+              <option value="informar">Informar o educar (blog, recursos)</option>
+              <option value="reservar">Reservar citas o servicios</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Qué acción debe realizar un visitante cuando entre al sitio?</label>
+            <textarea class="form-control" id="web-accion" rows="2" placeholder="ej: comprar, llenar un formulario, agendar una llamada, descargar un PDF" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Tienes un objetivo claro que quieras alcanzar?</label>
+            <textarea class="form-control" id="web-objetivo" rows="2" placeholder="ej: vender 20 productos al mes, aparecer en Google para 'plomero en Caracas'"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Público Objetivo -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>🎯 Tu Público Objetivo</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Edad</label>
+              <input type="text" class="form-control" id="web-edad">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Género</label>
+              <input type="text" class="form-control" id="web-genero">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Ubicación</label>
+              <input type="text" class="form-control" id="web-ubicacion">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Profesión o industria</label>
+              <input type="text" class="form-control" id="web-profesion">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Qué necesita o problema tiene que tu negocio resuelve?</label>
+            <textarea class="form-control" id="web-problema" rows="2"></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Cómo encuentran información sobre negocios como el tuyo?</label>
+            <textarea class="form-control" id="web-encontrar" rows="2" placeholder="ej: Google, Instagram, WhatsApp, recomendaciones"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Diseño y Estilo -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>🖼 Diseño y Estilo</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">¿Tienes alguna página web que te guste como referencia visual?</label>
+            <textarea class="form-control" id="web-referencias" rows="2" placeholder="Puedes poner 1-3 URLs, ej: https://apple.com, https://airbnb.com"></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Qué estilo prefieres para tu sitio?</label>
+            <select class="form-select" id="web-estilo">
+              <option value="">Selecciona</option>
+              <option value="moderno">Moderno y limpio</option>
+              <option value="corporativo">Corporativo y profesional</option>
+              <option value="creativo">Creativo y artístico</option>
+              <option value="minimal">Mínimo y elegante</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Tienes logo, colores o tipografías definidas?</label>
+            <textarea class="form-control" id="web-marca" rows="2" placeholder="Adjunta o describe"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Contenido del Sitio -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>🧩 Contenido del Sitio</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">¿Qué páginas debe incluir tu sitio web?</label>
+            <textarea class="form-control" id="web-paginas" rows="2" placeholder="ej: Inicio, Nosotros, Servicios, Productos, Blog, Contacto, Portafolio" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Ya tienes listo el contenido (textos, fotos, videos)?</label>
+            <select class="form-select" id="web-contenido-listo" required>
+              <option value="">Selecciona</option>
+              <option value="si">Sí, todo listo</option>
+              <option value="parcial">Parcialmente</option>
+              <option value="no">No, necesito ayuda</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Qué contenido es más importante destacar?</label>
+            <textarea class="form-control" id="web-contenido-destacar" rows="2" placeholder="ej: testimonios, catálogo de productos, servicios más vendidos"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Funcionalidades -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>⚙ Funcionalidades</h5>
+        </div>
+        <div class="card-body">
+          <p>Marca todas las que necesites:</p>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="web-tienda">
+            <label class="form-check-label">Tienda online (vender productos)</label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="web-carrito">
+            <label class="form-check-label">Carrito de compras y pasarela de pago</label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="web-blog">
+            <label class="form-check-label">Blog o sección de noticias</label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="web-reservas">
+            <label class="form-check-label">Sistema de reservas o citas (ej: médico, peluquería)</label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="web-login">
+            <label class="form-check-label">Área de clientes o login</label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="web-multilenguaje">
+            <label class="form-check-label">Multilenguaje (español + inglés)</label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="web-formulario">
+            <label class="form-check-label">Formulario de contacto con envío de correos</label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="web-chat">
+            <label class="form-check-label">Chat en vivo (WhatsApp, Messenger)</label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="web-galeria">
+            <label class="form-check-label">Galería de fotos o videos</label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="web-redes">
+            <label class="form-check-label">Integración con redes sociales</label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="web-newsletter">
+            <label class="form-check-label">Newsletter / Suscripción por email</label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="web-seo">
+            <label class="form-check-label">SEO avanzado (para aparecer en Google)</label>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Otro:</label>
+            <input type="text" class="form-control" id="web-otro-funcionalidad">
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Dominio y Hosting -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>🌐 Dominio y Hosting</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">¿Tienes un dominio registrado? (ej: tudominio.com)</label>
+            <div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="web-dominio" id="web-dominio-si" value="si" required>
+                <label class="form-check-label">Sí → ¿Cuál?</label>
+                <input type="text" class="form-control d-inline-block w-auto ms-2" id="web-dominio-cual" style="width: 200px;">
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="web-dominio" id="web-dominio-no" value="no">
+                <label class="form-check-label">No → ¿Quieres que te ayudemos a elegirlo?</label>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Tienes hosting contratado?</label>
+            <div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="web-hosting" id="web-hosting-si" value="si" required>
+                <label class="form-check-label">Sí</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="web-hosting" id="web-hosting-no" value="no">
+                <label class="form-check-label">No → ¿Necesitas que lo gestionemos?</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Plazos y Presupuesto -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>📅 Plazos y Presupuesto</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">¿Tienes una fecha estimada de lanzamiento?</label>
+            <textarea class="form-control" id="web-fecha" rows="2" placeholder="ej: antes de una campaña, para una feria, etc."></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Tienes un presupuesto aproximado en mente?</label>
+            <select class="form-select" id="web-presupuesto">
+              <option value="">Selecciona</option>
+              <option value="menos500">Menos de $500 USD</option>
+              <option value="500-1500">$500 – $1,500 USD</option>
+              <option value="mas1500">Más de $1,500 USD</option>
+              <option value="no-se">Aún no lo sé</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Gestión del Sitio -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>🧑‍💼 Gestión del Sitio</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">¿Quieres poder actualizar el contenido tú mismo?</label>
+            <div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="web-gestion" id="web-gestion-si" value="si" required>
+                <label class="form-check-label">Sí → Quiero un panel fácil de usar</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="web-gestion" id="web-gestion-no" value="no">
+                <label class="form-check-label">No → Prefiero que lo gestionen ustedes</label>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">¿Necesitas capacitación para administrar el sitio?</label>
+            <div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="web-capacitacion" id="web-capacitacion-si" value="si" required>
+                <label class="form-check-label">Sí</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="web-capacitacion" id="web-capacitacion-no" value="no">
+                <label class="form-check-label">No</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Comentarios Finales -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>✉ Comentarios Finales</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">¿Hay algo más que quieras compartir sobre tu proyecto, visión o expectativas?</label>
+            <textarea class="form-control" id="web-comentarios" rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-4">
+        <button type="button" class="btn btn-secondary" onclick="window.history.back()">Cancelar</button>
+        <button type="submit" class="btn btn-corel">Enviar Cuestionario</button>
+      </div>
+    </form>
+  </div>
+
+  <footer>
+    <p>© 2025 CorelTech – Tu tranquilidad es nuestra prioridad.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="/firebase-config.js"></script>
+
+  <script>
+    document.getElementById("form-web").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      const user = firebase.auth().currentUser;
+      if (!user) {
+        alert("No autenticado");
+        return;
+      }
+
+      const data = {
+        tipo: "cuestionario-web",
+        timestamp: new Date(),
+        usuario: user.email,
+        empresa: document.getElementById("web-empresa").value,
+        contacto: document.getElementById("web-contacto").value,
+        correoTelefono: document.getElementById("web-correo-telefono").value,
+        tipoProyecto: document.querySelector('input[name="web-tipo"]:checked')?.value,
+        enlaceActual: document.getElementById("web-enlace-actual").value,
+        proposito: document.getElementById("web-propósito").value,
+        accion: document.getElementById("web-accion").value,
+        objetivo: document.getElementById("web-objetivo").value,
+        publico: {
+          edad: document.getElementById("web-edad").value,
+          genero: document.getElementById("web-genero").value,
+          ubicacion: document.getElementById("web-ubicacion").value,
+          profesion: document.getElementById("web-profesion").value,
+          problema: document.getElementById("web-problema").value,
+          encontrar: document.getElementById("web-encontrar").value
+        },
+        diseño: {
+          referencias: document.getElementById("web-referencias").value,
+          estilo: document.getElementById("web-estilo").value,
+          marca: document.getElementById("web-marca").value
+        },
+        contenido: {
+          paginas: document.getElementById("web-paginas").value,
+          listo: document.getElementById("web-contenido-listo").value,
+          destacar: document.getElementById("web-contenido-destacar").value
+        },
+        funcionalidades: {
+          tienda: document.getElementById("web-tienda").checked,
+          carrito: document.getElementById("web-carrito").checked,
+          blog: document.getElementById("web-blog").checked,
+          reservas: document.getElementById("web-reservas").checked,
+          login: document.getElementById("web-login").checked,
+          multilenguaje: document.getElementById("web-multilenguaje").checked,
+          formulario: document.getElementById("web-formulario").checked,
+          chat: document.getElementById("web-chat").checked,
+          galeria: document.getElementById("web-galeria").checked,
+          redes: document.getElementById("web-redes").checked,
+          newsletter: document.getElementById("web-newsletter").checked,
+          seo: document.getElementById("web-seo").checked,
+          otro: document.getElementById("web-otro-funcionalidad").value
+        },
+        dominio: {
+          tiene: document.querySelector('input[name="web-dominio"]:checked')?.value,
+          cual: document.getElementById("web-dominio-cual").value
+        },
+        hosting: document.querySelector('input[name="web-hosting"]:checked')?.value,
+        plazos: {
+          fecha: document.getElementById("web-fecha").value,
+          presupuesto: document.getElementById("web-presupuesto").value
+        },
+        gestion: {
+          puede: document.querySelector('input[name="web-gestion"]:checked')?.value,
+          capacitacion: document.querySelector('input[name="web-capacitacion"]:checked')?.value
+        },
+        comentarios: document.getElementById("web-comentarios").value
+      };
+
+      try {
+        const db = firebase.firestore();
+        await db.collection("cuestionarios").add(data);
+        alert("✅ Cuestionario enviado con éxito. Pronto nos pondremos en contacto.");
+        window.location.href = "/app/dashboard.html";
+      } catch (error) {
+        console.error("Error al guardar:", error);
+        alert("❌ Error: " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>

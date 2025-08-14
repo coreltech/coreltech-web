@@ -2,49 +2,167 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Buscar Cliente – CorelTech</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🔍 Clientes – CorelTech</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
   <style>
-    body { font-family: 'Inter', sans-serif; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .btn-volver {
+      font-size: 0.9rem;
+      padding: 6px 12px;
+    }
+
+    .resultado-cliente {
+      border-left: 4px solid #0d6efd;
+      padding: 12px;
+      margin: 10px 0;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body class="p-4">
-  <div class="container">
-    <h1>🔍 Buscar Cliente</h1>
-    <div class="input-group mb-3" style="max-width: 400px;">
-      <input type="text" id="cliente-id" class="form-control" placeholder="ID del cliente">
-      <button class="btn btn-primary" onclick="buscarCliente()">Buscar</button>
+  <div class="container py-4">
+    <!-- Encabezado -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="fw-bold">🔍 Buscar Cliente</h1>
+      <a href="/app/index.html" class="btn btn-outline-secondary btn-volver">
+        <i class="bi bi-arrow-left"></i> Volver
+      </a>
     </div>
-    <div id="resultado"></div>
+
+    <!-- Búsqueda -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="input-group" style="max-width: 400px;">
+          <input 
+            type="text" 
+            id="cliente-id" 
+            class="form-control" 
+            placeholder="ID del cliente (ej: V-12345678)"
+            maxlength="15"
+          >
+          <button class="btn btn-primary" onclick="buscarCliente()">
+            <i class="bi bi-search"></i> Buscar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resultado -->
+    <div id="resultado">
+      <p class="text-muted">Ingresa un ID para buscar un cliente.</p>
+    </div>
   </div>
 
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   <script src="/firebase-config.js"></script>
+  <script src="/app/js/auth.js"></script>
+
   <script>
+    // ================================
+    // ✅ 1. Verificar autenticación
+    // ================================
+    firebase.auth().onAuthStateChanged(async (user) => {
+      if (!user) {
+        window.location.href = '/app/login.html';
+        return;
+      }
+    });
+
+    // ================================
+    // ✅ 2. Buscar cliente
+    // ================================
     async function buscarCliente() {
       const id = document.getElementById("cliente-id").value.trim().toUpperCase();
       const resultado = document.getElementById("resultado");
-      resultado.innerHTML = '<p>Buscando...</p>';
 
-      const db = firebase.firestore();
-      const doc = await db.collection("clientes").doc(id).get();
+      if (!id) {
+        resultado.innerHTML = '<p class="text-danger">Por favor, ingresa un ID de cliente.</p>';
+        return;
+      }
 
-      if (doc.exists) {
-        const data = doc.data();
-        resultado.innerHTML = `
-          <div class="card mt-3">
-            <div class="card-body">
-              <h5>${data.nombre}</h5>
-              <p><strong>ID:</strong> ${id}<br>
-              <strong>Teléfono:</strong> ${data.telefono}<br>
-              <strong>Dirección:</strong> ${data.direccion}</p>
-              <a href="/app/expediente.html?cliente=${id}" class="btn btn-success">Ver Expediente</a>
+      resultado.innerHTML = '<p><i class="bi bi-hourglass-split"></i> Buscando...</p>';
+
+      try {
+        const db = firebase.firestore();
+        const doc = await db.collection("clientes").doc(id).get();
+
+        if (doc.exists) {
+          const data = doc.data();
+          resultado.innerHTML = `
+            <div class="card mt-3">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h5 class="mb-0">${data.nombre}</h5>
+                  <span class="badge bg-primary">${id}</span>
+                </div>
+                <p>
+                  <strong>Teléfono:</strong> ${data.telefono || 'No registrado'}<br>
+                  <strong>Correo:</strong> ${data.correo || 'No registrado'}<br>
+                  <strong>Dirección:</strong> ${data.direccion || 'No especificada'}<br>
+                  <strong>Última visita:</strong> ${data.ultimoServicio?.toDate().toLocaleDateString() || 'Nunca'}
+                </p>
+                <div class="d-grid gap-2 d-md-flex mt-3">
+                  <a href="/app/expediente.html?cliente=${id}" class="btn btn-success">
+                    <i class="bi bi-person-lines-fill"></i> Ver Expediente
+                  </a>
+                  <a href="/app/nuevo-caso.html?cliente=${id}" class="btn btn-outline-primary">
+                    <i class="bi bi-plus-circle"></i> Nuevo Caso
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
-        `;
-      } else {
-        resultado.innerHTML = `<p class="text-danger">Cliente no encontrado.</p>`;
+          `;
+        } else {
+          resultado.innerHTML = `
+            <div class="alert alert-warning mt-3">
+              <i class="bi bi-exclamation-triangle"></i>
+              Cliente no encontrado.
+              <a href="/app/nuevo-caso.html?cliente=${id}" class="btn btn-sm btn-primary ms-3">
+                <i class="bi bi-plus-circle"></i> Crear Nuevo Caso
+              </a>
+            </div>
+          `;
+        }
+      } catch (error) {
+        console.error("Error al buscar cliente:", error);
+        resultado.innerHTML = '<p class="text-danger">Error al conectar con la base de datos.</p>';
       }
     }
+
+    // ================================
+    // ✅ 3. Permitir buscar con Enter
+    // ================================
+    document.getElementById("cliente-id").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        buscarCliente();
+      }
+    });
   </script>
 </body>
 </html>
