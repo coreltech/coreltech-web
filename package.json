@@ -11,5 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "sharp": "^0.34.3"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.4.0"
   }
 }
